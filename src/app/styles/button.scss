@@ -1,0 +1,26 @@
+button:not(.custom-button) {
+    & {
+        display: flex;
+        column-gap: 0.5em;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: rgb(238, 238, 238);
+        font-size: 16px;
+        font-weight: 600;
+        padding: 0.6em 1em;
+        border-radius: 10px;
+        background-color: #b023e8;
+        border: 1px #a521da solid;
+
+        transition: 0.2s;
+    }
+
+    &:hover {
+        background-color: #a521da;
+    }
+
+    &:active {
+        background-color: #951ec4;
+    }
+}

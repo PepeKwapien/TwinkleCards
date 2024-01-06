@@ -1,3 +1,23 @@
-<button (click)="signWithGooglePopup()" *ngIf="!isUserAuthenticated; else authenticated">Sign in</button>
-<ng-template #authenticated>Hi, {{ username }} <button (click)="singOut()">Sign out</button></ng-template>
+<button (click)="signWithGooglePopup()" *ngIf="!isUserAuthenticated; else authenticated">
+    Sign in<img src="./assets/google.png" alt="Google logo" class="user-icon inverted-black-icon" />
+</button>
+<ng-template #authenticated>
+    <div>
+        Hi,
+        <button
+            #usernameButton
+            class="username-container custom-button"
+            [ngClass]="{ active: optionsExpanded }"
+            (click)="toggleOptions()">
+            <div>
+                {{ username
+                }}<img src="./assets/arrow-down.png" class="user-icon" [ngClass]="{ 'user-icon-rotated': optionsExpanded }" />
+            </div>
+            <div #options @slideAnimation class="username-container-options" *ngIf="optionsExpanded">
+                <div>Settings</div>
+                <div (click)="signOut()">Sign out</div>
+            </div>
+        </button>
+    </div>
+</ng-template>
 

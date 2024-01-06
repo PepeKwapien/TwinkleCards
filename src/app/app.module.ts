@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { UserComponent } from './components/user/user.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-    declarations: [AppComponent, UserComponent],
+    declarations: [AppComponent, UserComponent, NavbarComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -23,7 +25,8 @@ import { UserComponent } from './components/user/user.component';
             })
         ),
         provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore())
+        provideFirestore(() => getFirestore()),
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
