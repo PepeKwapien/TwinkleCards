@@ -6,18 +6,17 @@
         Hi,
         <button
             #usernameButton
-            class="username-container custom-button"
+            class="username-button custom-button"
             [ngClass]="{ active: optionsExpanded }"
             (click)="toggleOptions()">
-            <div>
+            <div class="username-container">
                 {{ username
                 }}<img src="./assets/arrow-down.png" class="user-icon" [ngClass]="{ 'user-icon-rotated': optionsExpanded }" />
             </div>
-            <div #options @slideAnimation class="username-container-options" *ngIf="optionsExpanded">
+            <div #options @slideAnimation class="username-options" *ngIf="optionsExpanded">
                 <div>Settings</div>
                 <div (click)="signOut()">Sign out</div>
             </div>
         </button>
     </div>
 </ng-template>
-
