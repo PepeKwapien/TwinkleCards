@@ -1,0 +1,3 @@
+<button (click)="signWithGooglePopup()" *ngIf="!isUserAuthenticated; else authenticated">Sign in</button>
+<ng-template #authenticated>Hi, {{ username }} <button (click)="singOut()">Sign out</button></ng-template>
+

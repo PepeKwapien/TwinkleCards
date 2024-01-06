@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "twinklecards-3108d": {
+      "hosting": {
+        "TwinkleCards": [
+          "twinklecards-3108d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "twinklecards-3108d"
+  }
+}
