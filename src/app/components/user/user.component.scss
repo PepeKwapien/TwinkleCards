@@ -21,16 +21,22 @@ $borderWidth: 2px;
     font-size: 16px;
     display: inline-flex;
     align-items: center;
-
-    padding: 0.5em;
     margin: 0;
-    border: $borderWidth rgba(255, 255, 255, 0) solid;
-    border-bottom: unset;
-    transition: 0.1s;
+}
 
-    &.active {
+.username-button {
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    column-gap: 0.3em;
+
+    border: $borderWidth rgba(255, 255, 255, 0) solid;
+    border-radius: 5px;
+    border-bottom: unset;
+    transition: 0.2s;
+
+    .active > & {
         border: $borderWidth black solid;
-        border-radius: 5px;
         border-bottom: unset;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
@@ -38,20 +44,14 @@ $borderWidth: 2px;
     }
 }
 
-.username-button {
-    display: flex;
-    align-items: center;
-    column-gap: 0.3em;
-}
-
 .username-options {
-    box-sizing: content-box;
+    box-sizing: border-box;
     position: absolute;
     display: flex;
     flex-direction: column;
     top: 100%;
-    left: calc($borderWidth / (-2));
-    width: calc(100% - $borderWidth / 2);
+    left: 0;
+    width: 100%;
 
     .active > & {
         border: $borderWidth black solid;
