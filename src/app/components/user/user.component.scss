@@ -1,10 +1,12 @@
-p {
-    margin: 0;
+button {
+    border: unset;
+    font-size: 16px;
+    background: inherit;
 }
 
 .user-icon {
     height: 14px;
-    transition: 0.1s;
+    transition: 0.2s;
 }
 
 .user-icon-rotated {
@@ -13,20 +15,18 @@ p {
 
 $borderWidth: 2px;
 
-.username-button {
-    & {
-        cursor: pointer;
-        position: relative;
-        font-size: 16px;
-        display: inline-flex;
-        align-items: center;
+.username-container {
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
 
-        padding: 0.5em;
-        margin: 0;
-        border: $borderWidth rgba(255, 255, 255, 0) solid;
-        border-bottom: unset;
-        transition: 0.1s;
-    }
+    padding: 0.5em;
+    margin: 0;
+    border: $borderWidth rgba(255, 255, 255, 0) solid;
+    border-bottom: unset;
+    transition: 0.1s;
 
     &.active {
         border: $borderWidth black solid;
@@ -38,22 +38,20 @@ $borderWidth: 2px;
     }
 }
 
-.username-container {
+.username-button {
     display: flex;
     align-items: center;
     column-gap: 0.3em;
 }
 
 .username-options {
-    & {
-        box-sizing: content-box;
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        top: 100%;
-        left: calc($borderWidth / (-2));
-        width: calc(100% - $borderWidth / 2);
-    }
+    box-sizing: content-box;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: calc($borderWidth / (-2));
+    width: calc(100% - $borderWidth / 2);
 
     .active > & {
         border: $borderWidth black solid;
@@ -64,14 +62,14 @@ $borderWidth: 2px;
     }
 
     & > * {
-        & {
-            padding: 0.5rem 0;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            background-color: rgb(228, 228, 228);
-        }
+        padding: 0.5rem 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background-color: rgb(228, 228, 228);
+
         .active & {
             border-top: $borderWidth black solid;
+            transition: 0.2s;
 
             &:hover {
                 background: rgb(214, 214, 214);

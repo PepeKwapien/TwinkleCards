@@ -2,21 +2,17 @@
     Sign in<img src="./assets/google.png" alt="Google logo" class="user-icon inverted-black-icon" />
 </button>
 <ng-template #authenticated>
-    <div>
+    <div class="user-outer-container">
         Hi,
-        <button
-            #usernameButton
-            class="username-button custom-button"
-            [ngClass]="{ active: optionsExpanded }"
-            (click)="toggleOptions()">
-            <div class="username-container">
-                {{ username
-                }}<img src="./assets/arrow-down.png" class="user-icon" [ngClass]="{ 'user-icon-rotated': optionsExpanded }" />
-            </div>
+        <div #usernameButton class="username-container" [ngClass]="{ active: optionsExpanded }" (click)="toggleOptions()">
+            <button class="username-button custom-button">
+                {{ username }}
+                <img src="./assets/arrow-down.png" class="user-icon" [ngClass]="{ 'user-icon-rotated': optionsExpanded }" />
+            </button>
             <div #options @slideAnimation class="username-options" *ngIf="optionsExpanded">
-                <div>Settings</div>
-                <div (click)="signOut()">Sign out</div>
+                <button class="custom-button">Settings</button>
+                <button class="custom-button" (click)="signOut()">Sign out</button>
             </div>
-        </button>
+        </div>
     </div>
 </ng-template>
