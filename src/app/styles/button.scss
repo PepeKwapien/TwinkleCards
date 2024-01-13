@@ -1,3 +1,5 @@
+@import './color.scss';
+
 button:not(.custom-button) {
     & {
         display: flex;
@@ -10,17 +12,17 @@ button:not(.custom-button) {
         font-weight: 600;
         padding: 0.6em 1em;
         border-radius: 10px;
-        background-color: #b023e8;
-        border: 1px #a521da solid;
+        background-color: $button-background;
+        border: 1px $button-hover solid;
 
         transition: 0.2s;
     }
 
     &:hover {
-        background-color: #a521da;
+        background-color: $button-hover;
     }
 
     &:active {
-        background-color: #951ec4;
+        background-color: $button-active;
     }
 }

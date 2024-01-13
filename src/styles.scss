@@ -10,6 +10,9 @@
 
 body {
     margin: 0;
-    height: 1000vh;
+}
+
+html {
+    scroll-snap-type: y mandatory;
 }
 

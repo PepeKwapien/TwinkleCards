@@ -1,0 +1,66 @@
+.landing-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.landing-page-section-title {
+    text-align: center;
+}
+
+.landing-page-section-description {
+    text-align: center;
+    width: clamp(45ch, 50%, 75ch);
+}
+
+.landing-page-section-additional-container {
+    display: flex;
+    justify-content: space-around;
+    column-gap: 1em;
+}
+
+.landing-page-section-additional {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(176, 35, 232, 0.9) 100%);
+    border-radius: 10px;
+    padding: 1em;
+    font-size: 16px;
+
+    cursor: default;
+}
+
+// scroll effects
+
+.observe-intersection {
+    opacity: 0;
+
+    &.landing-page-section-title {
+        transition: 1s;
+    }
+
+    &.landing-page-section-description {
+        transition: 1s 0.5s;
+    }
+
+    &.landing-page-section-additional {
+        transform: translateY(100%);
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                transition: 1s #{1 + ($i - 1) * 0.5}s;
+            }
+        }
+    }
+}
+
+.intersection-detected {
+    opacity: 1;
+
+    &.landing-page-section-additional {
+        transform: translateY(0%);
+    }
+}

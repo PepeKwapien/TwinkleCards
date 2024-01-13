@@ -8,9 +8,10 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { UserComponent } from './components/user/user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
-    declarations: [AppComponent, UserComponent, NavbarComponent],
+    declarations: [AppComponent, UserComponent, NavbarComponent, LandingPageComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

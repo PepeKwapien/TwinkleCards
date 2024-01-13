@@ -1,0 +1,18 @@
+<ng-container *ngFor="let landingPageComponent of landingPageComponents">
+    <ng-container *ngTemplateOutlet="titleAndDescription; context: { $implicit: landingPageComponent }"></ng-container
+></ng-container>
+
+<ng-template #titleAndDescription let-landingPageComponent
+    ><div class="landing-page-container">
+        <h1 class="landing-page-section-title observe-intersection">{{ landingPageComponent.title }}</h1>
+        <p class="landing-page-section-description observe-intersection">{{ landingPageComponent.description }}</p>
+        <div class="landing-page-section-additional-container">
+            <h2
+                class="landing-page-section-additional observe-intersection"
+                *ngFor="let additional of landingPageComponent.additional">
+                {{ additional }}
+            </h2>
+        </div>
+    </div></ng-template
+>
+
