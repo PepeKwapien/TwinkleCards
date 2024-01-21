@@ -1,3 +1,5 @@
+@import '/src/styles/color.scss';
+
 .custom-button {
     cursor: pointer;
     border: unset;
@@ -35,7 +37,7 @@ $borderWidth: 2px;
     transition: 0.2s;
 
     .active > & {
-        border: $borderWidth black solid;
+        border: $borderWidth $gray-outline solid;
         border-bottom: unset;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
@@ -53,7 +55,7 @@ $borderWidth: 2px;
     width: 100%;
 
     .active > & {
-        border: $borderWidth black solid;
+        border: $borderWidth $gray-outline solid;
         border-radius: 5px;
         border-top: unset;
         border-top-left-radius: unset;
@@ -62,12 +64,10 @@ $borderWidth: 2px;
 
     & > * {
         padding: 0.5rem 0;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
         background-color: rgb(228, 228, 228);
 
         .active & {
-            border-top: $borderWidth black solid;
+            border-top: $borderWidth $gray-outline solid;
             transition: 0.2s;
 
             &:hover {
@@ -78,5 +78,10 @@ $borderWidth: 2px;
                 background: rgb(202, 202, 202);
             }
         }
+    }
+
+    & > *:last-child {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
     }
 }
