@@ -36,9 +36,10 @@ export class LandingPageComponent implements AfterViewInit {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('intersection-detected');
-                } else {
-                    entry.target.classList.remove('intersection-detected');
                 }
+                // else {
+                //     entry.target.classList.remove('intersection-detected');
+                // }
             });
         });
 
