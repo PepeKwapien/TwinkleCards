@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { UserComponent } from './components/user/user.component';
+import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
-    declarations: [AppComponent, UserComponent, NavbarComponent, LandingPageComponent],
+    declarations: [AppComponent, AuthComponent, NavbarComponent, LandingPageComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

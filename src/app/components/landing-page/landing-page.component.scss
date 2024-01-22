@@ -13,7 +13,7 @@
     z-index: 1;
 }
 
-.landing-page-container::before {
+.landing-page-container:not(:first-child)::before {
     z-index: -2;
     content: '';
     position: absolute;

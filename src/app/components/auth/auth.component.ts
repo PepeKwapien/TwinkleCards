@@ -3,9 +3,9 @@ import { Component, ElementRef, Host, HostListener, ViewChild } from '@angular/c
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-    selector: 'app-user',
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.component.scss'],
+    selector: 'app-auth',
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.scss'],
     animations: [
         trigger('slideAnimation', [
             transition(':enter', [
@@ -19,7 +19,7 @@ import { AuthService } from 'src/app/services/auth.service';
         ])
     ]
 })
-export class UserComponent {
+export class AuthComponent {
     public optionsExpanded: boolean;
 
     @ViewChild('usernameButton') usernameElement: ElementRef | undefined = undefined;
