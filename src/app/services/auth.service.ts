@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, User, UserCredential, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, NextOrObserver, User, UserCredential, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +16,11 @@ export class AuthService {
         return this._user !== null;
     }
 
-    constructor(private _auth: Auth) {
+    public registerOnAuthStateChanged(nextOrObserver: NextOrObserver<User | null>) {
+        this._auth.onAuthStateChanged(nextOrObserver);
+    }
+
+    constructor(private _auth: Auth, private _router: Router) {
         this._user = this._auth.currentUser;
         this._auth.onAuthStateChanged((user) => (this._user = user));
     }
@@ -28,6 +33,6 @@ export class AuthService {
 
     public async signOut() {
         await signOut(this._auth);
+        this._router.navigate(['']);
     }
 }
-

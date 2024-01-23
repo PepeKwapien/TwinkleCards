@@ -9,9 +9,11 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
-    declarations: [AppComponent, AuthComponent, NavbarComponent, LandingPageComponent],
+    declarations: [AppComponent, AuthComponent, NavbarComponent, LandingPageComponent, UserLoadingGuardComponent, UserComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

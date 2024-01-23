@@ -78,4 +78,3 @@ export class AuthComponent {
         this.optionsExpanded = !this.optionsExpanded;
     }
 }
-

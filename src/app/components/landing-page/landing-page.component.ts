@@ -1,4 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-landing-page',
@@ -8,7 +10,7 @@ import { AfterViewInit, Component } from '@angular/core';
 export class LandingPageComponent implements AfterViewInit {
     public landingPageComponents: { title: string; description: string; additional?: string[] }[];
 
-    constructor() {
+    constructor(private _authService: AuthService) {
         this.landingPageComponents = [
             {
                 title: 'One place for all your flashcards 🗃️',
@@ -32,19 +34,23 @@ export class LandingPageComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        const intersectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('intersection-detected');
-                }
-                // else {
-                //     entry.target.classList.remove('intersection-detected');
-                // }
+        this._authService.registerOnAuthStateChanged(() => {
+            setTimeout(() => {
+                const intersectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('intersection-detected');
+                        }
+                        // else {
+                        //     entry.target.classList.remove('intersection-detected');
+                        // }
+                    });
+                });
+
+                const obsrvedIntersectionElements = document.querySelectorAll('.observe-intersection');
+                obsrvedIntersectionElements.forEach((el) => intersectionObserver.observe(el));
             });
         });
-
-        const obsrvedIntersectionElements = document.querySelectorAll('.observe-intersection');
-        obsrvedIntersectionElements.forEach((el) => intersectionObserver.observe(el));
     }
 }
 
