@@ -1,6 +1,8 @@
-<ng-container *ngFor="let landingPageComponent of landingPageComponents">
-    <ng-container *ngTemplateOutlet="titleAndDescription; context: { $implicit: landingPageComponent }"></ng-container
-></ng-container>
+<div class="dissolveAnimationEnter">
+    <ng-container *ngFor="let landingPageComponent of landingPageComponents">
+        <ng-container *ngTemplateOutlet="titleAndDescription; context: { $implicit: landingPageComponent }"></ng-container
+    ></ng-container>
+</div>
 
 <ng-template #titleAndDescription let-landingPageComponent>
     <div class="landing-page-container">
