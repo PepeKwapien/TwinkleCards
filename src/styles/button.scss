@@ -12,8 +12,8 @@ button:not(.custom-button) {
         font-weight: 600;
         padding: 0.6em 1em;
         border-radius: 10px;
-        background-color: $button-background;
-        border: 1px $button-hover solid;
+        background-color: $primary-background;
+        border: 1px $primary-hover solid;
         -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
@@ -22,10 +22,10 @@ button:not(.custom-button) {
     }
 
     &:hover {
-        background-color: $button-hover;
+        background-color: $primary-hover;
     }
 
     &:active {
-        background-color: $button-active;
+        background-color: $primary-active;
     }
 }

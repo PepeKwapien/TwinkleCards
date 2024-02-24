@@ -16,7 +16,7 @@
     transform: rotate(180deg);
 }
 
-$borderWidth: 2px;
+$borderWidth: 3px;
 
 .username-container {
     position: relative;
@@ -37,11 +37,11 @@ $borderWidth: 2px;
     transition: 0.2s;
 
     .active > & {
-        border: $borderWidth $gray-outline solid;
+        border: $borderWidth $secondary-background solid;
         border-bottom: unset;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
-        background-color: rgb(228, 228, 228);
+        background: $secondary-gradient;
     }
 }
 
@@ -55,7 +55,7 @@ $borderWidth: 2px;
     width: 100%;
 
     .active > & {
-        border: $borderWidth $gray-outline solid;
+        border: $borderWidth $secondary-background solid;
         border-radius: 5px;
         border-top: unset;
         border-top-left-radius: unset;
@@ -64,18 +64,18 @@ $borderWidth: 2px;
 
     & > * {
         padding: 0.5rem 0;
-        background-color: rgb(228, 228, 228);
+        background: $secondary-gradient;
 
         .active & {
-            border-top: $borderWidth $gray-outline solid;
+            border-top: $borderWidth $secondary-background solid;
             transition: 0.2s;
 
             &:hover {
-                background: rgb(214, 214, 214);
+                background: $secondary-gradient-hover;
             }
 
             &:active {
-                background: rgb(202, 202, 202);
+                background: $secondary-gradient-active;
             }
         }
     }

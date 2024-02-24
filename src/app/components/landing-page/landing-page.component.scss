@@ -1,3 +1,5 @@
+@import '/src/styles/color.scss';
+
 .landing-page-container {
     position: relative;
     display: flex;
@@ -63,7 +65,7 @@
 }
 
 .landing-page-section-additional {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(176, 35, 232, 0.9) 100%);
+    background: $primary-gradient;
     border-radius: 10px;
     padding: 1em;
     font-size: 16px;

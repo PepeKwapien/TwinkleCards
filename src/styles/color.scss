@@ -1,5 +1,15 @@
-$button-background: #b023e8;
-$button-hover: #a521da;
-$button-active: #951ec4;
+$primary-background: hsl(283, 81%, 52%);
+$primary-hover: hsl(283, 74%, 49%);
+$primary-active: hsl(283, 73%, 44%);
 
-$gray-outline: rgb(129, 129, 129);
+$secondary-background: hsl(283, 40%, 70%);
+$secondary-hover: hsl(283, 30%, 60%);
+$secondary-active: hsl(283, 28%, 55%);
+
+$tertiary-background: hsl(0, 0%, 93%);
+
+$primary-gradient: linear-gradient(135deg, $tertiary-background 0%, $primary-background 100%);
+
+$secondary-gradient: linear-gradient(135deg, $tertiary-background 0%, $secondary-background 100%);
+$secondary-gradient-hover: linear-gradient(135deg, $tertiary-background 0%, $secondary-hover 100%);
+$secondary-gradient-active: linear-gradient(135deg, $tertiary-background 0%, $secondary-active 100%);

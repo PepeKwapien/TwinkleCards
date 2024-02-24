@@ -2,6 +2,7 @@
 @import './styles/icon';
 @import './styles/shadow';
 @import './styles/dissolveAnimation';
+@import './styles/color';
 
 * {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -12,6 +13,7 @@
 
 body {
     margin: 0;
+    background-color: $tertiary-background;
 }
 
 html {
