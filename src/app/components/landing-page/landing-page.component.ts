@@ -33,6 +33,7 @@ export class LandingPageComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        // for delayed animations, otherwise the content never loads because calsses are not applied
         this._authService.registerOnAuthStateChanged(() => {
             setTimeout(() => {
                 const intersectionObserver = new IntersectionObserver((entries) => {

@@ -15,7 +15,7 @@ export class UserLoadingGuardComponent {
         this._authService.registerOnAuthStateChanged((user) => {
             this.isUserEstimated = true;
             if (this._router.url === '/' && user !== null) {
-                this._router.navigate([`${user.displayName}`]);
+                this._router.navigate([`home`]);
             }
         });
     }

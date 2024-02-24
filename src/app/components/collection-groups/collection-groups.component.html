@@ -1,0 +1,4 @@
+<div class="default-x-padding default-y-padding" *ngIf="firebaseUser$ | async as user">
+    <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
+</div>
+

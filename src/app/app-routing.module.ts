@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { UserComponent } from './components/user/user.component';
+import { CollectionGroupsComponent } from './components/collection-groups/collection-groups.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
-    { path: ':user', component: UserComponent }
+    { path: 'home', component: CollectionGroupsComponent }
 ];
 
 @NgModule({

@@ -10,10 +10,19 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
-import { UserComponent } from './components/user/user.component';
+import { CollectionGroupsComponent } from './components/collection-groups/collection-groups.component';
+import { CollectionGroupComponent } from './components/collection-groups/collection-group/collection-group.component';
 
 @NgModule({
-    declarations: [AppComponent, AuthComponent, NavbarComponent, LandingPageComponent, UserLoadingGuardComponent, UserComponent],
+    declarations: [
+        AppComponent,
+        AuthComponent,
+        NavbarComponent,
+        LandingPageComponent,
+        UserLoadingGuardComponent,
+        CollectionGroupsComponent,
+        CollectionGroupComponent
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -35,4 +44,3 @@ import { UserComponent } from './components/user/user.component';
     bootstrap: [AppComponent]
 })
 export class AppModule {}
-

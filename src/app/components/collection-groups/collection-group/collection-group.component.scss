@@ -1,0 +1,47 @@
+@import '/src/styles/color.scss';
+
+h1 {
+    font-size: 1.1rem;
+    margin: 0.2em 0;
+}
+
+.collection-group-header {
+    border: 2px $primary-background solid;
+    border-bottom: unset;
+    border-left: unset;
+    border-radius: 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: $primary-gradient;
+    padding: 0.2em 1em;
+}
+
+.collection-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+
+    margin: 1em 0;
+}
+
+.collection-box {
+    display: inline-block;
+    width: 10em;
+    height: 10em;
+    border-radius: 10px;
+}
+
+.add-new-collection-box {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px $gray-outline solid;
+    background-color: $gray-fill;
+
+    img {
+        width: 40%;
+        filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(236deg) brightness(89%) contrast(97%);
+    }
+}

@@ -13,8 +13,8 @@ export class UserRepositoryService {
         this._db = firestore;
     }
 
-    async getUser(userId: string): Promise<DocumentData | undefined> {
-        return (await getDoc(doc(this._db, this._collectionName, userId))).data();
+    async getUser(userId: string): Promise<UserDocument | undefined> {
+        return (await getDoc(doc(this._db, this._collectionName, userId))).data() as UserDocument | undefined;
     }
 
     async upsertUser(userId: string, user: UserDocument) {
