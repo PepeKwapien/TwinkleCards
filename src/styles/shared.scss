@@ -1,5 +1,5 @@
 @mixin collection-group-header($border, $background) {
-    border: 2px $border solid;
+    border: 3px $border solid;
     border-bottom: unset;
     border-left: unset;
     border-radius: 15px;
@@ -11,4 +11,17 @@
 
 .collection-group-header-text-margin {
     margin: 0.2em 0;
+}
+
+@mixin darken-on-hover-active {
+    transition: 0.2s;
+    filter: brightness(100%);
+
+    &:hover {
+        filter: brightness(95%);
+    }
+
+    &:active {
+        filter: brightness(90%);
+    }
 }

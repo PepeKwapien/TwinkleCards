@@ -1,4 +1,7 @@
 @import './color.scss';
+.custom-button {
+    cursor: pointer;
+}
 
 button:not(.custom-button) {
     & {

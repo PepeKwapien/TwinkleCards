@@ -1,9 +1,15 @@
 @import '/src/styles/color.scss';
+@import '/src/styles/shared.scss';
+
+.user-outer-container {
+    &,
+    & * {
+        font-size: 1.1rem;
+    }
+}
 
 .custom-button {
-    cursor: pointer;
     border: unset;
-    font-size: 1rem;
     background: inherit;
 }
 
@@ -64,19 +70,10 @@ $borderWidth: 3px;
     & > * {
         padding: 0.5rem 0;
         background: $secondary-gradient;
-        filter: brightness(100%);
 
         .active & {
             border-top: $borderWidth $secondary-background solid;
-            transition: 0.2s;
-
-            &:hover {
-                filter: brightness(95%);
-            }
-
-            &:active {
-                filter: brightness(90%);
-            }
+            @include darken-on-hover-active;
         }
     }
 

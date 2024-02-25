@@ -9,7 +9,8 @@
 
 .add-new-collection-group-header {
     @include collection-group-header($gray-outline-solid, $gray-gradient);
-
+    transition: 0.2s;
+    filter: brightness(100%);
     color: $gray-text;
 
     & > h1 {
@@ -18,4 +19,6 @@
         align-items: center;
         column-gap: 0.5em;
     }
+
+    @include darken-on-hover-active;
 }
