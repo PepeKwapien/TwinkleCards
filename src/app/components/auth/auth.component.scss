@@ -34,7 +34,6 @@ $borderWidth: 3px;
     border: $borderWidth rgba(255, 255, 255, 0) solid;
     border-radius: 5px;
     border-bottom: unset;
-    transition: 0.2s;
 
     .active > & {
         border: $borderWidth $secondary-background solid;
@@ -65,17 +64,18 @@ $borderWidth: 3px;
     & > * {
         padding: 0.5rem 0;
         background: $secondary-gradient;
+        filter: brightness(100%);
 
         .active & {
             border-top: $borderWidth $secondary-background solid;
             transition: 0.2s;
 
             &:hover {
-                background: $secondary-gradient-hover;
+                filter: brightness(95%);
             }
 
             &:active {
-                background: $secondary-gradient-active;
+                filter: brightness(90%);
             }
         }
     }

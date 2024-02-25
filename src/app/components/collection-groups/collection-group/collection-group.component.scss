@@ -1,26 +1,15 @@
 @import '/src/styles/color.scss';
-
-h1 {
-    font-size: 1.1rem;
-    margin: 0.2em 0;
-}
+@import '/src/styles/shared.scss';
 
 .collection-group-header {
-    border: 2px $primary-background solid;
-    border-bottom: unset;
-    border-left: unset;
-    border-radius: 15px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background: $primary-gradient;
-    padding: 0.2em 1em;
+    @include collection-group-header($primary-background, $primary-gradient);
 }
 
 .collection-grid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
     margin: 1em 0;
 }
@@ -39,9 +28,17 @@ h1 {
     align-items: center;
     border: 3px $gray-outline solid;
     background-color: $gray-fill;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: $gray-fill-hover;
+    }
+
+    &:active {
+        background-color: $gray-fill-active;
+    }
 
     img {
         width: 40%;
-        filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(236deg) brightness(89%) contrast(97%);
     }
 }

@@ -1,4 +1,9 @@
-<div class="default-x-padding default-y-padding" *ngIf="firebaseUser$ | async as user">
+<div class="default-x-padding default-y-padding collection-groups-container" *ngIf="firebaseUser$ | async as user">
     <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
+    <div class="add-new-collection-group-header light-box-shadow">
+        <h1 class="header-text collection-group-header-text-margin">
+            <img class="add-circle-icon" src="./assets/add-circle.svg" />New collection group
+        </h1>
+    </div>
 </div>
 

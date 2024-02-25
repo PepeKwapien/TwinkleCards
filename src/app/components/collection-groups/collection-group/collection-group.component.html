@@ -1,9 +1,11 @@
 <ng-container *ngIf="collectionGroup !== undefined">
     <div class="collection-group-header light-box-shadow">
-        <h1>{{ collectionGroup.name }}</h1>
+        <h1 class="header-text collection-group-header-text-margin">{{ collectionGroup.name }}</h1>
     </div>
     <div class="collection-grid">
-        <div class="add-new-collection-box collection-box light-box-shadow"><img src="./assets/add-circle.svg" /></div>
+        <button class="add-new-collection-box collection-box light-box-shadow custom-button">
+            <img class="add-circle-icon" src="./assets/add-circle.svg" />
+        </button>
     </div>
 </ng-container>
 

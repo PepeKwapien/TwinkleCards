@@ -1,0 +1,21 @@
+@import '/src/styles/color.scss';
+@import '/src/styles/shared.scss';
+
+.collection-groups-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5em;
+}
+
+.add-new-collection-group-header {
+    @include collection-group-header($gray-outline-solid, $gray-gradient);
+
+    color: $gray-text;
+
+    & > h1 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        column-gap: 0.5em;
+    }
+}
