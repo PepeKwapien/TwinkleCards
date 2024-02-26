@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
+import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
     selector: 'app-collection-group',
@@ -9,6 +10,10 @@ import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-g
 export class CollectionGroupComponent {
     @Input() collectionGroup: IUserCollectionGroup | undefined;
 
-    constructor() {}
+    constructor(private _modalService: ModalService) {}
+
+    public openModal(collectionGroupForm: TemplateRef<any>) {
+        this._modalService.open(collectionGroupForm);
+    }
 }
 

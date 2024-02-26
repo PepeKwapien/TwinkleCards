@@ -1,0 +1,8 @@
+<div class="modal-overlay dissolve-animation-enter" *ngIf="showModal$ | async" (click)="close()">
+    <div (click)="$event.stopPropagation()">
+        <ng-container [ngTemplateOutlet]="(setTemplate$ | async) || default"></ng-container>
+    </div>
+</div>
+
+<ng-template #default>Default</ng-template>
+

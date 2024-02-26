@@ -1,11 +1,14 @@
 <ng-container *ngIf="collectionGroup !== undefined">
-    <div class="collection-group-header light-box-shadow dissolveAnimationEnter">
+    <div class="collection-group-header light-box-shadow dissolve-animation-enter">
         <h1 class="header-text collection-group-header-text-margin">{{ collectionGroup.name }}</h1>
     </div>
     <div class="collection-grid">
-        <button class="add-new-collection-box collection-box light-box-shadow custom-button dissolveAnimationEnter">
+        <button
+            class="add-new-collection-box collection-box light-box-shadow custom-button dissolve-animation-enter"
+            (click)="openModal(collectionForm)">
             <img class="add-circle-icon" src="./assets/add-circle.svg" />
         </button>
     </div>
 </ng-container>
 
+<ng-template #collectionForm>New collection form!</ng-template>

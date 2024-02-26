@@ -1,9 +1,13 @@
 <div class="default-x-padding default-y-padding collection-groups-container" *ngIf="firebaseUser$ | async as user">
     <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
-    <button class="add-new-collection-group-header light-box-shadow custom-button dissolveAnimationEnter">
+    <button
+        class="add-new-collection-group-header light-box-shadow custom-button dissolve-animation-enter"
+        (click)="openModal(collectionGroupForm)">
         <h1 class="header-text collection-group-header-text-margin">
             <img class="add-circle-icon" src="./assets/add-circle.svg" />New collection group
         </h1>
     </button>
 </div>
+
+<ng-template #collectionGroupForm>New collection group form!</ng-template>
 

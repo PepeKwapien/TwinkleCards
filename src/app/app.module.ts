@@ -12,6 +12,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
 import { CollectionGroupsComponent } from './components/collection-groups/collection-groups.component';
 import { CollectionGroupComponent } from './components/collection-groups/collection-group/collection-group.component';
+import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { CollectionGroupComponent } from './components/collection-groups/collect
         LandingPageComponent,
         UserLoadingGuardComponent,
         CollectionGroupsComponent,
-        CollectionGroupComponent
+        CollectionGroupComponent,
+        ModalOverlayComponent
     ],
     imports: [
         BrowserModule,

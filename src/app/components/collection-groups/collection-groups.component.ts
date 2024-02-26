@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserDocument } from 'src/app/models/documents/user.document';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
     selector: 'app-collection-groups',
@@ -13,6 +14,10 @@ export class CollectionGroupsComponent {
         return this._authService.firebaseUser$;
     }
 
-    constructor(private _authService: AuthService) {}
+    constructor(private _authService: AuthService, private _modalService: ModalService) {}
+
+    public openModal(collectionGroupForm: TemplateRef<any>) {
+        this._modalService.open(collectionGroupForm);
+    }
 }
 
