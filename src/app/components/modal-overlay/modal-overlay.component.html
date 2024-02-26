@@ -1,5 +1,5 @@
-<div class="modal-overlay dissolve-animation-enter" *ngIf="showModal$ | async" (click)="close()">
-    <div (click)="$event.stopPropagation()">
+<div class="modal-overlay-container" *ngIf="showModal$ | async" (click)="close()">
+    <div (click)="$event.stopPropagation()" class="modal-overlay-body dissolve-animation-enter light-box-shadow">
         <ng-container [ngTemplateOutlet]="(setTemplate$ | async) || default"></ng-container>
     </div>
 </div>
