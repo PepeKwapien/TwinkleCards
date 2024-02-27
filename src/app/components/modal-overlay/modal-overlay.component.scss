@@ -15,10 +15,7 @@
 }
 
 .modal-overlay-body {
-    background: unset;
-    background-color: $tertiary-background;
     width: 50%;
+    max-width: 400px;
     margin: 3em;
-    padding: 3em;
-    border-radius: 15px;
 }

@@ -13,6 +13,9 @@ import { UserLoadingGuardComponent } from './components/user-loading-guard/user-
 import { CollectionGroupsComponent } from './components/collection-groups/collection-groups.component';
 import { CollectionGroupComponent } from './components/collection-groups/collection-group/collection-group.component';
 import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.component';
+import { CollectionGroupFormComponent } from './components/collection-group-form/collection-group-form.component';
+import { CollectionGroupFormModalComponent } from './components/collection-group-form/collection-group-form-modal/collection-group-form-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -23,7 +26,9 @@ import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.
         UserLoadingGuardComponent,
         CollectionGroupsComponent,
         CollectionGroupComponent,
-        ModalOverlayComponent
+        ModalOverlayComponent,
+        CollectionGroupFormComponent,
+        CollectionGroupFormModalComponent
     ],
     imports: [
         BrowserModule,
@@ -40,7 +45,8 @@ import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.
         ),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

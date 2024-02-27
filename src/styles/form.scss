@@ -1,0 +1,35 @@
+@import './color.scss';
+
+.form-container {
+    background-color: $tertiary-background;
+    padding: 2em;
+    border-radius: 15px;
+    color: $gray-text;
+}
+
+input {
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding: 0.5em;
+    border: 1px $gray-outline-solid solid;
+
+    &:focus-visible,
+    &:focus {
+        border: 1px $gray-text solid;
+        outline: unset;
+    }
+
+    &:invalid {
+        border: 1px $red-warn solid;
+    }
+}
+
+label {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1em;
+    width: 100%;
+}

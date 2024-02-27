@@ -20,6 +20,8 @@ button:not(.custom-button) {
         -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
+        width: fit-content;
+        min-width: 5em;
 
         transition: 0.2s;
     }

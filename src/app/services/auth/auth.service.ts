@@ -3,7 +3,7 @@ import { Auth, GoogleAuthProvider, NextOrObserver, User, UserCredential, signInW
 import { Router } from '@angular/router';
 import { UserRepositoryService } from '../user-repository/user-repository.service';
 import { UserDocument } from 'src/app/models/documents/user.document';
-import { BehaviorSubject, Observable, Subject, filter, shareReplay } from 'rxjs';
+import { BehaviorSubject, Observable, filter } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +30,7 @@ export class AuthService {
         this._auth.onAuthStateChanged(async (user) => {
             this._user = user;
             if (user !== null) {
+                this._userRepository.userId = user.uid;
                 await this._updateUserCollection(user);
             }
         });
@@ -51,12 +52,12 @@ export class AuthService {
     }
 
     private async _updateUserCollection(user: User): Promise<void> {
-        let userDocument = await this._userRepository.getUser(user.uid);
+        let userDocument = await this._userRepository.getUser();
         if (!userDocument) {
-            await this._userRepository.upsertUser(user.uid, UserDocument.FromFirebaseUser(user));
-            userDocument = await this._userRepository.getUser(user.uid);
+            await this._userRepository.upsertUser(UserDocument.FromFirebaseUser(user));
+            userDocument = await this._userRepository.getUser();
         } else {
-            await this._userRepository.updateLastLogin(user.uid);
+            await this._userRepository.updateLastLogin();
         }
 
         this._firebaseUserSubject.next(userDocument);

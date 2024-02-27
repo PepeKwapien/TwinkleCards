@@ -1,5 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, filter } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +10,10 @@ export class ModalService {
 
     public get showModal$(): Observable<boolean> {
         return this._showModal.asObservable();
+    }
+
+    public get closeModal$(): Observable<boolean> {
+        return this._showModal.asObservable().pipe(filter((value) => !value));
     }
 
     public get setTemplate$(): Observable<TemplateRef<any> | undefined> {
