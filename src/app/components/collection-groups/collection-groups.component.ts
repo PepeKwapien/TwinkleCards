@@ -11,7 +11,7 @@ import { ModalService } from 'src/app/services/modal/modal.service';
 })
 export class CollectionGroupsComponent {
     public get firebaseUser$(): Observable<UserDocument> {
-        return this._authService.firebaseUser$;
+        return this._authService.user$;
     }
 
     constructor(private _authService: AuthService, private _modalService: ModalService) {}

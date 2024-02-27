@@ -3,14 +3,17 @@ import { Auth, GoogleAuthProvider, NextOrObserver, User, UserCredential, signInW
 import { Router } from '@angular/router';
 import { UserRepositoryService } from '../user-repository/user-repository.service';
 import { UserDocument } from 'src/app/models/documents/user.document';
-import { BehaviorSubject, Observable, filter } from 'rxjs';
+import { Observable, filter } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
     private _user: User | null;
-    private _firebaseUserSubject: BehaviorSubject<UserDocument | undefined>;
+
+    public get userId(): string {
+        return this._user?.uid ?? 'Unknown';
+    }
 
     public get username(): string {
         return this._user?.displayName ?? 'Unknown';
@@ -20,18 +23,16 @@ export class AuthService {
         return this._user !== null;
     }
 
-    public get firebaseUser$(): Observable<UserDocument> {
-        return this._firebaseUserSubject.asObservable().pipe(filter((user) => user !== undefined)) as Observable<UserDocument>;
+    public get user$(): Observable<UserDocument> {
+        return this._userRepository.user$.pipe(filter((user) => user !== undefined)) as Observable<UserDocument>;
     }
 
     constructor(private _auth: Auth, private _router: Router, private _userRepository: UserRepositoryService) {
         this._user = this._auth.currentUser;
-        this._firebaseUserSubject = new BehaviorSubject<UserDocument | undefined>(undefined);
         this._auth.onAuthStateChanged(async (user) => {
             this._user = user;
             if (user !== null) {
-                this._userRepository.userId = user.uid;
-                await this._updateUserCollection(user);
+                await this._setupUser(user);
             }
         });
     }
@@ -51,15 +52,15 @@ export class AuthService {
         this._router.navigate(['']);
     }
 
-    private async _updateUserCollection(user: User): Promise<void> {
-        let userDocument = await this._userRepository.getUser();
+    private async _setupUser(user: User): Promise<void> {
+        const userId = user.uid;
+        const userDocument = await this._userRepository.getUser(userId);
         if (!userDocument) {
-            await this._userRepository.upsertUser(UserDocument.FromFirebaseUser(user));
-            userDocument = await this._userRepository.getUser();
+            await this._userRepository.upsertUser(userId, UserDocument.FromFirebaseUser(user));
         } else {
-            await this._userRepository.updateLastLogin();
+            await this._userRepository.updateLastLogin(userId);
         }
 
-        this._firebaseUserSubject.next(userDocument);
+        this._userRepository.setupUserChanges(userId);
     }
 }
