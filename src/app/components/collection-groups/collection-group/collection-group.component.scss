@@ -3,6 +3,10 @@
 
 .collection-group-header {
     @include collection-group-header($primary-background, $primary-gradient);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .collection-grid {

@@ -3,7 +3,7 @@
     cursor: pointer;
 }
 
-button:not(.custom-button) {
+button:not(.custom-button, .empty-button) {
     & {
         display: flex;
         column-gap: 0.5em;
@@ -33,4 +33,10 @@ button:not(.custom-button) {
     &:active {
         background-color: $primary-active;
     }
+}
+
+.empty-button {
+    cursor: pointer;
+    background: inherit;
+    border: unset;
 }

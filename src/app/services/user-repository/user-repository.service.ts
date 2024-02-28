@@ -1,6 +1,17 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Firestore, Unsubscribe, arrayUnion, doc, getDoc, onSnapshot, setDoc, updateDoc } from '@angular/fire/firestore';
+import {
+    Firestore,
+    Unsubscribe,
+    arrayRemove,
+    arrayUnion,
+    doc,
+    getDoc,
+    onSnapshot,
+    setDoc,
+    updateDoc
+} from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { UserDocument } from 'src/app/models/documents/user.document';
 
 @Injectable({
@@ -39,16 +50,22 @@ export class UserRepositoryService implements OnDestroy {
         await updateDoc(doc(this._db, this._collectionName, userId), { lastLogin: new Date() });
     }
 
+    async setupUserChanges(userId: string) {
+        this._userChangesUnsubscribe = onSnapshot(doc(this._db, this._collectionName, userId), (document) =>
+            this._userSubject.next(document.data() as UserDocument)
+        );
+    }
+
     async createCollectionGroup(userId: string, collectionGroupName: string): Promise<void> {
         await updateDoc(doc(this._db, this._collectionName, userId), {
             collectionGroups: arrayUnion({ name: collectionGroupName, colletions: [] as string[] })
         });
     }
 
-    async setupUserChanges(userId: string) {
-        this._userChangesUnsubscribe = onSnapshot(doc(this._db, this._collectionName, userId), (document) =>
-            this._userSubject.next(document.data() as UserDocument)
-        );
+    async deleteCollectionGroup(userId: string, collectionGroup: IUserCollectionGroup): Promise<void> {
+        await updateDoc(doc(this._db, this._collectionName, userId), {
+            collectionGroups: arrayRemove({ ...collectionGroup })
+        });
     }
 }
 

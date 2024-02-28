@@ -20,8 +20,8 @@ input {
         outline: unset;
     }
 
-    &:invalid {
-        border: 1px $red-warn solid;
+    &.ng-invalid.ng-touched {
+        border: 2px $red-warn solid;
     }
 }
 
@@ -32,4 +32,8 @@ label {
     justify-content: space-between;
     column-gap: 1em;
     width: 100%;
+
+    &:has(input.ng-invalid.ng-touched) {
+        color: $red-warn;
+    }
 }

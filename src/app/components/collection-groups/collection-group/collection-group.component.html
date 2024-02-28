@@ -1,6 +1,11 @@
 <ng-container *ngIf="collectionGroup !== undefined">
     <div class="collection-group-header light-box-shadow dissolve-animation-enter">
         <h1 class="header-text collection-group-header-text-margin">{{ collectionGroup.name }}</h1>
+        <div>
+            <button class="empty-button">
+                <img src="./assets/close.svg" (click)="deleteGroup()" />
+            </button>
+        </div>
     </div>
     <div class="collection-grid">
         <button
@@ -12,3 +17,4 @@
 </ng-container>
 
 <ng-template #collectionForm>New collection form!</ng-template>
+
