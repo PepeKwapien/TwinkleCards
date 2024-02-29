@@ -17,8 +17,17 @@ export class CollectionGroupComponent {
         this._modalService.open(collectionGroupForm);
     }
 
-    public deleteGroup() {
-        if (this.collectionGroup !== undefined) {
+    public async deleteGroup() {
+        if (this.collectionGroup === undefined) {
+            return;
+        }
+        const result = await this._modalService.getConfirmation({
+            title: `Delete '${this.collectionGroup.name}' group?`,
+            description:
+                'This action will remove the group and all of the collections inside it. This is irreversible. Are you sure?'
+        });
+
+        if (result) {
             this._userIdInterceptorService.deleteCollectionGroup(this.collectionGroup);
         }
     }

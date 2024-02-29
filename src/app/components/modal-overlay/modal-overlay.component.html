@@ -4,5 +4,18 @@
     </div>
 </div>
 
-<ng-template #default>Default</ng-template>
+<ng-template #default>
+    <div class="form-container light-box-shadow" *ngIf="actionProperties$ | async as actionProperties">
+        <h3>{{ actionProperties.title }}</h3>
+        <p>{{ actionProperties.description }}</p>
+        <div class="confirmation-buttons">
+            <button class="confirm-button" (click)="confirm()">
+                Yes <img class="inverted-black-icon" src="./assets/check-circle.svg" />
+            </button>
+            <button class="cancel-button" (click)="close()">
+                Cancel <img class="inverted-black-icon" src="./assets/cancel.svg" />
+            </button>
+        </div>
+    </div>
+</ng-template>
 

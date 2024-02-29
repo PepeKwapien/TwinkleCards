@@ -1,4 +1,5 @@
 @import './color.scss';
+@import './shared.scss';
 .custom-button {
     cursor: pointer;
 }
@@ -32,6 +33,20 @@ button:not(.custom-button, .empty-button) {
 
     &:active {
         background-color: $primary-active;
+    }
+
+    &.cancel-button {
+        background: $red-warn;
+        border: 1px $red-warn solid;
+
+        @include darken-on-hover-active;
+    }
+
+    &.confirm-button {
+        background: $green-confirm;
+        border: 1px $green-confirm solid;
+
+        @include darken-on-hover-active;
     }
 }
 
