@@ -1,7 +1,7 @@
 @import '/src/styles/color.scss';
 
 .modal-overlay-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 2;
@@ -16,7 +16,7 @@
 
 .modal-overlay-body {
     width: 50%;
-    max-width: 400px;
+    max-width: 500px;
     margin: 3em;
 }
 

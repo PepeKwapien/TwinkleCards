@@ -17,6 +17,10 @@
 body {
     margin: 0;
     background-color: $tertiary-background;
+
+    &:has(.modal-overlay-container) {
+        overflow: hidden;
+    }
 }
 
 html {
