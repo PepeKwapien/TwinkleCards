@@ -25,25 +25,25 @@
     }
 }
 
-input {
-    width: 100%;
-    font-size: 1rem;
-    border-radius: 15px;
-    padding: 0.5em;
-    border: 2px $gray-outline-solid solid;
+label:has(input[type='text']) {
+    input {
+        width: 100%;
+        font-size: 1rem;
+        border-radius: 15px;
+        padding: 0.5em;
+        border: 2px $gray-outline-solid solid;
 
-    &:focus-visible,
-    &:focus {
-        border: 2px $gray-text solid;
-        outline: unset;
+        &:focus-visible,
+        &:focus {
+            border: 2px $gray-text solid;
+            outline: unset;
+        }
+
+        &.ng-invalid.ng-touched {
+            border: 2px $red-warn solid;
+        }
     }
 
-    &.ng-invalid.ng-touched {
-        border: 2px $red-warn solid;
-    }
-}
-
-label {
     font-size: 1rem;
     display: flex;
     align-items: center;
