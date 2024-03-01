@@ -8,11 +8,6 @@
     }
 }
 
-.custom-button {
-    border: unset;
-    background: inherit;
-}
-
 .user-icon {
     height: 14px;
     transition: 0.2s;
@@ -37,12 +32,11 @@ $borderWidth: 3px;
     align-items: center;
     column-gap: 0.3em;
 
-    border: $borderWidth rgba(255, 255, 255, 0) solid;
+    border: unset;
     border-radius: 5px;
     border-bottom: unset;
 
     .active > & {
-        border: $borderWidth $secondary-background solid;
         border-bottom: unset;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
@@ -62,7 +56,6 @@ $borderWidth: 3px;
     width: 100%;
 
     .active > & {
-        border: $borderWidth $secondary-background solid;
         border-radius: 5px;
         border-top: unset;
         border-top-left-radius: unset;

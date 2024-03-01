@@ -10,7 +10,7 @@ import { ModalService } from 'src/app/services/modal/modal.service';
     styleUrls: ['./collection-groups.component.scss']
 })
 export class CollectionGroupsComponent {
-    public get firebaseUser$(): Observable<UserDocument> {
+    public get user$(): Observable<UserDocument> {
         return this._authService.user$;
     }
 

@@ -1,10 +1,7 @@
 @import './color.scss';
 @import './shared.scss';
-.custom-button {
-    cursor: pointer;
-}
 
-button:not(.custom-button, .empty-button) {
+button:not(.empty-button) {
     & {
         display: flex;
         column-gap: 0.5em;
