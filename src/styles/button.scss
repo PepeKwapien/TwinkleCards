@@ -36,17 +36,17 @@ button:not(.custom-button, .empty-button) {
     }
 
     &.cancel-button {
-        background: $red-warn;
+        background: $cancel-button-gradient;
         border: 1px $red-warn solid;
 
-        @include darken-on-hover-active;
+        @include lighten-on-hover-active;
     }
 
     &.confirm-button {
-        background: $green-confirm;
-        border: 1px $green-confirm solid;
+        background: $confirm-button-gradient;
+        border: unset;
 
-        @include darken-on-hover-active;
+        @include lighten-on-hover-active;
     }
 }
 

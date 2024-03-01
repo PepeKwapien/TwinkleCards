@@ -47,6 +47,8 @@ $borderWidth: 3px;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
         background: $secondary-gradient;
+
+        @include lighten-on-hover-active;
     }
 }
 
@@ -73,7 +75,7 @@ $borderWidth: 3px;
 
         .active & {
             border-top: $borderWidth $secondary-background solid;
-            @include darken-on-hover-active;
+            @include lighten-on-hover-active;
         }
     }
 

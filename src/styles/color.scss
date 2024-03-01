@@ -24,3 +24,6 @@ $gray-gradient: linear-gradient(135deg, $tertiary-background 0%, $gray-outline-s
 
 $red-warn: hsl(0, 65%, 50%);
 $green-confirm: hsl(110, 45%, 50%);
+
+$confirm-button-gradient: linear-gradient(135deg, rgba(104, 218, 82, 1) 0%, rgba(78, 158, 62, 1) 80%, rgba(60, 121, 47, 1) 100%);
+$cancel-button-gradient: linear-gradient(135deg, rgb(240, 22, 22) 0%, rgb(199, 57, 57) 60%, rgb(140, 36, 36) 100%);

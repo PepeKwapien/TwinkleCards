@@ -25,3 +25,16 @@
         filter: brightness(90%);
     }
 }
+
+@mixin lighten-on-hover-active {
+    transition: 0.2s;
+    filter: brightness(100%);
+
+    &:hover {
+        filter: brightness(105%);
+    }
+
+    &:active {
+        filter: brightness(110%);
+    }
+}
