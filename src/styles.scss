@@ -27,3 +27,12 @@ html {
     scroll-snap-type: y mandatory;
 }
 
+img {
+    pointer-events: none !important;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
