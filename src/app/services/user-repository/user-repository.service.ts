@@ -56,9 +56,13 @@ export class UserRepositoryService implements OnDestroy {
         );
     }
 
-    async createCollectionGroup(userId: string, collectionGroupName: string): Promise<void> {
+    async createCollectionGroup(userId: string, collectionGroupProperties: { name: string; color: string }): Promise<void> {
         await updateDoc(doc(this._db, this._collectionName, userId), {
-            collectionGroups: arrayUnion({ name: collectionGroupName, colletions: [] as string[] })
+            collectionGroups: arrayUnion({
+                name: collectionGroupProperties.name,
+                color: collectionGroupProperties.color,
+                colletions: [] as string[]
+            })
         });
     }
 

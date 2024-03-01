@@ -9,8 +9,8 @@ import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-g
 export class UserIdInterceptorService {
     constructor(private _authService: AuthService, private _userRepositoryService: UserRepositoryService) {}
 
-    async createCollectionGroup(collectionGroupName: string): Promise<void> {
-        await this._userRepositoryService.createCollectionGroup(this._authService.userId, collectionGroupName);
+    async createCollectionGroup(collectionGroupProperties: { name: string; color: string }): Promise<void> {
+        await this._userRepositoryService.createCollectionGroup(this._authService.userId, collectionGroupProperties);
     }
 
     async deleteCollectionGroup(collectionGroup: IUserCollectionGroup): Promise<void> {

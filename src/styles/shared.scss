@@ -1,11 +1,9 @@
-@mixin collection-group-header($border, $background) {
-    border: 3px $border solid;
+@mixin collection-group-header() {
     border-bottom: unset;
     border-left: unset;
     border-radius: 15px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background: $background;
     padding: 0.3em 1em;
 }
 

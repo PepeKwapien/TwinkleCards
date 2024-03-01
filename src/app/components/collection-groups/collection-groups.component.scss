@@ -8,9 +8,9 @@
 }
 
 .add-new-collection-group-header {
-    @include collection-group-header($gray-outline-solid, $gray-gradient);
-    transition: 0.2s;
-    filter: brightness(100%);
+    border: 3px $gray-outline-solid solid;
+    background: $gray-gradient;
+    @include collection-group-header();
     color: $gray-text;
     margin-bottom: 4em;
 

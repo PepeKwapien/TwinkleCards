@@ -1,7 +1,19 @@
 <form class="form-inner-container" [formGroup]="formGroup">
     <div class="form-body">
-        <label for="collection-group-name"> Name: </label>
-        <input id="collection-group-name" type="text" formControlName="name" />
+        <label for="collection-group-name">Name:</label>
+        <input id="collection-group-name" type="text" formControlName="name" autocomplete="off" />
+        <label>Color:</label>
+        <div class="color-radio-button-container">
+            <input
+                *ngFor="let color of colors"
+                type="radio"
+                name="color"
+                [id]="color"
+                [value]="color"
+                [ngClass]="{ checked: isColorSelected(color) }"
+                [class]="color"
+                (change)="changeColor(color)" />
+        </div>
     </div>
     <button type="submit" (click)="createCollectionGroup($event)">Create</button>
 </form>

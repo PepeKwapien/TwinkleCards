@@ -1,5 +1,5 @@
 <ng-container *ngIf="collectionGroup !== undefined">
-    <div class="collection-group-header light-box-shadow dissolve-animation-enter">
+    <div class="collection-group-header light-box-shadow dissolve-animation-enter" [class]="collectionGroup.color">
         <h1 class="header-text collection-group-header-text-margin">{{ collectionGroup.name }}</h1>
         <div>
             <button class="empty-button">

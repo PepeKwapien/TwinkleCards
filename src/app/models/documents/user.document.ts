@@ -15,7 +15,7 @@ export class UserDocument {
         this.photo = photo;
         this.firstLogin = firstLogin;
         this.lastLogin = lastLogin;
-        this.collectionGroups = [{ name: 'Unassigned 🙈', colletions: [] }];
+        this.collectionGroups = [{ name: 'Unassigned 🙈', color: 'pink', colletions: [] }];
     }
 
     public static FromFirebaseUser(user: User) {

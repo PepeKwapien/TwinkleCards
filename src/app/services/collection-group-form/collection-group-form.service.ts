@@ -21,7 +21,7 @@ export class CollectionGroupFormService {
 
     public createCollectionGroup() {
         if (this._formGroup.valid) {
-            this._userIdInterceptorService.createCollectionGroup(this._formGroup.value.name);
+            this._userIdInterceptorService.createCollectionGroup(this._formGroup.value as { name: string; color: string });
         }
     }
 

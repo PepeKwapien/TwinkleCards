@@ -2,11 +2,28 @@
 @import '/src/styles/shared.scss';
 
 .collection-group-header {
-    @include collection-group-header($primary-background, $primary-gradient);
+    border: 3px $primary-background solid;
+    @include collection-group-header();
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &.pink {
+        background: $primary-gradient;
+    }
+
+    &.green {
+        background: $green-gradient;
+    }
+
+    &.blue {
+        background: $blue-gradient;
+    }
+
+    &.yellow {
+        background: $yellow-gradient;
+    }
 }
 
 .collection-grid {

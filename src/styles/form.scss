@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 1em;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .form-body {
@@ -40,17 +40,17 @@
     row-gap: 0.5em;
 }
 
-label:has(+ input[type='text']) {
+label {
     font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     column-gap: 1em;
     width: 100%;
+}
 
-    &:has(+ input.ng-invalid.ng-touched) {
-        color: $red-warn;
-    }
+label:has(+ input[type='text'].ng-invalid.ng-touched) {
+    color: $red-warn;
 }
 
 input[type='text'] {
@@ -68,5 +68,58 @@ input[type='text'] {
 
     &.ng-invalid.ng-touched {
         border: 2px $red-warn solid;
+    }
+}
+
+@mixin radio-button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.color-radio-button-container {
+    @include radio-button-container();
+
+    input[type='radio'] {
+        appearance: none;
+        border: 2px $gray-outline solid;
+        border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &.checked {
+            border-color: $gray-text;
+        }
+
+        &:after {
+            flex-grow: 1;
+            appearance: initial;
+            content: '';
+            display: inline-block;
+            height: 3em;
+            width: 3em;
+            border: 10px white solid;
+            border-radius: 7px;
+        }
+
+        &.pink:after {
+            background: $primary-gradient;
+        }
+
+        &.green:after {
+            background: $green-gradient;
+        }
+
+        &.yellow:after {
+            background: $yellow-gradient;
+        }
+
+        &.blue:after {
+            background: $blue-gradient;
+        }
     }
 }
