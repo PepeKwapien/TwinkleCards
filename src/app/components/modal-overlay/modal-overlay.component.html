@@ -5,7 +5,7 @@
 </div>
 
 <ng-template #default>
-    <div class="form-container light-box-shadow" *ngIf="actionProperties$ | async as actionProperties">
+    <div class="form-outer-container light-box-shadow" *ngIf="actionProperties$ | async as actionProperties">
         <h3>{{ actionProperties.title }}</h3>
         <p>{{ actionProperties.description }}</p>
 

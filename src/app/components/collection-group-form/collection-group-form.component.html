@@ -1,8 +1,8 @@
-<form>
-    <label>
-        <p>Name:</p>
-        <input type="text" [formControl]="nameFormControl" />
-    </label>
+<form class="form-inner-container">
+    <div class="form-body">
+        <label for="collection-group-name"> Name: </label>
+        <input id="collection-group-name" type="text" [formControl]="nameFormControl" />
+    </div>
     <button type="submit" (click)="createCollectionGroup($event)">Create</button>
 </form>
 

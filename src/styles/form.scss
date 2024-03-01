@@ -1,6 +1,6 @@
 @import './color.scss';
 
-.form-container {
+.form-outer-container {
     background-color: $tertiary-background;
     padding: 2em;
     border-radius: 15px;
@@ -25,25 +25,22 @@
     }
 }
 
-label:has(input[type='text']) {
-    input {
-        width: 100%;
-        font-size: 1rem;
-        border-radius: 15px;
-        padding: 0.5em;
-        border: 2px $gray-outline-solid solid;
+.form-inner-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    align-items: end;
+}
 
-        &:focus-visible,
-        &:focus {
-            border: 2px $gray-text solid;
-            outline: unset;
-        }
+.form-body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1em;
+    row-gap: 0.5em;
+}
 
-        &.ng-invalid.ng-touched {
-            border: 2px $red-warn solid;
-        }
-    }
-
+label:has(+ input[type='text']) {
     font-size: 1rem;
     display: flex;
     align-items: center;
@@ -51,7 +48,25 @@ label:has(input[type='text']) {
     column-gap: 1em;
     width: 100%;
 
-    &:has(input.ng-invalid.ng-touched) {
+    &:has(+ input.ng-invalid.ng-touched) {
         color: $red-warn;
+    }
+}
+
+input[type='text'] {
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding: 0.5em;
+    border: 2px $gray-outline-solid solid;
+
+    &:focus-visible,
+    &:focus {
+        border: 2px $gray-text solid;
+        outline: unset;
+    }
+
+    &.ng-invalid.ng-touched {
+        border: 2px $red-warn solid;
     }
 }
