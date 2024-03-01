@@ -5,6 +5,24 @@
     padding: 2em;
     border-radius: 15px;
     color: $gray-text;
+    white-space: pre-wrap;
+
+    h3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h3:after {
+        content: '';
+        width: 70%;
+        border: 2px $gray-outline solid;
+        border-image-slice: 1;
+        border-image-source: $primary-gradient;
+        border-radius: 50%;
+        margin: 0.3em 0;
+    }
 }
 
 input {

@@ -8,6 +8,7 @@
     <div class="form-container light-box-shadow" *ngIf="actionProperties$ | async as actionProperties">
         <h3>{{ actionProperties.title }}</h3>
         <p>{{ actionProperties.description }}</p>
+
         <div class="confirmation-buttons">
             <button class="confirm-button" (click)="confirm()">
                 Yes <img class="inverted-black-icon" src="./assets/check-circle.svg" />

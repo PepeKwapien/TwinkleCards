@@ -15,9 +15,9 @@ button:not(.custom-button, .empty-button) {
         font-size: 16px;
         font-weight: 600;
         padding: 0.6em 1em;
+        border: unset;
         border-radius: 15px;
-        background-color: $primary-background;
-        border: 1px $primary-hover solid;
+        background: $primary-gradient;
         -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
@@ -25,26 +25,30 @@ button:not(.custom-button, .empty-button) {
         min-width: 5em;
 
         transition: 0.2s;
+        @include lighten-on-hover-active;
     }
 
-    &:hover {
-        background-color: $primary-hover;
-    }
+    &.login-button {
+        background: unset;
+        background-color: $primary-background;
+        border: 1px $primary-hover solid;
+        &:hover {
+            background-color: $primary-hover;
+        }
 
-    &:active {
-        background-color: $primary-active;
+        &:active {
+            background-color: $primary-active;
+        }
     }
 
     &.cancel-button {
         background: $cancel-button-gradient;
-        border: 1px $red-warn solid;
 
         @include lighten-on-hover-active;
     }
 
     &.confirm-button {
         background: $confirm-button-gradient;
-        border: unset;
 
         @include lighten-on-hover-active;
     }
