@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { CollectionGroupFormService } from 'src/app/services/collection-group-form/collection-group-form.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CollectionGroupFormService } from 'src/app/services/collection-group-fo
 export class CollectionGroupFormComponent {
     @Output() formSubmited: EventEmitter<string>;
 
-    public get nameFormControl(): FormControl<string> {
+    public get formGroup(): FormGroup {
         return this._collectionFormGorupService.nameFormControl;
     }
 
@@ -20,10 +20,9 @@ export class CollectionGroupFormComponent {
 
     public createCollectionGroup($event: Event) {
         $event.preventDefault();
-        if (this.nameFormControl.valid) {
+        if (this.formGroup.valid) {
             this._collectionFormGorupService.createCollectionGroup();
-            this.formSubmited.emit(this.nameFormControl.value);
+            this.formSubmited.emit(this.formGroup.value);
         }
     }
 }
-
