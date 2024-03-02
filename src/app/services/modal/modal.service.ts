@@ -44,6 +44,7 @@ export class ModalService {
     public close(): void {
         this._showModal.next(false);
         this._confirmDecision.next(false);
+        console.log('Closing');
     }
 
     public open(template: TemplateRef<any>): void {

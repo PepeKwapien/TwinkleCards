@@ -24,7 +24,7 @@ export class CollectionGroupFormService implements OnDestroy {
     ) {
         this._formGroup = this._formBuilder.group({
             name: ['', [Validators.required, Validators.minLength(1)]],
-            color: ['']
+            color: ['', Validators.required]
         });
 
         this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this.resetNameFormControl());
@@ -37,6 +37,7 @@ export class CollectionGroupFormService implements OnDestroy {
     public async createCollectionGroup() {
         if (this._formGroup.valid) {
             await this._userIdInterceptorService.createCollectionGroup(this._formGroup.value as CollectionGroupProperties);
+            this._modalService.close();
         }
     }
 
@@ -46,6 +47,7 @@ export class CollectionGroupFormService implements OnDestroy {
                 collectionGroup,
                 this._formGroup.value as CollectionGroupProperties
             );
+            this._modalService.close();
         }
     }
 

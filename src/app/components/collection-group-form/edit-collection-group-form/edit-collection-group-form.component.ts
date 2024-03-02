@@ -11,7 +11,7 @@ import { ModalService } from 'src/app/services/modal/modal.service';
 export class EditCollectionGroupFormComponent implements OnInit {
     @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
 
-    constructor(private _collectionFormGorupService: CollectionGroupFormService, private _modalService: ModalService) {}
+    constructor(private _collectionFormGorupService: CollectionGroupFormService) {}
 
     ngOnInit(): void {
         this._collectionFormGorupService.formGroup.patchValue({
@@ -20,12 +20,12 @@ export class EditCollectionGroupFormComponent implements OnInit {
         });
     }
 
-    public async editCollectionGroup($event: Event) {
-        $event.preventDefault();
-        if (this._collectionFormGorupService.formGroup.valid) {
-            await this._collectionFormGorupService.editCollectionGroup(this.collectionGroup);
-            this._modalService.close();
-        }
+    public editCollectionGroupCallback() {
+        return async () => {
+            if (this._collectionFormGorupService.formGroup.valid) {
+                await this._collectionFormGorupService.editCollectionGroup(this.collectionGroup);
+            }
+        };
     }
 }
 

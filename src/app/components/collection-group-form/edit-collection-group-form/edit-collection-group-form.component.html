@@ -1,8 +1,9 @@
 <div class="form-outer-container light-box-shadow">
     <h3>Edit collection group</h3>
-    <app-collection-group-form-body></app-collection-group-form-body>
-    <button type="submit" (click)="editCollectionGroup($event)" class="right-side-button">
-        Save <img src="./assets/edit.svg" class="inverted-black-icon" />
-    </button>
+    <app-collection-group-form-body
+        [buttonTemplate]="button"
+        [buttonCallback]="editCollectionGroupCallback()"></app-collection-group-form-body>
 </div>
+
+<ng-template #button>Save <img src="./assets/edit.svg" class="inverted-black-icon" /></ng-template>
 

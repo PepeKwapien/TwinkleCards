@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CollectionGroupFormService } from 'src/app/services/collection-group-form/collection-group-form.service';
-import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
     selector: 'app-create-collection-group-form',
@@ -8,13 +7,11 @@ import { ModalService } from 'src/app/services/modal/modal.service';
     styleUrls: ['./create-collection-group-form.component.scss']
 })
 export class CreateCollectionGroupFormComponent {
-    constructor(private _collectionFormGorupService: CollectionGroupFormService, private _modalService: ModalService) {}
+    constructor(private _collectionFormGorupService: CollectionGroupFormService) {}
 
-    public async createCollectionGroup($event: Event) {
-        $event.preventDefault();
+    public async createCollectionGroup() {
         if (this._collectionFormGorupService.formGroup.valid) {
             await this._collectionFormGorupService.createCollectionGroup();
-            this._modalService.close();
         }
     }
 }
