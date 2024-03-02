@@ -22,14 +22,16 @@ button:not(.empty-button) {
         min-width: 5em;
 
         transition: 0.2s;
-        @include lighten-on-hover-active;
+
+        &:not(.login-button) {
+            @include lighten-on-hover-active;
+        }
     }
 
     &.login-button {
         column-gap: 0.4em;
         background: unset;
         background-color: $primary-background;
-        border: 1px $primary-hover solid;
         &:hover {
             background-color: $primary-hover;
         }
