@@ -8,7 +8,7 @@ import { UserIdInterceptorService } from '../user-id-interceptor/user-id-interce
 export class CollectionGroupFormService {
     private _formGroup: FormGroup;
 
-    public get nameFormControl(): FormGroup {
+    public get formGroup(): FormGroup {
         return this._formGroup;
     }
 
@@ -19,9 +19,9 @@ export class CollectionGroupFormService {
         });
     }
 
-    public createCollectionGroup() {
+    public async createCollectionGroup() {
         if (this._formGroup.valid) {
-            this._userIdInterceptorService.createCollectionGroup(this._formGroup.value as { name: string; color: string });
+            await this._userIdInterceptorService.createCollectionGroup(this._formGroup.value as { name: string; color: string });
         }
     }
 

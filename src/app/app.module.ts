@@ -13,9 +13,9 @@ import { UserLoadingGuardComponent } from './components/user-loading-guard/user-
 import { CollectionGroupsComponent } from './components/collection-groups/collection-groups.component';
 import { CollectionGroupComponent } from './components/collection-groups/collection-group/collection-group.component';
 import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.component';
-import { CollectionGroupFormComponent } from './components/collection-group-form/collection-group-form.component';
-import { CollectionGroupFormModalComponent } from './components/collection-group-form/collection-group-form-modal/collection-group-form-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CollectionGroupFormBodyComponent } from './components/collection-group-form/collection-group-form-body/collection-group-form-body.component';
+import { CreateCollectionGroupFormComponent } from './components/collection-group-form/create-collection-group-form/create-collection-group-form.component';
 
 @NgModule({
     declarations: [
@@ -27,8 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         CollectionGroupsComponent,
         CollectionGroupComponent,
         ModalOverlayComponent,
-        CollectionGroupFormComponent,
-        CollectionGroupFormModalComponent
+        CollectionGroupFormBodyComponent,
+        CreateCollectionGroupFormComponent
     ],
     imports: [
         BrowserModule,

@@ -4,7 +4,7 @@
 button:not(.empty-button) {
     & {
         display: flex;
-        column-gap: 0.5em;
+        column-gap: 0.15em;
         justify-content: center;
         align-items: center;
         cursor: pointer;
@@ -26,6 +26,7 @@ button:not(.empty-button) {
     }
 
     &.login-button {
+        column-gap: 0.4em;
         background: unset;
         background-color: $primary-background;
         border: 1px $primary-hover solid;
@@ -55,4 +56,9 @@ button:not(.empty-button) {
     cursor: pointer;
     background: inherit;
     border: unset;
+}
+
+.right-side-button {
+    margin-top: 1.5em;
+    margin-left: auto;
 }
