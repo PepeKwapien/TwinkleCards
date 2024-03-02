@@ -53,10 +53,14 @@ export class UserRepositoryService implements OnDestroy {
         await updateDoc(doc(this._db, this._collectionName, userId), { lastLogin: new Date() });
     }
 
-    async setupUserChanges(userId: string) {
+    async setupUserChanges(userId: string): Promise<void> {
         this._userChangesUnsubscribe = onSnapshot(doc(this._db, this._collectionName, userId), (document) =>
             this._userSubject.next(document.data() as UserDocument)
         );
+    }
+
+    async clearUser(): Promise<void> {
+        this._userSubject.next(undefined);
     }
 
     async createCollectionGroup(userId: string, collectionGroupProperties: CollectionGroupProperties): Promise<void> {

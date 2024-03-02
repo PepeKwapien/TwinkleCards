@@ -49,6 +49,7 @@ export class AuthService {
 
     public async signOut(): Promise<void> {
         await signOut(this._auth);
+        this._userRepository.clearUser();
         this._router.navigate(['']);
     }
 
