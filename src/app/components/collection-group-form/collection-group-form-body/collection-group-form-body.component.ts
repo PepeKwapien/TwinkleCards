@@ -25,7 +25,6 @@ export class CollectionGroupFormBodyComponent {
 
     public changeColor(color: string) {
         this.formGroup.patchValue({ color });
-        console.log(this.formGroup.get('color')?.value);
     }
 }
 
