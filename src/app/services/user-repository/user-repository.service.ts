@@ -11,8 +11,11 @@ import {
     updateDoc
 } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { UserDocument } from 'src/app/models/documents/user.document';
+
+export type CollectionGroupProperties = { name: string; color: CollectionGroupColorType };
 
 @Injectable({
     providedIn: 'root'
@@ -56,13 +59,35 @@ export class UserRepositoryService implements OnDestroy {
         );
     }
 
-    async createCollectionGroup(userId: string, collectionGroupProperties: { name: string; color: string }): Promise<void> {
+    async createCollectionGroup(userId: string, collectionGroupProperties: CollectionGroupProperties): Promise<void> {
         await updateDoc(doc(this._db, this._collectionName, userId), {
             collectionGroups: arrayUnion({
                 name: collectionGroupProperties.name,
                 color: collectionGroupProperties.color,
                 colletions: [] as string[]
             })
+        });
+    }
+
+    async editCollectionGroup(
+        userId: string,
+        collectionGroup: IUserCollectionGroup,
+        collectionGroupProperties: CollectionGroupProperties
+    ): Promise<void> {
+        const userCollectionGroups = (this._userSubject.value as UserDocument).collectionGroups;
+        const matchingCollectionGroup = userCollectionGroups.find(
+            (group) => JSON.stringify(group) === JSON.stringify(collectionGroup)
+        );
+
+        if (!matchingCollectionGroup) {
+            return;
+        }
+
+        matchingCollectionGroup.name = collectionGroupProperties.name;
+        matchingCollectionGroup.color = collectionGroupProperties.color;
+
+        await updateDoc(doc(this._db, this._collectionName, userId), {
+            collectionGroups: userCollectionGroups
         });
     }
 

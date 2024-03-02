@@ -16,6 +16,7 @@ import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.
 import { ReactiveFormsModule } from '@angular/forms';
 import { CollectionGroupFormBodyComponent } from './components/collection-group-form/collection-group-form-body/collection-group-form-body.component';
 import { CreateCollectionGroupFormComponent } from './components/collection-group-form/create-collection-group-form/create-collection-group-form.component';
+import { EditCollectionGroupFormComponent } from './components/collection-group-form/edit-collection-group-form/edit-collection-group-form.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { CreateCollectionGroupFormComponent } from './components/collection-grou
         CollectionGroupComponent,
         ModalOverlayComponent,
         CollectionGroupFormBodyComponent,
-        CreateCollectionGroupFormComponent
+        CreateCollectionGroupFormComponent,
+        EditCollectionGroupFormComponent
     ],
     imports: [
         BrowserModule,

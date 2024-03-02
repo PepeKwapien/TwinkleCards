@@ -9,7 +9,7 @@ import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/u
     styleUrls: ['./collection-group.component.scss']
 })
 export class CollectionGroupComponent {
-    @Input() collectionGroup: IUserCollectionGroup | undefined;
+    @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
 
     constructor(private _modalService: ModalService, private _userIdInterceptorService: UserIdInterceptorService) {}
 
