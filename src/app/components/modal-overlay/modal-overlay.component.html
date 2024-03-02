@@ -6,7 +6,7 @@
 
 <ng-template #default>
     <div class="form-outer-container light-box-shadow" *ngIf="actionProperties$ | async as actionProperties">
-        <h3>{{ actionProperties.title }}</h3>
+        <h3 [class]="actionProperties.color">{{ actionProperties.title }}</h3>
         <p>{{ actionProperties.description }}</p>
 
         <div class="confirmation-buttons">

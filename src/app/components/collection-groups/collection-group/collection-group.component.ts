@@ -24,7 +24,8 @@ export class CollectionGroupComponent {
         const result = await this._modalService.getConfirmation({
             title: `Delete '${this.collectionGroup.name}' group?`,
             description:
-                'This action will remove the group and all of the collections inside it\nThis is irreversible. Are you sure?'
+                'This action will remove the group and all of the collections inside it\nThis is irreversible. Are you sure?',
+            color: this.collectionGroup.color
         });
 
         if (result) {

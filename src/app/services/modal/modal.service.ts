@@ -1,17 +1,21 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, filter, firstValueFrom } from 'rxjs';
+import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
+
+export type ConfirmActionProperties = { title: string; description: string; color?: CollectionGroupColorType };
 
 @Injectable({
     providedIn: 'root'
 })
 export class ModalService {
-    private _DEFAULT_ACTION_PROPERTIES = {
+    private _DEFAULT_ACTION_PROPERTIES: ConfirmActionProperties = {
         title: 'Irreversible action',
-        description: 'Are you sure?'
+        description: 'Are you sure?',
+        color: 'pink'
     };
     private _showModal: BehaviorSubject<boolean>;
     private _setTemplate: BehaviorSubject<TemplateRef<any> | undefined>;
-    private _actionProperties: BehaviorSubject<{ title: string; description: string }>;
+    private _actionProperties: BehaviorSubject<ConfirmActionProperties>;
     private _confirmDecision: Subject<boolean>;
 
     public get showModal$(): Observable<boolean> {
@@ -26,7 +30,7 @@ export class ModalService {
         return this._setTemplate.asObservable();
     }
 
-    public get actionTitle$(): Observable<{ title: string; description: string }> {
+    public get actionTitle$(): Observable<ConfirmActionProperties> {
         return this._actionProperties.asObservable();
     }
 
@@ -34,7 +38,7 @@ export class ModalService {
         this._showModal = new BehaviorSubject<boolean>(false);
         this._setTemplate = new BehaviorSubject<TemplateRef<any> | undefined>(undefined);
         this._confirmDecision = new Subject();
-        this._actionProperties = new BehaviorSubject<{ title: string; description: string }>(this._DEFAULT_ACTION_PROPERTIES);
+        this._actionProperties = new BehaviorSubject<ConfirmActionProperties>(this._DEFAULT_ACTION_PROPERTIES);
     }
 
     public close(): void {
@@ -52,7 +56,7 @@ export class ModalService {
         this._showModal.next(false);
     }
 
-    public getConfirmation(actionProperties?: { title: string; description: string }): Promise<boolean> {
+    public getConfirmation(actionProperties?: ConfirmActionProperties): Promise<boolean> {
         this._actionProperties.next(!actionProperties ? this._DEFAULT_ACTION_PROPERTIES : actionProperties);
         this._setTemplate.next(undefined);
         this._showModal.next(true);

@@ -14,14 +14,29 @@
         align-items: center;
     }
 
-    h3:after {
+    h3::after {
         content: '';
         width: 70%;
         border: 2px $gray-outline solid;
         border-image-slice: 1;
-        border-image-source: $primary-gradient;
         border-radius: 50%;
         margin: 0.3em 0;
+    }
+
+    h3.pink::after {
+        border-image-source: $primary-gradient;
+    }
+
+    h3.green::after {
+        border-image-source: $green-gradient;
+    }
+
+    h3.yellow::after {
+        border-image-source: $yellow-gradient;
+    }
+
+    h3.blue::after {
+        border-image-source: $blue-gradient;
     }
 }
 

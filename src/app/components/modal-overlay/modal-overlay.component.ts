@@ -1,6 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ModalService } from 'src/app/services/modal/modal.service';
+import { ConfirmActionProperties, ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
     selector: 'app-modal-overlay',
@@ -14,7 +14,7 @@ export class ModalOverlayComponent {
         return this._modalService.showModal$;
     }
 
-    public get actionProperties$(): Observable<{ title: string; description: string }> {
+    public get actionProperties$(): Observable<ConfirmActionProperties> {
         return this._modalService.actionTitle$;
     }
 
