@@ -27,7 +27,7 @@ export class CollectionGroupFormService implements OnDestroy {
             color: ['', Validators.required]
         });
 
-        this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this.resetNameFormControl());
+        this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this._resetFormGroup());
     }
 
     ngOnDestroy(): void {
@@ -51,7 +51,7 @@ export class CollectionGroupFormService implements OnDestroy {
         }
     }
 
-    public resetNameFormControl(): void {
+    private _resetFormGroup(): void {
         this._formGroup.reset();
     }
 }

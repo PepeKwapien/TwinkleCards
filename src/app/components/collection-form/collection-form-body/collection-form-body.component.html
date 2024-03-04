@@ -1,0 +1,10 @@
+<form class="form-inner-container" [formGroup]="formGroup" (ngSubmit)="callback($event)">
+    <div class="form-body">
+        <label for="collection-group-name">Name:</label>
+        <input id="collection-group-name" type="text" formControlName="name" autocomplete="off" />
+    </div>
+    <button type="submit">
+        <ng-container [ngTemplateOutlet]="buttonTemplate"></ng-container>
+    </button>
+</form>
+

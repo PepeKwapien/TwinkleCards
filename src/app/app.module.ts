@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CollectionGroupFormBodyComponent } from './components/collection-group-form/collection-group-form-body/collection-group-form-body.component';
 import { CreateCollectionGroupFormComponent } from './components/collection-group-form/create-collection-group-form/create-collection-group-form.component';
 import { EditCollectionGroupFormComponent } from './components/collection-group-form/edit-collection-group-form/edit-collection-group-form.component';
+import { CollectionFormBodyComponent } from './components/collection-form/collection-form-body/collection-form-body.component';
+import { CreateCollectionFormComponent } from './components/collection-form/create-collection-form/create-collection-form.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +32,9 @@ import { EditCollectionGroupFormComponent } from './components/collection-group-
         ModalOverlayComponent,
         CollectionGroupFormBodyComponent,
         CreateCollectionGroupFormComponent,
-        EditCollectionGroupFormComponent
+        EditCollectionGroupFormComponent,
+        CollectionFormBodyComponent,
+        CreateCollectionFormComponent
     ],
     imports: [
         BrowserModule,
