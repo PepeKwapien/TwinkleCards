@@ -15,9 +15,12 @@
 }
 
 .modal-overlay-body {
+    max-height: 90%;
+    overflow: auto;
     width: 50%;
     max-width: 500px;
     margin: 3em;
+    border-radius: 15px;
 }
 
 .confirmation-buttons {

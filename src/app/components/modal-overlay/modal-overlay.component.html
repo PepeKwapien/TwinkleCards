@@ -1,11 +1,11 @@
 <div class="modal-overlay-container" *ngIf="showModal$ | async" (click)="close()">
-    <div (click)="$event.stopPropagation()" class="modal-overlay-body dissolve-animation-enter">
+    <div (click)="$event.stopPropagation()" class="modal-overlay-body dissolve-animation-enter light-box-shadow">
         <ng-container [ngTemplateOutlet]="(setTemplate$ | async) || default"></ng-container>
     </div>
 </div>
 
 <ng-template #default>
-    <div class="form-outer-container light-box-shadow" *ngIf="actionProperties$ | async as actionProperties">
+    <div class="form-outer-container" *ngIf="actionProperties$ | async as actionProperties">
         <h3 [class]="actionProperties.color">{{ actionProperties.title }}</h3>
         <p>{{ actionProperties.description }}</p>
 

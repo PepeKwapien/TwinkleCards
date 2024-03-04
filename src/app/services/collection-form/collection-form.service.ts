@@ -15,7 +15,7 @@ export class CollectionFormService implements OnDestroy {
     }
 
     constructor(private _formBuilder: FormBuilder, private _modalService: ModalService) {
-        this._formGroup = this._formBuilder.group({ name: ['', Validators.required], description: [''] });
+        this._formGroup = this._formBuilder.group({ name: ['', Validators.required], description: [''], public: [false] });
         this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this._resetFormGroup());
     }
 

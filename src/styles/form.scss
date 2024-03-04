@@ -69,23 +69,13 @@ input {
     transition: 0.2s;
 }
 
-form.ng-submitted.ng-invalid {
-    label:has(+ input[type='text'].ng-invalid),
-    label:has(+ * input.ng-invalid) {
-        color: $red-warn;
-    }
-
-    input[type='text'].ng-invalid,
-    input[type='radio'].ng-invalid {
-        border: 2px $red-warn solid;
-    }
+textarea {
+    resize: vertical;
+    height: 2.5rem;
 }
 
-label:has(+ input[type='text'].ng-invalid.ng-touched) {
-    color: $red-warn;
-}
-
-input[type='text'] {
+input[type='text'],
+textarea {
     width: 100%;
     font-size: 1rem;
     border-radius: 15px;
@@ -103,15 +93,57 @@ input[type='text'] {
     }
 }
 
-@mixin radio-button-container {
+input[type='checkbox'] {
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    border: 2px $gray-outline-solid solid;
+    width: 4em;
+    height: 2em;
+    padding: 0 0.15em;
+    border-radius: 15px;
+
+    &::before {
+        transition: 0.4s;
+        content: '';
+        position: absolute;
+        top: 0.1em;
+        left: 0.15em;
+        height: 1.6em;
+        width: 1.6em;
+        border-radius: 15px;
+        background: $gray-text;
+    }
+
+    &:checked::before {
+        left: 2em;
+        background: $primary-background;
+    }
+}
+
+// invalid value handling
+form.ng-submitted.ng-invalid {
+    label:has(+ input[type='text'].ng-invalid),
+    label:has(+ * input.ng-invalid) {
+        color: $red-warn;
+    }
+
+    input[type='text'].ng-invalid,
+    input[type='radio'].ng-invalid {
+        border: 2px $red-warn solid;
+    }
+}
+
+label:has(+ input[type='text'].ng-invalid.ng-touched) {
+    color: $red-warn;
+}
+// end: invalid value handling
+
+.color-radio-button-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.color-radio-button-container {
-    @include radio-button-container();
 
     input[type='radio'] {
         appearance: none;
@@ -122,7 +154,7 @@ input[type='text'] {
         align-items: center;
         cursor: pointer;
 
-        &.checked {
+        &:checked {
             border-color: $gray-text;
         }
 

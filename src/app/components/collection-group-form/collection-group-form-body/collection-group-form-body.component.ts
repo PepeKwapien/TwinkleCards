@@ -22,10 +22,6 @@ export class CollectionGroupFormBodyComponent {
 
     constructor(private _collectionFormGorupService: CollectionGroupFormService) {}
 
-    public isColorSelected(color: string): boolean {
-        return this.formGroup.get('color')?.value === color;
-    }
-
     public changeColor(color: string) {
         this.formGroup.patchValue({ color });
     }

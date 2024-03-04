@@ -1,7 +1,17 @@
 <form class="form-inner-container" [formGroup]="formGroup" (ngSubmit)="callback($event)">
     <div class="form-body">
-        <label for="collection-group-name">Name:</label>
-        <input id="collection-group-name" type="text" formControlName="name" autocomplete="off" />
+        <label for="collection-name">Name:</label>
+        <input id="collection-name" type="text" formControlName="name" autocomplete="off" />
+        <label for="collection-description">Description:</label>
+        <textarea
+            #textarea
+            id="collection-description"
+            type="textarea"
+            formControlName="description"
+            autocomplete="off"
+            placeholder="Optional"></textarea>
+        <label for="collection-public">Public:</label>
+        <input type="checkbox" name="public" id="public" formControlName="public" />
     </div>
     <button type="submit">
         <ng-container [ngTemplateOutlet]="buttonTemplate"></ng-container>
