@@ -8,13 +8,13 @@ $secondary-active: hsl(290, 45%, 55%);
 
 $tertiary-background: hsl(0, 0%, 93%);
 
-$primary-gradient: linear-gradient(135deg, hsl(315, 90%, 81%) 0%, hsl(313, 100%, 50%) 30%, $primary-background 100%);
+$primary-gradient: linear-gradient(135deg, hsl(315, 90%, 81%) 0%, hsl(313, 93%, 43%) 30%, $primary-background 100%);
 $secondary-gradient: linear-gradient(135deg, $tertiary-background 0%, $secondary-background 100%);
 $secondary-gradient-transparent: linear-gradient(135deg, hsl(0, 0%, 93%, 50%) 0%, hsl(290, 78%, 64%, 50%) 100%);
 
-$green-gradient: linear-gradient(135deg, hsl(115, 74%, 75%) 0%, hsl(119, 55%, 51%) 30%, $primary-background 100%);
-$yellow-gradient: linear-gradient(135deg, hsl(44, 75%, 74%) 0%, hsl(54, 55%, 51%) 30%, $primary-background 100%);
-$blue-gradient: linear-gradient(135deg, hsl(204, 93%, 79%) 0%, hsl(186, 69%, 53%) 30%, $primary-background 100%);
+$green-gradient: linear-gradient(135deg, hsl(115, 66%, 69%) 0%, hsl(119, 55%, 51%) 30%, $primary-background 100%);
+$yellow-gradient: linear-gradient(135deg, hsl(44, 61%, 68%) 0%, hsl(54, 57%, 49%) 30%, $primary-background 100%);
+$blue-gradient: linear-gradient(135deg, hsl(180, 55%, 62%) 0%, hsl(186, 69%, 49%) 30%, $primary-background 100%);
 
 $gray-outline: hsl(0, 0%, 70%, 0.3);
 $gray-fill: hsl(0, 0%, 85%, 0.3);
