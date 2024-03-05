@@ -100,19 +100,18 @@ input[type='checkbox'] {
     border: 2px $gray-outline-solid solid;
     width: 4em;
     height: 2em;
-    padding: 0 0.15em;
     border-radius: 15px;
 
     &::before {
         transition: 0.4s;
         content: '';
         position: absolute;
-        top: 0.1em;
+        top: 0.05em;
         left: 0.15em;
         height: 1.6em;
         width: 1.6em;
         border-radius: 15px;
-        background: $gray-text;
+        background: $gray-outline-solid;
     }
 
     &:checked::before {
@@ -124,7 +123,7 @@ input[type='checkbox'] {
 // invalid value handling
 form.ng-submitted.ng-invalid {
     label:has(+ input[type='text'].ng-invalid),
-    label:has(+ * input.ng-invalid) {
+    label:has(+ div input.ng-invalid) {
         color: $red-warn;
     }
 

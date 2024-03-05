@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ModalService } from '../modal/modal.service';
 
+export enum CollectionType {
+    definition,
+    translation
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -15,7 +20,12 @@ export class CollectionFormService implements OnDestroy {
     }
 
     constructor(private _formBuilder: FormBuilder, private _modalService: ModalService) {
-        this._formGroup = this._formBuilder.group({ name: ['', Validators.required], description: [''], public: [false] });
+        this._formGroup = this._formBuilder.group({
+            name: ['', Validators.required],
+            description: [''],
+            public: [false],
+            type: ['', Validators.required]
+        });
         this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this._resetFormGroup());
     }
 
@@ -24,6 +34,7 @@ export class CollectionFormService implements OnDestroy {
     }
 
     public async createCollection(): Promise<void> {
+        this._modalService.close();
         return;
     }
 

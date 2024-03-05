@@ -11,7 +11,32 @@
             autocomplete="off"
             placeholder="Optional"></textarea>
         <label for="collection-public">Public:</label>
-        <input type="checkbox" name="public" id="public" formControlName="public" />
+        <input type="checkbox" name="public" id="collection-public" formControlName="public" />
+        <label for="type">Collection type:</label>
+        <div class="collection-type-container">
+            <label>
+                <input type="radio" name="type" id="definition" value="definition" formControlName="type" />
+                <div class="collection-type-option-container">
+                    <div class="collection-type-example-container"><h4>Term</h4></div>
+                    <img src="./assets/swap-horiz.svg" />
+                    <div class="collection-type-example-container"><p>Definition</p></div>
+                </div>
+            </label>
+            <label>
+                <input type="radio" name="type" id="translation" value="translation" formControlName="type" />
+                <div class="collection-type-option-container">
+                    <div class="collection-type-example-container">
+                        <h4>Word</h4>
+                        <p>Example use</p>
+                    </div>
+                    <img src="./assets/swap-horiz.svg" />
+                    <div class="collection-type-example-container">
+                        <h4>Translation</h4>
+                        <p>Translated use</p>
+                    </div>
+                </div>
+            </label>
+        </div>
     </div>
     <button type="submit">
         <ng-container [ngTemplateOutlet]="buttonTemplate"></ng-container>

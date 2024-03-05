@@ -1,0 +1,46 @@
+@import '/src/styles/color.scss';
+
+form.ng-submitted.ng-invalid .collection-type-container label:has(input.ng-invalid) {
+    border-color: $red-warn;
+}
+
+.collection-type-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+
+    & > label {
+        cursor: pointer;
+        border: 2px $gray-outline-solid solid;
+        border-radius: 15px;
+
+        & > input {
+            display: none;
+        }
+    }
+
+    & > label:has(input:checked) {
+        border-color: $gray-text;
+    }
+}
+
+.collection-type-option-container {
+    width: 100%;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 4rem;
+    align-items: center;
+}
+
+.collection-type-example-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1em;
+
+    & > * {
+        margin: 0;
+    }
+}
