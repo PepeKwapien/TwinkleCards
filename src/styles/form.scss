@@ -98,6 +98,7 @@ input[type='checkbox'] {
     cursor: pointer;
     position: relative;
     border: 2px $gray-outline-solid solid;
+    background-color: white;
     width: 4em;
     height: 2em;
     border-radius: 15px;
@@ -146,7 +147,7 @@ label:has(+ input[type='text'].ng-invalid.ng-touched) {
 
     input[type='radio'] {
         appearance: none;
-        border: 2px $gray-outline solid;
+        border: 2px $gray-outline-solid solid;
         border-radius: 7px;
         display: flex;
         justify-content: center;

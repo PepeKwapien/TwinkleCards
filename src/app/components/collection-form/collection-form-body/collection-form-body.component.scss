@@ -13,6 +13,7 @@ form.ng-submitted.ng-invalid .collection-type-container label:has(input.ng-inval
         cursor: pointer;
         border: 2px $gray-outline-solid solid;
         border-radius: 15px;
+        background-color: white;
 
         & > input {
             display: none;
