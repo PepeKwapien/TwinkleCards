@@ -33,6 +33,8 @@ export class AuthService {
             this._user = user;
             if (user !== null) {
                 await this._setupUser(user);
+            } else {
+                this._userRepository.clearUser();
             }
         });
     }
@@ -49,7 +51,6 @@ export class AuthService {
 
     public async signOut(): Promise<void> {
         await signOut(this._auth);
-        this._userRepository.clearUser();
         this._router.navigate(['']);
     }
 

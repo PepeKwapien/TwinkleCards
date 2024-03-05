@@ -24,7 +24,8 @@ export class CollectionFormService implements OnDestroy {
             name: ['', Validators.required],
             description: [''],
             public: [false],
-            type: ['', Validators.required]
+            type: ['', Validators.required],
+            group: ['', Validators.required]
         });
         this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this._resetFormGroup());
     }
@@ -36,6 +37,10 @@ export class CollectionFormService implements OnDestroy {
     public async createCollection(): Promise<void> {
         this._modalService.close();
         return;
+    }
+
+    public setCollectionGroup(collectionGroupName: string): void {
+        this._formGroup.patchValue({ group: collectionGroupName });
     }
 
     private _resetFormGroup(): void {

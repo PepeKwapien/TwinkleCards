@@ -1,6 +1,7 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CollectionFormService } from '../../../services/collection-form/collection-form.service';
+import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
 
 @Component({
     selector: 'app-collection-form-body',
@@ -15,7 +16,11 @@ export class CollectionFormBodyComponent {
         return this._collectionFormService.formGroup;
     }
 
-    constructor(private _collectionFormService: CollectionFormService) {}
+    public get collectionGroups(): string[] {
+        return this._userRepository.userCollectionGroupNames;
+    }
+
+    constructor(private _collectionFormService: CollectionFormService, private _userRepository: UserRepositoryService) {}
 
     public async callback($event: Event) {
         $event.preventDefault();

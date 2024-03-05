@@ -1,5 +1,6 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
+import { CollectionFormService } from 'src/app/services/collection-form/collection-form.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/user-id-interceptor.service';
 
@@ -11,10 +12,19 @@ import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/u
 export class CollectionGroupComponent {
     @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
 
-    constructor(private _modalService: ModalService, private _userIdInterceptorService: UserIdInterceptorService) {}
+    constructor(
+        private _modalService: ModalService,
+        private _userIdInterceptorService: UserIdInterceptorService,
+        private _collectionFormService: CollectionFormService
+    ) {}
 
-    public openModal(collectionGroupForm: TemplateRef<any>) {
-        this._modalService.open(collectionGroupForm);
+    public openModal(modalTemplate: TemplateRef<Element>) {
+        this._modalService.open(modalTemplate);
+    }
+
+    public openCreateCollectionModal(collectionGroupForm: TemplateRef<Element>) {
+        this._collectionFormService.setCollectionGroup(this.collectionGroup.name);
+        this.openModal(collectionGroupForm);
     }
 
     public async deleteGroup() {

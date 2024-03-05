@@ -75,16 +75,16 @@ textarea {
 }
 
 input[type='text'],
-textarea {
+textarea,
+select {
     width: 100%;
     font-size: 1rem;
     border-radius: 15px;
     padding: 0.5em;
-    border: 2px $gray-outline-solid solid;
+    border: 2px $gray-outline solid;
 
-    &:focus-visible,
     &:focus {
-        border: 2px $gray-text solid;
+        border: 2px $gray-outline-solid solid;
         outline: unset;
     }
 
@@ -93,11 +93,15 @@ textarea {
     }
 }
 
+option {
+    border: 2px red solid;
+}
+
 input[type='checkbox'] {
     appearance: none;
     cursor: pointer;
     position: relative;
-    border: 2px $gray-outline-solid solid;
+    border: 2px $gray-outline solid;
     background-color: white;
     width: 4em;
     height: 2em;
@@ -147,7 +151,7 @@ label:has(+ input[type='text'].ng-invalid.ng-touched) {
 
     input[type='radio'] {
         appearance: none;
-        border: 2px $gray-outline-solid solid;
+        border: 2px $gray-outline solid;
         border-radius: 7px;
         display: flex;
         justify-content: center;

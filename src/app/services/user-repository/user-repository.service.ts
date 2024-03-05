@@ -30,6 +30,12 @@ export class UserRepositoryService implements OnDestroy {
         return this._userSubject.asObservable();
     }
 
+    public get userCollectionGroupNames(): string[] {
+        return this._userSubject.value
+            ? this._userSubject.value.collectionGroups.map((collectionGroup) => collectionGroup.name)
+            : [];
+    }
+
     constructor(private _firestore: Firestore) {
         this._db = this._firestore;
         this._userSubject = new BehaviorSubject<UserDocument | undefined>(undefined);

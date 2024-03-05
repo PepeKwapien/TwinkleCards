@@ -38,6 +38,9 @@
             </label>
         </div>
         <label for="collection-name">Group:</label>
+        <select name="group" id="group" formControlName="group">
+            <option *ngFor="let group of collectionGroups" [value]="group">{{ group }}</option>
+        </select>
     </div>
     <button type="submit">
         <ng-container [ngTemplateOutlet]="buttonTemplate"></ng-container>
