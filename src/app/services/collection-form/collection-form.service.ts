@@ -2,11 +2,20 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ModalService } from '../modal/modal.service';
+import { UserIdInterceptorService } from '../user-id-interceptor/user-id-interceptor.service';
 
 export enum CollectionType {
     definition,
     translation
 }
+
+export type CollectionInputs = {
+    name: string;
+    description?: string;
+    public: boolean;
+    type: CollectionType;
+    group: string;
+};
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +28,11 @@ export class CollectionFormService implements OnDestroy {
         return this._formGroup;
     }
 
-    constructor(private _formBuilder: FormBuilder, private _modalService: ModalService) {
+    constructor(
+        private _formBuilder: FormBuilder,
+        private _modalService: ModalService,
+        private _userIdInterceptor: UserIdInterceptorService
+    ) {
         this._formGroup = this._formBuilder.group({
             name: ['', Validators.required],
             description: [''],
@@ -35,6 +48,9 @@ export class CollectionFormService implements OnDestroy {
     }
 
     public async createCollection(): Promise<void> {
+        const collectionInputs = this._formGroup.value as CollectionInputs;
+        const collectionId = await this._userIdInterceptor.createCollection(collectionInputs);
+        await this._userIdInterceptor.createCollectionReference(collectionInputs.group, collectionId, collectionInputs.name);
         this._modalService.close();
         return;
     }

@@ -12,6 +12,7 @@ import {
 } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
+import { ICollectionReference } from 'src/app/models/documents/collection-reference.document';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { UserDocument } from 'src/app/models/documents/user.document';
 
@@ -22,7 +23,6 @@ export type CollectionGroupProperties = { name: string; color: CollectionGroupCo
 })
 export class UserRepositoryService implements OnDestroy {
     private _collectionName = 'users';
-    private _db: Firestore;
     private _userSubject: BehaviorSubject<UserDocument | undefined>;
     private _userChangesUnsubscribe: Unsubscribe | undefined;
 
@@ -37,7 +37,6 @@ export class UserRepositoryService implements OnDestroy {
     }
 
     constructor(private _firestore: Firestore) {
-        this._db = this._firestore;
         this._userSubject = new BehaviorSubject<UserDocument | undefined>(undefined);
     }
 
@@ -48,19 +47,19 @@ export class UserRepositoryService implements OnDestroy {
     }
 
     async getUser(userId: string): Promise<UserDocument | undefined> {
-        return (await getDoc(doc(this._db, this._collectionName, userId))).data() as UserDocument | undefined;
+        return (await getDoc(doc(this._firestore, this._collectionName, userId))).data() as UserDocument | undefined;
     }
 
     async upsertUser(userId: string, user: UserDocument) {
-        return await setDoc(doc(this._db, this._collectionName, userId), { ...user });
+        return await setDoc(doc(this._firestore, this._collectionName, userId), { ...user });
     }
 
     async updateLastLogin(userId: string): Promise<void> {
-        await updateDoc(doc(this._db, this._collectionName, userId), { lastLogin: new Date() });
+        await updateDoc(doc(this._firestore, this._collectionName, userId), { lastLogin: new Date() });
     }
 
     async setupUserChanges(userId: string): Promise<void> {
-        this._userChangesUnsubscribe = onSnapshot(doc(this._db, this._collectionName, userId), (document) =>
+        this._userChangesUnsubscribe = onSnapshot(doc(this._firestore, this._collectionName, userId), (document) =>
             this._userSubject.next(document.data() as UserDocument)
         );
     }
@@ -70,12 +69,13 @@ export class UserRepositoryService implements OnDestroy {
     }
 
     async createCollectionGroup(userId: string, collectionGroupProperties: CollectionGroupProperties): Promise<void> {
-        await updateDoc(doc(this._db, this._collectionName, userId), {
-            collectionGroups: arrayUnion({
-                name: collectionGroupProperties.name,
-                color: collectionGroupProperties.color,
-                colletions: [] as string[]
-            })
+        const newCollectionGroup: IUserCollectionGroup = {
+            name: collectionGroupProperties.name,
+            color: collectionGroupProperties.color,
+            collections: [] as ICollectionReference[]
+        };
+        await updateDoc(doc(this._firestore, this._collectionName, userId), {
+            collectionGroups: arrayUnion(newCollectionGroup)
         });
     }
 
@@ -96,14 +96,29 @@ export class UserRepositoryService implements OnDestroy {
         matchingCollectionGroup.name = collectionGroupProperties.name;
         matchingCollectionGroup.color = collectionGroupProperties.color;
 
-        await updateDoc(doc(this._db, this._collectionName, userId), {
+        await updateDoc(doc(this._firestore, this._collectionName, userId), {
             collectionGroups: userCollectionGroups
         });
     }
 
     async deleteCollectionGroup(userId: string, collectionGroup: IUserCollectionGroup): Promise<void> {
-        await updateDoc(doc(this._db, this._collectionName, userId), {
+        await updateDoc(doc(this._firestore, this._collectionName, userId), {
             collectionGroups: arrayRemove({ ...collectionGroup })
+        });
+    }
+
+    async createCollectionReference(userId: string, collectionGroupName: string, collectionId: string, collectionName: string) {
+        const userCollectionGroups = (this._userSubject.value as UserDocument).collectionGroups;
+        const matchingCollectionGroup = userCollectionGroups.find((group) => group.name == collectionGroupName);
+
+        if (!matchingCollectionGroup) {
+            return;
+        }
+
+        matchingCollectionGroup.collections.push({ name: collectionName, id: collectionId });
+
+        await updateDoc(doc(this._firestore, this._collectionName, userId), {
+            collectionGroups: userCollectionGroups
         });
     }
 }
