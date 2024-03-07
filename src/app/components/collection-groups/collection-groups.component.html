@@ -1,5 +1,5 @@
-<div class="footer under-navbar-container">
-    <div class="default-x-padding default-y-padding collection-groups-container" *ngIf="user$ | async as user; else loader">
+<div class="footer under-navbar-container" *ngIf="user$ | async as user; else loader">
+    <div class="default-x-padding default-y-padding collection-groups-container">
         <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
         <button
             class="add-new-collection-group-header light-box-shadow empty-button dissolve-animation-enter"
@@ -16,5 +16,5 @@
 </ng-template>
 
 <ng-template #loader>
-    <div class="loader-container" style="height: 100%"><div class="loader"></div></div>
+    <app-loader></app-loader>
 </ng-template>

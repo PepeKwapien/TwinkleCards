@@ -19,6 +19,7 @@ import { CreateCollectionGroupFormComponent } from './components/collection-grou
 import { EditCollectionGroupFormComponent } from './components/collection-group-form/edit-collection-group-form/edit-collection-group-form.component';
 import { CollectionFormBodyComponent } from './components/collection-form/collection-form-body/collection-form-body.component';
 import { CreateCollectionFormComponent } from './components/collection-form/create-collection-form/create-collection-form.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { CreateCollectionFormComponent } from './components/collection-form/crea
         CreateCollectionGroupFormComponent,
         EditCollectionGroupFormComponent,
         CollectionFormBodyComponent,
-        CreateCollectionFormComponent
+        CreateCollectionFormComponent,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,
