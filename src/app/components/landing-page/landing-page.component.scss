@@ -48,6 +48,27 @@
     aspect-ratio: 16/9;
 }
 
+.landing-page-container:last-child:after {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: $tertiary-background;
+    content: 'Contact: pppkwapien@gmail.com';
+    z-index: -2;
+
+    position: absolute;
+    background-image: url('../../../assets/waves-background-bottom.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-color: inherit;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    aspect-ratio: 16/9;
+}
+
 .landing-page-section-title {
     text-align: center;
 }
