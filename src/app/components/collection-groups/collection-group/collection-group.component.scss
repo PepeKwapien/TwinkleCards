@@ -31,23 +31,41 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
+    gap: 1.2em;
 
     margin: 1em 0;
 }
 
 .collection-box {
-    display: inline-block;
-    width: 10em;
-    height: 10em;
-    border-radius: 15px;
-}
-
-.add-new-collection-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px $gray-outline solid;
+    width: 9rem;
+    height: 9rem;
+    border-image-slice: 1;
+    border-radius: 15px;
+    text-align: center;
+
+    &.pink {
+        background-color: $pink-collection;
+    }
+
+    &.green {
+        background-color: $green-collection;
+    }
+
+    &.blue {
+        background-color: $blue-collection;
+    }
+
+    &.yellow {
+        background-color: $yellow-collection;
+    }
+}
+
+.add-new-collection-box {
     background-color: $gray-fill;
+    border: 3px $gray-outline solid;
     transition: 0.2s;
 
     &:hover {
