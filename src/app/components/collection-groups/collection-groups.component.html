@@ -1,4 +1,4 @@
-<div class="default-x-padding default-y-padding collection-groups-container" *ngIf="user$ | async as user">
+<div class="default-x-padding default-y-padding collection-groups-container" *ngIf="user$ | async as user; else loader">
     <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
     <button
         class="add-new-collection-group-header light-box-shadow empty-button dissolve-resize-animation-enter"
@@ -11,5 +11,9 @@
 
 <ng-template #collectionGroupForm>
     <app-create-collection-group-form></app-create-collection-group-form>
+</ng-template>
+
+<ng-template #loader>
+    <div class="loader-container"><div class="loader"></div></div>
 </ng-template>
 

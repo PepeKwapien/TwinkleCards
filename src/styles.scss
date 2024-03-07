@@ -15,6 +15,7 @@
 }
 
 body {
+    height: 100%;
     margin: 0;
     background-color: $tertiary-background;
 
@@ -33,32 +34,5 @@ img {
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-}
-
-.footer {
-    padding-bottom: 6em;
-    position: relative;
-    min-height: 100vh;
-
-    &::after {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        color: $tertiary-background;
-        font-size: 0.8rem;
-        content: 'Contact: pppkwapien@gmail.com';
-        padding-bottom: 1em;
-        z-index: -1;
-
-        position: absolute;
-        background-image: url('./assets/waves-background-bottom.svg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        background-color: inherit;
-        width: 100%;
-        bottom: 0;
-        aspect-ratio: 16/9;
-    }
 }
 
