@@ -11,12 +11,12 @@
         </div>
     </div>
     <div class="collection-grid">
-        <div
+        <button
             *ngFor="let collection of collectionGroup.collections"
-            class="collection-box light-box-shadow dissolve-animation-enter"
+            class="collection-box light-box-shadow empty-button dissolve-animation-enter"
             [class]="collectionGroup.color">
             {{ collection.name }}
-        </div>
+        </button>
         <button
             class="add-new-collection-box collection-box light-box-shadow empty-button dissolve-animation-enter"
             (click)="openCreateCollectionModal(collectionForm)">

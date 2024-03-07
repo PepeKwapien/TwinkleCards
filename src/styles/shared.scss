@@ -12,20 +12,20 @@
 }
 
 @mixin darken-on-hover-active {
-    transition: 0.2s;
+    transition: 0.3s;
     filter: brightness(100%);
 
     &:hover {
-        filter: brightness(95%);
+        filter: brightness(90%);
     }
 
     &:active {
-        filter: brightness(90%);
+        filter: brightness(80%);
     }
 }
 
 @mixin lighten-on-hover-active {
-    transition: 0.2s;
+    transition: 0.3s;
     filter: brightness(100%);
 
     &:hover {

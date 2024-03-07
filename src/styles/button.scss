@@ -21,7 +21,7 @@ button:not(.empty-button) {
         width: fit-content;
         min-width: 5em;
 
-        transition: 0.2s;
+        transition: 0.3s;
 
         &:not(.login-button) {
             @include lighten-on-hover-active;

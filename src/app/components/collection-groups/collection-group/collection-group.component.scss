@@ -42,39 +42,38 @@
     align-items: center;
     width: 9rem;
     height: 9rem;
-    border-image-slice: 1;
     border-radius: 15px;
     text-align: center;
+    border: 2px $gray-outline solid;
+    font-size: 1.05rem;
+    transition: 0.3s;
 
     &.pink {
-        background-color: $pink-collection;
+        background: $primary-gradient-transparent;
+        border-color: $pink-collection;
     }
 
     &.green {
-        background-color: $green-collection;
+        background: $green-gradient-transparent;
+        border-color: $green-collection;
     }
 
     &.blue {
-        background-color: $blue-collection;
+        background: $blue-gradient-transparent;
+        border-color: $blue-collection;
     }
 
     &.yellow {
-        background-color: $yellow-collection;
+        background: $yellow-gradient-transparent;
+        border-color: $yellow-collection;
     }
+
+    @include darken-on-hover-active();
 }
 
 .add-new-collection-box {
     background-color: $gray-fill;
     border: 3px $gray-outline solid;
-    transition: 0.2s;
-
-    &:hover {
-        background-color: $gray-fill-hover;
-    }
-
-    &:active {
-        background-color: $gray-fill-active;
-    }
 
     img {
         width: 40%;
