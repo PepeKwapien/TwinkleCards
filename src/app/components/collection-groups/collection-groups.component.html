@@ -1,5 +1,5 @@
-<div class="footer under-navbar-container" *ngIf="user$ | async as user; else loader">
-    <div class="default-x-padding default-y-padding collection-groups-container">
+<div class="footer under-navbar-container limit-width" *ngIf="user$ | async as user; else loader">
+    <div class="default-y-padding collection-groups-container">
         <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
         <button
             class="add-new-collection-group-header light-box-shadow empty-button dissolve-animation-enter"
