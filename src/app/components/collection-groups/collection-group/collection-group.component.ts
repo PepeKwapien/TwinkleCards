@@ -1,6 +1,8 @@
 import { Component, Input, TemplateRef } from '@angular/core';
+import { ICollectionReference } from 'src/app/models/documents/collection-reference.document';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionFormService } from 'src/app/services/collection-form/collection-form.service';
+import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/user-id-interceptor.service';
 
@@ -15,7 +17,8 @@ export class CollectionGroupComponent {
     constructor(
         private _modalService: ModalService,
         private _userIdInterceptorService: UserIdInterceptorService,
-        private _collectionFormService: CollectionFormService
+        private _collectionFormService: CollectionFormService,
+        private _collectionRepository: CollectionRepositoryService
     ) {}
 
     public openModal(modalTemplate: TemplateRef<Element>) {
@@ -27,18 +30,34 @@ export class CollectionGroupComponent {
         this.openModal(collectionGroupForm);
     }
 
+    public async confirmCollectionDelete(collection: ICollectionReference) {
+        const result = await this._modalService.getConfirmation({
+            title: `Delete collection ${collection.name}?`,
+            description: `This action will remove the collection and all of the flashcards inside it\nThis is irreversible. Are you sure?`,
+            color: this.collectionGroup.color
+        });
+
+        if (result) {
+            await this._userIdInterceptorService.deleteCollectionReference(this.collectionGroup.name, collection);
+            await this._collectionRepository.deleteCollection(collection.id);
+        }
+    }
+
     public async deleteGroup() {
         if (this.collectionGroup === undefined) {
             return;
         }
         const result = await this._modalService.getConfirmation({
-            title: `Delete '${this.collectionGroup.name}' group?`,
+            title: `Delete group '${this.collectionGroup.name}'?`,
             description:
                 'This action will remove the group and all of the collections inside it\nThis is irreversible. Are you sure?',
             color: this.collectionGroup.color
         });
 
         if (result) {
+            for (let collectionRef of this.collectionGroup.collections) {
+                this._collectionRepository.deleteCollection(collectionRef.id);
+            }
             this._userIdInterceptorService.deleteCollectionGroup(this.collectionGroup);
         }
     }

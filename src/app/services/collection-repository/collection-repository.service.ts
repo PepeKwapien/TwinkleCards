@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc } from '@angular/fire/firestore';
 import { CollectionInputs } from '../collection-form/collection-form.service';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 
@@ -17,6 +17,10 @@ export class CollectionRepositoryService {
         const docRef = await addDoc(collection(this._firestore, this._collectionName), { ...collectionDocument });
 
         return docRef.id;
+    }
+
+    public async deleteCollection(collectionId: string) {
+        await deleteDoc(doc(this._firestore, this._collectionName, collectionId));
     }
 }
 

@@ -17,9 +17,9 @@
             [class]="collectionGroup.color">
             <div class="collection-group-action-buttons-container">
                 <img src="./assets/edit.svg" class="grayed-icon" />
-                <img src="./assets/close.svg" class="grayed-icon" />
+                <img src="./assets/close.svg" (click)="confirmCollectionDelete(collection)" class="grayed-icon" />
             </div>
-            {{ collection.name }}
+            <p>{{ collection.name }}</p>
         </button>
         <button
             class="add-new-collection-box collection-box light-box-shadow empty-button dissolve-animation-enter"

@@ -4,6 +4,7 @@ import { CollectionGroupProperties, UserRepositoryService } from '../user-reposi
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionInputs } from '../collection-form/collection-form.service';
 import { CollectionRepositoryService } from '../collection-repository/collection-repository.service';
+import { ICollectionReference } from 'src/app/models/documents/collection-reference.document';
 
 @Injectable({
     providedIn: 'root'
@@ -37,6 +38,10 @@ export class UserIdInterceptorService {
 
     async createCollectionReference(collectionGroupName: string, collectionId: string, collectionName: string) {
         await this._userRepository.createCollectionReference(this._userId, collectionGroupName, collectionId, collectionName);
+    }
+
+    async deleteCollectionReference(collectionGroupName: string, collectionReference: ICollectionReference) {
+        await this._userRepository.deleteCollectionReference(this._userId, collectionGroupName, collectionReference);
     }
     // end of UserRepository
 

@@ -121,5 +121,23 @@ export class UserRepositoryService implements OnDestroy {
             collectionGroups: userCollectionGroups
         });
     }
+
+    async deleteCollectionReference(userId: string, collectionGroupName: string, collectionReference: ICollectionReference) {
+        const userCollectionGroups = (this._userSubject.value as UserDocument).collectionGroups;
+        const matchingCollectionGroup = userCollectionGroups.find((group) => group.name == collectionGroupName);
+
+        if (!matchingCollectionGroup) {
+            return;
+        }
+
+        const index = matchingCollectionGroup.collections.indexOf(collectionReference);
+        if (index > -1) {
+            matchingCollectionGroup.collections.splice(index, 1);
+
+            await updateDoc(doc(this._firestore, this._collectionName, userId), {
+                collectionGroups: userCollectionGroups
+            });
+        }
+    }
 }
 
