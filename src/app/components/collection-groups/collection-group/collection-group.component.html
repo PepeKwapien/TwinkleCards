@@ -15,12 +15,16 @@
             *ngFor="let collection of collectionGroup.collections"
             class="collection-box light-box-shadow empty-button dissolve-animation-enter"
             [class]="collectionGroup.color">
+            <div class="collection-group-action-buttons-container">
+                <img src="./assets/edit.svg" class="grayed-icon" />
+                <img src="./assets/close.svg" class="grayed-icon" />
+            </div>
             {{ collection.name }}
         </button>
         <button
             class="add-new-collection-box collection-box light-box-shadow empty-button dissolve-animation-enter"
             (click)="openCreateCollectionModal(collectionForm)">
-            <img class="add-circle-icon" src="./assets/add-circle.svg" />
+            <img class="grayed-icon" src="./assets/add-circle.svg" />
         </button>
     </div>
 </ng-container>
