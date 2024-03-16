@@ -2,6 +2,10 @@
     filter: invert(88%);
 }
 
+.hover-icon:hover {
+    scale: 1.1;
+}
+
 .grayed-icon {
     filter: invert(48%) sepia(0%) saturate(1116%) hue-rotate(166deg) brightness(105%) contrast(88%);
 }
