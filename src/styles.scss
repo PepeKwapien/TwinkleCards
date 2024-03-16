@@ -15,7 +15,6 @@
 }
 
 body {
-    height: 100%;
     margin: 0;
     background-color: $tertiary-background;
 
@@ -25,7 +24,6 @@ body {
 }
 
 html {
-    height: 100%;
     scroll-snap-type: y mandatory;
 }
 

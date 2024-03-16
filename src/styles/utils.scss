@@ -11,7 +11,7 @@ $navbar-height: 4rem;
 }
 
 .under-navbar-container {
-    min-height: calc(100% - $navbar-height);
+    min-height: calc(100vh - $navbar-height);
 }
 
 .limit-width {
