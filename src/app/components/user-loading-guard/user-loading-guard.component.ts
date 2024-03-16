@@ -14,6 +14,7 @@ export class UserLoadingGuardComponent {
         this.isUserEstimated = false;
         this._authService.registerOnAuthStateChanged((user) => {
             this.isUserEstimated = true;
+            console.log(user + this._router.url);
             if (this._router.url === '/' && user !== null) {
                 this._router.navigate([`home`]);
             }
