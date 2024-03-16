@@ -37,16 +37,10 @@
 }
 
 .collection-box {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 9rem;
     height: 9rem;
     border-radius: 15px;
-    text-align: center;
     border: 2px $gray-outline solid;
-    font-size: 1.05rem;
     transition: 0.3s;
 
     &.pink {
@@ -70,6 +64,18 @@
     }
 
     @include darken-on-hover-active();
+}
+
+.existing-collection {
+    position: relative;
+    padding: 0.5rem;
+    padding-top: 2rem;
+    font-size: 1.05rem;
+    word-break: break-all;
+    overflow: hidden;
+    & > * {
+        margin: 0;
+    }
 }
 
 .collection-group-action-buttons-container {
