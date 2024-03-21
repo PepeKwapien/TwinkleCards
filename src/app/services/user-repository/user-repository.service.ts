@@ -46,29 +46,29 @@ export class UserRepositoryService implements OnDestroy {
         }
     }
 
-    async readUser(userId: string): Promise<UserDocument | undefined> {
+    public async readUser(userId: string): Promise<UserDocument | undefined> {
         return (await getDoc(doc(this._firestore, this._collectionName, userId))).data() as UserDocument | undefined;
     }
 
-    async upsertUser(userId: string, user: UserDocument) {
+    public async upsertUser(userId: string, user: UserDocument) {
         return await setDoc(doc(this._firestore, this._collectionName, userId), { ...user });
     }
 
-    async updateLastLogin(userId: string): Promise<void> {
+    public async updateLastLogin(userId: string): Promise<void> {
         await updateDoc(doc(this._firestore, this._collectionName, userId), { lastLogin: new Date() });
     }
 
-    async setupUserChanges(userId: string): Promise<void> {
+    public async setupUserChanges(userId: string): Promise<void> {
         this._userChangesUnsubscribe = onSnapshot(doc(this._firestore, this._collectionName, userId), (document) =>
             this._userSubject.next(document.data() as UserDocument)
         );
     }
 
-    async clearUser(): Promise<void> {
+    public async clearUser(): Promise<void> {
         this._userSubject.next(undefined);
     }
 
-    async createCollectionGroup(userId: string, collectionGroupProperties: CollectionGroupProperties): Promise<void> {
+    public async createCollectionGroup(userId: string, collectionGroupProperties: CollectionGroupProperties): Promise<void> {
         const newCollectionGroup: IUserCollectionGroup = {
             name: collectionGroupProperties.name,
             color: collectionGroupProperties.color,
@@ -80,7 +80,7 @@ export class UserRepositoryService implements OnDestroy {
         });
     }
 
-    async editCollectionGroup(
+    public async editCollectionGroup(
         userId: string,
         collectionGroup: IUserCollectionGroup,
         collectionGroupProperties: CollectionGroupProperties
@@ -102,13 +102,18 @@ export class UserRepositoryService implements OnDestroy {
         });
     }
 
-    async deleteCollectionGroup(userId: string, collectionGroup: IUserCollectionGroup): Promise<void> {
+    public async deleteCollectionGroup(userId: string, collectionGroup: IUserCollectionGroup): Promise<void> {
         await updateDoc(doc(this._firestore, this._collectionName, userId), {
             collectionGroups: arrayRemove({ ...collectionGroup })
         });
     }
 
-    async createCollectionReference(userId: string, collectionGroupName: string, collectionId: string, collectionName: string) {
+    public async createCollectionReference(
+        userId: string,
+        collectionGroupName: string,
+        collectionId: string,
+        collectionName: string
+    ) {
         const userCollectionGroups = (this._userSubject.value as UserDocument).collectionGroups;
         const matchingCollectionGroup = userCollectionGroups.find((group) => group.name == collectionGroupName);
 
@@ -123,7 +128,7 @@ export class UserRepositoryService implements OnDestroy {
         });
     }
 
-    async updateCollectionReference(
+    public async updateCollectionReference(
         userId: string,
         newCollectionGroupName: string,
         collectionId: string,
@@ -183,7 +188,11 @@ export class UserRepositoryService implements OnDestroy {
         await updateDoc(doc(this._firestore, this._collectionName, userId), { collectionGroups: userCollectionGroups });
     }
 
-    async deleteCollectionReference(userId: string, collectionGroupName: string, collectionReference: ICollectionReference) {
+    public async deleteCollectionReference(
+        userId: string,
+        collectionGroupName: string,
+        collectionReference: ICollectionReference
+    ) {
         const userCollectionGroups = (this._userSubject.value as UserDocument).collectionGroups;
         const matchingCollectionGroup = userCollectionGroups.find((group) => group.name == collectionGroupName);
 

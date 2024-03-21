@@ -21,26 +21,26 @@ export class UserIdInterceptorService {
     ) {}
 
     // User repository
-    async createCollectionGroup(collectionGroupProperties: CollectionGroupProperties): Promise<void> {
+    public async createCollectionGroup(collectionGroupProperties: CollectionGroupProperties): Promise<void> {
         await this._userRepository.createCollectionGroup(this._userId, collectionGroupProperties);
     }
 
-    async editCollectionGroup(
+    public async editCollectionGroup(
         collectionGroup: IUserCollectionGroup,
         collectionGroupProperties: CollectionGroupProperties
     ): Promise<void> {
         await this._userRepository.editCollectionGroup(this._userId, collectionGroup, collectionGroupProperties);
     }
 
-    async deleteCollectionGroup(collectionGroup: IUserCollectionGroup): Promise<void> {
+    public async deleteCollectionGroup(collectionGroup: IUserCollectionGroup): Promise<void> {
         await this._userRepository.deleteCollectionGroup(this._userId, collectionGroup);
     }
 
-    async createCollectionReference(collectionGroupName: string, collectionId: string, collectionName: string) {
+    public async createCollectionReference(collectionGroupName: string, collectionId: string, collectionName: string) {
         await this._userRepository.createCollectionReference(this._userId, collectionGroupName, collectionId, collectionName);
     }
 
-    async updateCollectionReference(
+    public async updateCollectionReference(
         newCollectionGroupName: string,
         collectionId: string,
         newCollectionName: string
@@ -53,13 +53,13 @@ export class UserIdInterceptorService {
         );
     }
 
-    async deleteCollectionReference(collectionGroupName: string, collectionReference: ICollectionReference) {
+    public async deleteCollectionReference(collectionGroupName: string, collectionReference: ICollectionReference) {
         await this._userRepository.deleteCollectionReference(this._userId, collectionGroupName, collectionReference);
     }
     // end of UserRepository
 
     // Collection repository
-    async createCollection(collectionInputs: CollectionInputs) {
+    public async createCollection(collectionInputs: CollectionInputs) {
         return await this._collectionRepository.createCollection(this._userId, collectionInputs);
     }
 }
