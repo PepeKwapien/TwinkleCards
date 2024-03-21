@@ -11,32 +11,34 @@
             autocomplete="off"
             placeholder="Optional"></textarea>
         <label for="collection-public">Public:</label>
-        <input type="checkbox" name="public" id="collection-public" formControlName="public" />
-        <label for="type">Collection type:</label>
-        <div class="collection-type-container">
-            <label>
-                <input type="radio" name="type" id="definition" value="definition" formControlName="type" />
-                <div class="collection-type-option-container">
-                    <div class="collection-type-example-container"><h4>Term</h4></div>
-                    <img src="./assets/swap-horiz.svg" />
-                    <div class="collection-type-example-container"><p>Definition</p></div>
-                </div>
-            </label>
-            <label>
-                <input type="radio" name="type" id="translation" value="translation" formControlName="type" />
-                <div class="collection-type-option-container">
-                    <div class="collection-type-example-container">
-                        <h4>Word</h4>
-                        <p>Example use</p>
+        <input type="checkbox" name="public" id="collection-public" formControlName="isPublic" />
+        <ng-container *ngIf="!editForm">
+            <label for="type">Collection type:</label>
+            <div class="collection-type-container">
+                <label>
+                    <input type="radio" name="type" id="definition" value="definition" formControlName="type" />
+                    <div class="collection-type-option-container">
+                        <div class="collection-type-example-container"><h4>Term</h4></div>
+                        <img src="./assets/swap-horiz.svg" />
+                        <div class="collection-type-example-container"><p>Definition</p></div>
                     </div>
-                    <img src="./assets/swap-horiz.svg" />
-                    <div class="collection-type-example-container">
-                        <h4>Translation</h4>
-                        <p>Translated use</p>
+                </label>
+                <label>
+                    <input type="radio" name="type" id="translation" value="translation" formControlName="type" />
+                    <div class="collection-type-option-container">
+                        <div class="collection-type-example-container">
+                            <h4>Word</h4>
+                            <p>Example use</p>
+                        </div>
+                        <img src="./assets/swap-horiz.svg" />
+                        <div class="collection-type-example-container">
+                            <h4>Translation</h4>
+                            <p>Translated use</p>
+                        </div>
                     </div>
-                </div>
-            </label>
-        </div>
+                </label>
+            </div>
+        </ng-container>
         <label for="collection-name">Group:</label>
         <select name="group" id="group" formControlName="group">
             <option *ngFor="let group of collectionGroups" [value]="group">{{ group }}</option>

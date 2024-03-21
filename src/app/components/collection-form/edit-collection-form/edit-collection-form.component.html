@@ -1,0 +1,10 @@
+<div class="form-outer-container">
+    <h3 [class]="collectionGroup.color">Edit collection {{ collectionReference.name }}</h3>
+    <app-collection-form-body
+        [buttonTemplate]="button"
+        [buttonCallback]="editCollectionCallback()"
+        [editForm]="true"></app-collection-form-body>
+</div>
+
+<ng-template #button>Save <img src="./assets/edit.svg" class="inverted-black-icon" /></ng-template>
+

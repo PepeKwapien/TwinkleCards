@@ -14,6 +14,12 @@ import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/u
 export class CollectionGroupComponent {
     @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
 
+    private _lastEditedCollection?: ICollectionReference;
+
+    public get lastEditedCollection(): ICollectionReference | undefined {
+        return this._lastEditedCollection;
+    }
+
     constructor(
         private _modalService: ModalService,
         private _userIdInterceptorService: UserIdInterceptorService,
@@ -23,6 +29,11 @@ export class CollectionGroupComponent {
 
     public openModal(modalTemplate: TemplateRef<Element>) {
         this._modalService.open(modalTemplate);
+    }
+
+    public openEditCollectionModal(collection: ICollectionReference, collectionGroupForm: TemplateRef<Element>) {
+        this._lastEditedCollection = collection;
+        this.openModal(collectionGroupForm);
     }
 
     public openCreateCollectionModal(collectionGroupForm: TemplateRef<Element>) {

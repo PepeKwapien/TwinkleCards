@@ -11,6 +11,7 @@ import { CollectionGroupFormBodyComponent } from 'src/app/components/collection-
 import { CreateCollectionGroupFormComponent } from 'src/app/components/collection-group-form/create-collection-group-form/create-collection-group-form.component';
 import { EditCollectionGroupFormComponent } from 'src/app/components/collection-group-form/edit-collection-group-form/edit-collection-group-form.component';
 import { LoadingModule } from '../loading/loading.module';
+import { EditCollectionFormComponent } from 'src/app/components/collection-form/edit-collection-form/edit-collection-form.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { LoadingModule } from '../loading/loading.module';
         CreateCollectionGroupFormComponent,
         EditCollectionGroupFormComponent,
         CollectionFormBodyComponent,
-        CreateCollectionFormComponent
+        CreateCollectionFormComponent,
+        EditCollectionFormComponent
     ],
     imports: [
         CommonModule,

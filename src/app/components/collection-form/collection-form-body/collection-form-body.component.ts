@@ -11,6 +11,7 @@ import { UserRepositoryService } from 'src/app/services/user-repository/user-rep
 export class CollectionFormBodyComponent {
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
+    @Input() editForm: boolean = false;
 
     public get formGroup(): FormGroup {
         return this._collectionFormService.formGroup;

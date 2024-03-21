@@ -2,6 +2,10 @@
     filter: invert(88%);
 }
 
+.hover-icon {
+    transition: 0.3s;
+}
+
 .hover-icon:hover {
     scale: 1.1;
 }

@@ -46,7 +46,7 @@ export class UserRepositoryService implements OnDestroy {
         }
     }
 
-    async getUser(userId: string): Promise<UserDocument | undefined> {
+    async readUser(userId: string): Promise<UserDocument | undefined> {
         return (await getDoc(doc(this._firestore, this._collectionName, userId))).data() as UserDocument | undefined;
     }
 
@@ -74,6 +74,7 @@ export class UserRepositoryService implements OnDestroy {
             color: collectionGroupProperties.color,
             collections: [] as ICollectionReference[]
         };
+
         await updateDoc(doc(this._firestore, this._collectionName, userId), {
             collectionGroups: arrayUnion(newCollectionGroup)
         });
@@ -120,6 +121,66 @@ export class UserRepositoryService implements OnDestroy {
         await updateDoc(doc(this._firestore, this._collectionName, userId), {
             collectionGroups: userCollectionGroups
         });
+    }
+
+    async updateCollectionReference(
+        userId: string,
+        newCollectionGroupName: string,
+        collectionId: string,
+        newCollectionName: string
+    ) {
+        let changesWereMade = false;
+
+        const userCollectionGroups = (this._userSubject.value as UserDocument).collectionGroups;
+        let currentCollectionGroup: IUserCollectionGroup | undefined,
+            newCollectionGroup: IUserCollectionGroup | undefined = undefined;
+        let currentCollectionReference: ICollectionReference;
+        let indexOfCollectionReference: number;
+
+        for (const collectionGroup of userCollectionGroups) {
+            indexOfCollectionReference = collectionGroup.collections.findIndex(
+                (collectionReference) => collectionReference.id === collectionId
+            );
+
+            if (indexOfCollectionReference !== -1) {
+                currentCollectionGroup = collectionGroup;
+                currentCollectionReference = collectionGroup.collections[indexOfCollectionReference];
+            }
+
+            if (collectionGroup.name === newCollectionGroupName) {
+                newCollectionGroup = collectionGroup;
+            }
+
+            if (currentCollectionGroup && newCollectionGroup) {
+                break;
+            }
+        }
+
+        if (!currentCollectionGroup || !newCollectionGroup) {
+            return;
+        }
+
+        if (currentCollectionGroup !== newCollectionGroup) {
+            currentCollectionGroup.collections.splice(indexOfCollectionReference!, 1);
+            const newCollectionReference: ICollectionReference = { id: collectionId, name: newCollectionName };
+            newCollectionGroup.collections.push({ ...newCollectionReference });
+
+            indexOfCollectionReference = newCollectionGroup.collections.length - 1;
+            currentCollectionReference = newCollectionReference;
+            currentCollectionGroup = newCollectionGroup;
+            changesWereMade = true;
+        }
+
+        if (currentCollectionReference!.name !== newCollectionName) {
+            currentCollectionGroup.collections[indexOfCollectionReference!].name = newCollectionName;
+            changesWereMade = true;
+        }
+
+        if (!changesWereMade) {
+            return;
+        }
+
+        await updateDoc(doc(this._firestore, this._collectionName, userId), { collectionGroups: userCollectionGroups });
     }
 
     async deleteCollectionReference(userId: string, collectionGroupName: string, collectionReference: ICollectionReference) {

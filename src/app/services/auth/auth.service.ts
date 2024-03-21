@@ -56,7 +56,7 @@ export class AuthService {
 
     private async _setupUser(user: User): Promise<void> {
         const userId = user.uid;
-        const userDocument = await this._userRepository.getUser(userId);
+        const userDocument = await this._userRepository.readUser(userId);
         if (!userDocument) {
             await this._userRepository.upsertUser(userId, UserDocument.FromFirebaseUser(user));
         } else {

@@ -9,7 +9,7 @@ export class CollectionDocument {
     type: CollectionType;
     flashcards: IBaseFlashcard[];
 
-    constructor(name: string, ownerId: string, isPublic: boolean, type: CollectionType, description?: string) {
+    constructor(name: string, ownerId: string, isPublic: boolean, type: CollectionType, description: string | null) {
         this.name = name;
         this.ownerId = ownerId;
         this.isPublic = isPublic;
@@ -25,7 +25,7 @@ export class CollectionDocument {
         return new CollectionDocument(
             collectionInputs.name,
             ownerId,
-            collectionInputs.public,
+            collectionInputs.isPublic,
             collectionInputs.type,
             collectionInputs.description
         );

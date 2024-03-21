@@ -40,6 +40,19 @@ export class UserIdInterceptorService {
         await this._userRepository.createCollectionReference(this._userId, collectionGroupName, collectionId, collectionName);
     }
 
+    async updateCollectionReference(
+        newCollectionGroupName: string,
+        collectionId: string,
+        newCollectionName: string
+    ): Promise<void> {
+        await this._userRepository.updateCollectionReference(
+            this._userId,
+            newCollectionGroupName,
+            collectionId,
+            newCollectionName
+        );
+    }
+
     async deleteCollectionReference(collectionGroupName: string, collectionReference: ICollectionReference) {
         await this._userRepository.deleteCollectionReference(this._userId, collectionGroupName, collectionReference);
     }
