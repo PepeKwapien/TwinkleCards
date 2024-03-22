@@ -3,7 +3,7 @@
     *ngIf="user$ | async as user; else loader">
     <div class="collection-groups-container">
         <app-collection-group
-            class="slide-from-left-enter"
+            [ngClass]="{ 'slide-from-left-enter': !wasAnimationPlayed }"
             [style.animation-delay]="index * 0.1 + 's'"
             *ngFor="let group of user.collectionGroups; let index = index"
             [collectionGroup]="group"
