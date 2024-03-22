@@ -12,8 +12,9 @@
     </div>
     <div class="collection-grid">
         <button
-            *ngFor="let collection of collectionGroup.collections"
-            class="collection-box existing-collection light-box-shadow empty-button"
+            *ngFor="let collection of collectionGroup.collections; let index = index"
+            class="collection-box existing-collection light-box-shadow empty-button slide-from-left-and-scale-enter"
+            [style.animation-delay]="indexOnScreen * 0.1 + 0.1 * index + 's'"
             [class]="collectionGroup.color">
             <div class="collection-group-action-buttons-container">
                 <img
@@ -25,7 +26,8 @@
             {{ collection.name }}
         </button>
         <button
-            class="add-new-collection-box collection-box light-box-shadow empty-button"
+            class="add-new-collection-box collection-box light-box-shadow empty-button slide-from-left-and-scale-enter"
+            [style.animation-delay]="indexOnScreen * 0.1 + 0.1 * collectionGroup.collections.length + 's'"
             (click)="openCreateCollectionModal(collectionForm)">
             <img class="grayed-icon" src="./assets/add-circle.svg" />
         </button>

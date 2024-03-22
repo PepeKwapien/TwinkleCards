@@ -4,11 +4,13 @@
     <div class="collection-groups-container">
         <app-collection-group
             class="slide-from-left-enter"
-            [style.animation-delay]="count * 0.1 + 's'"
-            *ngFor="let group of user.collectionGroups; let count = index"
-            [collectionGroup]="group"></app-collection-group>
+            [style.animation-delay]="index * 0.1 + 's'"
+            *ngFor="let group of user.collectionGroups; let index = index"
+            [collectionGroup]="group"
+            [indexOnScreen]="index"></app-collection-group>
         <button
-            class="add-new-collection-group-header light-box-shadow empty-button expand-height-enter"
+            class="add-new-collection-group-header light-box-shadow empty-button slide-from-left-enter"
+            [style.animation-delay]="user.collectionGroups.length * 0.1 + 's'"
             (click)="openModal(collectionGroupForm)">
             <h1 class="header-text collection-group-header-text-margin">
                 <img class="grayed-icon" src="./assets/add-circle.svg" />New collection group

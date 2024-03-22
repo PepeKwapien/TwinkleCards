@@ -13,6 +13,7 @@ import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/u
 })
 export class CollectionGroupComponent {
     @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
+    @Input() indexOnScreen: number = 1;
 
     private _lastEditedCollection?: ICollectionReference;
 

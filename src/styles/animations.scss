@@ -41,19 +41,19 @@
 }
 
 .slide-from-left-and-scale-enter {
-    scale: 0.5;
-    transform: translateX(-200%);
-    animation: slideFromLeft 0.6s ease forwards;
+    position: relative;
+    scale: 0.1;
+    left: -100vw;
+    animation: slideFromLeftAndScale 0.6s ease-out forwards;
 }
 
 @keyframes slideFromLeftAndScale {
     from {
-        scale: 0.5;
-        transform: translateX(-100%);
+        scale: 0.1;
+        left: -100vw;
     }
     to {
         scale: 1;
-
-        transform: translateX(0%);
+        left: unset;
     }
 }
