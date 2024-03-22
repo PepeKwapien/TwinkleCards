@@ -106,18 +106,18 @@
     opacity: 1;
 
     &.landing-page-section-title {
-        transition: 1s;
+        transition: 0.7s;
     }
 
     &.landing-page-section-description {
-        transition: 1s 0.5s;
+        transition: 0.7s 0.5s;
     }
 
     &.landing-page-section-additional {
         transform: translateY(0%);
         @for $i from 1 through 10 {
             &:nth-child(#{$i}) {
-                transition: 1s #{1 + ($i - 1) * 0.5}s;
+                transition: 0.7s #{1 + ($i - 1) * 0.3}s;
             }
         }
     }

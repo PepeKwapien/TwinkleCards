@@ -21,7 +21,7 @@ export class LandingPageComponent implements AfterViewInit {
                 title: 'Study and memorize easier 💡',
                 description:
                     'TwinkleCards✨ is here to make your learning process easier. No more searching through hundreds of your flashcards to find that one word that you have on the tip of your tongue...',
-                additional: ['Search for words', 'Sort your collection', 'View and flip flashcards']
+                additional: ['Search for words', 'Sort your collections', 'View and flip flashcards']
             },
             {
                 title: 'Share with your friends 🤝',
