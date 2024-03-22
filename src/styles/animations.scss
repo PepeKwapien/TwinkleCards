@@ -1,0 +1,28 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to the element */
+.dissolve-animation-enter {
+    animation: fadeIn 1000ms ease-out;
+}
+
+.expand-height-enter {
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: expandHeight 0.5s ease-in-out forwards;
+}
+
+@keyframes expandHeight {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
