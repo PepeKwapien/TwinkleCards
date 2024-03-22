@@ -1,8 +1,12 @@
 <div
     class="footer under-navbar-container default-y-padding default-x-padding limit-width"
     *ngIf="user$ | async as user; else loader">
-    <div class="collection-groups-container expand-height-enter">
-        <app-collection-group *ngFor="let group of user.collectionGroups" [collectionGroup]="group"></app-collection-group>
+    <div class="collection-groups-container">
+        <app-collection-group
+            class="slide-from-left-enter"
+            [style.animation-delay]="count * 0.1 + 's'"
+            *ngFor="let group of user.collectionGroups; let count = index"
+            [collectionGroup]="group"></app-collection-group>
         <button
             class="add-new-collection-group-header light-box-shadow empty-button expand-height-enter"
             (click)="openModal(collectionGroupForm)">

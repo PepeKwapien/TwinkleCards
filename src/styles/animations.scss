@@ -13,9 +13,8 @@
 }
 
 .expand-height-enter {
-    transform: scaleY(0);
     transform-origin: top;
-    animation: expandHeight 0.5s ease-in-out forwards;
+    animation: expandHeight 0.5s ease-in-out;
 }
 
 @keyframes expandHeight {
@@ -24,5 +23,37 @@
     }
     to {
         transform: scaleY(1);
+    }
+}
+
+.slide-from-left-enter {
+    transform: translateX(-200%);
+    animation: slideFromLeft 0.6s ease forwards;
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.slide-from-left-and-scale-enter {
+    scale: 0.5;
+    transform: translateX(-200%);
+    animation: slideFromLeft 0.6s ease forwards;
+}
+
+@keyframes slideFromLeftAndScale {
+    from {
+        scale: 0.5;
+        transform: translateX(-100%);
+    }
+    to {
+        scale: 1;
+
+        transform: translateX(0%);
     }
 }
