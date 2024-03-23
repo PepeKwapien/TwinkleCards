@@ -5,16 +5,9 @@ $navbar-height: 4rem;
     padding-right: 2em;
 }
 
-.default-y-padding {
-    padding-top: 1.7em;
-    padding-bottom: 1.7em;
-}
-
 .under-navbar-container {
+    padding: 1.7em 2em;
     min-height: calc(100vh - $navbar-height);
-}
-
-.limit-width {
     display: flex;
     justify-content: center;
     & > * {

@@ -1,6 +1,4 @@
-<div
-    class="footer under-navbar-container default-y-padding default-x-padding limit-width"
-    *ngIf="user$ | async as user; else loader">
+<div class="footer under-navbar-container" *ngIf="user$ | async as user; else loader">
     <div class="collection-groups-container">
         <app-collection-group
             [ngClass]="{ 'slide-from-left-enter': !wasAnimationPlayed }"

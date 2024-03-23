@@ -1,0 +1,8 @@
+<div class="footer under-navbar-container" *ngIf="collection$ | async as collection; else loader">
+    <h1>{{ collection.name }}</h1>
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+

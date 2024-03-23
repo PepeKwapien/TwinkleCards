@@ -12,6 +12,7 @@ import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.
 import { LoadingModule } from './modules/loading/loading.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
+import { CollectionComponent } from './components/collection/collection.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { UserLoadingGuardComponent } from './components/user-loading-guard/user-
         NavbarComponent,
         LandingPageComponent,
         ModalOverlayComponent,
-        UserLoadingGuardComponent
+        UserLoadingGuardComponent,
+        CollectionComponent
     ],
     imports: [
         BrowserModule,

@@ -15,7 +15,8 @@
             *ngFor="let collection of collectionGroup.collections; let index = index"
             class="collection-box existing-collection light-box-shadow empty-button slide-from-left-and-scale-enter"
             [style.animation-delay]="indexOnScreen * 0.1 + 0.1 * index + 's'"
-            [class]="collectionGroup.color">
+            [class]="collectionGroup.color"
+            [routerLink]="'/' + collection.id">
             <div class="collection-group-action-buttons-container">
                 <img
                     src="./assets/edit.svg"

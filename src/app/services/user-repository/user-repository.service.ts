@@ -27,7 +27,7 @@ export class UserRepositoryService implements OnDestroy {
     private _userChangesUnsubscribe: Unsubscribe | undefined;
 
     public get user$(): Observable<UserDocument | undefined> {
-        return this._userSubject.asObservable();
+        return this._userSubject;
     }
 
     public get userCollectionGroupNames(): string[] {
@@ -58,7 +58,7 @@ export class UserRepositoryService implements OnDestroy {
         await updateDoc(doc(this._firestore, this._collectionName, userId), { lastLogin: new Date() });
     }
 
-    public async setupUserChanges(userId: string): Promise<void> {
+    public setupUserChanges(userId: string): void {
         this._userChangesUnsubscribe = onSnapshot(doc(this._firestore, this._collectionName, userId), (document) =>
             this._userSubject.next(document.data() as UserDocument)
         );
