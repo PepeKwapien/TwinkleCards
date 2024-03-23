@@ -1,7 +1,6 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserIdInterceptorService } from '../user-id-interceptor/user-id-interceptor.service';
-import { Subscription } from 'rxjs';
 import { ModalService } from '../modal/modal.service';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionGroupProperties } from '../user-repository/user-repository.service';
@@ -9,9 +8,8 @@ import { CollectionGroupProperties } from '../user-repository/user-repository.se
 @Injectable({
     providedIn: 'root'
 })
-export class CollectionGroupFormService implements OnDestroy {
+export class CollectionGroupFormService {
     private _formGroup: FormGroup;
-    private _resetFormSubscription: Subscription;
 
     public get formGroup(): FormGroup {
         return this._formGroup;
@@ -26,12 +24,6 @@ export class CollectionGroupFormService implements OnDestroy {
             name: ['', [Validators.required, Validators.minLength(1)]],
             color: ['', Validators.required]
         });
-
-        this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this._resetFormGroup());
-    }
-
-    ngOnDestroy(): void {
-        this._resetFormSubscription.unsubscribe();
     }
 
     public async createCollectionGroup() {
@@ -51,7 +43,7 @@ export class CollectionGroupFormService implements OnDestroy {
         }
     }
 
-    private _resetFormGroup(): void {
+    public resetFormGroup(): void {
         this._formGroup.reset();
     }
 }

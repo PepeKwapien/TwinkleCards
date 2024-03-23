@@ -1,6 +1,5 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { ModalService } from '../modal/modal.service';
 import { UserIdInterceptorService } from '../user-id-interceptor/user-id-interceptor.service';
 import { CollectionRepositoryService } from '../collection-repository/collection-repository.service';
@@ -21,9 +20,8 @@ export type CollectionInputs = {
 @Injectable({
     providedIn: 'root'
 })
-export class CollectionFormService implements OnDestroy {
+export class CollectionFormService {
     private _formGroup: FormGroup;
-    private _resetFormSubscription: Subscription;
 
     public get formGroup(): FormGroup {
         return this._formGroup;
@@ -42,11 +40,6 @@ export class CollectionFormService implements OnDestroy {
             type: ['', Validators.required],
             group: ['', Validators.required]
         });
-        this._resetFormSubscription = this._modalService.closeModal$.subscribe(() => this._resetFormGroup());
-    }
-
-    ngOnDestroy(): void {
-        this._resetFormSubscription.unsubscribe();
     }
 
     public async createCollection(): Promise<void> {
@@ -70,7 +63,7 @@ export class CollectionFormService implements OnDestroy {
         this._formGroup.patchValue(collectionInputs);
     }
 
-    private _resetFormGroup(): void {
+    public resetFormGroup(): void {
         this._formGroup.reset({
             isPublic: false,
             description: null

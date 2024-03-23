@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CollectionFormService } from '../../../services/collection-form/collection-form.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
@@ -8,7 +8,7 @@ import { UserRepositoryService } from 'src/app/services/user-repository/user-rep
     templateUrl: './collection-form-body.component.html',
     styleUrls: ['./collection-form-body.component.scss']
 })
-export class CollectionFormBodyComponent {
+export class CollectionFormBodyComponent implements OnDestroy {
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
     @Input() editForm: boolean = false;
@@ -22,6 +22,10 @@ export class CollectionFormBodyComponent {
     }
 
     constructor(private _collectionFormService: CollectionFormService, private _userRepository: UserRepositoryService) {}
+
+    ngOnDestroy(): void {
+        this._collectionFormService.resetFormGroup();
+    }
 
     public async callback($event: Event) {
         $event.preventDefault();

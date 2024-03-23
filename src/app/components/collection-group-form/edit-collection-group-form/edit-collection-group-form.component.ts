@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionGroupFormService } from 'src/app/services/collection-group-form/collection-group-form.service';
-import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
     selector: 'app-edit-collection-group-form',

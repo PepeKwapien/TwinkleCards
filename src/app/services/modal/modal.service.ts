@@ -1,5 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, filter, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
 import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
 
 export type ConfirmActionProperties = { title: string; description: string; color?: CollectionGroupColorType };
@@ -20,10 +20,6 @@ export class ModalService {
 
     public get showModal$(): Observable<boolean> {
         return this._showModal.asObservable();
-    }
-
-    public get closeModal$(): Observable<boolean> {
-        return this._showModal.asObservable().pipe(filter((value) => !value));
     }
 
     public get setTemplate$(): Observable<TemplateRef<any> | undefined> {

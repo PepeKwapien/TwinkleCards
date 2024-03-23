@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CollectionGroupColorEnum } from 'src/app/helpers/colors.helper';
 import { CollectionGroupFormService } from 'src/app/services/collection-group-form/collection-group-form.service';
@@ -8,7 +8,7 @@ import { CollectionGroupFormService } from 'src/app/services/collection-group-fo
     templateUrl: './collection-group-form-body.component.html',
     styleUrls: ['./collection-group-form-body.component.scss']
 })
-export class CollectionGroupFormBodyComponent {
+export class CollectionGroupFormBodyComponent implements OnDestroy {
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
 
@@ -21,6 +21,10 @@ export class CollectionGroupFormBodyComponent {
     }
 
     constructor(private _collectionFormGorupService: CollectionGroupFormService) {}
+
+    ngOnDestroy(): void {
+        this._collectionFormGorupService.resetFormGroup();
+    }
 
     public changeColor(color: string) {
         this.formGroup.patchValue({ color });
