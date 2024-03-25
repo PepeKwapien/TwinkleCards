@@ -15,6 +15,7 @@
 }
 
 .modal-overlay-body {
+    position: relative;
     max-height: 90%;
     overflow: auto;
     width: clamp(400px, 50%, 600px);
@@ -31,4 +32,10 @@
     & button {
         min-width: 7em;
     }
+}
+
+.close-modal-icon {
+    position: absolute;
+    right: 0em;
+    top: 0.5em;
 }

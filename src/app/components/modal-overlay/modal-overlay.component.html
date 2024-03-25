@@ -1,5 +1,8 @@
 <div class="modal-overlay-container" *ngIf="showModal$ | async" (mousedown)="close()">
     <div (mousedown)="$event.stopPropagation()" class="modal-overlay-body dissolve-animation-enter light-box-shadow">
+        <button class="empty-button close-modal-icon">
+            <img src="./assets/close.svg" class="hover-icon grayed-icon" (click)="close()" />
+        </button>
         <ng-container [ngTemplateOutlet]="(setTemplate$ | async) || default"></ng-container>
     </div>
 </div>
