@@ -72,7 +72,7 @@ input {
 
 textarea {
     resize: vertical;
-    height: 2.5rem;
+    min-height: 3rem;
 }
 
 input[type='text'],
