@@ -1,17 +1,18 @@
 $navbar-height: 4rem;
+$max-width: 1300px;
 
 .default-x-padding {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
 }
 
 .under-navbar-container {
-    padding: 1.7em 2em;
+    padding: 1.7em 3em;
     min-height: calc(100vh - $navbar-height);
     display: flex;
     justify-content: center;
     & > * {
-        max-width: 1400px;
+        max-width: $max-width;
         width: 100%;
     }
 }

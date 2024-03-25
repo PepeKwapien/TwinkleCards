@@ -1,4 +1,11 @@
 <nav class="navbar-container default-x-padding">
-    <p class="navbar-app-title header-text">TwinkleCards✨</p>
-    <app-auth></app-auth>
+    <div class="navbar-content-container">
+        <div class="logo-container">
+            <button *ngIf="displayBackArrow" class="empty-button back-button" (click)="navigateBack()">
+                <img src="./assets/arrow_back.svg" class="hover-icon" />
+            </button>
+            <button class="header-text empty-button" routerLink="/home">TwinkleCards✨</button>
+        </div>
+        <app-auth></app-auth>
+    </div>
 </nav>

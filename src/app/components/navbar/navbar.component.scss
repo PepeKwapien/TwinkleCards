@@ -1,18 +1,36 @@
 @import '/src/styles/utils.scss';
 
 .navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: sticky;
     top: 0em;
     left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
     height: $navbar-height;
 
     background-color: hsl(0, 0%, 95%);
     box-shadow: 3px 3px 5px rgba(128, 128, 128, 0.486);
     z-index: 2;
 }
-.navbar-app-title {
-    cursor: pointer;
+
+.navbar-content-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $max-width;
+}
+
+.logo-container {
+    position: relative;
+}
+
+.logo-container .back-button {
+    position: absolute;
+    left: -3em;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
 }
