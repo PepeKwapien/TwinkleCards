@@ -20,9 +20,9 @@
             <div class="collection-group-action-buttons-container">
                 <img
                     src="./assets/edit.svg"
-                    (click)="openEditCollectionModal(collection, editCollectionForm)"
+                    (click)="openEditCollectionModal($event, collection, editCollectionForm)"
                     class="grayed-icon" />
-                <img src="./assets/close.svg" (click)="confirmCollectionDelete(collection)" class="grayed-icon" />
+                <img src="./assets/close.svg" (click)="confirmCollectionDelete($event, collection)" class="grayed-icon" />
             </div>
             {{ collection.name }}
         </button>

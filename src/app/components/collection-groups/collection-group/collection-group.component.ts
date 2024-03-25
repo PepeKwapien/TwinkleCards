@@ -32,33 +32,11 @@ export class CollectionGroupComponent {
         this._modalService.open(modalTemplate);
     }
 
-    public openEditCollectionModal(collection: ICollectionReference, collectionGroupForm: TemplateRef<Element>) {
-        this._lastEditedCollection = collection;
-        this.openModal(collectionGroupForm);
-    }
-
-    public openCreateCollectionModal(collectionGroupForm: TemplateRef<Element>) {
-        this._collectionFormService.setCollectionGroup(this.collectionGroup.name);
-        this.openModal(collectionGroupForm);
-    }
-
-    public async confirmCollectionDelete(collection: ICollectionReference) {
-        const result = await this._modalService.getConfirmation({
-            title: `Delete collection ${collection.name}?`,
-            description: `This action will remove the collection and all of the flashcards inside it\nThis is irreversible. Are you sure?`,
-            color: this.collectionGroup.color
-        });
-
-        if (result) {
-            await this._userIdInterceptorService.deleteCollectionReference(this.collectionGroup.name, collection);
-            await this._collectionRepository.deleteCollection(collection.id);
-        }
-    }
-
     public async deleteGroup() {
         if (this.collectionGroup === undefined) {
             return;
         }
+
         const result = await this._modalService.getConfirmation({
             title: `Delete group '${this.collectionGroup.name}'?`,
             description:
@@ -71,6 +49,33 @@ export class CollectionGroupComponent {
                 this._collectionRepository.deleteCollection(collectionRef.id);
             }
             this._userIdInterceptorService.deleteCollectionGroup(this.collectionGroup);
+        }
+    }
+
+    public openEditCollectionModal($event: Event, collection: ICollectionReference, collectionGroupForm: TemplateRef<Element>) {
+        $event.stopPropagation();
+
+        this._lastEditedCollection = collection;
+        this.openModal(collectionGroupForm);
+    }
+
+    public openCreateCollectionModal(collectionGroupForm: TemplateRef<Element>) {
+        this._collectionFormService.setCollectionGroup(this.collectionGroup.name);
+        this.openModal(collectionGroupForm);
+    }
+
+    public async confirmCollectionDelete($event: Event, collection: ICollectionReference) {
+        $event.stopPropagation();
+
+        const result = await this._modalService.getConfirmation({
+            title: `Delete collection ${collection.name}?`,
+            description: `This action will remove the collection and all of the flashcards inside it\nThis is irreversible. Are you sure?`,
+            color: this.collectionGroup.color
+        });
+
+        if (result) {
+            await this._userIdInterceptorService.deleteCollectionReference(this.collectionGroup.name, collection);
+            await this._collectionRepository.deleteCollection(collection.id);
         }
     }
 }
