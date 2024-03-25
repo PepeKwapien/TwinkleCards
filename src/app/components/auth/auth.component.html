@@ -7,10 +7,9 @@
         <div #usernameButton class="username-container" [ngClass]="{ active: optionsExpanded }" (click)="toggleOptions()">
             <button class="username-button empty-button">
                 {{ username }}
-                <img src="./assets/arrow-down.png" class="user-icon" [ngClass]="{ 'user-icon-rotated': optionsExpanded }" />
+                <img src="./assets/expand_more.svg" class="user-icon" [ngClass]="{ 'user-icon-rotated': optionsExpanded }" />
             </button>
             <div #options @slideAnimation class="username-options" *ngIf="optionsExpanded">
-                <button class="empty-button">Settings</button>
                 <button class="empty-button" (click)="signOut()">Sign out</button>
             </div>
         </div>
