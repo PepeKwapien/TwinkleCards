@@ -9,11 +9,15 @@
 }
 
 .user-icon {
+    height: 14px;
+}
+
+.arrow-icon {
     height: 24px;
     transition: 0.3s;
 }
 
-.user-icon-rotated {
+.arrow-icon-rotated {
     transform: rotate(180deg);
 }
 
