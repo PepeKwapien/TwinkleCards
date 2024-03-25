@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
@@ -8,7 +8,7 @@ import { CollectionRepositoryService } from 'src/app/services/collection-reposit
     templateUrl: './collection.component.html',
     styleUrls: ['./collection.component.scss']
 })
-export class CollectionComponent implements OnInit {
+export class CollectionComponent implements OnInit, OnDestroy {
     @Input() collectionId!: string;
 
     public get collection$(): Observable<CollectionDocument | undefined> {
@@ -18,7 +18,11 @@ export class CollectionComponent implements OnInit {
     constructor(private _collectionRepository: CollectionRepositoryService) {}
 
     ngOnInit() {
-        this._collectionRepository.setupCollectionChanges(this.collectionId);
+        this._collectionRepository.setupCollectionChangesListener(this.collectionId);
+    }
+
+    ngOnDestroy(): void {
+        this._collectionRepository.stopCollectionChangesListener();
     }
 }
 

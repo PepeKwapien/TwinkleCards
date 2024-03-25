@@ -31,9 +31,7 @@ export class CollectionRepositoryService implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (this._collectionChangesUnsubscribe !== undefined) {
-            this._collectionChangesUnsubscribe();
-        }
+        this.stopCollectionChangesListener();
     }
 
     public async createCollection(ownerId: string, collectionInputs: CollectionInputs): Promise<string> {
@@ -44,10 +42,17 @@ export class CollectionRepositoryService implements OnDestroy {
         return docRef.id;
     }
 
-    public setupCollectionChanges(collectionId: string): void {
+    public setupCollectionChangesListener(collectionId: string): void {
         this._collectionChangesUnsubscribe = onSnapshot(doc(this._firestore, this._collectionName, collectionId), (document) =>
             this._collectionSubject.next(document.data() as CollectionDocument)
         );
+    }
+
+    public stopCollectionChangesListener(): void {
+        if (this._collectionChangesUnsubscribe !== undefined) {
+            this._collectionSubject.next(undefined);
+            this._collectionChangesUnsubscribe();
+        }
     }
 
     public async readCollection(collectionId: string): Promise<CollectionDocument | undefined> {
