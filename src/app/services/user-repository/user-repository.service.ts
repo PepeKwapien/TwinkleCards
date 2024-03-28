@@ -50,6 +50,10 @@ export class UserRepositoryService implements OnDestroy {
         return (await getDoc(doc(this._firestore, this._collectionName, userId))).data() as UserDocument | undefined;
     }
 
+    public async readUsername(userId: string): Promise<string | null | undefined> {
+        return (await this.readUser(userId))?.displayName;
+    }
+
     public async upsertUser(userId: string, user: UserDocument) {
         return await setDoc(doc(this._firestore, this._collectionName, userId), { ...user });
     }
