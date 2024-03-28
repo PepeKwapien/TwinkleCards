@@ -11,10 +11,10 @@ import { Subscription } from 'rxjs';
     animations: [
         trigger('arrow', [
             transition(':enter', [
-                style({ opacity: 0.5, transform: 'translateX(-100%) translateY(-50%)' }),
-                animate('0.2s', style({ opacity: 1, transform: 'translateX(0%) translateY(-50%)' }))
+                style({ opacity: 0, transform: 'translateX(-100%) translateY(-50%)' }),
+                animate('0.3s', style({ opacity: 1, transform: 'translateX(0%) translateY(-50%)' }))
             ]),
-            transition(':leave', [animate('0.2s', style({ opacity: 0, transform: 'translateX(-100%) translateY(-50%)' }))])
+            transition(':leave', [animate('0.3s', style({ opacity: 0, transform: 'translateX(-100%) translateY(-50%)' }))])
         ])
     ]
 })
