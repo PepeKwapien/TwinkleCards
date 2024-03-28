@@ -3,17 +3,25 @@
 }
 
 .collection-title {
-    margin: 0em 0 1em 0;
+    margin: 0 0 1.1rem 0;
 }
 
 .collection-description {
     white-space: break-spaces;
     line-height: 1.5rem;
     width: clamp(45ch, 50%, 75ch);
+    margin: 1.1rem 0;
 }
 
 .collection-information {
-    & > span {
+    display: flex;
+    column-gap: 1.5em;
+
+    & > p {
+        margin: 0;
+    }
+
+    & .collection-information-bold {
         font-weight: 1000;
     }
 }
