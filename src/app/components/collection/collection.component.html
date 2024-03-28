@@ -1,9 +1,12 @@
-<div class="footer under-navbar-container" *ngIf="collection$ | async as collection; else loader">
+<div class="footer under-navbar-container" *ngIf="collection && username; else loader">
     <div class="collection-header">
         <span class="collection-public-mark">{{ collection.isPublic ? 'Public' : 'Private' }}</span>
         <h1 class="collection-title">{{ collection.name }}</h1>
         <p class="collection-description">{{ collection.description }}</p>
-        <div class="collection-information"><span>Flashcards:</span> {{ collection.flashcards.length }}</div>
+        <div class="collection-information">
+            <span class="collection-information-bold">Author: </span>{{ username
+            }}<span class="collection-information-bold">Flashcards:</span> {{ collection.flashcards.length }}
+        </div>
     </div>
 </div>
 
