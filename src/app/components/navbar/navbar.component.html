@@ -1,7 +1,7 @@
 <nav class="navbar-container default-x-padding">
     <div class="navbar-content-container">
         <div class="logo-container">
-            <button *ngIf="displayBackArrow" class="empty-button back-button" (click)="navigateBack()">
+            <button @arrow *ngIf="displayBackArrow" class="empty-button back-button" (click)="navigateBack()">
                 <img src="./assets/arrow_back.svg" class="hover-icon" />
             </button>
             <button class="header-text empty-button" routerLink="/home">TwinkleCards✨</button>

@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Location } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
@@ -6,7 +7,16 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+    styleUrls: ['./navbar.component.scss'],
+    animations: [
+        trigger('arrow', [
+            transition(':enter', [
+                style({ opacity: 0.5, transform: 'translateX(-100%) translateY(-50%)' }),
+                animate('0.2s', style({ opacity: 1, transform: 'translateX(0%) translateY(-50%)' }))
+            ]),
+            transition(':leave', [animate('0.2s', style({ opacity: 0, transform: 'translateX(-100%) translateY(-50%)' }))])
+        ])
+    ]
 })
 export class NavbarComponent implements OnDestroy {
     private _routingHistory: string[] = [];
