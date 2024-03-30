@@ -15,19 +15,19 @@ export class LandingPageComponent implements AfterViewInit {
                 title: 'One place for all your flashcards 🗃️',
                 description:
                     'TwinkleCards✨ is an app from a flashcard lover for other flashcard lovers. The goal is to make the process of studying with flashcard easier and more convenient',
-                additional: ['Create your own collections', 'Add your own flashcards', 'Manage them with ease']
+                additional: ['Create your flashcards 👏', 'Manage them with ease 🙌', 'Have fun while studying 🥳']
             },
             {
                 title: 'Study and memorize easier 💡',
                 description:
                     'TwinkleCards✨ is here to make your learning process easier. No more searching through hundreds of your flashcards to find that one word that you have on the tip of your tongue...',
-                additional: ['Search for words', 'Sort your collections', 'View and flip flashcards']
+                additional: ['Search for words 🔍', 'Sort your collections 🗂️', 'View and flip flashcards 🍳']
             },
             {
                 title: 'Share with your friends 🤝',
                 description:
                     'If you do not want to create your own collections maybe there is an already existing collection that might catch your eye. With TwinkleCards✨, you decide if you wish to share your flashcards with others',
-                additional: ['Browse collections of others', 'Make collections public', '...or keep them hidden']
+                additional: ['Browse collections of others 🧐', 'Make collections public 📡', '...or keep them hidden 🙈']
             }
         ];
     }
