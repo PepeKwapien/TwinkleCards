@@ -1,12 +1,36 @@
 <div class="footer under-navbar-container" *ngIf="collection && username; else loader">
-    <div class="collection-header">
-        <span class="collection-public-mark">{{ collection.isPublic ? 'Public' : 'Private' }}</span>
-        <h1 class="collection-title">{{ collection.name }}</h1>
-        <p class="collection-description">{{ collection.description }}</p>
-        <div class="collection-information">
-            <p><span class="collection-information-bold">Author: </span>{{ username }}</p>
-            <p><span class="collection-information-bold">Flashcards:</span> {{ collection.flashcards.length }}</p>
+    <div class="collection-container">
+        <div class="collection-header">
+            <span class="collection-public-mark">{{ collection.isPublic ? 'Public' : 'Private' }}</span>
+            <h1 class="collection-title">{{ collection.name }}</h1>
+            <p class="collection-description">{{ collection.description }}</p>
+            <div class="collection-information">
+                <p><span class="collection-information-bold">Author: </span>{{ username }}</p>
+                <p><span class="collection-information-bold">Flashcards:</span> {{ collection.flashcards.length }}</p>
+            </div>
         </div>
+        <div class="collection-body-controls">
+            <div class="collection-body-primary-controls">
+                <button class="round-button">
+                    <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
+                </button>
+                <button class="empty-button">
+                    <img class="grayed-icon" src="./assets/add-circle.svg" />
+                </button>
+                <button class="empty-button">
+                    <img class="grayed-icon" src="./assets/360.svg" />
+                </button>
+            </div>
+            <div class="collection-body-secondary-controls">
+                <button class="empty-button">
+                    <img class="grayed-icon" src="./assets/search.svg" />
+                </button>
+                <button class="empty-button">
+                    <img class="grayed-icon" src="./assets/sort.svg" />
+                </button>
+            </div>
+        </div>
+        <div class="collection-body"></div>
     </div>
 </div>
 

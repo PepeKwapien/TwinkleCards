@@ -1,3 +1,11 @@
+@import '/src/styles/color.scss';
+
+.collection-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+}
+
 .collection-public-mark {
     font-size: 0.9rem;
 }
@@ -24,4 +32,39 @@
     & .collection-information-bold {
         font-weight: 1000;
     }
+}
+
+.collection-body-controls {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+        column-gap: 1em;
+    }
+
+    img {
+        height: 2.5em;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1em;
+        width: 100%;
+        border: 2px $gray-outline solid;
+        border-radius: 50%;
+    }
+}
+
+.collection-body-primary-controls {
+    display: flex;
+    align-items: center;
+}
+
+.collection-body-secondary-controls {
+    display: flex;
+    align-items: center;
 }

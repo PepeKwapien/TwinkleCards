@@ -11,27 +11,21 @@ button:not(.empty-button) {
         color: rgb(238, 238, 238);
         font-size: 16px;
         font-weight: 600;
-        padding: 0.6em 1em;
         border: unset;
-        border-radius: 15px;
-        background: $primary-gradient;
+        background-color: $primary-background;
         -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
         width: fit-content;
-        min-width: 5em;
 
         transition: 0.3s;
 
-        &:not(.login-button) {
-            @include lighten-on-hover-active;
+        &:not(.round-button) {
+            border-radius: 15px;
+            padding: 0.6em 1em;
+            min-width: 5em;
         }
-    }
 
-    &.login-button {
-        column-gap: 0.4em;
-        background: unset;
-        background-color: $primary-background;
         &:hover {
             background-color: $primary-hover;
         }
@@ -39,6 +33,10 @@ button:not(.empty-button) {
         &:active {
             background-color: $primary-active;
         }
+    }
+
+    &.login-button {
+        column-gap: 0.4em;
     }
 
     &.cancel-button {
@@ -63,4 +61,10 @@ button:not(.empty-button) {
 .right-side-button {
     margin-top: 1.5em;
     margin-left: auto;
+}
+
+.round-button {
+    border-radius: 50%;
+    min-width: unset;
+    padding: 0.4em;
 }
