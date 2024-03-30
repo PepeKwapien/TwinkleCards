@@ -14,27 +14,31 @@
                 <button class="round-button">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
                 </button>
-                <button class="empty-button">
+                <button class="empty-button round-button">
                     <img class="grayed-icon" src="./assets/add-circle.svg" />
                 </button>
-                <button class="empty-button">
+                <button class="empty-button round-button">
                     <img class="grayed-icon" src="./assets/360.svg" />
                 </button>
             </div>
             <div class="collection-body-secondary-controls">
-                <button class="empty-button">
+                <button class="empty-button round-button">
                     <img class="grayed-icon" src="./assets/search.svg" />
                 </button>
-                <button class="empty-button">
+                <button class="empty-button round-button">
                     <img class="grayed-icon" src="./assets/sort.svg" />
                 </button>
             </div>
         </div>
-        <div class="collection-body"></div>
+        <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body"></div>
     </div>
 </div>
 
 <ng-template #loader>
     <app-loader></app-loader>
+</ng-template>
+
+<ng-template #noFlaschards>
+    <div style="display: flex; justify-content: center; width: 100%">No flashcards in this collection 🥶</div>
 </ng-template>
 
