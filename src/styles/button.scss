@@ -40,15 +40,17 @@ button:not(.empty-button) {
     }
 
     &.cancel-button {
-        background: $cancel-button-gradient;
+        background-color: $cancel-button-color;
+        box-shadow: unset;
 
-        @include lighten-on-hover-active;
+        @include darken-on-hover-active;
     }
 
     &.confirm-button {
-        background: $confirm-button-gradient;
+        background-color: $confirm-button-color;
+        box-shadow: unset;
 
-        @include lighten-on-hover-active;
+        @include darken-on-hover-active;
     }
 }
 
