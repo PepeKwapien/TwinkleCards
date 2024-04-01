@@ -8,10 +8,10 @@
 </div>
 
 <ng-template #default>
-    <div class="form-outer-container" *ngIf="actionProperties$ | async as actionProperties">
+    <div class="form-outer-container modal-confirmation" *ngIf="actionProperties$ | async as actionProperties">
         <h3 [class]="actionProperties.color">{{ actionProperties.title }}</h3>
         <p>{{ actionProperties.description }}</p>
-        <p class="modal-confirmation">{{ actionProperties.confirmation }}</p>
+        <p class="modal-confirmation-question">{{ actionProperties.confirmation }}</p>
 
         <div class="confirmation-buttons">
             <button class="confirm-button" (click)="confirm()">

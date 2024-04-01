@@ -61,5 +61,5 @@ $gray-gradient: linear-gradient(135deg, $tertiary-background 0%, $gray-outline-s
 $red-warn: hsl(0, 65%, 50%);
 $green-confirm: hsl(110, 45%, 50%);
 
-$confirm-button-color: rgb(90, 194, 70);
-$cancel-button-color: rgb(221, 49, 49);
+$confirm-button-color: hsl(110, 44%, 49%);
+$cancel-button-color: hsl(0, 79%, 46%);
