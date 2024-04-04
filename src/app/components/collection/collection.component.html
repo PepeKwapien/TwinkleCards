@@ -14,7 +14,7 @@
                 <button class="round-button">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
                 </button>
-                <button class="empty-button round-button">
+                <button class="empty-button round-button" (click)="openModal(definitionFlashcardForm)">
                     <img class="grayed-icon" src="./assets/add-circle.svg" />
                 </button>
                 <button class="empty-button round-button">
@@ -42,5 +42,9 @@
     <div style="flex: 1; display: flex; justify-content: center; align-items: center; width: 100%">
         🌵 This collection is empty 🌵
     </div>
+</ng-template>
+
+<ng-template #definitionFlashcardForm>
+    <app-definition-flashcard-form></app-definition-flashcard-form>
 </ng-template>
 

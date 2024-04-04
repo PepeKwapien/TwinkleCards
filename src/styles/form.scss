@@ -2,7 +2,7 @@
 
 .form-outer-container {
     background-color: $tertiary-background;
-    padding: 2em;
+    padding: 2rem;
     border-radius: 15px;
     color: $gray-text;
     white-space: pre-wrap;
@@ -46,6 +46,7 @@
     flex-direction: column;
     row-gap: 1.5em;
     align-items: flex-end;
+    overflow: hidden;
 }
 
 .form-body {

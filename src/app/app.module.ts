@@ -13,6 +13,7 @@ import { LoadingModule } from './modules/loading/loading.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
 import { CollectionComponent } from './components/collection/collection.component';
+import { DefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/definition-flashcard-form.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { CollectionComponent } from './components/collection/collection.componen
         LandingPageComponent,
         ModalOverlayComponent,
         UserLoadingGuardComponent,
-        CollectionComponent
+        CollectionComponent,
+        DefinitionFlashcardFormComponent
     ],
     imports: [
         BrowserModule,

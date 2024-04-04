@@ -1,0 +1,26 @@
+<div class="form-outer-container">
+    <h3>New flashcard</h3>
+</div>
+<form class="form-inner-container flip-card" [ngClass]="{ 'flip-card-flipped': formFlipped }">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="form-body">
+                <label for="flashcard-term">Term:</label>
+                <input id="flashcard-term" type="text" autocomplete="off" />
+            </div>
+        </div>
+        <div class="flip-card-back">
+            <div class="form-body">
+                <label for="flashcard-term">Definition:</label>
+                <input id="flashcard-term" type="text" autocomplete="off" />
+            </div>
+        </div>
+    </div>
+</form>
+<div class="flashcard-form-buttons-container">
+    <button class="empty-button round-button" (click)="flip()">
+        <img class="grayed-icon" src="./assets/360.svg" />
+    </button>
+    <button type="submit">Create <img src="./assets/add-circle.svg" class="inverted-black-icon" /></button>
+</div>
+
