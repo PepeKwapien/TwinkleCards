@@ -1,4 +1,6 @@
 .flip-card {
+    // scroll appears when card is flipped for a second
+    overflow: hidden;
     width: 100%;
     perspective: 1000px;
 }

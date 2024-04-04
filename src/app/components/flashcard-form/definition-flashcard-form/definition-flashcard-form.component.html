@@ -3,16 +3,16 @@
 </div>
 <form class="form-inner-container flip-card" [ngClass]="{ 'flip-card-flipped': formFlipped }">
     <div class="flip-card-inner">
-        <div class="flip-card-front">
+        <div class="flip-card-front" appMatchHeight [elementToMatchHeight]="backside">
             <div class="form-body">
                 <label for="flashcard-term">Term:</label>
                 <input id="flashcard-term" type="text" autocomplete="off" />
             </div>
         </div>
-        <div class="flip-card-back">
+        <div class="flip-card-back" #backside>
             <div class="form-body">
-                <label for="flashcard-term">Definition:</label>
-                <input id="flashcard-term" type="text" autocomplete="off" />
+                <label for="flashcard-definition">Definition:</label>
+                <textarea id="flashcard-definition" autocomplete="off"></textarea>
             </div>
         </div>
     </div>
