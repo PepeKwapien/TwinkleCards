@@ -18,6 +18,8 @@ import { MatchHeightDirective } from './directives/matchHeight/match-height.dire
 import { FlashcardFormComponent } from './components/flashcard-form/flashcard-form.component';
 import { CreateDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/create-definition-flashcard-form/create-definition-flashcard-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/translation-flashcard-form.component';
+import { CreateTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/create-translation-flashcard-form/create-translation-flashcard-form.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import { ReactiveFormsModule } from '@angular/forms';
         DefinitionFlashcardFormComponent,
         MatchHeightDirective,
         FlashcardFormComponent,
-        CreateDefinitionFlashcardFormComponent
+        CreateDefinitionFlashcardFormComponent,
+        TranslationFlashcardFormComponent,
+        CreateTranslationFlashcardFormComponent
     ],
     imports: [
         BrowserModule,

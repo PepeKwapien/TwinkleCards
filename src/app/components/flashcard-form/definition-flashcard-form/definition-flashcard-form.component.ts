@@ -12,15 +12,16 @@ export class DefinitionFlashcardFormComponent {
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
 
+    public get formGroup(): FormGroup {
+        return this._flashcardService.formGroup;
+    }
+
     public get termFormControl(): FormControl {
         return this._flashcardService.formGroup.get('frontside')?.get('term') as FormControl;
     }
+
     public get definitionFormControl(): FormControl {
         return this._flashcardService.formGroup.get('backside')?.get('definition') as FormControl;
-    }
-
-    public get formGroup(): FormGroup {
-        return this._flashcardService.formGroup;
     }
 
     constructor(private _flashcardService: DefinitionFlashcardService) {}
