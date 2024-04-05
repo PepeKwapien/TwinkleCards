@@ -129,8 +129,7 @@ input[type='checkbox'] {
 
 // invalid value handling
 form.ng-submitted.ng-invalid {
-    label:has(+ input[type='text'].ng-invalid),
-    label:has(+ div input.ng-invalid) {
+    label:has(+ input[type='text'].ng-invalid, + textarea.ng-invalid, + div input.ng-invalid) {
         color: $red-warn;
     }
 
@@ -140,7 +139,7 @@ form.ng-submitted.ng-invalid {
     }
 }
 
-label:has(+ input[type='text'].ng-invalid.ng-touched) {
+label:has(+ input[type='text'].ng-invalid.ng-touched, + textarea.ng-invalid.ng-touched) {
     color: $red-warn;
 }
 // end: invalid value handling

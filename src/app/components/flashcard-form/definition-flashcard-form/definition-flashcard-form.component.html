@@ -1,11 +1,15 @@
-<app-flashcard-form [formTitle]="formTitle" [buttonCallback]="buttonCallback" [buttonTemplate]="buttonTemplate">
+<app-flashcard-form
+    [formTitle]="formTitle"
+    [buttonCallback]="buttonCallback"
+    [buttonTemplate]="buttonTemplate"
+    [formGroup]="formGroup">
     <ng-container frontside>
         <label for="flashcard-term">Term:</label>
-        <input id="flashcard-term" type="text" autocomplete="off" />
+        <input id="flashcard-term" type="text" autocomplete="off" formControlName="term" />
     </ng-container>
     <ng-container backside>
         <label for="flashcard-definition">Definition:</label>
-        <textarea id="flashcard-definition" autocomplete="off"></textarea>
+        <textarea id="flashcard-definition" autocomplete="off" formControlName="definition"></textarea>
     </ng-container>
 </app-flashcard-form>
 

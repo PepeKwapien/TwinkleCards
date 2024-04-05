@@ -1,4 +1,5 @@
 import { Component, Input, TemplateRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-flashcard-form',
@@ -7,6 +8,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
 })
 export class FlashcardFormComponent {
     @Input({ required: true }) formTitle!: string;
+    @Input({ required: true }) formGroup!: FormGroup;
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
 

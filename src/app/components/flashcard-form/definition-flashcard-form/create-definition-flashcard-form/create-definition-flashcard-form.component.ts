@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DefinitionFlashcardService } from 'src/app/services/flashcard/definition-flashcard/definition-flashcard.service';
 
 @Component({
     selector: 'app-create-definition-flashcard-form',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
     styleUrls: ['./create-definition-flashcard-form.component.scss']
 })
 export class CreateDefinitionFlashcardFormComponent {
-    public async createDefinitionFlashcard() {}
+    constructor(private _flashcardService: DefinitionFlashcardService) {}
+
+    public createDefinitionFlashcard() {
+        return () => this._flashcardService.createFlashcard();
+    }
 }
 

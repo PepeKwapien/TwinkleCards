@@ -17,6 +17,7 @@ import { DefinitionFlashcardFormComponent } from './components/flashcard-form/de
 import { MatchHeightDirective } from './directives/matchHeight/match-height.directive';
 import { FlashcardFormComponent } from './components/flashcard-form/flashcard-form.component';
 import { CreateDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/create-definition-flashcard-form/create-definition-flashcard-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { CreateDefinitionFlashcardFormComponent } from './components/flashcard-f
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
         LoadingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

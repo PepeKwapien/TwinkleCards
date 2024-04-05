@@ -1,4 +1,6 @@
 import { Component, Input, TemplateRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { DefinitionFlashcardService } from 'src/app/services/flashcard/definition-flashcard/definition-flashcard.service';
 
 @Component({
     selector: 'app-definition-flashcard-form',
@@ -9,5 +11,11 @@ export class DefinitionFlashcardFormComponent {
     @Input({ required: true }) formTitle!: string;
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
+
+    public get formGroup(): FormGroup {
+        return this._flashcardService.formGroup;
+    }
+
+    constructor(private _flashcardService: DefinitionFlashcardService) {}
 }
 
