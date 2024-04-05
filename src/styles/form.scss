@@ -134,7 +134,8 @@ form.ng-submitted.ng-invalid {
     }
 
     input[type='text'].ng-invalid,
-    input[type='radio'].ng-invalid {
+    input[type='radio'].ng-invalid,
+    textarea.ng-invalid {
         border: 2px $red-warn solid;
     }
 }

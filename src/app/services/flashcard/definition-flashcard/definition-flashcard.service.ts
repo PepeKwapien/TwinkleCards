@@ -13,8 +13,8 @@ export class DefinitionFlashcardService {
 
     constructor(private _formBuilder: FormBuilder) {
         this._formGroup = this._formBuilder.group({
-            term: ['', Validators.required],
-            definition: ['', Validators.required]
+            frontside: this._formBuilder.group({ term: ['', Validators.required] }),
+            backside: this._formBuilder.group({ definition: ['', Validators.required] })
         });
     }
 

@@ -1,5 +1,5 @@
 import { Component, Input, TemplateRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DefinitionFlashcardService } from 'src/app/services/flashcard/definition-flashcard/definition-flashcard.service';
 
 @Component({
@@ -11,6 +11,13 @@ export class DefinitionFlashcardFormComponent {
     @Input({ required: true }) formTitle!: string;
     @Input({ required: true }) buttonTemplate!: TemplateRef<Element>;
     @Input({ required: true }) buttonCallback!: () => Promise<void>;
+
+    public get termFormControl(): FormControl {
+        return this._flashcardService.formGroup.get('frontside')?.get('term') as FormControl;
+    }
+    public get definitionFormControl(): FormControl {
+        return this._flashcardService.formGroup.get('backside')?.get('definition') as FormControl;
+    }
 
     public get formGroup(): FormGroup {
         return this._flashcardService.formGroup;

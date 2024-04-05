@@ -5,11 +5,11 @@
     [formGroup]="formGroup">
     <ng-container frontside>
         <label for="flashcard-term">Term:</label>
-        <input id="flashcard-term" type="text" autocomplete="off" formControlName="term" />
+        <input id="flashcard-term" type="text" autocomplete="off" [formControl]="termFormControl" />
     </ng-container>
     <ng-container backside>
         <label for="flashcard-definition">Definition:</label>
-        <textarea id="flashcard-definition" autocomplete="off" formControlName="definition"></textarea>
+        <textarea id="flashcard-definition" autocomplete="off" [formControl]="definitionFormControl"></textarea>
     </ng-container>
 </app-flashcard-form>
 

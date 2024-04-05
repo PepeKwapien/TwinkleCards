@@ -14,6 +14,14 @@ export class FlashcardFormComponent {
 
     public formFlipped: boolean = false;
 
+    public get isOtherSideInvalid(): boolean {
+        if (this.formFlipped) {
+            return !this.formGroup.get('frontside')?.valid;
+        } else {
+            return !this.formGroup.get('backside')?.valid;
+        }
+    }
+
     public flip() {
         this.formFlipped = !this.formFlipped;
     }

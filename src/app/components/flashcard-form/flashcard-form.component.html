@@ -19,7 +19,10 @@
         </div>
         <div class="flashcard-form-buttons-container">
             <button type="button" class="empty-button" (click)="flip()">
-                <img class="grayed-icon flashcard-form-flip-icon" src="./assets/360.svg" />
+                <img
+                    class="grayed-icon flashcard-form-flip-icon"
+                    src="./assets/360.svg"
+                    [ngClass]="{ 'otherside-invalid': isOtherSideInvalid }" />
             </button>
             <button type="submit">
                 <ng-container [ngTemplateOutlet]="buttonTemplate"></ng-container>

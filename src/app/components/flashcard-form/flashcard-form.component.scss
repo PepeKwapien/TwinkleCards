@@ -9,3 +9,7 @@
 .flashcard-form-flip-icon {
     width: 2rem;
 }
+
+.ng-submitted .otherside-invalid {
+    filter: invert(31%) sepia(39%) saturate(3944%) hue-rotate(341deg) brightness(81%) contrast(102%);
+}
