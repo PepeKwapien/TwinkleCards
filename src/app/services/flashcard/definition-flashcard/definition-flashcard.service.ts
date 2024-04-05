@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class DefinitionFlashcardService {
     private _formGroup: FormGroup;
 
