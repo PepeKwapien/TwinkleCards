@@ -4,10 +4,7 @@ import { ModalService } from '../modal/modal.service';
 import { UserIdInterceptorService } from '../user-id-interceptor/user-id-interceptor.service';
 import { CollectionRepositoryService } from '../collection-repository/collection-repository.service';
 
-export enum CollectionType {
-    definition,
-    translation
-}
+export type CollectionType = 'definition' | 'translation';
 
 export type CollectionInputs = {
     name: string;

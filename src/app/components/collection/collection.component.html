@@ -14,7 +14,11 @@
                 <button class="round-button">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
                 </button>
-                <button class="empty-button round-button" (click)="openModal(definitionFlashcardForm)">
+                <button
+                    class="empty-button round-button"
+                    (click)="
+                        collection.type == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
+                    ">
                     <img class="grayed-icon" src="./assets/add-circle.svg" />
                 </button>
                 <button class="empty-button round-button">
@@ -46,5 +50,9 @@
 
 <ng-template #definitionFlashcardForm>
     <app-create-definition-flashcard-form></app-create-definition-flashcard-form>
+</ng-template>
+
+<ng-template #translationFlashcardForm>
+    <app-create-translation-flashcard-form></app-create-translation-flashcard-form>
 </ng-template>
 
