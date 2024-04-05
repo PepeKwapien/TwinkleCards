@@ -15,6 +15,8 @@ import { UserLoadingGuardComponent } from './components/user-loading-guard/user-
 import { CollectionComponent } from './components/collection/collection.component';
 import { DefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/definition-flashcard-form.component';
 import { MatchHeightDirective } from './directives/matchHeight/match-height.directive';
+import { FlashcardFormComponent } from './components/flashcard-form/flashcard-form.component';
+import { CreateDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/create-definition-flashcard-form/create-definition-flashcard-form.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import { MatchHeightDirective } from './directives/matchHeight/match-height.dire
         UserLoadingGuardComponent,
         CollectionComponent,
         DefinitionFlashcardFormComponent,
-        MatchHeightDirective
+        MatchHeightDirective,
+        FlashcardFormComponent,
+        CreateDefinitionFlashcardFormComponent
     ],
     imports: [
         BrowserModule,

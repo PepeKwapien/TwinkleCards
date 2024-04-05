@@ -1,0 +1,26 @@
+<div class="form-outer-container">
+    <h3>{{ formTitle }}</h3>
+</div>
+<form class="form-inner-container flip-card" [ngClass]="{ 'flip-card-flipped': formFlipped }" (ngSubmit)="callback($event)">
+    <div class="flip-card-inner">
+        <div class="flip-card-front" appMatchHeight [elementToMatchHeight]="backside">
+            <div class="form-body">
+                <ng-content select="[frontside]"></ng-content>
+            </div>
+        </div>
+        <div class="flip-card-back" #backside>
+            <div class="form-body">
+                <ng-content select="[backside]"></ng-content>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="flashcard-form-buttons-container">
+    <button class="empty-button round-button" (click)="flip()">
+        <img class="grayed-icon" src="./assets/360.svg" />
+    </button>
+    <button type="submit">
+        <ng-container [ngTemplateOutlet]="buttonTemplate"></ng-container>
+    </button>
+</div>
+
