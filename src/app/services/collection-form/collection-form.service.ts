@@ -40,6 +40,10 @@ export class CollectionFormService {
     }
 
     public async createCollection(): Promise<void> {
+        if (!this._formGroup.valid) {
+            return;
+        }
+
         const collectionInputs = this._formGroup.value as CollectionInputs;
         const collectionId = await this._userIdInterceptor.createCollection(collectionInputs);
         await this._userIdInterceptor.createCollectionReference(collectionInputs.group, collectionId, collectionInputs.name);

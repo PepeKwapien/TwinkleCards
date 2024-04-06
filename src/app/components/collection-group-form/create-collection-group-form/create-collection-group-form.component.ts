@@ -10,9 +10,7 @@ export class CreateCollectionGroupFormComponent {
     constructor(private _collectionFormGorupService: CollectionGroupFormService) {}
 
     public async createCollectionGroup() {
-        if (this._collectionFormGorupService.formGroup.valid) {
-            await this._collectionFormGorupService.createCollectionGroup();
-        }
+        await this._collectionFormGorupService.createCollectionGroup();
     }
 }
 

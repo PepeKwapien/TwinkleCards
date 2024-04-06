@@ -27,20 +27,24 @@ export class CollectionGroupFormService {
     }
 
     public async createCollectionGroup() {
-        if (this._formGroup.valid) {
-            await this._userIdInterceptorService.createCollectionGroup(this._formGroup.value as CollectionGroupProperties);
-            this._modalService.close();
+        if (!this._formGroup.valid) {
+            return;
         }
+
+        await this._userIdInterceptorService.createCollectionGroup(this._formGroup.value as CollectionGroupProperties);
+        this._modalService.close();
     }
 
     public async editCollectionGroup(collectionGroup: IUserCollectionGroup) {
-        if (this._formGroup.valid) {
-            await this._userIdInterceptorService.editCollectionGroup(
-                collectionGroup,
-                this._formGroup.value as CollectionGroupProperties
-            );
-            this._modalService.close();
+        if (!this._formGroup.valid) {
+            return;
         }
+
+        await this._userIdInterceptorService.editCollectionGroup(
+            collectionGroup,
+            this._formGroup.value as CollectionGroupProperties
+        );
+        this._modalService.close();
     }
 
     public resetFormGroup(): void {

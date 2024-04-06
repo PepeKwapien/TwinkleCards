@@ -21,9 +21,7 @@ export class EditCollectionGroupFormComponent implements OnInit {
 
     public editCollectionGroupCallback() {
         return async () => {
-            if (this._collectionFormGorupService.formGroup.valid) {
-                await this._collectionFormGorupService.editCollectionGroup(this.collectionGroup);
-            }
+            await this._collectionFormGorupService.editCollectionGroup(this.collectionGroup);
         };
     }
 }
