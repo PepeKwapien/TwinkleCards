@@ -7,13 +7,21 @@
         <label for="flashcard-word">Word:</label>
         <input id="flashcard-word" type="text" autocomplete="off" [formControl]="wordFormControl" />
         <label for="flashcard-term">Example sentence:</label>
-        <textarea id="flashcard-example-sentence" autocomplete="off" [formControl]="sentenceFormControl"></textarea>
+        <textarea
+            id="flashcard-example-sentence"
+            autocomplete="off"
+            [formControl]="sentenceFormControl"
+            placeholder="Optional"></textarea>
     </ng-container>
     <ng-container backside>
         <label for="flashcard-translation">Translation:</label>
         <input id="flashcard-translation" type="text" autocomplete="off" [formControl]="translationFormControl" />
         <label for="flashcard-term">Translated sentence:</label>
-        <textarea id="flashcard-translated-sentence" autocomplete="off" [formControl]="translatedSentenceFormControl"></textarea>
+        <textarea
+            id="flashcard-translated-sentence"
+            autocomplete="off"
+            [formControl]="translatedSentenceFormControl"
+            placeholder="Optional"></textarea>
     </ng-container>
 </app-flashcard-form>
 
