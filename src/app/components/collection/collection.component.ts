@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
-import { Subscription, combineLatest, filter, shareReplay, switchMap, tap } from 'rxjs';
+import { Subscription, combineLatest, filter, switchMap } from 'rxjs';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
@@ -11,6 +11,7 @@ import { UserRepositoryService } from 'src/app/services/user-repository/user-rep
     styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit, OnDestroy {
+    // bindToComponentInputs: true
     @Input() collectionId!: string;
 
     private _sub: Subscription;

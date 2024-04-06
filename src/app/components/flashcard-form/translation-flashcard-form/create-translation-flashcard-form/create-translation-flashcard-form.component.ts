@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslationFlashcardService } from 'src/app/services/flashcard/translation-flashcard/translation-flashcard.service';
 
 @Component({
@@ -8,10 +8,12 @@ import { TranslationFlashcardService } from 'src/app/services/flashcard/translat
     providers: [TranslationFlashcardService]
 })
 export class CreateTranslationFlashcardFormComponent {
+    @Input({ required: true }) collectionId!: string;
+
     constructor(private _flashcardService: TranslationFlashcardService) {}
 
     public createDefinitionFlashcard() {
-        return () => this._flashcardService.createFlashcard();
+        return () => this._flashcardService.createFlashcard(this.collectionId);
     }
 }
 

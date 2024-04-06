@@ -1,1 +1,3 @@
-export interface IBaseFlashcard {}
+export interface IBaseFlashcard {
+    id: string;
+}

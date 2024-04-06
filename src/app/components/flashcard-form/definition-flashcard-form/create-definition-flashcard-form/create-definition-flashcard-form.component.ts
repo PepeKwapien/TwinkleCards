@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DefinitionFlashcardService } from 'src/app/services/flashcard/definition-flashcard/definition-flashcard.service';
 
 @Component({
@@ -8,10 +8,12 @@ import { DefinitionFlashcardService } from 'src/app/services/flashcard/definitio
     providers: [DefinitionFlashcardService]
 })
 export class CreateDefinitionFlashcardFormComponent {
+    @Input({ required: true }) collectionId!: string;
+
     constructor(private _flashcardService: DefinitionFlashcardService) {}
 
     public createDefinitionFlashcard() {
-        return () => this._flashcardService.createFlashcard();
+        return () => this._flashcardService.createFlashcard(this.collectionId);
     }
 }
 

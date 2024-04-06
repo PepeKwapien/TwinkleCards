@@ -3,6 +3,7 @@ import {
     Firestore,
     Unsubscribe,
     addDoc,
+    arrayUnion,
     collection,
     deleteDoc,
     doc,
@@ -13,6 +14,7 @@ import {
 import { CollectionInputs } from '../collection-form/collection-form.service';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -70,5 +72,8 @@ export class CollectionRepositoryService implements OnDestroy {
     public async deleteCollection(collectionId: string): Promise<void> {
         await deleteDoc(doc(this._firestore, this._collectionName, collectionId));
     }
-}
 
+    public async createFlashcard(collectionId: string, flashcard: IBaseFlashcard) {
+        await updateDoc(doc(this._firestore, this._collectionName, collectionId), { flashcards: arrayUnion(flashcard) });
+    }
+}
