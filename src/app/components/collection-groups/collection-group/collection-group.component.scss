@@ -31,14 +31,15 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 1.2em;
+    column-gap: 2%;
+    row-gap: 1.2rem;
 
     margin: 1em 0;
 }
 
 .collection-box {
-    width: 9rem;
-    height: 9rem;
+    width: 15%;
+    height: 8rem;
     border-radius: 15px;
     border: 2px $gray-outline solid;
     transition: 0.3s;
@@ -99,5 +100,6 @@
 
     img {
         width: 40%;
+        max-width: 50px;
     }
 }
