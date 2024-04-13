@@ -69,3 +69,21 @@
     display: flex;
     align-items: center;
 }
+
+:host ::ng-deep .collection-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    column-gap: 4%;
+    row-gap: 1.5rem;
+    & > * {
+        height: fit-content;
+        min-height: 10rem;
+        width: 22%;
+    }
+
+    & .flashcard-preview {
+        min-height: 10rem;
+    }
+}

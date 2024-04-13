@@ -1,6 +1,9 @@
 import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Subscription, combineLatest, filter, switchMap } from 'rxjs';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
+import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
+import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
+import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
@@ -60,7 +63,23 @@ export class CollectionComponent implements OnInit, OnDestroy {
         this._sub.unsubscribe();
     }
 
-    public openModal(templateRef: TemplateRef<Element>) {
+    public openModal(templateRef: TemplateRef<Element>): void {
         this._modalService.open(templateRef);
+    }
+
+    public getFrontsideFlashcardHeader(flashcard: IBaseFlashcard): string {
+        if ((flashcard as IDefinitionFlashcard).term) {
+            return (flashcard as IDefinitionFlashcard).term;
+        } else {
+            return (flashcard as ITranslationFlashcard).word;
+        }
+    }
+
+    public getFronsideFlashcardBody(flashcard: IBaseFlashcard): string {
+        if ((flashcard as ITranslationFlashcard).sentence) {
+            return (flashcard as ITranslationFlashcard).sentence ?? '';
+        } else {
+            return '';
+        }
     }
 }

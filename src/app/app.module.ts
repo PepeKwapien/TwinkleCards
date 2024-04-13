@@ -20,6 +20,7 @@ import { CreateDefinitionFlashcardFormComponent } from './components/flashcard-f
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/translation-flashcard-form.component';
 import { CreateTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/create-translation-flashcard-form/create-translation-flashcard-form.component';
+import { FlashcardPreviewComponent } from './components/collection/flashcard-preview/flashcard-preview.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { CreateTranslationFlashcardFormComponent } from './components/flashcard-
         FlashcardFormComponent,
         CreateDefinitionFlashcardFormComponent,
         TranslationFlashcardFormComponent,
-        CreateTranslationFlashcardFormComponent
+        CreateTranslationFlashcardFormComponent,
+        FlashcardPreviewComponent
     ],
     imports: [
         BrowserModule,
