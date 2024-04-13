@@ -51,7 +51,6 @@
 $icon-offset: 0.3em;
 
 .flashcard-preview-edit {
-    padding: 0;
     position: absolute;
     left: $icon-offset;
     top: $icon-offset;
@@ -60,7 +59,6 @@ $icon-offset: 0.3em;
 }
 
 .flashcard-preview-delete {
-    padding: 0;
     position: absolute;
     right: $icon-offset;
     top: $icon-offset;
@@ -69,9 +67,13 @@ $icon-offset: 0.3em;
 }
 
 .flashcard-preview-flip {
-    padding: 0;
     position: absolute;
     left: $icon-offset;
     bottom: $icon-offset;
     border-radius: 50%;
+}
+
+.grayed-icon:hover {
+    transition: 0.3s;
+    filter: brightness(100%);
 }

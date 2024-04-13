@@ -26,6 +26,11 @@
     }
 }
 
+.collection-group-header-controls {
+    display: flex;
+    column-gap: 0.7rem;
+}
+
 .collection-grid {
     display: flex;
     flex-wrap: wrap;
@@ -89,7 +94,7 @@
         transition: 0.3s;
         &:hover {
             transform: scale(1.1);
-            filter: brightness(95%);
+            filter: brightness(55%);
         }
     }
 }
