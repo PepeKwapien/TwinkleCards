@@ -11,6 +11,12 @@ import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/trans
 export class FlashcardPreviewComponent {
     @Input({ required: true }) flashcard!: IBaseFlashcard;
 
+    public get flipped(): boolean {
+        return this._flipped;
+    }
+
+    private _flipped: boolean = false;
+
     public getFrontsideFlashcardHeader(): string {
         if ((this.flashcard as IDefinitionFlashcard).term) {
             return (this.flashcard as IDefinitionFlashcard).term;
@@ -19,12 +25,33 @@ export class FlashcardPreviewComponent {
         }
     }
 
-    public getFronsideFlashcardBody(): string {
+    public getFrontsideFlashcardBody(): string {
         if ((this.flashcard as ITranslationFlashcard).sentence) {
             return (this.flashcard as ITranslationFlashcard).sentence ?? '';
         } else {
             return '';
         }
+    }
+
+    public getBacksideFlashcardHeader(): string {
+        if ((this.flashcard as ITranslationFlashcard).translation) {
+            return (this.flashcard as ITranslationFlashcard).translation;
+        } else {
+            return '';
+        }
+    }
+
+    public getBacksideFlashcardBody(): string {
+        if ((this.flashcard as ITranslationFlashcard).translatedSentence) {
+            return (this.flashcard as ITranslationFlashcard).translatedSentence ?? '';
+        } else {
+            return (this.flashcard as IDefinitionFlashcard).definition;
+        }
+    }
+
+    public flip($event: Event): void {
+        $event.preventDefault();
+        this._flipped = !this._flipped;
     }
 }
 

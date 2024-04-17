@@ -1,16 +1,37 @@
-<button class="empty-button flashcard-preview light-box-shadow">
-    <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
-        <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
-    </button>
-    <button class="empty-button flashcard-preview-control-icon flashcard-preview-delete">
-        <img src="./assets/close.svg" class="grayed-icon hover-icon" />
-    </button>
-    <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip">
-        <img src="./assets/360.svg" class="grayed-icon hover-icon" />
-    </button>
-    <div class="flashcard-preview-upper-text-container">
-        <div class="flashcard-preview-upper-text">{{ getFrontsideFlashcardHeader() }}</div>
+<div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
+    <div class="flip-card-inner">
+        <button class="empty-button flashcard-preview light-box-shadow flip-card-front">
+            <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
+                <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
+            </button>
+            <button class="empty-button flashcard-preview-control-icon flashcard-preview-delete">
+                <img src="./assets/close.svg" class="grayed-icon hover-icon" />
+            </button>
+            <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
+                <img src="./assets/360.svg" class="grayed-icon hover-icon" />
+            </button>
+            <div class="flashcard-preview-upper-text-container">
+                <div class="flashcard-preview-upper-text">{{ getFrontsideFlashcardHeader() }}</div>
+            </div>
+            <div class="flashcard-preview-lower-text">{{ getFrontsideFlashcardBody() }}</div>
+        </button>
+        <button class="empty-button flashcard-preview light-box-shadow flip-card-back">
+            <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
+                <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
+            </button>
+            <button class="empty-button flashcard-preview-control-icon flashcard-preview-delete">
+                <img src="./assets/close.svg" class="grayed-icon hover-icon" />
+            </button>
+            <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
+                <img src="./assets/360.svg" class="grayed-icon hover-icon" />
+            </button>
+            <div class="flashcard-preview-upper-text-container">
+                <div class="flashcard-preview-upper-text" *ngIf="getBacksideFlashcardHeader()">
+                    {{ getBacksideFlashcardHeader() }}
+                </div>
+            </div>
+            <div class="flashcard-preview-lower-text">{{ getBacksideFlashcardBody() }}</div>
+        </button>
     </div>
-    <div class="flashcard-preview-lower-text">{{ getFronsideFlashcardBody() }}</div>
-</button>
+</div>
 
