@@ -13,8 +13,10 @@
             <div class="flashcard-preview-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
                 <div class="flashcard-preview-upper-text">{{ getFrontsideFlashcardHeader() }}</div>
             </div>
-            <div class="flashcard-preview-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
-                {{ getFrontsideFlashcardBody() }}
+            <div class="flashcard-preview-lower-text-container">
+                <div class="flashcard-preview-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
+                    {{ getFrontsideFlashcardBody() }}
+                </div>
             </div>
         </button>
         <button class="empty-button flashcard-preview light-box-shadow flip-card-back" #backside>
@@ -32,7 +34,9 @@
                     {{ getBacksideFlashcardHeader() }}
                 </div>
             </div>
-            <div class="flashcard-preview-lower-text" #backsideLower>{{ getBacksideFlashcardBody() }}</div>
+            <div class="flashcard-preview-lower-text-container">
+                <div class="flashcard-preview-lower-text" #backsideLower>{{ getBacksideFlashcardBody() }}</div>
+            </div>
         </button>
     </div>
 </div>
