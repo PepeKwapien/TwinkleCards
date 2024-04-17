@@ -10,12 +10,14 @@
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
                 <img src="./assets/360.svg" class="grayed-icon hover-icon" />
             </button>
-            <div class="flashcard-preview-upper-text-container">
+            <div class="flashcard-preview-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
                 <div class="flashcard-preview-upper-text">{{ getFrontsideFlashcardHeader() }}</div>
             </div>
-            <div class="flashcard-preview-lower-text">{{ getFrontsideFlashcardBody() }}</div>
+            <div class="flashcard-preview-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
+                {{ getFrontsideFlashcardBody() }}
+            </div>
         </button>
-        <button class="empty-button flashcard-preview light-box-shadow flip-card-back">
+        <button class="empty-button flashcard-preview light-box-shadow flip-card-back" #backside>
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
                 <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
             </button>
@@ -25,12 +27,12 @@
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
                 <img src="./assets/360.svg" class="grayed-icon hover-icon" />
             </button>
-            <div class="flashcard-preview-upper-text-container">
+            <div class="flashcard-preview-upper-text-container" #backsideUpper>
                 <div class="flashcard-preview-upper-text" *ngIf="getBacksideFlashcardHeader()">
                     {{ getBacksideFlashcardHeader() }}
                 </div>
             </div>
-            <div class="flashcard-preview-lower-text">{{ getBacksideFlashcardBody() }}</div>
+            <div class="flashcard-preview-lower-text" #backsideLower>{{ getBacksideFlashcardBody() }}</div>
         </button>
     </div>
 </div>
