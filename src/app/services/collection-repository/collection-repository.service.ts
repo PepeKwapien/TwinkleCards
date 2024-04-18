@@ -3,6 +3,7 @@ import {
     Firestore,
     Unsubscribe,
     addDoc,
+    arrayRemove,
     arrayUnion,
     collection,
     deleteDoc,
@@ -75,5 +76,9 @@ export class CollectionRepositoryService implements OnDestroy {
 
     public async createFlashcard(collectionId: string, flashcard: IBaseFlashcard) {
         await updateDoc(doc(this._firestore, this._collectionName, collectionId), { flashcards: arrayUnion(flashcard) });
+    }
+
+    public async deleteFlashcard(collectionId: string, flashcard: IBaseFlashcard) {
+        await updateDoc(doc(this._firestore, this._collectionName, collectionId), { flashcards: arrayRemove(flashcard) });
     }
 }

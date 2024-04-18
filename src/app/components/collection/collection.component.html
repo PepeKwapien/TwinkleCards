@@ -37,7 +37,8 @@
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
             <app-flashcard-preview
                 *ngFor="let flashcard of collection.flashcards"
-                [flashcard]="flashcard"></app-flashcard-preview>
+                [flashcard]="flashcard"
+                [collectionId]="collectionId"></app-flashcard-preview>
         </div>
     </div>
 </div>

@@ -4,7 +4,9 @@
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
                 <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
             </button>
-            <button class="empty-button flashcard-preview-control-icon flashcard-preview-delete">
+            <button
+                class="empty-button flashcard-preview-control-icon flashcard-preview-delete"
+                (click)="deleteFlashcard($event)">
                 <img src="./assets/close.svg" class="grayed-icon hover-icon" />
             </button>
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
