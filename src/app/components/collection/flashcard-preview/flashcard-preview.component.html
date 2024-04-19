@@ -1,7 +1,11 @@
 <div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
     <div class="flip-card-inner">
         <button class="empty-button flashcard-preview light-box-shadow flip-card-front">
-            <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
+            <button
+                class="empty-button flashcard-preview-control-icon flashcard-preview-edit"
+                (click)="
+                    flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
+                ">
                 <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
             </button>
             <button
@@ -43,3 +47,14 @@
     </div>
 </div>
 
+<ng-template #definitionFlashcardForm>
+    <app-edit-definition-flashcard-form
+        [collectionId]="collectionId"
+        [flashcard]="flashcard"></app-edit-definition-flashcard-form>
+</ng-template>
+
+<ng-template #translationFlashcardForm>
+    <app-edit-translation-flashcard-form
+        [collectionId]="collectionId"
+        [flashcard]="flashcard"></app-edit-translation-flashcard-form>
+</ng-template>

@@ -16,6 +16,8 @@ import { CollectionInputs } from '../collection-form/collection-form.service';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
+import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
+import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -74,11 +76,41 @@ export class CollectionRepositoryService implements OnDestroy {
         await deleteDoc(doc(this._firestore, this._collectionName, collectionId));
     }
 
-    public async createFlashcard(collectionId: string, flashcard: IBaseFlashcard) {
+    public async createFlashcard(collectionId: string, flashcard: IBaseFlashcard): Promise<void> {
         await updateDoc(doc(this._firestore, this._collectionName, collectionId), { flashcards: arrayUnion(flashcard) });
     }
 
-    public async deleteFlashcard(collectionId: string, flashcard: IBaseFlashcard) {
+    public async updateFlashcard(collectionId: string, flashcard: IBaseFlashcard): Promise<void> {
+        const currentCollection = this._collectionSubject.value as CollectionDocument;
+        const currentCollectionFlashcards = currentCollection.flashcards;
+        const currentCollectionType = currentCollection.type;
+
+        const matchingFlashcard = currentCollectionFlashcards.find((browsedFlashcard) => browsedFlashcard.id === flashcard.id);
+
+        if (!matchingFlashcard) {
+            return;
+        }
+
+        if (currentCollectionType === 'definition') {
+            const definitionFlashcard = flashcard as IDefinitionFlashcard;
+
+            (matchingFlashcard as IDefinitionFlashcard).term = definitionFlashcard.term;
+            (matchingFlashcard as IDefinitionFlashcard).definition = definitionFlashcard.definition;
+        } else {
+            const translationFlashcard = flashcard as ITranslationFlashcard;
+
+            (matchingFlashcard as ITranslationFlashcard).word = translationFlashcard.word;
+            (matchingFlashcard as ITranslationFlashcard).sentence = translationFlashcard.sentence;
+            (matchingFlashcard as ITranslationFlashcard).translation = translationFlashcard.translation;
+            (matchingFlashcard as ITranslationFlashcard).translatedSentence = translationFlashcard.translatedSentence;
+        }
+
+        await updateDoc(doc(this._firestore, this._collectionName, collectionId), {
+            flashcards: currentCollectionFlashcards
+        });
+    }
+
+    public async deleteFlashcard(collectionId: string, flashcard: IBaseFlashcard): Promise<void> {
         await updateDoc(doc(this._firestore, this._collectionName, collectionId), { flashcards: arrayRemove(flashcard) });
     }
 }

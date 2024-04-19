@@ -21,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/translation-flashcard-form.component';
 import { CreateTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/create-translation-flashcard-form/create-translation-flashcard-form.component';
 import { FlashcardPreviewComponent } from './components/collection/flashcard-preview/flashcard-preview.component';
+import { EditTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/edit-translation-flashcard-form/edit-translation-flashcard-form.component';
+import { EditDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/edit-definition-flashcard-form/edit-definition-flashcard-form.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import { FlashcardPreviewComponent } from './components/collection/flashcard-pre
         CreateDefinitionFlashcardFormComponent,
         TranslationFlashcardFormComponent,
         CreateTranslationFlashcardFormComponent,
-        FlashcardPreviewComponent
+        FlashcardPreviewComponent,
+        EditTranslationFlashcardFormComponent,
+        EditDefinitionFlashcardFormComponent
     ],
     imports: [
         BrowserModule,
