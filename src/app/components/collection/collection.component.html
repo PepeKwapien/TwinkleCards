@@ -36,7 +36,9 @@
         </div>
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
             <app-flashcard-preview
-                *ngFor="let flashcard of collection.flashcards"
+                class="slide-from-left-and-scale-enter"
+                *ngFor="let flashcard of collection.flashcards; let index = index"
+                [style.animation-delay]="0.1 * index + 's'"
                 [flashcard]="flashcard"
                 [collectionId]="collectionId"></app-flashcard-preview>
         </div>
@@ -60,4 +62,3 @@
 <ng-template #translationFlashcardForm>
     <app-create-translation-flashcard-form [collectionId]="collectionId"></app-create-translation-flashcard-form>
 </ng-template>
-
