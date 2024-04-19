@@ -13,21 +13,14 @@ import { ModalService } from 'src/app/services/modal/modal.service';
         trigger('slideFromLeft', [transition(':enter', [style({ transform: 'translateX(-100%)' }), animate('0.5s ease')])])
     ]
 })
-export class CollectionGroupsComponent implements AfterViewInit {
-    public wasAnimationPlayed: boolean = false;
-
+export class CollectionGroupsComponent {
     public get user$(): Observable<UserDocument> {
         return this._authService.user$;
     }
 
     constructor(private _authService: AuthService, private _modalService: ModalService) {}
 
-    ngAfterViewInit() {
-        setTimeout(() => (this.wasAnimationPlayed = true), 2000);
-    }
-
     public openModal(collectionGroupForm: TemplateRef<any>) {
         this._modalService.open(collectionGroupForm);
     }
 }
-

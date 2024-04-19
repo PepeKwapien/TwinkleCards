@@ -1,7 +1,7 @@
 <div class="footer under-navbar-container" *ngIf="user$ | async as user; else loader">
     <div class="collection-groups-container">
         <app-collection-group
-            [ngClass]="{ 'slide-from-left-enter': !wasAnimationPlayed }"
+            class="slide-from-left-enter"
             [style.animation-delay]="index * 0.1 + 's'"
             *ngFor="let group of user.collectionGroups; let index = index"
             [collectionGroup]="group"
