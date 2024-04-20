@@ -1,6 +1,3 @@
-@import '/src/styles/color.scss';
-@import '/src/styles/shared.scss';
-
 .user-outer-container {
     &,
     & * {
@@ -10,74 +7,4 @@
 
 .user-icon {
     height: 14px;
-}
-
-.arrow-icon {
-    height: 24px;
-    transition: 0.3s;
-}
-
-.arrow-icon-rotated {
-    transform: rotate(180deg);
-}
-
-$borderWidth: 3px;
-
-.username-container {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    margin: 0;
-}
-
-.username-button {
-    padding: 0.5em;
-    display: flex;
-    align-items: center;
-    column-gap: 0.3em;
-
-    border: unset;
-    border-radius: 5px;
-    border-bottom: unset;
-
-    .active > & {
-        border-bottom: unset;
-        border-bottom-left-radius: unset;
-        border-bottom-right-radius: unset;
-        background: $secondary-gradient;
-
-        @include lighten-on-hover-active;
-    }
-}
-
-.username-options {
-    box-sizing: border-box;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 100%;
-    left: 0;
-    width: 100%;
-
-    .active > & {
-        border-radius: 5px;
-        border-top: unset;
-        border-top-left-radius: unset;
-        border-top-right-radius: unset;
-    }
-
-    & > * {
-        padding: 0.5rem 0;
-        background: $secondary-gradient;
-
-        .active & {
-            border-top: $borderWidth $secondary-background solid;
-            @include lighten-on-hover-active;
-        }
-    }
-
-    & > *:last-child {
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-    }
 }

@@ -4,14 +4,6 @@
 <ng-template #authenticated>
     <div class="user-outer-container">
         Hi,
-        <div #usernameButton class="username-container" [ngClass]="{ active: optionsExpanded }" (click)="toggleOptions()">
-            <button class="username-button empty-button">
-                {{ username }}
-                <img src="./assets/expand_more.svg" class="arrow-icon" [ngClass]="{ 'arrow-icon-rotated': optionsExpanded }" />
-            </button>
-            <div #options @slideAnimation class="username-options" *ngIf="optionsExpanded">
-                <button class="empty-button" (click)="signOut()">Sign out</button>
-            </div>
-        </div>
+        <app-dropdown-menu [properties]="userDropdownOptions" (optionClicked)="signOut()"></app-dropdown-menu>
     </div>
 </ng-template>

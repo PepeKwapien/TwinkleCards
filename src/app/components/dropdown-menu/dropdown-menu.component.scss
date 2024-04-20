@@ -1,0 +1,83 @@
+@import '/src/styles/color.scss';
+@import '/src/styles/shared.scss';
+
+* {
+    font-size: inherit;
+}
+
+.arrow-icon {
+    height: 24px;
+    transition: 0.3s;
+}
+
+.arrow-icon-rotated {
+    transform: rotate(180deg);
+}
+
+$borderWidth: 3px;
+
+.dropdown-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+.dropdown-button {
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    column-gap: 0.3em;
+
+    border: $borderWidth transparent solid;
+    border-bottom: unset;
+    border-radius: 5px;
+    border-bottom: unset;
+
+    .active > & {
+        border: $borderWidth $primary-background solid;
+        border-bottom: unset;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+        background: $tertiary-background;
+
+        @include darken-on-hover-active;
+    }
+}
+
+.dropdown-options {
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.2s;
+
+    .active > & {
+        transform: scaleY(100%);
+        border-radius: 5px;
+        border: $borderWidth $primary-background solid;
+        border-top: unset;
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
+    }
+
+    & > * {
+        padding: 0.5rem 0;
+        background: $tertiary-background;
+
+        .active & {
+            border-top: $borderWidth $primary-background-transparent solid;
+            @include darken-on-hover-active;
+        }
+    }
+
+    & > *:last-child {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+}
