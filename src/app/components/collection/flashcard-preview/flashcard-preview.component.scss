@@ -23,7 +23,7 @@
 
 .flashcard-preview-upper-text-container {
     width: 100%;
-    background-color: $gray-outline-solid;
+    background-color: $dimmed-primary-background;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     padding: 1em 2.2em;
@@ -59,7 +59,7 @@ $icon-offset: 0.3em;
     left: $icon-offset;
     top: $icon-offset;
     border-radius: 50%;
-    background-color: $gray-outline-solid;
+    background-color: $dimmed-primary-background;
 }
 
 .flashcard-preview-delete {
@@ -67,7 +67,7 @@ $icon-offset: 0.3em;
     right: $icon-offset;
     top: $icon-offset;
     border-radius: 50%;
-    background-color: $gray-outline-solid;
+    background-color: $dimmed-primary-background;
 }
 
 .flashcard-preview-flip {
