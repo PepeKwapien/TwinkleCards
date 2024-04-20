@@ -4,5 +4,3 @@ export enum CollectionGroupColorEnum {
     yellow,
     blue
 }
-
-export type CollectionGroupColorType = 'pink' | 'green' | 'yellow' | 'blue';

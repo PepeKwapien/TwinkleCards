@@ -11,12 +11,10 @@ import {
     updateDoc
 } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
 import { ICollectionReference } from 'src/app/models/documents/collection-reference.document';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { UserDocument } from 'src/app/models/documents/user.document';
-
-export type CollectionGroupProperties = { name: string; color: CollectionGroupColorType };
+import { CollectionGroupProperties } from 'src/app/types/collection-group-properties.type';
 
 @Injectable({
     providedIn: 'root'
@@ -214,4 +212,3 @@ export class UserRepositoryService implements OnDestroy {
         }
     }
 }
-

@@ -1,4 +1,4 @@
-import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
+import { CollectionGroupColorType } from 'src/app/types/color.type';
 import { ICollectionReference } from './collection-reference.document';
 
 export interface IUserCollectionGroup {

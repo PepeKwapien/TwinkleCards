@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { CollectionGroupProperties, UserRepositoryService } from '../user-repository/user-repository.service';
+import { UserRepositoryService } from '../user-repository/user-repository.service';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
-import { CollectionInputs } from '../collection-form/collection-form.service';
 import { CollectionRepositoryService } from '../collection-repository/collection-repository.service';
 import { ICollectionReference } from 'src/app/models/documents/collection-reference.document';
+import { CollectionGroupProperties } from 'src/app/types/collection-group-properties.type';
+import { CollectionInputs } from 'src/app/types/collection-inputs.type';
 
 @Injectable({
     providedIn: 'root'

@@ -3,9 +3,9 @@ import { determineCollectionTypeBasedOnFlashcard } from 'src/app/helpers/collect
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
-import { CollectionType } from 'src/app/services/collection-form/collection-form.service';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
+import { CollectionType } from 'src/app/types/collection-type.type';
 
 @Component({
     selector: 'app-flashcard-preview',
@@ -16,13 +16,13 @@ export class FlashcardPreviewComponent implements OnInit {
     @Input({ required: true }) flashcard!: IBaseFlashcard;
     @Input({ required: true }) collectionId!: string;
 
+    public flashcardType!: CollectionType;
+
     public get flipped(): boolean {
         return this._flipped;
     }
 
     private _flipped: boolean = false;
-
-    public flashcardType!: CollectionType;
 
     constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {}
 

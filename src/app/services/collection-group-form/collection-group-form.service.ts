@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserIdInterceptorService } from '../user-id-interceptor/user-id-interceptor.service';
 import { ModalService } from '../modal/modal.service';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
-import { CollectionGroupProperties } from '../user-repository/user-repository.service';
+import { CollectionGroupProperties } from 'src/app/types/collection-group-properties.type';
 
 @Injectable({
     providedIn: 'root'

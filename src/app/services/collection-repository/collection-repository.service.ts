@@ -12,12 +12,12 @@ import {
     onSnapshot,
     updateDoc
 } from '@angular/fire/firestore';
-import { CollectionInputs } from '../collection-form/collection-form.service';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
+import { CollectionInputs } from 'src/app/types/collection-inputs.type';
 
 @Injectable({
     providedIn: 'root'

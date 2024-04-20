@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CollectionGroupColorEnum } from 'src/app/helpers/colors.helper';
+import { CollectionGroupColorEnum } from 'src/app/enums/collection-group-color.enum';
 import { CollectionGroupFormService } from 'src/app/services/collection-group-form/collection-group-form.service';
 
 @Component({

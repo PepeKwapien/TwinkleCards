@@ -1,5 +1,6 @@
-import { CollectionInputs, CollectionType } from 'src/app/services/collection-form/collection-form.service';
+import { CollectionType } from 'src/app/types/collection-type.type';
 import { IBaseFlashcard } from './flashcards/base-flashcard.interface';
+import { CollectionInputs } from 'src/app/types/collection-inputs.type';
 
 export class CollectionDocument {
     name: string;

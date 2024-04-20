@@ -1,13 +1,6 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
-import { CollectionGroupColorType } from 'src/app/helpers/colors.helper';
-
-export type ConfirmActionProperties = {
-    title: string;
-    description: string;
-    confirmation?: string;
-    color?: CollectionGroupColorType;
-};
+import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
 
 @Injectable({
     providedIn: 'root'

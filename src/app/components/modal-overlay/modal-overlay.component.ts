@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ConfirmActionProperties, ModalService } from 'src/app/services/modal/modal.service';
+import { ModalService } from 'src/app/services/modal/modal.service';
+import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
 
 @Component({
     selector: 'app-modal-overlay',
