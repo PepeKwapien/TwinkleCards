@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
 import { ICollectionReference } from 'src/app/models/documents/collection-reference.document';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionFormService } from 'src/app/services/collection-form/collection-form.service';
@@ -11,14 +11,21 @@ import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/u
     templateUrl: './collection-group.component.html',
     styleUrls: ['./collection-group.component.scss']
 })
-export class CollectionGroupComponent {
+export class CollectionGroupComponent implements AfterViewInit {
+    @ViewChild('collectionsGrid') collectionsGrid!: ElementRef;
+
     @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
     @Input() indexOnScreen: number = 1;
 
     private _lastEditedCollection?: ICollectionReference;
+    private _collectionsCollapsed: boolean;
 
     public get lastEditedCollection(): ICollectionReference | undefined {
         return this._lastEditedCollection;
+    }
+
+    public get collectionsCollapsed(): boolean {
+        return this._collectionsCollapsed;
     }
 
     constructor(
@@ -26,13 +33,33 @@ export class CollectionGroupComponent {
         private _userIdInterceptorService: UserIdInterceptorService,
         private _collectionFormService: CollectionFormService,
         private _collectionRepository: CollectionRepositoryService
-    ) {}
+    ) {
+        this._collectionsCollapsed = false;
+    }
+    ngAfterViewInit(): void {
+        this._manageCollectionGridMaxHeight();
+    }
 
-    public openModal(modalTemplate: TemplateRef<Element>) {
+    public toggleCollections() {
+        this._collectionsCollapsed = !this._collectionsCollapsed;
+        this._manageCollectionGridMaxHeight();
+    }
+
+    private _manageCollectionGridMaxHeight(): void {
+        if (!this._collectionsCollapsed) {
+            this.collectionsGrid.nativeElement.style.maxHeight = this.collectionsGrid.nativeElement.scrollHeight + 'px';
+        } else {
+            this.collectionsGrid.nativeElement.style.maxHeight = 0;
+        }
+    }
+
+    public openModal($event: Event, modalTemplate: TemplateRef<Element>) {
+        $event.stopPropagation();
         this._modalService.open(modalTemplate);
     }
 
-    public async deleteGroup() {
+    public async deleteGroup($event: Event) {
+        $event.stopPropagation();
         if (this.collectionGroup === undefined) {
             return;
         }
@@ -56,12 +83,12 @@ export class CollectionGroupComponent {
         $event.stopPropagation();
 
         this._lastEditedCollection = collection;
-        this.openModal(collectionGroupForm);
+        this._modalService.open(collectionGroupForm);
     }
 
     public openCreateCollectionModal(collectionGroupForm: TemplateRef<Element>) {
         this._collectionFormService.setCollectionGroup(this.collectionGroup.name);
-        this.openModal(collectionGroupForm);
+        this._modalService.open(collectionGroupForm);
     }
 
     public async confirmCollectionDelete($event: Event, collection: ICollectionReference) {
@@ -80,4 +107,3 @@ export class CollectionGroupComponent {
         }
     }
 }
-

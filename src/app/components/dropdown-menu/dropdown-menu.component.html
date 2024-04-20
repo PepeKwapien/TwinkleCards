@@ -5,7 +5,7 @@
             *ngIf="properties.showArrow"
             src="./assets/expand_more.svg"
             class="arrow-icon"
-            [ngClass]="{ 'arrow-icon-rotated': optionsExpanded }" />
+            [ngClass]="{ 'icon-rotated': optionsExpanded }" />
     </button>
     <div #options class="dropdown-options" [ngClass]="{ 'light-box-shadow': optionsExpanded }">
         <button *ngFor="let option of properties.options" class="empty-button" (click)="emitValue(option.emitValue)">

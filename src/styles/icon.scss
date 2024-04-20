@@ -13,3 +13,7 @@
 .grayed-icon {
     filter: invert(48%) sepia(0%) saturate(1116%) hue-rotate(166deg) brightness(105%) contrast(88%);
 }
+
+.icon-rotated {
+    transform: rotate(180deg);
+}

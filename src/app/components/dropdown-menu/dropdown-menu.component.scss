@@ -10,10 +10,6 @@
     transition: 0.3s;
 }
 
-.arrow-icon-rotated {
-    transform: rotate(180deg);
-}
-
 $borderWidth: 3px;
 
 .dropdown-container {
@@ -54,11 +50,13 @@ $borderWidth: 3px;
     left: 0;
     width: 100%;
     transform: scaleY(0);
+    opacity: 0;
     transform-origin: top;
     transition: 0.2s;
 
     .active > & {
         transform: scaleY(100%);
+        opacity: 1;
         border-radius: 5px;
         border: $borderWidth $primary-background solid;
         border-top: unset;

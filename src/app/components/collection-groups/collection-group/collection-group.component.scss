@@ -1,10 +1,15 @@
 @import '/src/styles/color.scss';
 @import '/src/styles/shared.scss';
 
+.arrow-icon {
+    transition: 0.2s;
+}
+
 .collection-group-header {
     border: 3px $primary-background solid;
     @include collection-group-header();
 
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,8 +43,16 @@
     justify-content: flex-start;
     column-gap: 2%;
     row-gap: 1.2rem;
-
     margin: 1em 0;
+    transform-origin: top;
+    transition: 0.4s ease;
+    opacity: 1;
+    transform: scaleY(100%);
+
+    &.collection-grid-collapsed {
+        transform: scaleY(0%);
+        opacity: 0;
+    }
 }
 
 .collection-box {

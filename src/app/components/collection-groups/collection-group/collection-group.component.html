@@ -1,16 +1,23 @@
 <ng-container *ngIf="collectionGroup !== undefined">
-    <div class="collection-group-header light-box-shadow" [class]="collectionGroup.color">
-        <h1 class="header-text collection-group-header-text-margin">{{ collectionGroup.name }}</h1>
+    <button
+        class="collection-group-header light-box-shadow empty-button"
+        [class]="collectionGroup.color"
+        (click)="toggleCollections()">
+        <h1 class="header-text collection-group-header-text-margin">
+            <img src="./assets/expand_more.svg" class="arrow-icon" [ngClass]="{ 'icon-rotated': collectionsCollapsed }" />{{
+                collectionGroup.name
+            }}
+        </h1>
         <div class="collection-group-header-controls">
             <button class="empty-button">
-                <img src="./assets/edit.svg" class="hover-icon" (click)="openModal(editCollectionGroupForm)" />
+                <img src="./assets/edit.svg" class="hover-icon" (click)="openModal($event, editCollectionGroupForm)" />
             </button>
             <button class="empty-button">
-                <img src="./assets/close.svg" class="hover-icon" (click)="deleteGroup()" />
+                <img src="./assets/close.svg" class="hover-icon" (click)="deleteGroup($event)" />
             </button>
         </div>
-    </div>
-    <div class="collection-grid">
+    </button>
+    <div #collectionsGrid class="collection-grid" [ngClass]="{ 'collection-grid-collapsed': collectionsCollapsed }">
         <button
             *ngFor="let collection of collectionGroup.collections; let index = index"
             class="collection-box existing-collection light-box-shadow empty-button slide-from-left-and-scale-enter"
