@@ -4,6 +4,7 @@ import { CollectionDocument } from 'src/app/models/documents/collection.document
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
+import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-state.interface';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
@@ -21,9 +22,15 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
     private _collection: CollectionDocument | undefined;
     private _username: string | null | undefined;
+    private _flashcardsWithFlipState: IFlashcardWithFlipState[];
+    private _flipState: boolean;
 
-    public get collection() {
+    public get collection(): CollectionDocument | undefined {
         return this._collection;
+    }
+
+    public get flashcardWithFlipState(): IFlashcardWithFlipState[] {
+        return this._flashcardsWithFlipState;
     }
 
     public get username() {
@@ -40,6 +47,9 @@ export class CollectionComponent implements OnInit, OnDestroy {
     ) {
         this._sub = new Subscription();
 
+        this._flipState = false;
+        this._flashcardsWithFlipState = [];
+
         const collection$ = this._collectionRepository.collection$.pipe(filter((collection) => collection != undefined));
 
         const username$ = collection$.pipe(switchMap((col) => this._userRepository.readUsername(col!.ownerId)));
@@ -48,6 +58,11 @@ export class CollectionComponent implements OnInit, OnDestroy {
             next: (value) => {
                 this._collection = value[0];
                 this._username = value[1];
+                if (this._collection) {
+                    this._flashcardsWithFlipState = this._collection.flashcards.map((flashcard) => {
+                        return { flashcard, flipped: this._flipState };
+                    });
+                }
             }
         });
 
@@ -80,6 +95,19 @@ export class CollectionComponent implements OnInit, OnDestroy {
             return (flashcard as ITranslationFlashcard).sentence ?? '';
         } else {
             return '';
+        }
+    }
+
+    public flip() {
+        this._flipState = !this._flipState;
+        for (const flashcardWithFlipState of this._flashcardsWithFlipState) {
+            flashcardWithFlipState.flipped = this._flipState;
+        }
+    }
+
+    public correctFlipState() {
+        if (!this._flashcardsWithFlipState.some((flashcardWithFlipState) => flashcardWithFlipState.flipped === this._flipState)) {
+            this._flipState = !this._flipState;
         }
     }
 }

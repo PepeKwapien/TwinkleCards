@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { determineCollectionTypeBasedOnFlashcard } from 'src/app/helpers/collection-type.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
+import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-state.interface';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { CollectionType } from 'src/app/types/collection-type.type';
@@ -13,21 +14,31 @@ import { CollectionType } from 'src/app/types/collection-type.type';
     styleUrls: ['./flashcard-preview.component.scss']
 })
 export class FlashcardPreviewComponent implements OnInit {
-    @Input({ required: true }) flashcard!: IBaseFlashcard;
+    @Output() flashcardFlipped: EventEmitter<void>;
+
+    @Input({ required: true }) flashcardWithFlipState!: IFlashcardWithFlipState;
     @Input({ required: true }) collectionId!: string;
 
     public flashcardType!: CollectionType;
 
     public get flipped(): boolean {
-        return this._flipped;
+        return this.flashcardWithFlipState.flipped;
     }
 
-    private _flipped: boolean = false;
+    public set flipped(value: boolean) {
+        this.flashcardWithFlipState.flipped = value;
+    }
 
-    constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {}
+    public get flashcard(): IBaseFlashcard {
+        return this.flashcardWithFlipState.flashcard;
+    }
+
+    constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {
+        this.flashcardFlipped = new EventEmitter();
+    }
 
     ngOnInit(): void {
-        this.flashcardType = determineCollectionTypeBasedOnFlashcard(this.flashcard);
+        this.flashcardType = determineCollectionTypeBasedOnFlashcard(this.flashcardWithFlipState.flashcard);
     }
 
     public getFrontsideFlashcardHeader(): string {
@@ -68,7 +79,8 @@ export class FlashcardPreviewComponent implements OnInit {
 
     public flip($event: Event): void {
         $event.preventDefault();
-        this._flipped = !this._flipped;
+        this.flipped = !this.flipped;
+        this.flashcardFlipped.next();
     }
 
     public async deleteFlashcard($event: Event) {

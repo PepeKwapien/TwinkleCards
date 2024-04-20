@@ -21,7 +21,7 @@
                     ">
                     <img class="grayed-icon" src="./assets/add-circle.svg" />
                 </button>
-                <button class="empty-button round-button">
+                <button class="empty-button round-button" (click)="flip()">
                     <img class="grayed-icon" src="./assets/360.svg" />
                 </button>
             </div>
@@ -37,10 +37,11 @@
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
             <app-flashcard-preview
                 class="slide-from-left-and-scale-enter"
-                *ngFor="let flashcard of collection.flashcards; let index = index"
+                *ngFor="let flashcard of flashcardWithFlipState; let index = index"
                 [style.animation-delay]="0.1 * index + 's'"
-                [flashcard]="flashcard"
-                [collectionId]="collectionId"></app-flashcard-preview>
+                [flashcardWithFlipState]="flashcard"
+                [collectionId]="collectionId"
+                (flashcardFlipped)="correctFlipState()"></app-flashcard-preview>
         </div>
     </div>
 </div>
