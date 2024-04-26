@@ -53,6 +53,8 @@ $borderWidth: 3px;
     opacity: 0;
     transform-origin: top;
     transition: 0.2s;
+    border: $borderWidth transparent solid;
+    z-index: 1;
 
     .active > & {
         transform: scaleY(100%);

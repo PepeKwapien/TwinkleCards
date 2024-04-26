@@ -1,6 +1,11 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 
-export type DropdownMenuProperties<T> = { mainButton: string; options: { display: string; emitValue: T }[]; showArrow: boolean };
+export type DropdownMenuProperties<T> = {
+    mainButton: string;
+    mainButtonTemplate?: TemplateRef<Element>;
+    options: { display: string; displayTemplate?: TemplateRef<Element>; emitValue: T }[];
+    showArrow: boolean;
+};
 
 @Component({
     selector: 'app-dropdown-menu',

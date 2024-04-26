@@ -1,6 +1,9 @@
 <div #mainButton class="dropdown-container" [ngClass]="{ active: optionsExpanded }" (click)="toggleOptions()">
     <button class="dropdown-button empty-button" [ngClass]="{ 'light-box-shadow': optionsExpanded }">
         {{ properties.mainButton }}
+        <ng-container
+            *ngIf="properties.mainButtonTemplate !== undefined"
+            [ngTemplateOutlet]="properties.mainButtonTemplate"></ng-container>
         <img
             *ngIf="properties.showArrow"
             src="./assets/expand_more.svg"
@@ -10,6 +13,7 @@
     <div #options class="dropdown-options" [ngClass]="{ 'light-box-shadow': optionsExpanded }">
         <button *ngFor="let option of properties.options" class="empty-button" (click)="emitValue(option.emitValue)">
             {{ option.display }}
+            <ng-container *ngIf="option.displayTemplate !== undefined" [ngTemplateOutlet]="option.displayTemplate"></ng-container>
         </button>
     </div>
 </div>
