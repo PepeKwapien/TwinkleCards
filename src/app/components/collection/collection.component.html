@@ -35,7 +35,7 @@
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
             <app-flashcard-preview
                 class="slide-from-left-and-scale-enter"
-                *ngFor="let flashcard of flashcardWithFlipState; let index = index"
+                *ngFor="let flashcard of flashcardsWithFlipState; let index = index"
                 [style.animation-delay]="0.1 * index + 's'"
                 [flashcardWithFlipState]="flashcard"
                 [collectionId]="collectionId"

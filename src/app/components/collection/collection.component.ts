@@ -51,7 +51,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._collection;
     }
 
-    public get flashcardWithFlipState(): IFlashcardWithFlipState[] {
+    public get flashcardsWithFlipState(): IFlashcardWithFlipState[] {
         return this._flashcardsWithFlipState;
     }
 
