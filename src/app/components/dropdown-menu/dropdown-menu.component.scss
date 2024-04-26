@@ -54,11 +54,11 @@ $borderWidth: 3px;
     transform-origin: top;
     transition: 0.2s;
     border: $borderWidth transparent solid;
-    z-index: 1;
 
     .active > & {
         transform: scaleY(100%);
         opacity: 1;
+        z-index: 1;
         border-radius: 5px;
         border: $borderWidth $primary-background solid;
         border-top: unset;

@@ -46,6 +46,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         showArrow: false,
         selectBehavior: { initValue: 1 }
     };
+    private _collectionSortOption: CollectionSortOptions = CollectionSortOptions.dateAsc;
 
     public get collection(): CollectionDocument | undefined {
         return this._collection;
@@ -86,8 +87,14 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                 this._username = value[1];
                 if (this._collection) {
                     this._flashcardsWithFlipState = this._collection.flashcards.map((flashcard) => {
-                        return { flashcard, flipped: this._flipState };
+                        const foundMatchingFlashcard = this._flashcardsWithFlipState.find(
+                            (lookingFor) => lookingFor.flashcard.id === flashcard.id
+                        );
+                        const flipped = foundMatchingFlashcard ? foundMatchingFlashcard.flipped : this._flipState;
+
+                        return { flashcard, flipped };
                     });
+                    this.sort(this._collectionSortOption);
                 }
             }
         });
@@ -151,6 +158,8 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public sort(event: CollectionSortOptions) {
+        this._collectionSortOption = event;
+
         switch (event) {
             case CollectionSortOptions.alphabeticalAsc:
                 this._flashcardsWithFlipState.sort((a, b) => this._sortByTerm(a, b, false));
@@ -173,6 +182,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                 );
                 return;
         }
+    }
+
+    public trackBy(index: number, flashcard: IFlashcardWithFlipState) {
+        return `${index}${JSON.stringify(flashcard.flashcard)}`;
     }
 
     private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {
