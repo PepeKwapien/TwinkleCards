@@ -68,7 +68,17 @@ $borderWidth: 3px;
 
     & > * {
         padding: 0.5rem 0;
-        background: $tertiary-background;
+
+        &:not(.dropdown-option-selected) {
+            background: $tertiary-background;
+        }
+
+        &.dropdown-option-selected {
+            background-color: $primary-background-less-vibrant;
+            & img {
+                filter: unset;
+            }
+        }
 
         .active & {
             border-top: $borderWidth $primary-background-transparent solid;
@@ -80,4 +90,10 @@ $borderWidth: 3px;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
     }
+}
+
+.dropdown-menu-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -11,8 +11,12 @@
             [ngClass]="{ 'icon-rotated': optionsExpanded }" />
     </button>
     <div #options class="dropdown-options" [ngClass]="{ 'light-box-shadow': optionsExpanded }">
-        <button *ngFor="let option of properties.options" class="empty-button" (click)="emitValue(option.emitValue)">
-            {{ option.display }}
+        <button
+            *ngFor="let option of properties.options; let index = index"
+            class="empty-button dropdown-menu-option"
+            (click)="emitValue(option.emitValue, index)"
+            [ngClass]="{ 'dropdown-option-selected': isOptionSelected(index) }">
+            <span>{{ option.display }}</span>
             <ng-container *ngIf="option.displayTemplate !== undefined" [ngTemplateOutlet]="option.displayTemplate"></ng-container>
         </button>
     </div>

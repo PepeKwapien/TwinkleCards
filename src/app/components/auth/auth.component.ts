@@ -17,7 +17,12 @@ export class AuthComponent {
     }
 
     public get userDropdownOptions(): DropdownMenuProperties<string> {
-        return { mainButton: this.username, options: [{ display: 'Sign out', emitValue: '' }], showArrow: true };
+        return {
+            mainButton: this.username,
+            options: [{ display: 'Sign out', emitValue: '' }],
+            showArrow: true,
+            selectBehavior: false
+        };
     }
 
     constructor(private _authService: AuthService) {}

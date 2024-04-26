@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Subscription, combineLatest, filter, switchMap } from 'rxjs';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
@@ -8,15 +8,31 @@ import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-stat
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
+import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component';
+import { CollectionType } from 'src/app/types/collection-type.type';
+import { Timestamp } from '@angular/fire/firestore';
+
+export enum CollectionSortOptions {
+    alphabeticalAsc = 'Alphabetical Ascending',
+    alphabeticalDsc = 'Alphabetical Descending',
+    dateAsc = 'Date Ascending',
+    dateDsc = 'Date Descending'
+}
 
 @Component({
     selector: 'app-collection',
     templateUrl: './collection.component.html',
     styleUrls: ['./collection.component.scss']
 })
-export class CollectionComponent implements OnInit, OnDestroy {
+export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     // bindToComponentInputs: true
     @Input() collectionId!: string;
+
+    @ViewChild('sortIcon') sortIcon!: TemplateRef<Element>;
+    @ViewChild('arrowUpIcon') arrowUpIcon!: TemplateRef<Element>;
+    @ViewChild('arrowDownIcon') arrowDownIcon!: TemplateRef<Element>;
+    @ViewChild('scheduleUpIcon') scheduleUpIcon!: TemplateRef<Element>;
+    @ViewChild('scheduleDownIcon') scheduleDownIcon!: TemplateRef<Element>;
 
     private _sub: Subscription;
 
@@ -24,6 +40,12 @@ export class CollectionComponent implements OnInit, OnDestroy {
     private _username: string | null | undefined;
     private _flashcardsWithFlipState: IFlashcardWithFlipState[];
     private _flipState: boolean;
+    private _sortDropdownProperties: DropdownMenuProperties<CollectionSortOptions> = {
+        mainButton: '',
+        options: [],
+        showArrow: false,
+        selectBehavior: { initValue: 1 }
+    };
 
     public get collection(): CollectionDocument | undefined {
         return this._collection;
@@ -31,6 +53,10 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
     public get flashcardWithFlipState(): IFlashcardWithFlipState[] {
         return this._flashcardsWithFlipState;
+    }
+
+    public get sortDropdownProperties(): DropdownMenuProperties<CollectionSortOptions> {
+        return this._sortDropdownProperties;
     }
 
     public get username() {
@@ -73,6 +99,19 @@ export class CollectionComponent implements OnInit, OnDestroy {
         this._collectionRepository.setupCollectionChangesListener(this.collectionId);
     }
 
+    ngAfterViewInit(): void {
+        this._sortDropdownProperties = {
+            ...this._sortDropdownProperties,
+            mainButtonTemplate: this.sortIcon,
+            options: [
+                { display: '', displayTemplate: this.scheduleUpIcon, emitValue: CollectionSortOptions.dateDsc },
+                { display: '', displayTemplate: this.scheduleDownIcon, emitValue: CollectionSortOptions.dateAsc },
+                { display: 'A-Z', displayTemplate: this.arrowUpIcon, emitValue: CollectionSortOptions.alphabeticalAsc },
+                { display: 'A-Z', displayTemplate: this.arrowDownIcon, emitValue: CollectionSortOptions.alphabeticalDsc }
+            ]
+        };
+    }
+
     ngOnDestroy(): void {
         this._collectionRepository.stopCollectionChangesListener();
         this._sub.unsubscribe();
@@ -109,5 +148,45 @@ export class CollectionComponent implements OnInit, OnDestroy {
         if (!this._flashcardsWithFlipState.some((flashcardWithFlipState) => flashcardWithFlipState.flipped === this._flipState)) {
             this._flipState = !this._flipState;
         }
+    }
+
+    public sort(event: CollectionSortOptions) {
+        switch (event) {
+            case CollectionSortOptions.alphabeticalAsc:
+                this._flashcardsWithFlipState.sort((a, b) => this._sortByTerm(a, b, false));
+                return;
+            case CollectionSortOptions.alphabeticalDsc:
+                this._flashcardsWithFlipState.sort((a, b) => this._sortByTerm(a, b, true));
+                return;
+            case CollectionSortOptions.dateAsc:
+                this._flashcardsWithFlipState.sort(
+                    (a, b) =>
+                        (a.flashcard.createdAt as unknown as Timestamp).toDate().getTime() -
+                        (b.flashcard.createdAt as unknown as Timestamp).toDate().getTime()
+                );
+                return;
+            case CollectionSortOptions.dateDsc:
+                this._flashcardsWithFlipState.sort(
+                    (a, b) =>
+                        (b.flashcard.createdAt as unknown as Timestamp).toDate().getTime() -
+                        (a.flashcard.createdAt as unknown as Timestamp).toDate().getTime()
+                );
+                return;
+        }
+    }
+
+    private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {
+        let result = 0;
+        if (this._collection!.type === 'definition') {
+            result = (a.flashcard as IDefinitionFlashcard).term.localeCompare((b.flashcard as IDefinitionFlashcard).term);
+        } else {
+            result = (a.flashcard as ITranslationFlashcard).word.localeCompare((b.flashcard as ITranslationFlashcard).word);
+        }
+
+        if (descending) {
+            result *= -1;
+        }
+
+        return result;
     }
 }

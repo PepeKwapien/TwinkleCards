@@ -87,3 +87,14 @@
         min-height: 10rem;
     }
 }
+
+.sort-icon-padding {
+    padding: 0 0.5em;
+}
+
+.sort-option-icons {
+    display: inline-flex;
+    & img {
+        width: 20px;
+    }
+}

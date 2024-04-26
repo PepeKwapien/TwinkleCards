@@ -29,9 +29,7 @@
                 <button class="empty-button round-button">
                     <img class="grayed-icon" src="./assets/search.svg" />
                 </button>
-                <button class="empty-button round-button">
-                    <img class="grayed-icon" src="./assets/sort.svg" />
-                </button>
+                <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
             </div>
         </div>
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
@@ -62,4 +60,36 @@
 
 <ng-template #translationFlashcardForm>
     <app-create-translation-flashcard-form [collectionId]="collectionId"></app-create-translation-flashcard-form>
+</ng-template>
+
+<ng-template #sortIcon>
+    <div class="sort-icon-padding">
+        <img class="grayed-icon" src="./assets/sort.svg" />
+    </div>
+</ng-template>
+
+<ng-template #arrowUpIcon>
+    <div class="sort-option-icons">
+        <img class="grayed-icon" src="./assets/arrow_upward.svg" />
+    </div>
+</ng-template>
+
+<ng-template #arrowDownIcon>
+    <div class="sort-option-icons">
+        <img class="grayed-icon" src="./assets/arrow_downward.svg" />
+    </div>
+</ng-template>
+
+<ng-template #scheduleUpIcon>
+    <div class="sort-option-icons">
+        <img class="grayed-icon" src="./assets/schedule.svg" />
+        <img class="grayed-icon" src="./assets/arrow_upward.svg" />
+    </div>
+</ng-template>
+
+<ng-template #scheduleDownIcon>
+    <div class="sort-option-icons">
+        <img class="grayed-icon" src="./assets/schedule.svg" />
+        <img class="grayed-icon" src="./assets/arrow_downward.svg" />
+    </div>
 </ng-template>
