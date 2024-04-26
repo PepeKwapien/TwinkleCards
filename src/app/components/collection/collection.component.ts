@@ -161,15 +161,15 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
             case CollectionSortOptions.dateAsc:
                 this._flashcardsWithFlipState.sort(
                     (a, b) =>
-                        (a.flashcard.createdAt as unknown as Timestamp).toDate().getTime() -
-                        (b.flashcard.createdAt as unknown as Timestamp).toDate().getTime()
+                        (a.flashcard.createdAt as Timestamp).toDate().getTime() -
+                        (b.flashcard.createdAt as Timestamp).toDate().getTime()
                 );
                 return;
             case CollectionSortOptions.dateDsc:
                 this._flashcardsWithFlipState.sort(
                     (a, b) =>
-                        (b.flashcard.createdAt as unknown as Timestamp).toDate().getTime() -
-                        (a.flashcard.createdAt as unknown as Timestamp).toDate().getTime()
+                        (b.flashcard.createdAt as Timestamp).toDate().getTime() -
+                        (a.flashcard.createdAt as Timestamp).toDate().getTime()
                 );
                 return;
         }
