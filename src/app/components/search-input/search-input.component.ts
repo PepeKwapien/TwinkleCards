@@ -13,7 +13,7 @@ export class SearchInputComponent implements OnDestroy {
     @Output() searchTerm: EventEmitter<string> = new EventEmitter<string>();
 
     private _sub: Subscription;
-    private _formControl: FormControl = new FormControl();
+    private _formControl: FormControl = new FormControl('');
     private _isActive: boolean = false;
 
     public get formControl(): FormControl {
@@ -41,7 +41,7 @@ export class SearchInputComponent implements OnDestroy {
         }
 
         if (this._isActive && !this.checkIfClickedInside($event, this.input) && !this.checkIfClickedInside($event, this.icon)) {
-            this._isActive = false;
+            this._isActive = false || this.formControl.value.length > 0;
         }
     }
 
@@ -51,14 +51,14 @@ export class SearchInputComponent implements OnDestroy {
 
     @HostListener('document:keydown.escape', ['$event'])
     closeOptions(): void {
-        this._isActive = false;
+        this._isActive = false || this.formControl.value.length > 0;
     }
 
     public onIconClick() {
         if (!this._isActive) {
             this._isActive = true;
         } else {
-            this._isActive = false;
+            this._isActive = false || this.formControl.value.length > 0;
         }
     }
 }
