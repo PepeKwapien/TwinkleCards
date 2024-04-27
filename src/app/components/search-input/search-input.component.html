@@ -1,0 +1,7 @@
+<div class="search-input-container" [ngClass]="{ active: isActive }">
+    <input class="search-input" type="text" [disabled]="!isActive" [formControl]="formControl" #input />
+    <button class="empty-button round-button" (click)="onIconClick()" #icon>
+        <img class="grayed-icon" src="./assets/search.svg" />
+    </button>
+</div>
+

@@ -24,6 +24,7 @@ import { FlashcardPreviewComponent } from './components/collection/flashcard-pre
 import { EditTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/edit-translation-flashcard-form/edit-translation-flashcard-form.component';
 import { EditDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/edit-definition-flashcard-form/edit-definition-flashcard-form.component';
 import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.
         FlashcardPreviewComponent,
         EditTranslationFlashcardFormComponent,
         EditDefinitionFlashcardFormComponent,
-        DropdownMenuComponent
+        DropdownMenuComponent,
+        SearchInputComponent
     ],
     imports: [
         BrowserModule,

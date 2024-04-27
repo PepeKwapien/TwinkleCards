@@ -26,9 +26,7 @@
                 </button>
             </div>
             <div class="collection-body-secondary-controls">
-                <button class="empty-button round-button">
-                    <img class="grayed-icon" src="./assets/search.svg" />
-                </button>
+                <app-search-input (searchTerm)="filter($event)"></app-search-input>
                 <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
             </div>
         </div>

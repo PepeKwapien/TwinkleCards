@@ -4,7 +4,7 @@
         [class]="collectionGroup.color"
         (click)="toggleCollections()">
         <h1 class="header-text collection-group-header-text-margin">
-            <img src="./assets/expand_more.svg" class="arrow-icon" [ngClass]="{ 'icon-rotated': collectionsCollapsed }" />{{
+            <img src="./assets/expand_more.svg" class="arrow-icon" [ngClass]="{ 'icon-rotated': !collectionsCollapsed }" />{{
                 collectionGroup.name
             }}
         </h1>

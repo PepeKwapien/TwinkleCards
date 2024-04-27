@@ -39,6 +39,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     private _collection: CollectionDocument | undefined;
     private _username: string | null | undefined;
     private _flashcardsWithFlipState: IFlashcardWithFlipState[];
+    private _filteredFlashcardsWithFlipState: IFlashcardWithFlipState[];
     private _flipState: boolean;
     private _sortDropdownProperties: DropdownMenuProperties<CollectionSortOptions> = {
         mainButton: '',
@@ -46,6 +47,8 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         showArrow: false,
         selectBehavior: { initValue: 1 }
     };
+
+    private _collectionFilterValue: string = '';
     private _collectionSortOption: CollectionSortOptions = CollectionSortOptions.dateAsc;
 
     public get collection(): CollectionDocument | undefined {
@@ -53,7 +56,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public get flashcardsWithFlipState(): IFlashcardWithFlipState[] {
-        return this._flashcardsWithFlipState;
+        return this._filteredFlashcardsWithFlipState;
     }
 
     public get sortDropdownProperties(): DropdownMenuProperties<CollectionSortOptions> {
@@ -76,6 +79,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this._flipState = false;
         this._flashcardsWithFlipState = [];
+        this._filteredFlashcardsWithFlipState = [];
 
         const collection$ = this._collectionRepository.collection$.pipe(filter((collection) => collection != undefined));
 
@@ -94,7 +98,9 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
                         return { flashcard, flipped };
                     });
+
                     this.sort(this._collectionSortOption);
+                    this.filter(this._collectionFilterValue);
                 }
             }
         });
@@ -182,6 +188,40 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                 );
                 return;
         }
+    }
+
+    public filter(value: string) {
+        this._collectionFilterValue = value;
+
+        if (value === '') {
+            this._filteredFlashcardsWithFlipState = this._flashcardsWithFlipState;
+            return;
+        }
+
+        this._filteredFlashcardsWithFlipState = this._flashcardsWithFlipState.filter((flashcard) => {
+            let stringifiedContent = '';
+
+            if (this._collection?.type == 'definition') {
+                const definitionFlashcard = flashcard.flashcard as IDefinitionFlashcard;
+                stringifiedContent += definitionFlashcard.term;
+                stringifiedContent += definitionFlashcard.definition;
+            } else {
+                const translationFlashcard = flashcard.flashcard as ITranslationFlashcard;
+                stringifiedContent += translationFlashcard.word;
+                stringifiedContent += translationFlashcard.translation;
+
+                if (translationFlashcard.sentence) {
+                    stringifiedContent += translationFlashcard.sentence;
+                }
+                if (translationFlashcard.translatedSentence) {
+                    stringifiedContent += translationFlashcard.translatedSentence;
+                }
+            }
+
+            stringifiedContent = stringifiedContent.toLocaleLowerCase();
+
+            return stringifiedContent.includes(value.toLocaleLowerCase());
+        });
     }
 
     public trackBy(index: number, flashcard: IFlashcardWithFlipState) {
