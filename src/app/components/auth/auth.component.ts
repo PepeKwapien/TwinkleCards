@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component';
 
@@ -7,7 +7,11 @@ import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent {
+export class AuthComponent implements AfterViewInit {
+    @ViewChild('usernameTemplate') usernameTemplate!: TemplateRef<Element>;
+
+    private _userDropdownOptions: DropdownMenuProperties<string>;
+
     public get isUserAuthenticated(): boolean {
         return this._authService.isUserAuthenticated;
     }
@@ -17,7 +21,11 @@ export class AuthComponent {
     }
 
     public get userDropdownOptions(): DropdownMenuProperties<string> {
-        return {
+        return this._userDropdownOptions;
+    }
+
+    constructor(private _authService: AuthService) {
+        this._userDropdownOptions = {
             mainButton: this.username,
             options: [{ display: 'Sign out', emitValue: '' }],
             showArrow: true,
@@ -25,7 +33,10 @@ export class AuthComponent {
         };
     }
 
-    constructor(private _authService: AuthService) {}
+    ngAfterViewInit(): void {
+        this._userDropdownOptions.mainButton = '';
+        this._userDropdownOptions.mainButtonTemplate = this.usernameTemplate;
+    }
 
     public async signWithGooglePopup(): Promise<void> {
         await this._authService.signWithGooglePopup();

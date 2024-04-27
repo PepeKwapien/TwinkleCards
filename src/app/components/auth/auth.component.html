@@ -7,3 +7,9 @@
         <app-dropdown-menu [properties]="userDropdownOptions" (optionClicked)="signOut()"></app-dropdown-menu>
     </div>
 </ng-template>
+
+<ng-template #usernameTemplate>
+    <div class="username-min-width">
+        {{ username }}
+    </div>
+</ng-template>
