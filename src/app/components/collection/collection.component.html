@@ -1,5 +1,5 @@
 <div class="footer under-navbar-container" *ngIf="collection && username; else loader">
-    <div class="collection-container">
+    <div class="collection-container dissolve-animation-enter">
         <div class="collection-header">
             <span class="collection-public-mark">{{ collection.isPublic ? 'Public' : 'Private' }}</span>
             <h1 class="collection-title">{{ collection.name }}</h1>
@@ -11,7 +11,7 @@
         </div>
         <div class="collection-body-controls">
             <div class="collection-body-primary-controls">
-                <button class="round-button">
+                <button class="round-button" (click)="openModal(playCollection)">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
                 </button>
                 <button
@@ -58,6 +58,10 @@
 
 <ng-template #translationFlashcardForm>
     <app-create-translation-flashcard-form [collectionId]="collectionId"></app-create-translation-flashcard-form>
+</ng-template>
+
+<ng-template #playCollection>
+    <app-flashcard-display [flashcards]="collection!.flashcards"></app-flashcard-display>
 </ng-template>
 
 <ng-template #sortIcon>

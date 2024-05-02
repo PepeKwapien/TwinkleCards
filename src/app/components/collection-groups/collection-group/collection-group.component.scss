@@ -102,14 +102,6 @@
     top: 0.3em;
     right: 0.3em;
     left: 0.3em;
-
-    & > * {
-        transition: 0.3s;
-        &:hover {
-            transform: scale(1.1);
-            filter: brightness(55%);
-        }
-    }
 }
 
 .add-new-collection-box {

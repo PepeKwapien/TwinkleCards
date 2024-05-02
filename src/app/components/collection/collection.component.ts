@@ -134,22 +134,6 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this._modalService.open(templateRef);
     }
 
-    public getFrontsideFlashcardHeader(flashcard: IBaseFlashcard): string {
-        if ((flashcard as IDefinitionFlashcard).term) {
-            return (flashcard as IDefinitionFlashcard).term;
-        } else {
-            return (flashcard as ITranslationFlashcard).word;
-        }
-    }
-
-    public getFronsideFlashcardBody(flashcard: IBaseFlashcard): string {
-        if ((flashcard as ITranslationFlashcard).sentence) {
-            return (flashcard as ITranslationFlashcard).sentence ?? '';
-        } else {
-            return '';
-        }
-    }
-
     public flip() {
         this._flipState = !this._flipState;
         for (const flashcardWithFlipState of this._flashcardsWithFlipState) {

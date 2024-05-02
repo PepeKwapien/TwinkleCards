@@ -8,7 +8,7 @@
             *ngIf="properties.showArrow"
             src="./assets/expand_more.svg"
             class="arrow-icon"
-            [ngClass]="{ 'icon-rotated': optionsExpanded }" />
+            [ngClass]="{ 'icon-rotated-180': optionsExpanded }" />
     </button>
     <div #options class="dropdown-options" [ngClass]="{ 'light-box-shadow': optionsExpanded }">
         <button

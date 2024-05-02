@@ -6,42 +6,42 @@
                 (click)="
                     flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
                 ">
-                <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
+                <img src="./assets/edit.svg" class="grayed-icon-hover hover-icon" />
             </button>
             <button
                 class="empty-button flashcard-preview-control-icon flashcard-preview-delete"
                 (click)="deleteFlashcard($event)">
-                <img src="./assets/close.svg" class="grayed-icon hover-icon" />
+                <img src="./assets/delete.svg" class="grayed-icon-hover hover-icon" />
             </button>
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
-                <img src="./assets/360.svg" class="grayed-icon hover-icon" />
+                <img src="./assets/360.svg" class="grayed-icon-hover hover-icon" />
             </button>
             <div class="flashcard-preview-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
-                <div class="flashcard-preview-upper-text">{{ getFrontsideFlashcardHeader() }}</div>
+                <div class="flashcard-preview-upper-text">{{ frontsideFlashcardHeader }}</div>
             </div>
             <div class="flashcard-preview-lower-text-container">
                 <div class="flashcard-preview-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
-                    {{ getFrontsideFlashcardBody() }}
+                    {{ frontsideFlashcardBody }}
                 </div>
             </div>
         </button>
         <button class="empty-button flashcard-preview light-box-shadow flip-card-back" #backside>
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
-                <img src="./assets/edit.svg" class="grayed-icon hover-icon" />
+                <img src="./assets/edit.svg" class="grayed-icon-hover hover-icon" />
             </button>
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-delete">
-                <img src="./assets/close.svg" class="grayed-icon hover-icon" />
+                <img src="./assets/delete.svg" class="grayed-icon-hover hover-icon" />
             </button>
             <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
-                <img src="./assets/360.svg" class="grayed-icon hover-icon" />
+                <img src="./assets/360.svg" class="grayed-icon-hover hover-icon" />
             </button>
             <div class="flashcard-preview-upper-text-container" #backsideUpper>
-                <div class="flashcard-preview-upper-text" *ngIf="getBacksideFlashcardHeader()">
-                    {{ getBacksideFlashcardHeader() }}
+                <div class="flashcard-preview-upper-text" *ngIf="backsideFlashcardHeader">
+                    {{ backsideFlashcardHeader }}
                 </div>
             </div>
             <div class="flashcard-preview-lower-text-container">
-                <div class="flashcard-preview-lower-text" #backsideLower>{{ getBacksideFlashcardBody() }}</div>
+                <div class="flashcard-preview-lower-text" #backsideLower>{{ backsideFlashcardBody }}</div>
             </div>
         </button>
     </div>
@@ -58,3 +58,4 @@
         [collectionId]="collectionId"
         [flashcard]="flashcard"></app-edit-translation-flashcard-form>
 </ng-template>
+

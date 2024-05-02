@@ -1,6 +1,6 @@
 @import '/src/styles/color.scss';
 
-.flashcard-preview {
+.flashcard-display {
     width: 100%;
     height: 100%;
     border-radius: 15px;
@@ -21,7 +21,7 @@
     }
 }
 
-.flashcard-preview-upper-text-container {
+.flashcard-display-upper-text-container {
     width: 100%;
     background-color: $dimmed-primary-background;
     border-top-left-radius: 12px;
@@ -29,7 +29,7 @@
     padding: 1em 2.2em;
 }
 
-.flashcard-preview-upper-text {
+.flashcard-display-upper-text {
     font-weight: 600;
     font-size: 1.05rem;
     background-color: $tertiary-background;
@@ -37,42 +37,27 @@
     border-radius: 5px;
 }
 
-.flashcard-preview-lower-text-container {
+.flashcard-display-lower-text-container {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    padding: 1em 2.2em;
-    padding-top: 0.5em;
+    padding: 0.5em 2.2em;
+    padding-top: 1.5em;
     flex: 1;
 }
 
-.flashcard-preview-lower-text {
+.flashcard-display-lower-text {
     display: flex;
     align-items: center;
     font-size: 1rem;
     background-color: $tertiary-background;
 }
 
-$icon-offset: 0.3em;
+.flashcard-display-buttons {
+    display: flex;
+    column-gap: 2em;
+    padding: 0.5em 0;
 
-.flashcard-preview-edit {
-    position: absolute;
-    left: $icon-offset;
-    top: $icon-offset;
-    border-radius: 50%;
-    background-color: $dimmed-primary-background;
-}
-
-.flashcard-preview-delete {
-    position: absolute;
-    right: $icon-offset;
-    top: $icon-offset;
-    border-radius: 50%;
-    background-color: $dimmed-primary-background;
-}
-
-.flashcard-preview-flip {
-    position: absolute;
-    left: $icon-offset;
-    bottom: $icon-offset;
-    border-radius: 50%;
+    & img {
+        height: 2.5em;
+    }
 }

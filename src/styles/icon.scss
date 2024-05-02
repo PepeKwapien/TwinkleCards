@@ -14,6 +14,24 @@
     filter: invert(48%) sepia(0%) saturate(1116%) hue-rotate(166deg) brightness(105%) contrast(88%);
 }
 
-.icon-rotated {
+.grayed-icon-hover {
+    @extend .grayed-icon;
+    transition: 0.3s;
+}
+
+.grayed-icon-hover:hover {
+    scale: 1.1;
+    filter: brightness(55%);
+}
+
+.icon-rotated-180 {
     transform: rotate(180deg);
+}
+
+.icon-rotated-90 {
+    transform: rotate(90deg);
+}
+
+.icon-rotated-270 {
+    transform: rotate(270deg);
 }

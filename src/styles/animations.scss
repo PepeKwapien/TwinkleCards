@@ -9,21 +9,7 @@
 
 /* Apply the animation to the element */
 .dissolve-animation-enter {
-    animation: fadeIn 500ms ease-out;
-}
-
-.expand-height-enter {
-    transform-origin: top;
-    animation: expandHeight 0.5s ease-in-out;
-}
-
-@keyframes expandHeight {
-    from {
-        transform: scaleY(0);
-    }
-    to {
-        transform: scaleY(1);
-    }
+    animation: fadeIn 500ms ease-out forwards;
 }
 
 .slide-from-left-enter {

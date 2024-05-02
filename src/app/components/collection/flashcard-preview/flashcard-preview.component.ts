@@ -1,5 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { determineCollectionTypeBasedOnFlashcard } from 'src/app/helpers/collection-type.helper';
+import {
+    getFrontsideFlashcardHeader,
+    getFrontsideFlashcardBody,
+    getBacksideFlashcardHeader,
+    getBacksideFlashcardBody
+} from 'src/app/helpers/flashcard.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
@@ -33,44 +39,28 @@ export class FlashcardPreviewComponent implements OnInit {
         return this.flashcardWithFlipState.flashcard;
     }
 
+    public get frontsideFlashcardHeader(): string {
+        return getFrontsideFlashcardHeader(this.flashcard);
+    }
+
+    public get frontsideFlashcardBody(): string {
+        return getFrontsideFlashcardBody(this.flashcard);
+    }
+
+    public get backsideFlashcardHeader(): string {
+        return getBacksideFlashcardHeader(this.flashcard);
+    }
+
+    public get backsideFlashcardBody(): string {
+        return getBacksideFlashcardBody(this.flashcard);
+    }
+
     constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {
         this.flashcardFlipped = new EventEmitter();
     }
 
     ngOnInit(): void {
         this.flashcardType = determineCollectionTypeBasedOnFlashcard(this.flashcardWithFlipState.flashcard);
-    }
-
-    public getFrontsideFlashcardHeader(): string {
-        if ((this.flashcard as IDefinitionFlashcard).term) {
-            return (this.flashcard as IDefinitionFlashcard).term;
-        } else {
-            return (this.flashcard as ITranslationFlashcard).word;
-        }
-    }
-
-    public getFrontsideFlashcardBody(): string {
-        if ((this.flashcard as ITranslationFlashcard).sentence) {
-            return (this.flashcard as ITranslationFlashcard).sentence ?? '';
-        } else {
-            return '';
-        }
-    }
-
-    public getBacksideFlashcardHeader(): string {
-        if ((this.flashcard as ITranslationFlashcard).translation) {
-            return (this.flashcard as ITranslationFlashcard).translation;
-        } else {
-            return '';
-        }
-    }
-
-    public getBacksideFlashcardBody(): string {
-        if ((this.flashcard as ITranslationFlashcard).translatedSentence) {
-            return (this.flashcard as ITranslationFlashcard).translatedSentence ?? '';
-        } else {
-            return (this.flashcard as IDefinitionFlashcard).definition;
-        }
     }
 
     public openModal(templateRef: TemplateRef<Element>): void {
