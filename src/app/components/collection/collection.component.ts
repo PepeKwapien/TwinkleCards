@@ -11,6 +11,7 @@ import { UserRepositoryService } from 'src/app/services/user-repository/user-rep
 import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component';
 import { CollectionType } from 'src/app/types/collection-type.type';
 import { Timestamp } from '@angular/fire/firestore';
+import { IModalProperties } from 'src/app/models/modal-properties.interface';
 
 export enum CollectionSortOptions {
     alphabeticalAsc = 'Alphabetical Ascending',
@@ -130,8 +131,12 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this._sub.unsubscribe();
     }
 
-    public openModal(templateRef: TemplateRef<Element>): void {
-        this._modalService.open(templateRef);
+    public openModal(templateRef: TemplateRef<Element>, modalProperties?: IModalProperties): void {
+        if (modalProperties) {
+            this._modalService.open(templateRef, modalProperties);
+        } else {
+            this._modalService.open(templateRef);
+        }
     }
 
     public flip() {

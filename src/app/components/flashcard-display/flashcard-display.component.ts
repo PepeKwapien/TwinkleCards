@@ -6,6 +6,7 @@ import {
     getBacksideFlashcardBody
 } from 'src/app/helpers/flashcard.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
+import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
     selector: 'app-flashcard-display',
@@ -38,6 +39,8 @@ export class FlashcardDisplayComponent implements OnInit {
         return getBacksideFlashcardBody(this.flashcards[this._index]);
     }
 
+    constructor(private _modalService: ModalService) {}
+
     ngOnInit(): void {
         let currentIndex = this.flashcards.length;
 
@@ -50,6 +53,10 @@ export class FlashcardDisplayComponent implements OnInit {
                 this.flashcards[currentIndex]
             ];
         }
+    }
+
+    public close() {
+        this._modalService.close();
     }
 
     public flip(): void {

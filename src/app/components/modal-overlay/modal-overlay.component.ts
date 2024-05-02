@@ -1,5 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { IModalProperties } from 'src/app/models/modal-properties.interface';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
 
@@ -15,8 +16,12 @@ export class ModalOverlayComponent {
         return this._modalService.showModal$;
     }
 
-    public get actionProperties$(): Observable<ConfirmActionProperties> {
-        return this._modalService.actionTitle$;
+    public get confirmProperties$(): Observable<ConfirmActionProperties> {
+        return this._modalService.confirmProperties$;
+    }
+
+    public get modalProperties$(): Observable<IModalProperties> {
+        return this._modalService.modalProperties$;
     }
 
     public get setTemplate$(): Observable<TemplateRef<any> | undefined> {

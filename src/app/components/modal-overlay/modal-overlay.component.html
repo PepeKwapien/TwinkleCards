@@ -1,17 +1,23 @@
-<div class="modal-overlay-container" *ngIf="showModal$ | async" (mousedown)="close()">
-    <div (mousedown)="$event.stopPropagation()" class="modal-overlay-body dissolve-animation-enter light-box-shadow">
-        <button class="empty-button close-modal-icon">
-            <img src="./assets/close.svg" class="hover-icon grayed-icon" (click)="close()" />
-        </button>
-        <ng-container [ngTemplateOutlet]="(setTemplate$ | async) || default"></ng-container>
+<div *ngIf="showModal$ | async">
+    <div
+        class="modal-overlay-container"
+        *ngIf="modalProperties$ | async as modalProperties"
+        (mousedown)="close()"
+        [ngClass]="{ 'modal-overlay-container-solid': !modalProperties.transparentBackground }">
+        <div (mousedown)="$event.stopPropagation()" class="modal-overlay-body dissolve-animation-enter">
+            <button class="empty-button close-modal-icon" *ngIf="modalProperties.showClose">
+                <img src="./assets/close.svg" class="hover-icon grayed-icon" (click)="close()" />
+            </button>
+            <ng-container [ngTemplateOutlet]="(setTemplate$ | async) || default"></ng-container>
+        </div>
     </div>
 </div>
 
 <ng-template #default>
-    <div class="form-outer-container modal-confirmation" *ngIf="actionProperties$ | async as actionProperties">
-        <h3 [class]="actionProperties.color">{{ actionProperties.title }}</h3>
-        <p>{{ actionProperties.description }}</p>
-        <p class="modal-confirmation-question">{{ actionProperties.confirmation }}</p>
+    <div class="form-outer-container modal-confirmation light-box-shadow" *ngIf="confirmProperties$ | async as confirmProperties">
+        <h3 [class]="confirmProperties.color">{{ confirmProperties.title }}</h3>
+        <p>{{ confirmProperties.description }}</p>
+        <p class="modal-confirmation-question">{{ confirmProperties.confirmation }}</p>
 
         <div class="confirmation-buttons">
             <button class="confirm-button" (click)="confirm()">

@@ -2,19 +2,17 @@
     <div class="flip-card-inner">
         <button class="empty-button flashcard-preview light-box-shadow flip-card-front">
             <button
-                class="empty-button flashcard-preview-control-icon flashcard-preview-edit"
+                class="empty-button flashcard-preview-edit"
                 (click)="
                     flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
                 ">
-                <img src="./assets/edit.svg" class="grayed-icon-hover hover-icon" />
+                <img src="./assets/edit.svg" class="grayed-icon-hover" />
             </button>
-            <button
-                class="empty-button flashcard-preview-control-icon flashcard-preview-delete"
-                (click)="deleteFlashcard($event)">
-                <img src="./assets/delete.svg" class="grayed-icon-hover hover-icon" />
+            <button class="empty-button flashcard-preview-delete" (click)="deleteFlashcard($event)">
+                <img src="./assets/delete.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
-                <img src="./assets/360.svg" class="grayed-icon-hover hover-icon" />
+            <button class="empty-button flashcard-preview-flip" (click)="flip($event)">
+                <img src="./assets/360.svg" class="grayed-icon-hover" />
             </button>
             <div class="flashcard-preview-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
                 <div class="flashcard-preview-upper-text">{{ frontsideFlashcardHeader }}</div>
@@ -26,14 +24,14 @@
             </div>
         </button>
         <button class="empty-button flashcard-preview light-box-shadow flip-card-back" #backside>
-            <button class="empty-button flashcard-preview-control-icon flashcard-preview-edit">
-                <img src="./assets/edit.svg" class="grayed-icon-hover hover-icon" />
+            <button class="empty-button flashcard-preview-edit">
+                <img src="./assets/edit.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-control-icon flashcard-preview-delete">
-                <img src="./assets/delete.svg" class="grayed-icon-hover hover-icon" />
+            <button class="empty-button flashcard-preview-delete">
+                <img src="./assets/delete.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-control-icon flashcard-preview-flip" (click)="flip($event)">
-                <img src="./assets/360.svg" class="grayed-icon-hover hover-icon" />
+            <button class="empty-button flashcard-preview-flip" (click)="flip($event)">
+                <img src="./assets/360.svg" class="grayed-icon-hover" />
             </button>
             <div class="flashcard-preview-upper-text-container" #backsideUpper>
                 <div class="flashcard-preview-upper-text" *ngIf="backsideFlashcardHeader">

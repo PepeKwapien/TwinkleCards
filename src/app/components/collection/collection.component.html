@@ -11,7 +11,9 @@
         </div>
         <div class="collection-body-controls">
             <div class="collection-body-primary-controls">
-                <button class="round-button" (click)="openModal(playCollection)">
+                <button
+                    class="round-button"
+                    (click)="openModal(playCollection, { showClose: false, transparentBackground: false })">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
                 </button>
                 <button

@@ -1,11 +1,16 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
+import { IModalProperties } from 'src/app/models/modal-properties.interface';
 import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ModalService {
+    private _DEFAULT_MODAL_PROPERTIES: IModalProperties = {
+        showClose: true,
+        transparentBackground: true
+    };
     private _DEFAULT_ACTION_PROPERTIES: ConfirmActionProperties = {
         title: 'Irreversible action',
         description: 'Are you sure?',
@@ -13,7 +18,8 @@ export class ModalService {
     };
     private _showModal: BehaviorSubject<boolean>;
     private _setTemplate: BehaviorSubject<TemplateRef<any> | undefined>;
-    private _actionProperties: BehaviorSubject<ConfirmActionProperties>;
+    private _modalProperties: BehaviorSubject<IModalProperties>;
+    private _confirmProperties: BehaviorSubject<ConfirmActionProperties>;
     private _confirmDecision: Subject<boolean>;
 
     public get showModal$(): Observable<boolean> {
@@ -24,15 +30,20 @@ export class ModalService {
         return this._setTemplate.asObservable();
     }
 
-    public get actionTitle$(): Observable<ConfirmActionProperties> {
-        return this._actionProperties.asObservable();
+    public get confirmProperties$(): Observable<ConfirmActionProperties> {
+        return this._confirmProperties.asObservable();
+    }
+
+    public get modalProperties$(): Observable<IModalProperties> {
+        return this._modalProperties.asObservable();
     }
 
     constructor() {
         this._showModal = new BehaviorSubject<boolean>(false);
         this._setTemplate = new BehaviorSubject<TemplateRef<any> | undefined>(undefined);
         this._confirmDecision = new Subject();
-        this._actionProperties = new BehaviorSubject<ConfirmActionProperties>(this._DEFAULT_ACTION_PROPERTIES);
+        this._confirmProperties = new BehaviorSubject<ConfirmActionProperties>(this._DEFAULT_ACTION_PROPERTIES);
+        this._modalProperties = new BehaviorSubject<IModalProperties>(this._DEFAULT_MODAL_PROPERTIES);
     }
 
     public close(): void {
@@ -40,8 +51,12 @@ export class ModalService {
         this._confirmDecision.next(false);
     }
 
-    public open(template: TemplateRef<any>): void {
+    public open(
+        template: TemplateRef<any>,
+        modalProperties: IModalProperties = { showClose: true, transparentBackground: true }
+    ): void {
         this._setTemplate.next(template);
+        this._modalProperties.next(modalProperties);
         this._showModal.next(true);
     }
 
@@ -50,8 +65,8 @@ export class ModalService {
         this._showModal.next(false);
     }
 
-    public getConfirmation(actionProperties?: ConfirmActionProperties): Promise<boolean> {
-        this._actionProperties.next(!actionProperties ? this._DEFAULT_ACTION_PROPERTIES : actionProperties);
+    public getConfirmation(confirmProperties?: ConfirmActionProperties): Promise<boolean> {
+        this._confirmProperties.next(!confirmProperties ? this._DEFAULT_ACTION_PROPERTIES : confirmProperties);
         this._setTemplate.next(undefined);
         this._showModal.next(true);
 

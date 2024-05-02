@@ -61,3 +61,11 @@
         height: 2.5em;
     }
 }
+
+.flashcard-display-close {
+    position: absolute;
+    right: 0.3em;
+    top: 0.3em;
+    border-radius: 50%;
+    background-color: $dimmed-primary-background;
+}

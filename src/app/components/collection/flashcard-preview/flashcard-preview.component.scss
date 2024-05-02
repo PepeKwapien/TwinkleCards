@@ -55,10 +55,12 @@
 $icon-offset: 0.3em;
 
 .flashcard-preview-edit {
+    overflow: visible;
+
     position: absolute;
     left: $icon-offset;
     top: $icon-offset;
-    border-radius: 50%;
+    border-radius: 30%;
     background-color: $dimmed-primary-background;
 }
 
@@ -66,7 +68,7 @@ $icon-offset: 0.3em;
     position: absolute;
     right: $icon-offset;
     top: $icon-offset;
-    border-radius: 50%;
+    border-radius: 30%;
     background-color: $dimmed-primary-background;
 }
 
@@ -74,5 +76,5 @@ $icon-offset: 0.3em;
     position: absolute;
     left: $icon-offset;
     bottom: $icon-offset;
-    border-radius: 50%;
+    border-radius: 30%;
 }
