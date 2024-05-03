@@ -60,6 +60,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._filteredFlashcardsWithFlipState;
     }
 
+    public get flipState(): boolean {
+        return this._flipState;
+    }
+
     public get sortDropdownProperties(): DropdownMenuProperties<CollectionSortOptions> {
         return this._sortDropdownProperties;
     }

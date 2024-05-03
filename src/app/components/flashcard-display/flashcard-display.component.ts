@@ -15,6 +15,7 @@ import { ModalService } from 'src/app/services/modal/modal.service';
 })
 export class FlashcardDisplayComponent implements OnInit {
     @Input({ required: true }) flashcards!: IBaseFlashcard[];
+    @Input({ required: true, alias: 'flipState' }) initFlipState!: boolean;
 
     private _index = 0;
     private _flipped = false;
@@ -51,6 +52,7 @@ export class FlashcardDisplayComponent implements OnInit {
 
     ngOnInit(): void {
         let currentIndex = this.flashcards.length;
+        this._flipped = this.initFlipState;
 
         while (currentIndex != 0) {
             let randomIndex = Math.floor(Math.random() * currentIndex);
@@ -63,12 +65,30 @@ export class FlashcardDisplayComponent implements OnInit {
         }
     }
 
-    public close() {
+    public close(): void {
         this._modalService.close();
     }
 
     public flip(): void {
         this._flipped = !this._flipped;
+    }
+
+    public previous(): void {
+        if (this.isTherePrevious) {
+            this._flipped = this.initFlipState;
+            setTimeout(() => {
+                this._index--;
+            }, 300);
+        }
+    }
+
+    public next(): void {
+        if (this.isThereNext) {
+            this._flipped = this.initFlipState;
+            setTimeout(() => {
+                this._index++;
+            }, 300);
+        }
     }
 }
 

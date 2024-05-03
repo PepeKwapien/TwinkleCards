@@ -29,13 +29,13 @@
 
 <ng-template #flashcardControls>
     <div class="flashcard-display-buttons">
-        <button class="empty-button" [ngClass]="{ invisible: !isTherePrevious }">
+        <button class="empty-button" [ngClass]="{ invisible: !isTherePrevious }" (click)="previous()">
             <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-90" />
         </button>
         <button class="empty-button" (click)="flip()">
             <img src="./assets/360.svg" class="grayed-icon-hover" />
         </button>
-        <button class="empty-button" [ngClass]="{ invisible: !isThereNext }">
+        <button class="empty-button" [ngClass]="{ invisible: !isThereNext }" (click)="next()">
             <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-270" />
         </button>
     </div>
