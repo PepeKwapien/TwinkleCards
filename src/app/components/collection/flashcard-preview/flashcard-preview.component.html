@@ -1,45 +1,49 @@
 <div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
     <div class="flip-card-inner">
-        <button class="empty-button flashcard-preview light-box-shadow flip-card-front">
+        <button class="empty-button flashcard-container light-box-shadow flip-card-front">
             <button
-                class="empty-button flashcard-preview-edit"
+                class="empty-button flashcard-top-left-icon"
                 (click)="
                     flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
                 ">
                 <img src="./assets/edit.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-delete" (click)="deleteFlashcard($event)">
+            <button class="empty-button flashcard-top-right-icon" (click)="deleteFlashcard($event)">
                 <img src="./assets/delete.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-flip" (click)="flip($event)">
+            <button class="empty-button flashcard-bottom-left-icon" (click)="flip($event)">
                 <img src="./assets/360.svg" class="grayed-icon-hover" />
             </button>
-            <div class="flashcard-preview-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
-                <div class="flashcard-preview-upper-text">{{ frontsideFlashcardHeader }}</div>
+            <div class="flashcard-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
+                <div class="flashcard-upper-text">{{ frontsideFlashcardHeader }}</div>
             </div>
             <div class="flashcard-preview-lower-text-container">
-                <div class="flashcard-preview-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
+                <div class="flashcard-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
                     {{ frontsideFlashcardBody }}
                 </div>
             </div>
         </button>
-        <button class="empty-button flashcard-preview light-box-shadow flip-card-back" #backside>
-            <button class="empty-button flashcard-preview-edit">
+        <button class="empty-button flashcard-container light-box-shadow flip-card-back" #backside>
+            <button
+                class="empty-button flashcard-top-left-icon"
+                (click)="
+                    flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
+                ">
                 <img src="./assets/edit.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-delete">
+            <button class="empty-button flashcard-top-right-icon" (click)="deleteFlashcard($event)">
                 <img src="./assets/delete.svg" class="grayed-icon-hover" />
             </button>
-            <button class="empty-button flashcard-preview-flip" (click)="flip($event)">
+            <button class="empty-button flashcard-bottom-left-icon" (click)="flip($event)">
                 <img src="./assets/360.svg" class="grayed-icon-hover" />
             </button>
-            <div class="flashcard-preview-upper-text-container" #backsideUpper>
-                <div class="flashcard-preview-upper-text" *ngIf="backsideFlashcardHeader">
+            <div class="flashcard-upper-text-container" #backsideUpper>
+                <div class="flashcard-upper-text" *ngIf="backsideFlashcardHeader">
                     {{ backsideFlashcardHeader }}
                 </div>
             </div>
             <div class="flashcard-preview-lower-text-container">
-                <div class="flashcard-preview-lower-text" #backsideLower>{{ backsideFlashcardBody }}</div>
+                <div class="flashcard-lower-text" #backsideLower>{{ backsideFlashcardBody }}</div>
             </div>
         </button>
     </div>

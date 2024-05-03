@@ -1,49 +1,49 @@
 <div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
     <div class="flip-card-inner">
-        <div class="flashcard-display light-box-shadow flip-card-front">
-            <button class="empty-button flashcard-display-close" (click)="close()">
+        <div class="flashcard-container light-box-shadow flip-card-front">
+            <button class="empty-button flashcard-top-right-icon" (click)="close()">
                 <img src="./assets/close.svg" class="grayed-icon-hover" />
             </button>
-            <div class="flashcard-display-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
-                <div class="flashcard-display-upper-text">{{ frontsideFlashcardHeader }}</div>
+            <div class="flashcard-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
+                <div class="flashcard-upper-text">{{ frontsideFlashcardHeader }}</div>
             </div>
             <div class="flashcard-display-lower-text-container">
-                <div class="flashcard-display-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
+                <div class="flashcard-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
                     {{ frontsideFlashcardBody }}
                 </div>
             </div>
             <div class="flashcard-display-buttons">
-                <button class="empty-button flashcard-preview-edit">
+                <button class="empty-button">
                     <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-90" />
                 </button>
-                <button class="empty-button flashcard-preview-flip" (click)="flip()">
+                <button class="empty-button" (click)="flip()">
                     <img src="./assets/360.svg" class="grayed-icon-hover" />
                 </button>
-                <button class="empty-button flashcard-preview-delete">
+                <button class="empty-button">
                     <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-270" />
                 </button>
             </div>
         </div>
-        <div class="flashcard-display light-box-shadow flip-card-back" #backside>
-            <button class="empty-button flashcard-display-close" (click)="close()">
+        <div class="flashcard-container light-box-shadow flip-card-back" #backside>
+            <button class="empty-button flashcard-top-right-icon" (click)="close()">
                 <img src="./assets/close.svg" class="grayed-icon-hover" />
             </button>
-            <div class="flashcard-display-upper-text-container" #backsideUpper>
-                <div class="flashcard-display-upper-text" *ngIf="backsideFlashcardHeader">
+            <div class="flashcard-upper-text-container" #backsideUpper>
+                <div class="flashcard-upper-text" *ngIf="backsideFlashcardHeader">
                     {{ backsideFlashcardHeader }}
                 </div>
             </div>
             <div class="flashcard-display-lower-text-container">
-                <div class="flashcard-display-lower-text" #backsideLower>{{ backsideFlashcardBody }}</div>
+                <div class="flashcard-lower-text" #backsideLower>{{ backsideFlashcardBody }}</div>
             </div>
             <div class="flashcard-display-buttons">
-                <button class="empty-button flashcard-preview-edit">
+                <button class="empty-button">
                     <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-90" />
                 </button>
-                <button class="empty-button flashcard-preview-flip" (click)="flip()">
+                <button class="empty-button" (click)="flip()">
                     <img src="./assets/360.svg" class="grayed-icon-hover" />
                 </button>
-                <button class="empty-button flashcard-preview-delete">
+                <button class="empty-button">
                     <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-270" />
                 </button>
             </div>

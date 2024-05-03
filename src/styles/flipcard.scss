@@ -32,3 +32,90 @@
     top: 0;
     transform: rotateY(180deg);
 }
+
+// flashcards
+
+.flashcard-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px $gray-outline-solid solid;
+    padding: 0;
+    background-color: $tertiary-background;
+
+    & > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.flashcard-upper-text-container {
+    width: 100%;
+    background-color: $dimmed-primary-background;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 1em 2.2em;
+}
+
+.flashcard-upper-text {
+    font-weight: 600;
+    font-size: 1.05rem;
+    background-color: $tertiary-background;
+    padding: 0.2em;
+    border-radius: 5px;
+}
+
+@mixin flashcard-lower-text-container($paddingY, $paddingTop) {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: $paddingY 2.2rem;
+    padding-top: $paddingTop;
+    flex: 1;
+}
+
+.flashcard-display-lower-text-container {
+    @include flashcard-lower-text-container(0.5rem, 1.5rem);
+}
+
+.flashcard-preview-lower-text-container {
+    @include flashcard-lower-text-container(1rem, 0.5rem);
+}
+
+.flashcard-lower-text {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    background-color: $tertiary-background;
+}
+
+@mixin flashcard-icon-position($top, $right, $bottom, $left) {
+    position: absolute;
+    inset: $top $right $bottom $left;
+    border-radius: 30%;
+    background-color: transparent;
+}
+
+$icon-offset: 0.3em;
+
+.flashcard-top-right-icon {
+    @include flashcard-icon-position($icon-offset, $icon-offset, auto, auto);
+}
+
+.flashcard-top-left-icon {
+    @include flashcard-icon-position($icon-offset, auto, auto, $icon-offset);
+}
+
+.flashcard-bottom-right-icon {
+    @include flashcard-icon-position(auto, $icon-offset, $icon-offset, auto);
+}
+
+.flashcard-bottom-left-icon {
+    @include flashcard-icon-position(auto, auto, $icon-offset, $icon-offset);
+}
