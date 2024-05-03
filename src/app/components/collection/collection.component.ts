@@ -40,6 +40,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     private _collection: CollectionDocument | undefined;
     private _username: string | null | undefined;
     private _flashcardsWithFlipState: IFlashcardWithFlipState[];
+    private _flashcardsWithFlipStateCopy: IFlashcardWithFlipState[];
     private _filteredFlashcardsWithFlipState: IFlashcardWithFlipState[];
     private _flipState: boolean;
     private _sortDropdownProperties: DropdownMenuProperties<CollectionSortOptions> = {
@@ -58,6 +59,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public get flashcardsWithFlipState(): IFlashcardWithFlipState[] {
         return this._filteredFlashcardsWithFlipState;
+    }
+
+    public get newFlashcardsWithFlipState(): IFlashcardWithFlipState[] {
+        return this._flashcardsWithFlipStateCopy;
     }
 
     public get flipState(): boolean {
@@ -84,6 +89,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this._flipState = false;
         this._flashcardsWithFlipState = [];
+        this._flashcardsWithFlipStateCopy = [];
         this._filteredFlashcardsWithFlipState = [];
 
         const collection$ = this._collectionRepository.collection$.pipe(filter((collection) => collection != undefined));
@@ -95,14 +101,17 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                 this._collection = value[0];
                 this._username = value[1];
                 if (this._collection) {
-                    this._flashcardsWithFlipState = this._collection.flashcards.map((flashcard) => {
+                    const mapper = (flashcard: IBaseFlashcard) => {
                         const foundMatchingFlashcard = this._flashcardsWithFlipState.find(
                             (lookingFor) => lookingFor.flashcard.id === flashcard.id
                         );
                         const flipped = foundMatchingFlashcard ? foundMatchingFlashcard.flipped : this._flipState;
 
                         return { flashcard, flipped };
-                    });
+                    };
+
+                    this._flashcardsWithFlipState = this._collection.flashcards.map(mapper);
+                    this._flashcardsWithFlipStateCopy = this._collection.flashcards.map(mapper);
 
                     this.sort(this._collectionSortOption);
                     this.filter(this._collectionFilterValue);
