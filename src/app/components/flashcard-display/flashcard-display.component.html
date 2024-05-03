@@ -1,4 +1,4 @@
-<div [@slide]="index">
+<div [@slide]="index" style="display: flex; justify-content: center; align-items: center">
     <ng-container *ngFor="let flashcardWithFlipState of flashcards; let count = index">
         <div class="flip-card" [ngClass]="{ 'flip-card-flipped': flashcardWithFlipState.flipped }" *ngIf="index === count">
             <div class="flip-card-inner">

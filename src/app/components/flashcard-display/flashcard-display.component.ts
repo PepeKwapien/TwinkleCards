@@ -11,7 +11,8 @@ import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-stat
 import { ModalService } from 'src/app/services/modal/modal.service';
 
 const left = [
-    query(':enter, :leave', style({ position: 'absolute' })),
+    query(':enter', style({ position: 'absolute' })),
+
     group([
         query(':enter', [
             style({ transform: 'translateX(-100vw)', opacity: 0 }),
@@ -25,7 +26,7 @@ const left = [
 ];
 
 const right = [
-    query(':enter, :leave', style({ position: 'absolute' })),
+    query(':enter', style({ position: 'absolute' })),
     group([
         query(':enter', [
             style({ transform: 'translateX(100vw)', opacity: 0 }),

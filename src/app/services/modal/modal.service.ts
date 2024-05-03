@@ -67,6 +67,7 @@ export class ModalService {
 
     public getConfirmation(confirmProperties?: ConfirmActionProperties): Promise<boolean> {
         this._confirmProperties.next(!confirmProperties ? this._DEFAULT_ACTION_PROPERTIES : confirmProperties);
+        this._modalProperties.next(this._DEFAULT_MODAL_PROPERTIES);
         this._setTemplate.next(undefined);
         this._showModal.next(true);
 
