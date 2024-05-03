@@ -23,6 +23,12 @@
     max-width: $max-width;
 }
 
+.navbar-search-auth {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5em;
+}
+
 .logo-container {
     position: relative;
 }
