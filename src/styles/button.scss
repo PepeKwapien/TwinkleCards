@@ -26,12 +26,18 @@ button:not(.empty-button) {
             min-width: 5em;
         }
 
-        &:hover {
+        &:hover:not(:disabled) {
             background-color: $primary-hover;
         }
 
-        &:active {
+        &:active:not(:disabled) {
             background-color: $primary-active;
+        }
+
+        &:disabled {
+            background-color: $gray-outline-solid;
+            box-shadow: unset;
+            cursor: initial;
         }
     }
 
