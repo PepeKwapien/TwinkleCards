@@ -23,6 +23,14 @@ export class FlashcardDisplayComponent implements OnInit {
         return this._flipped;
     }
 
+    public get isTherePrevious(): boolean {
+        return this._index !== 0;
+    }
+
+    public get isThereNext(): boolean {
+        return this._index !== this.flashcards.length - 1;
+    }
+
     public get frontsideFlashcardHeader(): string {
         return getFrontsideFlashcardHeader(this.flashcards[this._index]);
     }

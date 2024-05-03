@@ -58,3 +58,8 @@ $max-width: 1300px;
         }
     }
 }
+
+.invisible {
+    pointer-events: none;
+    opacity: 0;
+}

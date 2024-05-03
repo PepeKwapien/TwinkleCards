@@ -1,19 +1,7 @@
 <div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
     <div class="flip-card-inner">
         <button class="empty-button flashcard-container light-box-shadow flip-card-front">
-            <button
-                class="empty-button flashcard-top-left-icon"
-                (click)="
-                    flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
-                ">
-                <img src="./assets/edit.svg" class="grayed-icon-hover" />
-            </button>
-            <button class="empty-button flashcard-top-right-icon" (click)="deleteFlashcard($event)">
-                <img src="./assets/delete.svg" class="grayed-icon-hover" />
-            </button>
-            <button class="empty-button flashcard-bottom-left-icon" (click)="flip($event)">
-                <img src="./assets/360.svg" class="grayed-icon-hover" />
-            </button>
+            <ng-container [ngTemplateOutlet]="flashcardIcons"></ng-container>
             <div class="flashcard-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
                 <div class="flashcard-upper-text">{{ frontsideFlashcardHeader }}</div>
             </div>
@@ -24,19 +12,7 @@
             </div>
         </button>
         <button class="empty-button flashcard-container light-box-shadow flip-card-back" #backside>
-            <button
-                class="empty-button flashcard-top-left-icon"
-                (click)="
-                    flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
-                ">
-                <img src="./assets/edit.svg" class="grayed-icon-hover" />
-            </button>
-            <button class="empty-button flashcard-top-right-icon" (click)="deleteFlashcard($event)">
-                <img src="./assets/delete.svg" class="grayed-icon-hover" />
-            </button>
-            <button class="empty-button flashcard-bottom-left-icon" (click)="flip($event)">
-                <img src="./assets/360.svg" class="grayed-icon-hover" />
-            </button>
+            <ng-container [ngTemplateOutlet]="flashcardIcons"></ng-container>
             <div class="flashcard-upper-text-container" #backsideUpper>
                 <div class="flashcard-upper-text" *ngIf="backsideFlashcardHeader">
                     {{ backsideFlashcardHeader }}
@@ -61,3 +37,16 @@
         [flashcard]="flashcard"></app-edit-translation-flashcard-form>
 </ng-template>
 
+<ng-template #flashcardIcons>
+    <button
+        class="empty-button flashcard-top-left-icon"
+        (click)="flashcardType == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)">
+        <img src="./assets/edit.svg" class="grayed-icon-hover" />
+    </button>
+    <button class="empty-button flashcard-top-right-icon" (click)="deleteFlashcard($event)">
+        <img src="./assets/delete.svg" class="grayed-icon-hover" />
+    </button>
+    <button class="empty-button flashcard-bottom-left-icon" (click)="flip($event)">
+        <img src="./assets/360.svg" class="grayed-icon-hover" />
+    </button>
+</ng-template>
