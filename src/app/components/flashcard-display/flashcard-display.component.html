@@ -1,38 +1,52 @@
-<div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
-    <div class="flip-card-inner">
-        <div class="flashcard-container light-box-shadow flip-card-front">
-            <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
-            <div class="flashcard-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
-                <div class="flashcard-upper-text">{{ frontsideFlashcardHeader }}</div>
-            </div>
-            <div class="flashcard-display-lower-text-container">
-                <div class="flashcard-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
-                    {{ frontsideFlashcardBody }}
+<div [@slide]="index">
+    <ng-container *ngFor="let flashcardWithFlipState of flashcards; let count = index">
+        <div class="flip-card" [ngClass]="{ 'flip-card-flipped': flashcardWithFlipState.flipped }" *ngIf="index === count">
+            <div class="flip-card-inner">
+                <div class="flashcard-container light-box-shadow flip-card-front">
+                    <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
+                    <div class="flashcard-upper-text-container" appMatchHeight [elementToMatchHeight]="backsideUpper">
+                        <div class="flashcard-upper-text">
+                            {{ getFrontsideFlashcardHeader(flashcardWithFlipState.flashcard) }}
+                        </div>
+                    </div>
+                    <div class="flashcard-display-lower-text-container">
+                        <div class="flashcard-lower-text" appMatchHeight [elementToMatchHeight]="backsideLower">
+                            {{ getFrontsideFlashcardBody(flashcardWithFlipState.flashcard) }}
+                        </div>
+                    </div>
+                    <ng-container
+                        [ngTemplateOutlet]="flashcardControls"
+                        [ngTemplateOutletContext]="{ $implicit: flashcardWithFlipState }"></ng-container>
+                </div>
+                <div class="flashcard-container light-box-shadow flip-card-back" #backside>
+                    <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
+                    <div class="flashcard-upper-text-container" #backsideUpper>
+                        <div
+                            class="flashcard-upper-text"
+                            *ngIf="getBacksideFlashcardHeader(flashcardWithFlipState.flashcard) as backsideFlashcardHeader">
+                            {{ backsideFlashcardHeader }}
+                        </div>
+                    </div>
+                    <div class="flashcard-display-lower-text-container">
+                        <div class="flashcard-lower-text" #backsideLower>
+                            {{ getBacksideFlashcardBody(flashcardWithFlipState.flashcard) }}
+                        </div>
+                    </div>
+                    <ng-container
+                        [ngTemplateOutlet]="flashcardControls"
+                        [ngTemplateOutletContext]="{ $implicit: flashcardWithFlipState }"></ng-container>
                 </div>
             </div>
-            <ng-container [ngTemplateOutlet]="flashcardControls"></ng-container>
         </div>
-        <div class="flashcard-container light-box-shadow flip-card-back" #backside>
-            <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
-            <div class="flashcard-upper-text-container" #backsideUpper>
-                <div class="flashcard-upper-text" *ngIf="backsideFlashcardHeader">
-                    {{ backsideFlashcardHeader }}
-                </div>
-            </div>
-            <div class="flashcard-display-lower-text-container">
-                <div class="flashcard-lower-text" #backsideLower>{{ backsideFlashcardBody }}</div>
-            </div>
-            <ng-container [ngTemplateOutlet]="flashcardControls"></ng-container>
-        </div>
-    </div>
+    </ng-container>
 </div>
 
-<ng-template #flashcardControls>
+<ng-template #flashcardControls let-flashcard>
     <div class="flashcard-display-buttons">
         <button class="empty-button" [ngClass]="{ invisible: !isTherePrevious }" (click)="previous()">
             <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-90" />
         </button>
-        <button class="empty-button" (click)="flip()">
+        <button class="empty-button" (click)="flip(flashcard)">
             <img src="./assets/360.svg" class="grayed-icon-hover" />
         </button>
         <button class="empty-button" [ngClass]="{ invisible: !isThereNext }" (click)="next()">
