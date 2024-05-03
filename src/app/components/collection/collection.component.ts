@@ -154,14 +154,18 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public flip() {
         this._flipState = !this._flipState;
-        for (const flashcardWithFlipState of this._flashcardsWithFlipState) {
-            flashcardWithFlipState.flipped = this._flipState;
+        for (let i = 0; i < this._flashcardsWithFlipState.length; i++) {
+            this.flashcardsWithFlipState[i].flipped = this._flipState;
+            this._flashcardsWithFlipStateCopy[i].flipped = this._flipState;
         }
     }
 
     public correctFlipState() {
         if (!this._flashcardsWithFlipState.some((flashcardWithFlipState) => flashcardWithFlipState.flipped === this._flipState)) {
             this._flipState = !this._flipState;
+            this._flashcardsWithFlipStateCopy = this._flashcardsWithFlipState.map((flashcardWithFlipState) => {
+                return { ...flashcardWithFlipState, flipped: this._flipState };
+            });
         }
     }
 
