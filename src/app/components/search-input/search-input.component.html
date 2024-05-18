@@ -1,13 +1,8 @@
 <div class="search-input-container" [ngClass]="{ active: isActive }">
-    <input
-        class="search-input"
-        type="text"
-        [disabled]="!isActive"
-        [formControl]="formControl"
-        #input
-        (keypress)="onKeyPress($event)" />
-    <button class="empty-button round-button" (click)="onIconClick()" #icon>
-        <img class="grayed-icon" src="./assets/search.svg" />
+    <input class="search-input" type="text" [formControl]="formControl" #input (keypress)="onKeyPress($event)" />
+    <button class="empty-button round-button" (click)="onIconClick()" #button>
+        <img class="grayed-icon" src="./assets/search.svg" *ngIf="!(!sendWithoutEnter && isActive)" #search />
+        <img class="grayed-icon" src="./assets/send.svg" *ngIf="!sendWithoutEnter && isActive" #send />
     </button>
 </div>
 

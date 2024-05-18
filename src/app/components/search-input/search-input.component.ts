@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 
@@ -9,9 +9,10 @@ import { Subscription, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 })
 export class SearchInputComponent implements OnDestroy {
     @ViewChild('input') input!: ElementRef;
-    @ViewChild('icon') icon!: ElementRef;
+    @ViewChild('button') button!: ElementRef;
     @Output() searchTerm: EventEmitter<string> = new EventEmitter<string>();
     @Output() searchTermEnter: EventEmitter<string> = new EventEmitter<string>();
+    @Input() sendWithoutEnter = false;
 
     private _sub: Subscription;
     private _formControl: FormControl = new FormControl('');
@@ -37,17 +38,26 @@ export class SearchInputComponent implements OnDestroy {
 
     @HostListener('document:click', ['$event'])
     closeOptionsWhenClickedOutside($event: MouseEvent) {
-        if (this.input === undefined || this.icon === undefined) {
-            return;
-        }
+        const clickedInsideInput = this.checkIfClickedInside($event, this.input);
+        const clickedInsideButton = this.checkIfClickedInside($event, this.button);
 
-        if (this._isActive && !this.checkIfClickedInside($event, this.input) && !this.checkIfClickedInside($event, this.icon)) {
+        if (this._isActive && !clickedInsideInput && !clickedInsideButton) {
             this._isActive = false || this.formControl.value.length > 0;
         }
     }
 
     private checkIfClickedInside($event: MouseEvent, element: ElementRef) {
-        return element.nativeElement.contains($event.target);
+        const elementDimensions = element.nativeElement.getBoundingClientRect();
+        if (
+            $event.clientX < elementDimensions.left ||
+            $event.clientX > elementDimensions.right ||
+            $event.clientY < elementDimensions.top ||
+            $event.clientY > elementDimensions.bottom
+        ) {
+            return false;
+        }
+
+        return true;
     }
 
     @HostListener('document:keydown.escape', ['$event'])
