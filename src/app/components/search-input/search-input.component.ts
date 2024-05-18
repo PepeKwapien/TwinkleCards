@@ -11,6 +11,7 @@ export class SearchInputComponent implements OnDestroy {
     @ViewChild('input') input!: ElementRef;
     @ViewChild('icon') icon!: ElementRef;
     @Output() searchTerm: EventEmitter<string> = new EventEmitter<string>();
+    @Output() searchTermEnter: EventEmitter<string> = new EventEmitter<string>();
 
     private _sub: Subscription;
     private _formControl: FormControl = new FormControl('');
@@ -59,6 +60,13 @@ export class SearchInputComponent implements OnDestroy {
             this._isActive = true;
         } else {
             this._isActive = false || this.formControl.value.length > 0;
+        }
+    }
+
+    public onKeyPress($event: KeyboardEvent) {
+        if ($event.key === 'Enter') {
+            $event.preventDefault();
+            this.searchTermEnter.emit(this._formControl.value);
         }
     }
 }
