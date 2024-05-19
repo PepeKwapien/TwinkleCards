@@ -12,7 +12,7 @@ export class SearchInputComponent implements OnDestroy {
     @ViewChild('button') button!: ElementRef;
     @Output() searchTerm: EventEmitter<string> = new EventEmitter<string>();
     @Output() searchTermEnter: EventEmitter<string> = new EventEmitter<string>();
-    @Input() sendWithoutEnter = false;
+    @Input() sendWithEnter = false;
 
     private _sub: Subscription;
     private _formControl: FormControl = new FormControl({ value: '', disabled: true });
@@ -59,6 +59,10 @@ export class SearchInputComponent implements OnDestroy {
             this._isActive = true;
         } else {
             this._isActive = false || this.formControl.value.length > 0;
+        }
+
+        if (this.sendWithEnter && this.formControl.value.length > 0) {
+            this.searchTermEnter.emit(this.formControl.value);
         }
 
         this._manageInputState();

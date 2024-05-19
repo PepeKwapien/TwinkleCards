@@ -38,13 +38,17 @@ export class NavbarComponent implements OnDestroy {
         this._navigationSub.unsubscribe();
     }
 
-    navigateBack() {
+    public navigateBack() {
         this._routingHistory.pop();
         if (this._routingHistory.length > 0) {
             this._location.back();
         } else {
             this._router.navigateByUrl('/home');
         }
+    }
+
+    public navigateToSearch(term: string) {
+        this._router.navigateByUrl(`search/${term}`);
     }
 }
 

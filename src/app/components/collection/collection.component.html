@@ -29,7 +29,7 @@
                 </button>
             </div>
             <div class="collection-body-secondary-controls">
-                <app-search-input (searchTerm)="filter($event)" [sendWithoutEnter]="true"></app-search-input>
+                <app-search-input (searchTerm)="filter($event)"></app-search-input>
                 <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
             </div>
         </div>
