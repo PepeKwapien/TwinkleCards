@@ -7,7 +7,10 @@ import { CollectionsSearchComponent } from './components/collections-search/coll
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'home', loadChildren: () => import('./modules/home/home.module').then((m) => m.HomeModule) },
-    { path: ':collectionId', component: CollectionComponent },
+    {
+        path: ':collectionId',
+        loadChildren: () => import('./modules/collection/collection.module').then((m) => m.CollectionModule)
+    },
     { path: 'search/:term', component: CollectionsSearchComponent }
 ];
 

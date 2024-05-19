@@ -9,7 +9,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.component';
-import { LoadingModule } from './modules/loading/loading.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
 import { CollectionComponent } from './components/collection/collection.component';
@@ -36,19 +36,6 @@ import { CollectionsSearchComponent } from './components/collections-search/coll
         LandingPageComponent,
         ModalOverlayComponent,
         UserLoadingGuardComponent,
-        CollectionComponent,
-        DefinitionFlashcardFormComponent,
-        MatchHeightDirective,
-        FlashcardFormComponent,
-        CreateDefinitionFlashcardFormComponent,
-        TranslationFlashcardFormComponent,
-        CreateTranslationFlashcardFormComponent,
-        FlashcardPreviewComponent,
-        EditTranslationFlashcardFormComponent,
-        EditDefinitionFlashcardFormComponent,
-        DropdownMenuComponent,
-        SearchInputComponent,
-        FlashcardDisplayComponent,
         CollectionsSearchComponent
     ],
     imports: [
@@ -66,7 +53,7 @@ import { CollectionsSearchComponent } from './components/collections-search/coll
         ),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
-        LoadingModule,
+        SharedModule,
         BrowserAnimationsModule,
         ReactiveFormsModule
     ],
