@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { CollectionComponent } from './components/collection/collection.component';
-import { CollectionsSearchComponent } from './components/collections-search/collections-search.component';
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -10,8 +8,7 @@ const routes: Routes = [
     {
         path: ':collectionId',
         loadChildren: () => import('./modules/collection/collection.module').then((m) => m.CollectionModule)
-    },
-    { path: 'search/:term', component: CollectionsSearchComponent }
+    }
 ];
 
 @NgModule({

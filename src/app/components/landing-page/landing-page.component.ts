@@ -26,8 +26,9 @@ export class LandingPageComponent implements AfterViewInit {
             {
                 title: 'Share with your friends 🤝',
                 description:
-                    'If you do not want to create your own collections maybe there is an already existing collection that might catch your eye. With TwinkleCards✨, you decide if you wish to share your flashcards with others',
-                additional: ['Browse collections of others 🧐', 'Make collections public 📡', '...or keep them hidden 🙈']
+                    'If you do not want to create your own collections maybe there is that one special friend that will share theirs with you. You can share your TwinkleCards✨ collection by copying the link. Authentication is not required. Searching features will be added in future releases',
+                // additional: ['Browse collections of others 🧐', 'Make collections public 📡', '...or keep them hidden 🙈'],
+                additional: ['Browse collections of friends 🧐', 'Share your collections 📡', '...or keep them hidden 🙈']
             }
         ];
     }

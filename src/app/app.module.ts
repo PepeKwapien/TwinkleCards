@@ -13,7 +13,6 @@ import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CollectionsSearchComponent } from './components/collections-search/collections-search.component';
 
 @NgModule({
     declarations: [
@@ -22,8 +21,7 @@ import { CollectionsSearchComponent } from './components/collections-search/coll
         NavbarComponent,
         LandingPageComponent,
         ModalOverlayComponent,
-        UserLoadingGuardComponent,
-        CollectionsSearchComponent
+        UserLoadingGuardComponent
     ],
     imports: [
         BrowserModule,
