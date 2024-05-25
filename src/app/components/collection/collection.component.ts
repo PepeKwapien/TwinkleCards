@@ -89,6 +89,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this._flipState = false;
         this._flashcardsWithFlipState = [];
+        // It's so that play collection does not randomize actual collection on screen
         this._flashcardsWithFlipStateCopy = [];
         this._filteredFlashcardsWithFlipState = [];
 
@@ -101,7 +102,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                 this._collection = value[0];
                 this._username = value[1];
                 if (this._collection) {
-                    const mapper = (flashcard: IBaseFlashcard) => {
+                    const mapFlippedStateFromExistingArray = (flashcard: IBaseFlashcard) => {
                         const foundMatchingFlashcard = this._flashcardsWithFlipState.find(
                             (lookingFor) => lookingFor.flashcard.id === flashcard.id
                         );
@@ -110,8 +111,8 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                         return { flashcard, flipped };
                     };
 
-                    this._flashcardsWithFlipState = this._collection.flashcards.map(mapper);
-                    this._flashcardsWithFlipStateCopy = this._collection.flashcards.map(mapper);
+                    this._flashcardsWithFlipState = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
+                    this._flashcardsWithFlipStateCopy = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
 
                     this.sort(this._collectionSortOption);
                     this.filter(this._collectionFilterValue);

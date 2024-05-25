@@ -12,20 +12,7 @@ import { ModalOverlayComponent } from './components/modal-overlay/modal-overlay.
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
-import { CollectionComponent } from './components/collection/collection.component';
-import { DefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/definition-flashcard-form.component';
-import { MatchHeightDirective } from './directives/matchHeight/match-height.directive';
-import { FlashcardFormComponent } from './components/flashcard-form/flashcard-form.component';
-import { CreateDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/create-definition-flashcard-form/create-definition-flashcard-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/translation-flashcard-form.component';
-import { CreateTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/create-translation-flashcard-form/create-translation-flashcard-form.component';
-import { FlashcardPreviewComponent } from './components/collection/flashcard-preview/flashcard-preview.component';
-import { EditTranslationFlashcardFormComponent } from './components/flashcard-form/translation-flashcard-form/edit-translation-flashcard-form/edit-translation-flashcard-form.component';
-import { EditDefinitionFlashcardFormComponent } from './components/flashcard-form/definition-flashcard-form/edit-definition-flashcard-form/edit-definition-flashcard-form.component';
-import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
-import { SearchInputComponent } from './components/search-input/search-input.component';
-import { FlashcardDisplayComponent } from './components/flashcard-display/flashcard-display.component';
 import { CollectionsSearchComponent } from './components/collections-search/collections-search.component';
 
 @NgModule({
