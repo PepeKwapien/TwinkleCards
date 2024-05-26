@@ -2,43 +2,41 @@
 @import './shared.scss';
 
 button:not(.empty-button) {
-    & {
-        display: flex;
-        column-gap: 0.15em;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        color: rgb(238, 238, 238);
-        font-size: 16px;
-        font-weight: 600;
-        border: unset;
-        background-color: $primary-background;
-        -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
-        -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
-        box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
-        width: fit-content;
+    display: flex;
+    column-gap: 0.15em;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(238, 238, 238);
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: unset;
+    background-color: $primary-background;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
+    box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
+    width: fit-content;
 
-        transition: 0.3s;
+    transition: 0.3s;
 
-        &:not(.round-button) {
-            border-radius: 15px;
-            padding: 0.6em 1em;
-            min-width: 5em;
-        }
+    &:not(.round-button) {
+        border-radius: 15px;
+        padding: 0.6em 1em;
+        min-width: 5em;
+    }
 
-        &:hover:not(:disabled) {
-            background-color: $primary-hover;
-        }
+    &:hover:not(:disabled) {
+        background-color: $primary-hover;
+    }
 
-        &:active:not(:disabled) {
-            background-color: $primary-active;
-        }
+    &:active:not(:disabled) {
+        background-color: $primary-active;
+    }
 
-        &:disabled {
-            background-color: $gray-outline-solid;
-            box-shadow: unset;
-            cursor: initial;
-        }
+    &:disabled {
+        background-color: $gray-outline-solid;
+        box-shadow: unset;
+        cursor: initial;
     }
 
     &.login-button {
@@ -76,4 +74,10 @@ button:not(.empty-button) {
     border-radius: 50%;
     min-width: unset;
     padding: 0.4em;
+}
+
+@media (max-width: 500px) {
+    button:not(.empty-button) {
+        font-size: 0.9rem;
+    }
 }

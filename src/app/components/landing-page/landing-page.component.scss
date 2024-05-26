@@ -69,14 +69,21 @@
     aspect-ratio: 16/9;
 }
 
+.landing-page-section-title-container {
+    padding: 0.4em;
+    border-radius: 20px;
+    background-color: $tertiary-background;
+}
+
 .landing-page-section-title {
+    margin: 0;
     text-align: center;
 }
 
 .landing-page-section-description {
     text-align: center;
     max-width: 75ch;
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
 .landing-page-section-additional-container {
@@ -89,7 +96,30 @@
     background: $secondary-gradient;
     border-radius: 15px;
     padding: 1em;
-    font-size: 16px;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 500px) {
+    .landing-page-container:last-child:after {
+        font-size: 0.7rem;
+    }
+
+    .landing-page-section-title {
+        font-size: 1.2rem;
+    }
+
+    .landing-page-section-description {
+        font-size: 0.9rem;
+        max-width: 45ch;
+    }
+
+    .landing-page-section-additional-container {
+        flex-direction: column;
+    }
+
+    .landing-page-section-additional {
+        font-size: 0.8rem;
+    }
 }
 
 // scroll effects

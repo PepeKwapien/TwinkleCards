@@ -1,4 +1,6 @@
 $navbar-height: 4rem;
+$navbar-height-500: 3rem;
+
 $max-width: 1300px;
 
 .default-x-padding {
@@ -14,6 +16,12 @@ $max-width: 1300px;
     & > * {
         max-width: $max-width;
         width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .under-navbar-container {
+        min-height: calc(100vh - $navbar-height-500);
     }
 }
 

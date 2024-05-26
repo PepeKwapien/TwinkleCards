@@ -60,4 +60,10 @@ img {
         bottom: 0;
         aspect-ratio: 16/9;
     }
+
+    @media (max-width: 500px) {
+        &::after {
+            font-size: 0.7rem;
+        }
+    }
 }

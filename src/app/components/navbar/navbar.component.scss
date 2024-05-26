@@ -15,6 +15,12 @@
     z-index: 2;
 }
 
+@media (max-width: 500px) {
+    .navbar-container {
+        height: $navbar-height-500;
+    }
+}
+
 .navbar-content-container {
     width: 100%;
     display: flex;

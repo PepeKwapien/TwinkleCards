@@ -6,7 +6,9 @@
 
 <ng-template #titleAndDescription let-landingPageComponent>
     <div class="landing-page-container">
-        <h1 class="landing-page-section-title observe-intersection text-shadow">{{ landingPageComponent.title }}</h1>
+        <div class="landing-page-section-title-container">
+            <h1 class="landing-page-section-title observe-intersection text-shadow">{{ landingPageComponent.title }}</h1>
+        </div>
         <p class="landing-page-section-description observe-intersection">{{ landingPageComponent.description }}</p>
         <div class="landing-page-section-additional-container">
             <h2
