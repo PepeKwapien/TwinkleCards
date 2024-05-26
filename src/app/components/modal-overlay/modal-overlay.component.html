@@ -16,7 +16,7 @@
 <ng-template #default>
     <div class="form-outer-container modal-confirmation light-box-shadow" *ngIf="confirmProperties$ | async as confirmProperties">
         <h3 [class]="confirmProperties.color">{{ confirmProperties.title }}</h3>
-        <p>{{ confirmProperties.description }}</p>
+        <p class="modal-confirmation-description">{{ confirmProperties.description }}</p>
         <p class="modal-confirmation-question">{{ confirmProperties.confirmation }}</p>
 
         <div class="confirmation-buttons">
