@@ -1,5 +1,5 @@
 $navbar-height: 4rem;
-$navbar-height-500: 3rem;
+$navbar-height-600: 3rem;
 
 $max-width: 1300px;
 
@@ -19,9 +19,9 @@ $max-width: 1300px;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .under-navbar-container {
-        min-height: calc(100vh - $navbar-height-500);
+        min-height: calc(100vh - $navbar-height-600);
     }
 }
 
