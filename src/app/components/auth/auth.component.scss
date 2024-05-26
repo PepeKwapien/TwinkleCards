@@ -5,6 +5,15 @@
     }
 }
 
+@media (max-width: 500px) {
+    .user-outer-container {
+        &,
+        & * {
+            font-size: 0.95rem;
+        }
+    }
+}
+
 .user-icon {
     height: 14px;
 }
