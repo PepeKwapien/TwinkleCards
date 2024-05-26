@@ -113,3 +113,10 @@
         max-width: 50px;
     }
 }
+
+@media (max-width: 600px) {
+    .collection-box {
+        width: 32%;
+        height: 6rem;
+    }
+}

@@ -62,6 +62,9 @@ img {
     }
 
     @media (max-width: 600px) {
+        & {
+            padding-bottom: 2rem;
+        }
         &::after {
             font-size: 0.7rem;
         }

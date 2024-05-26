@@ -23,3 +23,9 @@
 
     @include darken-on-hover-active;
 }
+
+@media (max-width: 600px) {
+    .collection-groups-container {
+        row-gap: 1em;
+    }
+}

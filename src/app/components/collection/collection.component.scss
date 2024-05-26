@@ -97,3 +97,21 @@
         width: 20px;
     }
 }
+
+@media (max-width: 600px) {
+    .collection-title {
+        font-size: 1.6rem;
+    }
+
+    :host ::ng-deep .collection-body {
+        row-gap: 1.5rem;
+        & > * {
+            min-height: 7rem;
+            width: 48%;
+        }
+
+        & .flashcard-container {
+            min-height: 7rem;
+        }
+    }
+}
