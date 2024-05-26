@@ -46,3 +46,13 @@
     transform: translateY(-50%);
     height: 100%;
 }
+
+@media (max-width: 600px) {
+    .logo-container .back-button {
+        left: -2em;
+
+        & img {
+            height: 20px;
+        }
+    }
+}

@@ -21,7 +21,13 @@ $max-width: 1300px;
 
 @media (max-width: 600px) {
     .under-navbar-container {
+        padding: 1em 2em;
         min-height: calc(100vh - $navbar-height-600);
+    }
+
+    .default-x-padding {
+        padding-left: 2em;
+        padding-right: 2em;
     }
 }
 
