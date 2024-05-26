@@ -1,27 +1,27 @@
-# TwinkleCards
+# TwinkleCards✨
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+TwinkleCards is an app for people looking for a place to store their flashcard and use them to study.
 
-## Development server
+![image](https://github.com/PepeKwapien/TwinkleCards/assets/51708716/c780fe98-c444-4304-83ae-ad6267f2cc86)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Motivation
 
-## Code scaffolding
+I needed to organize my flashcards with japanese words 😅
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It was so frustrating to search for that one specific word and not being able to find it in Google Translator or [Jisho](https://jisho.org/)
 
-## Build
+## How to use
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You can visit the project [here](https://twinklecards-3108d.web.app/) and sign in using your Google account (who wants to remember another password...)
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can create your own flashcard collections and manage them.
 
-## Running end-to-end tests
+You are free to create as many collections as you want. You can interact with flashcards and learn with them by displaying them in random order
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+You can also share the link to your collection with friends
 
-## Further help
+## Future features
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Searching for collections of others inside the app
