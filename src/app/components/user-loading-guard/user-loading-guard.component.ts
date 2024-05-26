@@ -16,6 +16,8 @@ export class UserLoadingGuardComponent {
             this.isUserEstimated = true;
             if (this._router.url === '/' && user !== null) {
                 this._router.navigate([`home`]);
+            } else if (this._router.url === '/home' && user == null) {
+                this._router.navigate([`/`]);
             }
         });
     }

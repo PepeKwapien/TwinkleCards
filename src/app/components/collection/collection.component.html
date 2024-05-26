@@ -21,7 +21,8 @@
                     class="empty-button round-button"
                     (click)="
                         collection.type == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
-                    ">
+                    "
+                    *ngIf="isUserAuthenticated">
                     <img class="grayed-icon" src="./assets/add-circle.svg" />
                 </button>
                 <button class="empty-button round-button" (click)="flip()">

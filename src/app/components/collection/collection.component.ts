@@ -9,9 +9,9 @@ import { CollectionRepositoryService } from 'src/app/services/collection-reposit
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
 import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component';
-import { CollectionType } from 'src/app/types/collection-type.type';
 import { Timestamp } from '@angular/fire/firestore';
 import { IModalProperties } from 'src/app/models/modal-properties.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 export enum CollectionSortOptions {
     alphabeticalAsc = 'Alphabetical Ascending',
@@ -80,10 +80,15 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._username;
     }
 
+    public get isUserAuthenticated(): boolean {
+        return this._authService.isUserAuthenticated;
+    }
+
     constructor(
         private _collectionRepository: CollectionRepositoryService,
         private _userRepository: UserRepositoryService,
-        private _modalService: ModalService
+        private _modalService: ModalService,
+        private _authService: AuthService
     ) {
         this._sub = new Subscription();
 

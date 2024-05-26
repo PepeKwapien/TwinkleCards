@@ -7,9 +7,8 @@ import {
     getBacksideFlashcardBody
 } from 'src/app/helpers/flashcard.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
-import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
-import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
 import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-state.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { CollectionType } from 'src/app/types/collection-type.type';
@@ -55,7 +54,15 @@ export class FlashcardPreviewComponent implements OnInit {
         return getBacksideFlashcardBody(this.flashcard);
     }
 
-    constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {
+    public get isUserAuthenticated(): boolean {
+        return this._authService.isUserAuthenticated;
+    }
+
+    constructor(
+        private _modalService: ModalService,
+        private _collectionRepository: CollectionRepositoryService,
+        private _authService: AuthService
+    ) {
         this.flashcardFlipped = new EventEmitter();
     }
 
