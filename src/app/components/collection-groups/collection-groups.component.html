@@ -3,7 +3,7 @@
         <app-collection-group
             class="slide-from-left-enter"
             [style.animation-delay]="index * 0.1 + 's'"
-            *ngFor="let group of user.collectionGroups; let index = index"
+            *ngFor="let group of sortCollectionGroups(user.collectionGroups); let index = index"
             [collectionGroup]="group"
             [indexOnScreen]="index"></app-collection-group>
         <button
