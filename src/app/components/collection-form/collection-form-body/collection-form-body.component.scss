@@ -8,6 +8,7 @@ form.ng-submitted.ng-invalid .collection-type-container label:has(input.ng-inval
     display: flex;
     flex-direction: column;
     row-gap: 0.5em;
+    text-align: center;
 
     & > label {
         cursor: pointer;
@@ -22,6 +23,17 @@ form.ng-submitted.ng-invalid .collection-type-container label:has(input.ng-inval
 
     & > label:has(input:checked) {
         border-color: $gray-text;
+    }
+}
+
+@media (max-width: 600px) {
+    .collection-type-container {
+        & * {
+            font-size: 0.9rem;
+        }
+        img {
+            height: 16px;
+        }
     }
 }
 
