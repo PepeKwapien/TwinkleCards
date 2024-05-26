@@ -54,6 +54,12 @@
     }
 }
 
+@media (max-width: 600px) {
+    .confirmation-buttons {
+        column-gap: 0.5em;
+    }
+}
+
 .close-modal-icon {
     z-index: 2;
     position: absolute;
