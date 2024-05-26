@@ -29,10 +29,8 @@
                     <img class="grayed-icon" src="./assets/360.svg" />
                 </button>
             </div>
-            <div class="collection-body-secondary-controls">
-                <app-search-input (searchTerm)="filter($event)"></app-search-input>
-                <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
-            </div>
+            <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
+            <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
         </div>
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
             <app-flashcard-preview

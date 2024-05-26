@@ -18,7 +18,6 @@
 .collection-description {
     white-space: break-spaces;
     line-height: 1.5rem;
-    width: clamp(45ch, 50%, 75ch);
     margin: 1rem 0;
 }
 
@@ -66,9 +65,8 @@
     align-items: center;
 }
 
-.collection-body-secondary-controls {
-    display: flex;
-    align-items: center;
+.search-input {
+    flex: 1;
 }
 
 :host ::ng-deep .collection-body {

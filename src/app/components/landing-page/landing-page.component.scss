@@ -75,7 +75,7 @@
 
 .landing-page-section-description {
     text-align: center;
-    width: clamp(45ch, 50%, 75ch);
+    max-width: 75ch;
     font-size: 20px;
 }
 
