@@ -4,8 +4,8 @@
         <input id="collection-name" type="text" formControlName="name" autocomplete="off" />
         <label for="collection-description">Description:</label>
         <textarea id="collection-description" formControlName="description" autocomplete="off" placeholder="Optional"></textarea>
-        <label for="collection-public">Public:</label>
-        <input type="checkbox" name="public" id="collection-public" formControlName="isPublic" />
+        <!-- <label for="collection-public">Public:</label>
+        <input type="checkbox" name="public" id="collection-public" formControlName="isPublic" /> -->
         <ng-container *ngIf="!editForm">
             <label for="type">Collection type:</label>
             <div class="collection-type-container">
