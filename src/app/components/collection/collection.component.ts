@@ -80,8 +80,8 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._username;
     }
 
-    public get isUserAuthenticated(): boolean {
-        return this._authService.isUserAuthenticated;
+    public get isUserOwner(): boolean {
+        return this._authService.isUserAuthenticated && this._authService.userId === this.collection?.ownerId;
     }
 
     constructor(

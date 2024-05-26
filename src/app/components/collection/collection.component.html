@@ -22,7 +22,7 @@
                     (click)="
                         collection.type == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
                     "
-                    *ngIf="isUserAuthenticated">
+                    *ngIf="isUserOwner">
                     <img class="grayed-icon" src="./assets/add-circle.svg" />
                 </button>
                 <button class="empty-button round-button" (click)="flip()">
@@ -39,6 +39,7 @@
                 [style.animation-delay]="0.1 * index + 's'"
                 [flashcardWithFlipState]="flashcard"
                 [collectionId]="collectionId"
+                [isUserOwner]="isUserOwner"
                 (flashcardFlipped)="correctFlipState()"></app-flashcard-preview>
         </div>
     </div>

@@ -23,6 +23,7 @@ export class FlashcardPreviewComponent implements OnInit {
 
     @Input({ required: true }) flashcardWithFlipState!: IFlashcardWithFlipState;
     @Input({ required: true }) collectionId!: string;
+    @Input() isUserOwner: boolean = false;
 
     public flashcardType!: CollectionType;
 
@@ -52,10 +53,6 @@ export class FlashcardPreviewComponent implements OnInit {
 
     public get backsideFlashcardBody(): string {
         return getBacksideFlashcardBody(this.flashcard);
-    }
-
-    public get isUserAuthenticated(): boolean {
-        return this._authService.isUserAuthenticated;
     }
 
     constructor(
