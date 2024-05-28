@@ -25,7 +25,7 @@ button:not(.empty-button) {
         min-width: 5em;
     }
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled, .cancel-button, .confirm-button) {
         background-color: $primary-hover;
     }
 
