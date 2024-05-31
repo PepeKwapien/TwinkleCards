@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -11,7 +11,8 @@ export class UserLoadingGuardComponent {
     public isUserEstimated: boolean;
 
     constructor(private _authService: AuthService, private _router: Router) {
-        this.isUserEstimated = false;
+        this.isUserEstimated = this._authService.isUserAuthenticated;
+
         this._authService.registerOnAuthStateChanged((user) => {
             this.isUserEstimated = true;
             if (this._router.url === '/' && user !== null) {
