@@ -4,16 +4,16 @@ import { CollectionDocument } from 'src/app/models/documents/collection.document
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
-import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-state.interface';
+import { IFlashcardWithFlipState } from 'src/app/types/flashcard-with-flip-state.type';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
 import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component';
 import { Timestamp } from '@angular/fire/firestore';
-import { IModalProperties } from 'src/app/models/modal-properties.interface';
+import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
-export enum CollectionSortOptions {
+enum CollectionSortOptions {
     alphabeticalAsc = 'Alphabetical Ascending',
     alphabeticalDsc = 'Alphabetical Descending',
     dateAsc = 'Date Ascending',

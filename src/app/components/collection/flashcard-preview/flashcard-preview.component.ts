@@ -7,7 +7,7 @@ import {
     getBacksideFlashcardBody
 } from 'src/app/helpers/flashcard.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
-import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-state.interface';
+import { IFlashcardWithFlipState } from 'src/app/types/flashcard-with-flip-state.type';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';

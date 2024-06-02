@@ -7,7 +7,7 @@ import {
     getBacksideFlashcardBody
 } from 'src/app/helpers/flashcard.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
-import { IFlashcardWithFlipState } from 'src/app/models/flashcard-with-flip-state.interface';
+import { IFlashcardWithFlipState } from 'src/app/types/flashcard-with-flip-state.type';
 import { ModalService } from 'src/app/services/modal/modal.service';
 
 const left = [

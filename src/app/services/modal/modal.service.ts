@@ -1,6 +1,6 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
-import { IModalProperties } from 'src/app/models/modal-properties.interface';
+import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
 
 @Injectable({

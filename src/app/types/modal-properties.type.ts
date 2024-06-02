@@ -1,4 +1,4 @@
-export interface IModalProperties {
+export type IModalProperties = {
     showClose: boolean;
     transparentBackground: boolean;
-}
+};

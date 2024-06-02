@@ -1,6 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { IModalProperties } from 'src/app/models/modal-properties.interface';
+import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
 
