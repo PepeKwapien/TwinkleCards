@@ -77,6 +77,12 @@
     }
 }
 
+.collection-body-secondary-controls {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
 .search-input {
     flex: 1;
 }
@@ -110,9 +116,32 @@
     }
 }
 
+@media (max-width: 900px) {
+    :host ::ng-deep .collection-body {
+        row-gap: 1.5rem;
+        column-gap: 2%;
+        & > * {
+            min-height: 7rem;
+            width: 32%;
+        }
+
+        & .flashcard-container {
+            min-height: 7rem;
+        }
+    }
+}
+
 @media (max-width: 600px) {
     .collection-title {
         font-size: 1.6rem;
+    }
+
+    .collection-body-controls {
+        display: block;
+    }
+
+    .collection-body-primary-controls {
+        justify-content: space-between;
     }
 
     :host ::ng-deep .collection-body {

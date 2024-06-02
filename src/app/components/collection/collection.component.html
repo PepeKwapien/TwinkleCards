@@ -33,8 +33,10 @@
                     <label for="show-marked">Show <img src="./assets/check.svg" class="grayed-icon" /></label>
                 </div>
             </div>
-            <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
-            <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
+            <div class="collection-body-secondary-controls">
+                <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
+                <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
+            </div>
         </div>
         <div
             *ngIf="collection.flashcards.length > 0 && (!areAllFlashcardsMarked || showMarked); else noFlaschards"
