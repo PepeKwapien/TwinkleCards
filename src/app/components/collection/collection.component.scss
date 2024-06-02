@@ -116,6 +116,10 @@
     }
 }
 
+.collection-marked-icon {
+    margin-left: 0.3em;
+}
+
 @media (max-width: 900px) {
     :host ::ng-deep .collection-body {
         row-gap: 1.5rem;
