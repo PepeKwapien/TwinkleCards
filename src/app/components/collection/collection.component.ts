@@ -12,6 +12,7 @@ import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component
 import { Timestamp } from '@angular/fire/firestore';
 import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { MarkFlashcardsService } from 'src/app/services/mark-flashcards/mark-flashcards.service';
 
 enum CollectionSortOptions {
     alphabeticalAsc = 'Alphabetical Ascending',
@@ -23,7 +24,8 @@ enum CollectionSortOptions {
 @Component({
     selector: 'app-collection',
     templateUrl: './collection.component.html',
-    styleUrls: ['./collection.component.scss']
+    styleUrls: ['./collection.component.scss'],
+    providers: [MarkFlashcardsService]
 })
 export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     // bindToComponentInputs: true
@@ -110,7 +112,8 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         private _collectionRepository: CollectionRepositoryService,
         private _userRepository: UserRepositoryService,
         private _modalService: ModalService,
-        private _authService: AuthService
+        private _authService: AuthService,
+        private _markFlashcardService: MarkFlashcardsService
     ) {
         this._sub = new Subscription();
 
@@ -141,6 +144,9 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                     this._flashcardsWithFlipState = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
                     this._flashcardsWithFlipStateCopy = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
 
+                    this._markFlashcardService.isOwner = this.isUserOwner;
+                    this._markFlashcardService.markedFlashcards = this._collection.markedFlashcards;
+
                     this.sort(this._collectionSortOption);
                     this.filter(this._collectionFilterValue);
                 }
@@ -152,6 +158,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit() {
         this._collectionRepository.setupCollectionChangesListener(this.collectionId);
+        this._markFlashcardService.collectionId = this.collectionId;
     }
 
     ngAfterViewInit(): void {
@@ -198,15 +205,11 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public isFlashcardMarked(flashcardId: string): boolean {
-        return !!this.collection?.markedFlashcards?.includes(flashcardId);
+        return this._markFlashcardService.isFlashcardMarked(flashcardId);
     }
 
     public async toggleFlashcardMark(flashcardId: string) {
-        if (this.isFlashcardMarked(flashcardId)) {
-            await this._collectionRepository.unmarkFlashcard(this.collectionId, flashcardId);
-        } else {
-            await this._collectionRepository.markFlashcard(this.collectionId, flashcardId);
-        }
+        await this._markFlashcardService.toggleFlashcardMark(flashcardId);
     }
 
     public sort(event: CollectionSortOptions): void {

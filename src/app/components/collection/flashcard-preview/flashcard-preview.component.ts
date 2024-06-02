@@ -11,6 +11,7 @@ import { IFlashcardWithFlipState } from 'src/app/types/flashcard-with-flip-state
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { CollectionType } from 'src/app/types/collection-type.type';
+import { MarkFlashcardsService } from 'src/app/services/mark-flashcards/mark-flashcards.service';
 
 @Component({
     selector: 'app-flashcard-preview',
@@ -24,7 +25,10 @@ export class FlashcardPreviewComponent implements OnInit {
     @Input({ required: true }) flashcardWithFlipState!: IFlashcardWithFlipState;
     @Input({ required: true }) collectionId!: string;
     @Input() isUserOwner: boolean = false;
-    @Input() isFlashcardMarked: boolean = false;
+
+    public get isFlashcardMarked(): boolean {
+        return this._markFlashcardsService.isFlashcardMarked(this.flashcardWithFlipState.flashcard.id);
+    }
 
     public flashcardType!: CollectionType;
 
@@ -56,7 +60,11 @@ export class FlashcardPreviewComponent implements OnInit {
         return getBacksideFlashcardBody(this.flashcard);
     }
 
-    constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {
+    constructor(
+        private _modalService: ModalService,
+        private _collectionRepository: CollectionRepositoryService,
+        private _markFlashcardsService: MarkFlashcardsService
+    ) {
         this.flashcardFlipped = new EventEmitter();
         this.flashcardMarked = new EventEmitter();
     }
@@ -90,4 +98,3 @@ export class FlashcardPreviewComponent implements OnInit {
         this.flashcardMarked.next(this.flashcardWithFlipState.flashcard.id);
     }
 }
-

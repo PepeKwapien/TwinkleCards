@@ -9,6 +9,7 @@ import {
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IFlashcardWithFlipState } from 'src/app/types/flashcard-with-flip-state.type';
 import { ModalService } from 'src/app/services/modal/modal.service';
+import { MarkFlashcardsService } from 'src/app/services/mark-flashcards/mark-flashcards.service';
 
 const left = [
     query(':enter', style({ position: 'absolute' })),
@@ -63,7 +64,7 @@ export class FlashcardDisplayComponent implements OnInit {
         return this._index;
     }
 
-    constructor(private _modalService: ModalService) {}
+    constructor(private _modalService: ModalService, private _markFlashcardService: MarkFlashcardsService) {}
 
     ngOnInit(): void {
         let currentIndex = this.flashcards.length;
@@ -103,6 +104,14 @@ export class FlashcardDisplayComponent implements OnInit {
         flashcardWithFlipState.flipped = !flashcardWithFlipState.flipped;
     }
 
+    public isFlashcardMarked(flashcardId: string) {
+        return this._markFlashcardService.isFlashcardMarked(flashcardId);
+    }
+
+    public async toggleFlashcard(flashcardId: string) {
+        await this._markFlashcardService.toggleFlashcardMark(flashcardId);
+    }
+
     public previous(): void {
         if (this.isTherePrevious) {
             this._index--;
@@ -115,4 +124,3 @@ export class FlashcardDisplayComponent implements OnInit {
         }
     }
 }
-

@@ -53,11 +53,21 @@
             <img src="./assets/expand_more.svg" class="grayed-icon-hover icon-rotated-270" />
         </button>
     </div>
+
+    <button class="empty-button flashcard-bottom-right-icon overflow-visible" (click)="toggleFlashcard(flashcard.flashcard.id)">
+        <img
+            src="./assets/check.svg"
+            class="flashcard-display-icon-size"
+            [ngClass]="{
+                'grayed-icon-hover': !isFlashcardMarked(flashcard.flashcard.id),
+                'primary-color-icon': isFlashcardMarked(flashcard.flashcard.id)
+            }" />
+    </button>
 </ng-template>
 
 <ng-template #closeButton>
     <button class="empty-button flashcard-top-right-icon" (click)="close()">
-        <img src="./assets/close.svg" class="grayed-icon-hover" />
+        <img src="./assets/close.svg" class="grayed-icon-hover flashcard-display-icon-size" />
     </button>
 </ng-template>
 

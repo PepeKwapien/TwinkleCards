@@ -50,7 +50,6 @@
                     [flashcardWithFlipState]="flashcardWithFlipState"
                     [collectionId]="collectionId"
                     [isUserOwner]="isUserOwner"
-                    [isFlashcardMarked]="isFlashcardMarked(flashcardWithFlipState.flashcard.id)"
                     (flashcardFlipped)="correctFlipState()"
                     (flashcardMarked)="toggleFlashcardMark($event)"
                     *ngIf="!(isFlashcardMarked(flashcardWithFlipState.flashcard.id) && !showMarked)"></app-flashcard-preview>
