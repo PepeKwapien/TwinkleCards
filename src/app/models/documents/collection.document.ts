@@ -9,6 +9,7 @@ export class CollectionDocument {
     isPublic: boolean;
     type: CollectionType;
     flashcards: IBaseFlashcard[];
+    markedFlashcards: string[];
 
     constructor(name: string, ownerId: string, isPublic: boolean, type: CollectionType, description: string | null) {
         this.name = name;
@@ -16,6 +17,7 @@ export class CollectionDocument {
         this.isPublic = isPublic;
         this.type = type;
         this.flashcards = [];
+        this.markedFlashcards = [];
 
         if (description) {
             this.description = description;
