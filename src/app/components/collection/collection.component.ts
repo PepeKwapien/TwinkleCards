@@ -35,6 +35,8 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('scheduleUpIcon') scheduleUpIcon!: TemplateRef<Element>;
     @ViewChild('scheduleDownIcon') scheduleDownIcon!: TemplateRef<Element>;
 
+    public showMarked: boolean = false;
+
     private _sub: Subscription;
 
     private _collection: CollectionDocument | undefined;
@@ -62,7 +64,13 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public get newFlashcardsWithFlipState(): IFlashcardWithFlipState[] {
-        return this._flashcardsWithFlipStateCopy;
+        if (!this.showMarked) {
+            return this._flashcardsWithFlipStateCopy.filter(
+                (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
+            );
+        } else {
+            return this._flashcardsWithFlipStateCopy;
+        }
     }
 
     public get flipState(): boolean {
@@ -84,8 +92,18 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._authService.isUserAuthenticated && this._authService.userId === this.collection?.ownerId;
     }
 
-    public isFlashcardMarked(flashcardId: string): boolean {
-        return !!this.collection?.markedFlashcards?.includes(flashcardId);
+    public get areAllFlashcardsMarked(): boolean {
+        let answer = false;
+
+        const filteredOutMarked = this._flashcardsWithFlipState.filter(
+            (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
+        );
+
+        if (filteredOutMarked.length === 0) {
+            answer = true;
+        }
+
+        return answer;
     }
 
     constructor(
@@ -165,7 +183,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     public flip() {
         this._flipState = !this._flipState;
         for (let i = 0; i < this._flashcardsWithFlipState.length; i++) {
-            this.flashcardsWithFlipState[i].flipped = this._flipState;
+            this._flashcardsWithFlipState[i].flipped = this._flipState;
             this._flashcardsWithFlipStateCopy[i].flipped = this._flipState;
         }
     }
@@ -177,6 +195,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                 return { ...flashcardWithFlipState, flipped: this._flipState };
             });
         }
+    }
+
+    public isFlashcardMarked(flashcardId: string): boolean {
+        return !!this.collection?.markedFlashcards?.includes(flashcardId);
     }
 
     public async toggleFlashcardMark(flashcardId: string) {

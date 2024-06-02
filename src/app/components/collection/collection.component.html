@@ -12,7 +12,7 @@
         <div class="collection-body-controls">
             <div class="collection-body-primary-controls">
                 <button
-                    [disabled]="collection.flashcards.length === 0"
+                    [disabled]="collection.flashcards.length === 0 || (areAllFlashcardsMarked && !showMarked)"
                     class="round-button"
                     (click)="openModal(playCollection, { showClose: false, transparentBackground: false })">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
@@ -29,24 +29,28 @@
                     <img class="grayed-icon" src="./assets/360.svg" />
                 </button>
                 <div class="collection-show-marked-container">
-                    <input type="checkbox" name="show-marked" id="show-marked" />
+                    <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
                     <label for="show-marked">Show <img src="./assets/check.svg" class="grayed-icon" /></label>
                 </div>
             </div>
             <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
             <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
         </div>
-        <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
-            <app-flashcard-preview
-                *ngFor="let flashcardWithFlipState of flashcardsWithFlipState; let index = index; trackBy: trackBy"
-                class="slide-from-left-and-scale-enter"
-                [style.animation-delay]="0.1 * index + 's'"
-                [flashcardWithFlipState]="flashcardWithFlipState"
-                [collectionId]="collectionId"
-                [isUserOwner]="isUserOwner"
-                [isFlashcardMarked]="isFlashcardMarked(flashcardWithFlipState.flashcard.id)"
-                (flashcardFlipped)="correctFlipState()"
-                (flashcardMarked)="toggleFlashcardMark($event)"></app-flashcard-preview>
+        <div
+            *ngIf="collection.flashcards.length > 0 && (!areAllFlashcardsMarked || showMarked); else noFlaschards"
+            class="collection-body">
+            <ng-container *ngFor="let flashcardWithFlipState of flashcardsWithFlipState; let index = index; trackBy: trackBy">
+                <app-flashcard-preview
+                    class="slide-from-left-and-scale-enter"
+                    [style.animation-delay]="0.1 * index + 's'"
+                    [flashcardWithFlipState]="flashcardWithFlipState"
+                    [collectionId]="collectionId"
+                    [isUserOwner]="isUserOwner"
+                    [isFlashcardMarked]="isFlashcardMarked(flashcardWithFlipState.flashcard.id)"
+                    (flashcardFlipped)="correctFlipState()"
+                    (flashcardMarked)="toggleFlashcardMark($event)"
+                    *ngIf="!(isFlashcardMarked(flashcardWithFlipState.flashcard.id) && !showMarked)"></app-flashcard-preview>
+            </ng-container>
         </div>
     </div>
 </div>
@@ -56,8 +60,15 @@
 </ng-template>
 
 <ng-template #noFlaschards>
-    <div style="flex: 1; display: flex; justify-content: center; align-items: center; width: 100%">
+    <div
+        style="flex: 1; display: flex; justify-content: center; align-items: center; width: 100%"
+        *ngIf="collection!.flashcards.length === 0">
         🌵 This collection is empty 🌵
+    </div>
+    <div
+        style="flex: 1; display: flex; justify-content: center; align-items: center; width: 100%"
+        *ngIf="collection!.flashcards.length > 0 && areAllFlashcardsMarked && !showMarked">
+        👏 You're doing great! 👏
     </div>
 </ng-template>
 

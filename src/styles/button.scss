@@ -12,9 +12,9 @@ button:not(.empty-button) {
     font-weight: 600;
     border: unset;
     background-color: $primary-background;
-    -webkit-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
-    -moz-box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
-    box-shadow: 2px 2px 2px 0px rgba(129, 131, 142, 1);
+    -webkit-box-shadow: 1px 1px 8px 0px rgb(188, 188, 192);
+    -moz-box-shadow: 1px 1px 8px 0px rgb(188, 188, 192);
+    box-shadow: 1px 1px 8px 0px rgb(188, 188, 192);
     width: fit-content;
 
     transition: 0.3s;

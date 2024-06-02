@@ -13,7 +13,7 @@ import { CreateTranslationFlashcardFormComponent } from 'src/app/components/flas
 import { EditTranslationFlashcardFormComponent } from 'src/app/components/flashcard-form/translation-flashcard-form/edit-translation-flashcard-form/edit-translation-flashcard-form.component';
 import { TranslationFlashcardFormComponent } from 'src/app/components/flashcard-form/translation-flashcard-form/translation-flashcard-form.component';
 import { MatchHeightDirective } from 'src/app/directives/matchHeight/match-height.directive';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -33,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         RouterModule.forChild([{ path: '', component: CollectionComponent }]),
         SharedModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ]
 })
 export class CollectionModule {}
