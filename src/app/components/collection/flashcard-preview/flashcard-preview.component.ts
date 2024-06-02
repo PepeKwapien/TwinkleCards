@@ -55,11 +55,7 @@ export class FlashcardPreviewComponent implements OnInit {
         return getBacksideFlashcardBody(this.flashcard);
     }
 
-    constructor(
-        private _modalService: ModalService,
-        private _collectionRepository: CollectionRepositoryService,
-        private _authService: AuthService
-    ) {
+    constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {
         this.flashcardFlipped = new EventEmitter();
     }
 
@@ -71,15 +67,7 @@ export class FlashcardPreviewComponent implements OnInit {
         this._modalService.open(templateRef);
     }
 
-    public flip($event: Event): void {
-        $event.preventDefault();
-        this.flipped = !this.flipped;
-        this.flashcardFlipped.next();
-    }
-
-    public async deleteFlashcard($event: Event) {
-        $event.preventDefault();
-
+    public async deleteFlashcard() {
         const result = await this._modalService.getConfirmation({
             title: `Delete this flashcard?`,
             description: 'This action will remove the selected flashcard',
@@ -90,5 +78,12 @@ export class FlashcardPreviewComponent implements OnInit {
             await this._collectionRepository.deleteFlashcard(this.collectionId, this.flashcard);
         }
     }
+
+    public flip(): void {
+        this.flipped = !this.flipped;
+        this.flashcardFlipped.next();
+    }
+
+    public toggleMark() {}
 }
 
