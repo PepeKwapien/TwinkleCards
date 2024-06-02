@@ -66,13 +66,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public get newFlashcardsWithFlipState(): IFlashcardWithFlipState[] {
-        if (!this.showMarked) {
-            return this._flashcardsWithFlipStateCopy.filter(
-                (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
-            );
-        } else {
-            return this._flashcardsWithFlipStateCopy;
-        }
+        return this._flashcardsWithFlipStateCopy;
     }
 
     public get flipState(): boolean {
@@ -142,7 +136,6 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
                     };
 
                     this._flashcardsWithFlipState = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
-                    this._flashcardsWithFlipStateCopy = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
 
                     this._markFlashcardService.isOwner = this.isUserOwner;
                     this._markFlashcardService.markedFlashcards = this._collection.markedFlashcards;
@@ -179,6 +172,20 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this._sub.unsubscribe();
     }
 
+    public playCollection(templateRef: TemplateRef<Element>): void {
+        this._flashcardsWithFlipStateCopy = this._flashcardsWithFlipState.map((flashcardWithFlipState) => {
+            return { ...flashcardWithFlipState, flipped: this._flipState };
+        });
+
+        if (!this.showMarked) {
+            this._flashcardsWithFlipStateCopy = this._flashcardsWithFlipStateCopy.filter(
+                (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
+            );
+        }
+
+        this._modalService.open(templateRef, { showClose: false, transparentBackground: false });
+    }
+
     public openModal(templateRef: TemplateRef<Element>, modalProperties?: IModalProperties): void {
         if (modalProperties) {
             this._modalService.open(templateRef, modalProperties);
@@ -191,16 +198,12 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this._flipState = !this._flipState;
         for (let i = 0; i < this._flashcardsWithFlipState.length; i++) {
             this._flashcardsWithFlipState[i].flipped = this._flipState;
-            this._flashcardsWithFlipStateCopy[i].flipped = this._flipState;
         }
     }
 
     public correctFlipState() {
         if (!this._flashcardsWithFlipState.some((flashcardWithFlipState) => flashcardWithFlipState.flipped === this._flipState)) {
             this._flipState = !this._flipState;
-            this._flashcardsWithFlipStateCopy = this._flashcardsWithFlipState.map((flashcardWithFlipState) => {
-                return { ...flashcardWithFlipState, flipped: this._flipState };
-            });
         }
     }
 

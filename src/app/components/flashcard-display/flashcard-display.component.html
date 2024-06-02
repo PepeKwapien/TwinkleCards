@@ -57,9 +57,8 @@
     <button class="empty-button flashcard-bottom-right-icon overflow-visible" (click)="toggleFlashcard(flashcard.flashcard.id)">
         <img
             src="./assets/check.svg"
-            class="flashcard-display-icon-size"
+            class="flashcard-display-icon-size grayed-icon-hover"
             [ngClass]="{
-                'grayed-icon-hover': !isFlashcardMarked(flashcard.flashcard.id),
                 'primary-color-icon': isFlashcardMarked(flashcard.flashcard.id)
             }" />
     </button>

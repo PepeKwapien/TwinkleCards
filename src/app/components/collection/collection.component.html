@@ -14,7 +14,7 @@
                 <button
                     [disabled]="collection.flashcards.length === 0 || (areAllFlashcardsMarked && !showMarked)"
                     class="round-button"
-                    (click)="openModal(playCollection, { showClose: false, transparentBackground: false })">
+                    (click)="playCollection(collectionDisplay)">
                     <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
                 </button>
                 <button
@@ -29,10 +29,10 @@
                     <img class="grayed-icon" src="./assets/360.svg" />
                 </button>
                 <div class="collection-show-marked-container">
+                    <label for="show-marked">
+                        Show <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
+                    </label>
                     <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
-                    <label for="show-marked"
-                        >Show <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon"
-                    /></label>
                 </div>
             </div>
             <div class="collection-body-secondary-controls">
@@ -83,7 +83,7 @@
     <app-create-translation-flashcard-form [collectionId]="collectionId"></app-create-translation-flashcard-form>
 </ng-template>
 
-<ng-template #playCollection>
+<ng-template #collectionDisplay>
     <app-flashcard-display [flashcards]="newFlashcardsWithFlipState" [flipState]="flipState"></app-flashcard-display>
 </ng-template>
 
