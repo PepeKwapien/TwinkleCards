@@ -50,7 +50,10 @@
     <button class="empty-button flashcard-bottom-left-icon" (click)="flip()">
         <img src="./assets/360.svg" class="grayed-icon-hover" />
     </button>
-    <button class="empty-button flashcard-bottom-right-icon" *ngIf="isUserOwner">
-        <img src="./assets/check.svg" class="grayed-icon-hover" />
+    <button class="empty-button flashcard-bottom-right-icon overflow-visible" (click)="toggleMark()" *ngIf="isUserOwner">
+        <img
+            src="./assets/check.svg"
+            class="grayed-icon-hover"
+            [ngClass]="{ 'grayed-icon-hover': !isFlashcardMarked, 'primary-color-icon': isFlashcardMarked }" />
     </button>
 </ng-template>

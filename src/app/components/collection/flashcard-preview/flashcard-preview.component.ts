@@ -8,7 +8,6 @@ import {
 } from 'src/app/helpers/flashcard.helper';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IFlashcardWithFlipState } from 'src/app/types/flashcard-with-flip-state.type';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { CollectionType } from 'src/app/types/collection-type.type';
@@ -20,10 +19,12 @@ import { CollectionType } from 'src/app/types/collection-type.type';
 })
 export class FlashcardPreviewComponent implements OnInit {
     @Output() flashcardFlipped: EventEmitter<void>;
+    @Output() flashcardMarked: EventEmitter<string>;
 
     @Input({ required: true }) flashcardWithFlipState!: IFlashcardWithFlipState;
     @Input({ required: true }) collectionId!: string;
     @Input() isUserOwner: boolean = false;
+    @Input() isFlashcardMarked: boolean = false;
 
     public flashcardType!: CollectionType;
 
@@ -57,6 +58,7 @@ export class FlashcardPreviewComponent implements OnInit {
 
     constructor(private _modalService: ModalService, private _collectionRepository: CollectionRepositoryService) {
         this.flashcardFlipped = new EventEmitter();
+        this.flashcardMarked = new EventEmitter();
     }
 
     ngOnInit(): void {
@@ -84,6 +86,8 @@ export class FlashcardPreviewComponent implements OnInit {
         this.flashcardFlipped.next();
     }
 
-    public toggleMark() {}
+    public toggleMark() {
+        this.flashcardMarked.next(this.flashcardWithFlipState.flashcard.id);
+    }
 }
 

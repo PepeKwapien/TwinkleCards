@@ -38,13 +38,15 @@
         </div>
         <div *ngIf="collection.flashcards.length > 0; else noFlaschards" class="collection-body">
             <app-flashcard-preview
-                *ngFor="let flashcard of flashcardsWithFlipState; let index = index; trackBy: trackBy"
+                *ngFor="let flashcardWithFlipState of flashcardsWithFlipState; let index = index; trackBy: trackBy"
                 class="slide-from-left-and-scale-enter"
                 [style.animation-delay]="0.1 * index + 's'"
-                [flashcardWithFlipState]="flashcard"
+                [flashcardWithFlipState]="flashcardWithFlipState"
                 [collectionId]="collectionId"
                 [isUserOwner]="isUserOwner"
-                (flashcardFlipped)="correctFlipState()"></app-flashcard-preview>
+                [isFlashcardMarked]="isFlashcardMarked(flashcardWithFlipState.flashcard.id)"
+                (flashcardFlipped)="correctFlipState()"
+                (flashcardMarked)="toggleFlashcardMark($event)"></app-flashcard-preview>
         </div>
     </div>
 </div>

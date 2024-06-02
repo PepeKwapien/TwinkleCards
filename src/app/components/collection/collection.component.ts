@@ -84,6 +84,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._authService.isUserAuthenticated && this._authService.userId === this.collection?.ownerId;
     }
 
+    public isFlashcardMarked(flashcardId: string): boolean {
+        return !!this.collection?.markedFlashcards?.includes(flashcardId);
+    }
+
     constructor(
         private _collectionRepository: CollectionRepositoryService,
         private _userRepository: UserRepositoryService,
@@ -175,7 +179,15 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public sort(event: CollectionSortOptions) {
+    public async toggleFlashcardMark(flashcardId: string) {
+        if (this.isFlashcardMarked(flashcardId)) {
+            await this._collectionRepository.unmarkFlashcard(this.collectionId, flashcardId);
+        } else {
+            await this._collectionRepository.markFlashcard(this.collectionId, flashcardId);
+        }
+    }
+
+    public sort(event: CollectionSortOptions): void {
         this._collectionSortOption = event;
 
         switch (event) {
@@ -202,7 +214,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public filter(value: string) {
+    public filter(value: string): void {
         this._collectionFilterValue = value;
 
         if (value === '') {
