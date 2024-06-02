@@ -65,6 +65,18 @@
     align-items: center;
 }
 
+.collection-show-marked-container {
+    display: flex;
+
+    img {
+        height: 24px;
+    }
+
+    input + label {
+        margin-left: 0.4em;
+    }
+}
+
 .search-input {
     flex: 1;
 }

@@ -50,4 +50,7 @@
     <button class="empty-button flashcard-bottom-left-icon" (click)="flip($event)">
         <img src="./assets/360.svg" class="grayed-icon-hover" />
     </button>
+    <button class="empty-button flashcard-bottom-right-icon" *ngIf="isUserOwner">
+        <img src="./assets/check.svg" class="grayed-icon-hover" />
+    </button>
 </ng-template>
