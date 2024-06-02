@@ -1,4 +1,6 @@
 .user-outer-container {
+    position: relative;
+    width: 100%;
     &,
     & * {
         font-size: 1.1rem;
@@ -14,10 +16,25 @@
     }
 }
 
+.hi {
+    position: absolute;
+    left: -1.2em;
+    top: 0.69em;
+}
+
+@media (max-width: 600px) {
+    .hi {
+        display: none;
+    }
+}
+
 .user-icon {
     height: 14px;
 }
 
-.username-min-width {
+.username-button {
     min-width: 4em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -3,13 +3,13 @@
 </button>
 <ng-template #authenticated>
     <div class="user-outer-container">
-        Hi,
+        <span class="hi">Hi,</span>
         <app-dropdown-menu [properties]="userDropdownOptions" (optionClicked)="signOut()"></app-dropdown-menu>
     </div>
 </ng-template>
 
 <ng-template #usernameTemplate>
-    <div class="username-min-width">
+    <div class="username-button">
         {{ username }}
     </div>
 </ng-template>
