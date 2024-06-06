@@ -62,6 +62,12 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public get flashcardsWithFlipState(): IFlashcardWithFlipState[] {
+        if (!this.showMarked) {
+            return this._filteredFlashcardsWithFlipState.filter(
+                (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
+            );
+        }
+
         return this._filteredFlashcardsWithFlipState;
     }
 
@@ -274,6 +280,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
             return stringifiedContent.includes(value.toLocaleLowerCase());
         });
+    }
+
+    public trackBy(index: number, flashcard: IFlashcardWithFlipState) {
+        return `${index}${JSON.stringify(flashcard.flashcard)}`;
     }
 
     private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {
