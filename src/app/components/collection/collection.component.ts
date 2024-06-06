@@ -276,10 +276,6 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         });
     }
 
-    public trackBy(index: number, flashcard: IFlashcardWithFlipState) {
-        return `${index}${JSON.stringify(flashcard.flashcard)}`;
-    }
-
     private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {
         let result = 0;
         if (this._collection!.type === 'definition') {
