@@ -283,7 +283,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public trackBy(index: number, flashcard: IFlashcardWithFlipState) {
-        return `${index}${JSON.stringify(flashcard.flashcard)}`;
+        return `${index}${flashcard.flashcard.id}`;
     }
 
     private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {
