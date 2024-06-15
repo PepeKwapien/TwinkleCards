@@ -286,6 +286,12 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return `${index}${flashcard.flashcard.id}`;
     }
 
+    public getFlashcardDelay(index: number): number {
+        const delayByIndex = 0.1 * index;
+
+        return Math.min(delayByIndex, 2);
+    }
+
     private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {
         let result = 0;
         if (this._collection!.type === 'definition') {
