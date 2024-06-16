@@ -3,7 +3,7 @@
 </button>
 <ng-template #authenticated>
     <div class="user-outer-container">
-        <span class="hi">{{ hiText }},</span>
+        <span>{{ hiText }},</span>
         <app-dropdown-menu [properties]="userDropdownOptions" (optionClicked)="signOut()"></app-dropdown-menu>
     </div>
 </ng-template>
