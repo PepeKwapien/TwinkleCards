@@ -2,6 +2,7 @@ import { Injectable, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
 import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
+import { LanguageService } from '../language/language.service';
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +13,8 @@ export class ModalService {
         transparentBackground: true
     };
     private _DEFAULT_ACTION_PROPERTIES: ConfirmActionProperties = {
-        title: 'Irreversible action',
-        description: 'Are you sure?',
+        title: this._languageService.languageResouce.defaultConfirmActionTitle,
+        description: this._languageService.languageResouce.defaultConfirmActionDescription,
         color: 'pink'
     };
     private _showModal: BehaviorSubject<boolean>;
@@ -38,7 +39,7 @@ export class ModalService {
         return this._modalProperties.asObservable();
     }
 
-    constructor() {
+    constructor(private _languageService: LanguageService) {
         this._showModal = new BehaviorSubject<boolean>(false);
         this._setTemplate = new BehaviorSubject<TemplateRef<any> | undefined>(undefined);
         this._confirmDecision = new Subject();
@@ -74,4 +75,3 @@ export class ModalService {
         return firstValueFrom(this._confirmDecision);
     }
 }
-

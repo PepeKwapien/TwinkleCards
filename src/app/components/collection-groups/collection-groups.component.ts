@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { UserDocument } from 'src/app/models/documents/user.document';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
@@ -15,7 +16,15 @@ export class CollectionGroupsComponent {
         return this._authService.user$;
     }
 
-    constructor(private _authService: AuthService, private _modalService: ModalService) {}
+    public get newCollectionGroupText(): string {
+        return this._languageService.languageResouce.newCollectionGroupButton;
+    }
+
+    constructor(
+        private _authService: AuthService,
+        private _modalService: ModalService,
+        private _languageService: LanguageService
+    ) {}
 
     public openModal(collectionGroupForm: TemplateRef<any>) {
         this._modalService.open(collectionGroupForm);

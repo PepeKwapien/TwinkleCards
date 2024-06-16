@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CollectionFormService } from '../../../services/collection-form/collection-form.service';
 import { UserRepositoryService } from 'src/app/services/user-repository/user-repository.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-collection-form-body',
@@ -21,7 +22,51 @@ export class CollectionFormBodyComponent implements OnDestroy {
         return this._userRepository.userCollectionGroupNames;
     }
 
-    constructor(private _collectionFormService: CollectionFormService, private _userRepository: UserRepositoryService) {}
+    public get nameText() {
+        return this._languageService.languageResouce.name;
+    }
+
+    public get descriptionText() {
+        return this._languageService.languageResouce.description;
+    }
+
+    public get collectionTypeText() {
+        return this._languageService.languageResouce.collectionType;
+    }
+
+    public get termText() {
+        return this._languageService.languageResouce.definitionFlashcardTerm;
+    }
+
+    public get definitionText() {
+        return this._languageService.languageResouce.definitionFlashcardDefinition;
+    }
+
+    public get wordText() {
+        return this._languageService.languageResouce.translationFlashcardWord;
+    }
+
+    public get translationText() {
+        return this._languageService.languageResouce.translationFlashcardTranslation;
+    }
+
+    public get exampleUseText() {
+        return this._languageService.languageResouce.exampleUse;
+    }
+
+    public get translatedUseText() {
+        return this._languageService.languageResouce.translatedUse;
+    }
+
+    public get groupText() {
+        return this._languageService.languageResouce.group;
+    }
+
+    constructor(
+        private _collectionFormService: CollectionFormService,
+        private _userRepository: UserRepositoryService,
+        private _languageService: LanguageService
+    ) {}
 
     ngOnDestroy(): void {
         this._collectionFormService.resetFormGroup();
@@ -32,4 +77,3 @@ export class CollectionFormBodyComponent implements OnDestroy {
         await this.buttonCallback();
     }
 }
-

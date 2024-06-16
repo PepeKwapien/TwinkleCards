@@ -13,6 +13,7 @@ import { Timestamp } from '@angular/fire/firestore';
 import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MarkFlashcardsService } from 'src/app/services/mark-flashcards/mark-flashcards.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 enum CollectionSortOptions {
     alphabeticalAsc = 'Alphabetical Ascending',
@@ -108,12 +109,33 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return answer;
     }
 
+    public get authorText() {
+        return this._languageService.languageResouce.author;
+    }
+
+    public get flashcardsText() {
+        return this._languageService.languageResouce.flashcards;
+    }
+
+    public get showText() {
+        return this._languageService.languageResouce.show;
+    }
+
+    public get emptyCollectionMessage() {
+        return this._languageService.languageResouce.emptyCollectionMessage;
+    }
+
+    public get allMarkedMessage() {
+        return this._languageService.languageResouce.allMarkedMessage;
+    }
+
     constructor(
         private _collectionRepository: CollectionRepositoryService,
         private _userRepository: UserRepositoryService,
         private _modalService: ModalService,
         private _authService: AuthService,
-        private _markFlashcardService: MarkFlashcardsService
+        private _markFlashcardService: MarkFlashcardsService,
+        private _languageService: LanguageService
     ) {
         this._sub = new Subscription();
 

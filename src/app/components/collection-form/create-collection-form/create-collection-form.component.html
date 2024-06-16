@@ -1,7 +1,7 @@
 <div class="form-outer-container light-box-shadow">
-    <h3>New collection</h3>
+    <h3>{{ formTitle }}</h3>
     <app-collection-form-body [buttonTemplate]="button" [buttonCallback]="createCollection"></app-collection-form-body>
 </div>
 
-<ng-template #button>Create <img src="./assets/add-circle.svg" class="inverted-black-icon" /></ng-template>
+<ng-template #button>{{ createCollection }} <img src="./assets/add-circle.svg" class="inverted-black-icon" /></ng-template>
 

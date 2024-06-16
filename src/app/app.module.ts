@@ -13,6 +13,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoadingGuardComponent } from './components/user-loading-guard/user-loading-guard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LanguageService } from './services/language/language.service';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         BrowserAnimationsModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [LanguageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

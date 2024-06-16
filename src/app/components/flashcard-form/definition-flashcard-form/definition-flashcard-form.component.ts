@@ -1,6 +1,7 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DefinitionFlashcardService } from 'src/app/services/flashcard/definition-flashcard/definition-flashcard.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-definition-flashcard-form',
@@ -24,6 +25,14 @@ export class DefinitionFlashcardFormComponent {
         return this._flashcardService.formGroup.get('backside')?.get('definition') as FormControl;
     }
 
-    constructor(private _flashcardService: DefinitionFlashcardService) {}
+    public get flashcardTerm(): string {
+        return this._languageService.languageResouce.definitionFlashcardTerm;
+    }
+
+    public get flashcardDefinition(): string {
+        return this._languageService.languageResouce.definitionFlashcardDefinition;
+    }
+
+    constructor(private _flashcardService: DefinitionFlashcardService, private _languageService: LanguageService) {}
 }
 

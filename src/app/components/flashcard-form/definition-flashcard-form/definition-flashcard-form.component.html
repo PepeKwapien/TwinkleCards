@@ -4,12 +4,11 @@
     [buttonTemplate]="buttonTemplate"
     [formGroup]="formGroup">
     <ng-container frontside>
-        <label for="flashcard-term">Term:</label>
+        <label for="flashcard-term">{{ flashcardTerm }}:</label>
         <input id="flashcard-term" type="text" autocomplete="off" [formControl]="termFormControl" />
     </ng-container>
     <ng-container backside>
-        <label for="flashcard-definition">Definition:</label>
+        <label for="flashcard-definition">{{ flashcardDefinition }}:</label>
         <textarea id="flashcard-definition" autocomplete="off" [formControl]="definitionFormControl"></textarea>
     </ng-container>
 </app-flashcard-form>
-

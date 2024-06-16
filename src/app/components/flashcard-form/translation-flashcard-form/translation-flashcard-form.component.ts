@@ -1,6 +1,7 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslationFlashcardService } from 'src/app/services/flashcard/translation-flashcard/translation-flashcard.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-translation-flashcard-form',
@@ -32,6 +33,22 @@ export class TranslationFlashcardFormComponent {
         return this._flashcardService.formGroup.get('backside')?.get('translatedSentence') as FormControl;
     }
 
-    constructor(private _flashcardService: TranslationFlashcardService) {}
+    public get flashcardWord(): string {
+        return this._languageService.languageResouce.translationFlashcardWord;
+    }
+
+    public get flashcardSentence(): string {
+        return this._languageService.languageResouce.translationFlashcardSentence;
+    }
+
+    public get flashcardTranslation(): string {
+        return this._languageService.languageResouce.translationFlashcardTranslation;
+    }
+
+    public get flashcardTranslatedSentence(): string {
+        return this._languageService.languageResouce.translationFlashcardTranslatedSentence;
+    }
+
+    constructor(private _flashcardService: TranslationFlashcardService, private _languageService: LanguageService) {}
 }
 

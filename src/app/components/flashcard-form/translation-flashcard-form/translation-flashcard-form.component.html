@@ -4,9 +4,9 @@
     [buttonTemplate]="buttonTemplate"
     [formGroup]="formGroup">
     <ng-container frontside>
-        <label for="flashcard-word">Word:</label>
+        <label for="flashcard-word">{{ flashcardWord }}:</label>
         <input id="flashcard-word" type="text" autocomplete="off" [formControl]="wordFormControl" />
-        <label for="flashcard-term">Example sentence:</label>
+        <label for="flashcard-term">{{ flashcardSentence }}:</label>
         <textarea
             id="flashcard-example-sentence"
             autocomplete="off"
@@ -14,9 +14,9 @@
             placeholder="Optional"></textarea>
     </ng-container>
     <ng-container backside>
-        <label for="flashcard-translation">Translation:</label>
+        <label for="flashcard-translation">{{ flashcardTranslation }}:</label>
         <input id="flashcard-translation" type="text" autocomplete="off" [formControl]="translationFormControl" />
-        <label for="flashcard-term">Translated sentence:</label>
+        <label for="flashcard-term">{{ flashcardTranslatedSentence }}:</label>
         <textarea
             id="flashcard-translated-sentence"
             autocomplete="off"

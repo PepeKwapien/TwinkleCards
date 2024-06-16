@@ -1,7 +1,7 @@
 <app-translation-flashcard-form
     [buttonTemplate]="button"
-    formTitle="Edit flashcard"
+    [formTitle]="formTitle"
     [buttonCallback]="editDefinitionFlashcard()"></app-translation-flashcard-form>
 
-<ng-template #button>Save <img src="./assets/edit.svg" class="inverted-black-icon" /></ng-template>
+<ng-template #button>{{ saveButtonText }} <img src="./assets/edit.svg" class="inverted-black-icon" /></ng-template>
 

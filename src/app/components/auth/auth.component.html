@@ -1,9 +1,9 @@
 <button class="login-button" (click)="signWithGooglePopup()" *ngIf="!isUserAuthenticated; else authenticated">
-    Sign in<img src="./assets/google.png" alt="Google logo" class="user-icon inverted-black-icon" />
+    {{ signInText }}<img src="./assets/google.png" alt="Google logo" class="user-icon inverted-black-icon" />
 </button>
 <ng-template #authenticated>
     <div class="user-outer-container">
-        <span class="hi">Hi,</span>
+        <span class="hi">{{ hiText }},</span>
         <app-dropdown-menu [properties]="userDropdownOptions" (optionClicked)="signOut()"></app-dropdown-menu>
     </div>
 </ng-template>

@@ -3,6 +3,7 @@ import { ICollectionReference } from 'src/app/models/documents/collection-refere
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionFormService } from 'src/app/services/collection-form/collection-form.service';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
@@ -14,10 +15,19 @@ export class EditCollectionFormComponent implements OnInit {
     @Input({ required: true }) collectionReference!: ICollectionReference;
     @Input({ required: true }) collectionGroup!: IUserCollectionGroup;
 
+    public get saveButtonText() {
+        return this._languageService.languageResouce.saveButton;
+    }
+
+    public get formTitle() {
+        return this._languageService.languageResouce.editCollectionTitle;
+    }
+
     constructor(
         private _collectionFormService: CollectionFormService,
         private _collectionRepository: CollectionRepositoryService,
-        private _modalService: ModalService
+        private _modalService: ModalService,
+        private _languageService: LanguageService
     ) {}
 
     async ngOnInit() {

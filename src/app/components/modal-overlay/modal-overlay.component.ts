@@ -3,6 +3,7 @@ import { Observable, map } from 'rxjs';
 import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { ConfirmActionProperties } from 'src/app/types/confirm-action-properties.type';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-modal-overlay',
@@ -35,7 +36,15 @@ export class ModalOverlayComponent {
         );
     }
 
-    constructor(private _modalService: ModalService) {}
+    public get confirmButtonText(): string {
+        return this._languageService.languageResouce.confirmButton;
+    }
+
+    public get cancelButtonText(): string {
+        return this._languageService.languageResouce.cancelButton;
+    }
+
+    constructor(private _modalService: ModalService, private _languageService: LanguageService) {}
 
     public close(): void {
         this._modalService.close();
@@ -45,4 +54,3 @@ export class ModalOverlayComponent {
         this._modalService.confirm();
     }
 }
-

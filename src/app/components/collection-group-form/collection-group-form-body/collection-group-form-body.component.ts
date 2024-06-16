@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CollectionGroupColorEnum } from 'src/app/enums/collection-group-color.enum';
 import { CollectionGroupFormService } from 'src/app/services/collection-group-form/collection-group-form.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-collection-group-form-body',
@@ -20,7 +21,15 @@ export class CollectionGroupFormBodyComponent implements OnDestroy {
         return Object.keys(CollectionGroupColorEnum).filter((key) => isNaN(+key));
     }
 
-    constructor(private _collectionFormGorupService: CollectionGroupFormService) {}
+    public get nameText(): string {
+        return this._languageService.languageResouce.name;
+    }
+
+    public get colorText(): string {
+        return this._languageService.languageResouce.color;
+    }
+
+    constructor(private _collectionFormGorupService: CollectionGroupFormService, private _languageService: LanguageService) {}
 
     ngOnDestroy(): void {
         this._collectionFormGorupService.resetFormGroup();

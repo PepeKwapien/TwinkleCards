@@ -21,10 +21,10 @@
 
         <div class="confirmation-buttons">
             <button class="confirm-button" (click)="confirm()">
-                Yes <img class="inverted-black-icon" src="./assets/check-circle.svg" />
+                {{ confirmButtonText }} <img class="inverted-black-icon" src="./assets/check-circle.svg" />
             </button>
             <button class="cancel-button" (click)="close()">
-                Cancel <img class="inverted-black-icon" src="./assets/cancel.svg" />
+                {{ cancelButtonText }} <img class="inverted-black-icon" src="./assets/cancel.svg" />
             </button>
         </div>
     </div>

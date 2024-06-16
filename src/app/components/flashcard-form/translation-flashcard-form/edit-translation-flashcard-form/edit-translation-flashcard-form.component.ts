@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { ITranslationFlashcard } from 'src/app/models/documents/flashcards/translation-flashcard.interface';
 import { TranslationFlashcardService } from 'src/app/services/flashcard/translation-flashcard/translation-flashcard.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-edit-translation-flashcard-form',
@@ -13,7 +14,15 @@ export class EditTranslationFlashcardFormComponent {
     @Input({ required: true }) collectionId!: string;
     @Input({ required: true }) flashcard!: IBaseFlashcard;
 
-    constructor(private _flashcardService: TranslationFlashcardService) {}
+    public get saveButtonText(): string {
+        return this._languageService.languageResouce.saveButton;
+    }
+
+    public get formTitle(): string {
+        return this._languageService.languageResouce.editFlashcardFormTitle;
+    }
+
+    constructor(private _flashcardService: TranslationFlashcardService, private _languageService: LanguageService) {}
 
     ngOnInit(): void {
         this._flashcardService.formGroup.patchValue({

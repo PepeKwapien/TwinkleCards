@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DropdownMenuProperties } from '../dropdown-menu/dropdown-menu.component';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-auth',
@@ -24,10 +25,18 @@ export class AuthComponent implements AfterViewInit {
         return this._userDropdownOptions;
     }
 
-    constructor(private _authService: AuthService) {
+    public get signInText() {
+        return this._languageService.languageResouce.signin;
+    }
+
+    public get hiText() {
+        return this._languageService.languageResouce.hi;
+    }
+
+    constructor(private _authService: AuthService, private _languageService: LanguageService) {
         this._userDropdownOptions = {
             mainButton: this.username,
-            options: [{ display: 'Sign out', emitValue: '' }],
+            options: [{ display: this._languageService.languageResouce.signout, emitValue: '' }],
             showArrow: true,
             selectBehavior: false
         };

@@ -3,6 +3,7 @@ import { ICollectionReference } from 'src/app/models/documents/collection-refere
 import { IUserCollectionGroup } from 'src/app/models/documents/user-collection-group.document';
 import { CollectionFormService } from 'src/app/services/collection-form/collection-form.service';
 import { CollectionRepositoryService } from 'src/app/services/collection-repository/collection-repository.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserIdInterceptorService } from 'src/app/services/user-id-interceptor/user-id-interceptor.service';
 
@@ -32,10 +33,12 @@ export class CollectionGroupComponent implements AfterViewInit {
         private _modalService: ModalService,
         private _userIdInterceptorService: UserIdInterceptorService,
         private _collectionFormService: CollectionFormService,
-        private _collectionRepository: CollectionRepositoryService
+        private _collectionRepository: CollectionRepositoryService,
+        private _languageService: LanguageService
     ) {
         this._collectionsCollapsed = false;
     }
+
     ngAfterViewInit(): void {
         this._manageCollectionGridMaxHeight();
     }
@@ -65,9 +68,9 @@ export class CollectionGroupComponent implements AfterViewInit {
         }
 
         const result = await this._modalService.getConfirmation({
-            title: `Delete group '${this.collectionGroup.name}'?`,
-            description: 'This action will remove the group and all of the collections inside it',
-            confirmation: 'This is irreversible. Are you sure?',
+            title: this._languageService.languageResouce.getDeleteGroupTitle(this.collectionGroup.name),
+            description: this._languageService.languageResouce.deleteCollectionGroupDescription,
+            confirmation: this._languageService.languageResouce.irreversibleConfirmation,
             color: this.collectionGroup.color
         });
 
@@ -95,9 +98,9 @@ export class CollectionGroupComponent implements AfterViewInit {
         $event.stopPropagation();
 
         const result = await this._modalService.getConfirmation({
-            title: `Delete collection ${collection.name}?`,
-            description: `This action will remove the collection and all of the flashcards inside it`,
-            confirmation: 'This is irreversible. Are you sure?',
+            title: this._languageService.languageResouce.getDeleteCollectionTitle(collection.name),
+            description: this._languageService.languageResouce.deleteCollectionDescription,
+            confirmation: this._languageService.languageResouce.irreversibleConfirmation,
             color: this.collectionGroup.color
         });
 

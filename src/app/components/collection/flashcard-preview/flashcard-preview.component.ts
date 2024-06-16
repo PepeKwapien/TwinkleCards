@@ -12,6 +12,7 @@ import { CollectionRepositoryService } from 'src/app/services/collection-reposit
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { CollectionType } from 'src/app/types/collection-type.type';
 import { MarkFlashcardsService } from 'src/app/services/mark-flashcards/mark-flashcards.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-flashcard-preview',
@@ -63,7 +64,8 @@ export class FlashcardPreviewComponent implements OnInit {
     constructor(
         private _modalService: ModalService,
         private _collectionRepository: CollectionRepositoryService,
-        private _markFlashcardsService: MarkFlashcardsService
+        private _markFlashcardsService: MarkFlashcardsService,
+        private _languageService: LanguageService
     ) {
         this.flashcardFlipped = new EventEmitter();
         this.flashcardMarked = new EventEmitter();
@@ -79,9 +81,9 @@ export class FlashcardPreviewComponent implements OnInit {
 
     public async deleteFlashcard() {
         const result = await this._modalService.getConfirmation({
-            title: `Delete this flashcard?`,
-            description: 'This action will remove the selected flashcard',
-            confirmation: 'This is irreversible. Are you sure?'
+            title: this._languageService.languageResouce.deleteFlashcardTitle,
+            description: this._languageService.languageResouce.deleteFlashcardDescription,
+            confirmation: this._languageService.languageResouce.irreversibleConfirmation
         });
 
         if (result) {

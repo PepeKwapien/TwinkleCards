@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DefinitionFlashcardService } from 'src/app/services/flashcard/definition-flashcard/definition-flashcard.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
     selector: 'app-create-definition-flashcard-form',
@@ -10,7 +11,15 @@ import { DefinitionFlashcardService } from 'src/app/services/flashcard/definitio
 export class CreateDefinitionFlashcardFormComponent {
     @Input({ required: true }) collectionId!: string;
 
-    constructor(private _flashcardService: DefinitionFlashcardService) {}
+    public get createButtonText(): string {
+        return this._languageService.languageResouce.createButton;
+    }
+
+    public get formTitle(): string {
+        return this._languageService.languageResouce.createFlashcardFormTitle;
+    }
+
+    constructor(private _flashcardService: DefinitionFlashcardService, private _languageService: LanguageService) {}
 
     public createDefinitionFlashcard() {
         return () => this._flashcardService.createFlashcard(this.collectionId);

@@ -1,7 +1,7 @@
 <app-translation-flashcard-form
     [buttonTemplate]="button"
-    formTitle="New flashcard"
+    [formTitle]="formTitle"
     [buttonCallback]="createDefinitionFlashcard()"></app-translation-flashcard-form>
 
-<ng-template #button>Create <img src="./assets/add-circle.svg" class="inverted-black-icon" /></ng-template>
+<ng-template #button>{{ createButtonText }} <img src="./assets/add-circle.svg" class="inverted-black-icon" /></ng-template>
 
