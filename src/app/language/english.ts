@@ -90,7 +90,7 @@ export class English implements ILanguareResource {
     }
 
     getDeleteCollectionTitle(collectionName: string): string {
-        throw new Error('Method not implemented.');
+        return `Delete collection ${collectionName}?`;
     }
 
     get deleteCollectionGroupDescription(): string {
