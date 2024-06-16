@@ -8,7 +8,7 @@ import { LanguageService } from 'src/app/services/language/language.service';
     styleUrls: ['./create-collection-form.component.scss']
 })
 export class CreateCollectionFormComponent {
-    public get createText() {
+    public get createButtonText() {
         return this._languageService.languageResouce.createButton;
     }
 
