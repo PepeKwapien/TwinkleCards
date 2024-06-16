@@ -1,6 +1,10 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class Polish implements ILanguareResource {
+    get optional(): string {
+        return 'Opcjonalne';
+    }
+
     get landingPageComponents(): { title: string; description: string; additional?: string[] | undefined }[] {
         return [
             {

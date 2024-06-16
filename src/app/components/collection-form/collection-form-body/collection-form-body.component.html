@@ -3,7 +3,11 @@
         <label for="collection-name">{{ nameText }}:</label>
         <input id="collection-name" type="text" formControlName="name" autocomplete="off" />
         <label for="collection-description">{{ descriptionText }}:</label>
-        <textarea id="collection-description" formControlName="description" autocomplete="off" placeholder="Optional"></textarea>
+        <textarea
+            id="collection-description"
+            formControlName="description"
+            autocomplete="off"
+            [placeholder]="optionalText"></textarea>
         <!-- <label for="collection-public">Public:</label>
         <input type="checkbox" name="public" id="collection-public" formControlName="isPublic" /> -->
         <ng-container *ngIf="!editForm">

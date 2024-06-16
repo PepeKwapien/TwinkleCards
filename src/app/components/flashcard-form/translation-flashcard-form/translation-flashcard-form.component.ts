@@ -49,6 +49,10 @@ export class TranslationFlashcardFormComponent {
         return this._languageService.languageResouce.translationFlashcardTranslatedSentence;
     }
 
+    public get optionalText() {
+        return this._languageService.languageResouce.optional;
+    }
+
     constructor(private _flashcardService: TranslationFlashcardService, private _languageService: LanguageService) {}
 }
 

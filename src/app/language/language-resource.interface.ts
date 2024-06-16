@@ -56,4 +56,5 @@ export interface ILanguareResource {
     get author(): string;
     get flashcards(): string;
     get show(): string;
+    get optional(): string;
 }

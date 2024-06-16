@@ -11,7 +11,7 @@
             id="flashcard-example-sentence"
             autocomplete="off"
             [formControl]="sentenceFormControl"
-            placeholder="Optional"></textarea>
+            [placeholder]="optionalText"></textarea>
     </ng-container>
     <ng-container backside>
         <label for="flashcard-translation">{{ flashcardTranslation }}:</label>
@@ -21,7 +21,7 @@
             id="flashcard-translated-sentence"
             autocomplete="off"
             [formControl]="translatedSentenceFormControl"
-            placeholder="Optional"></textarea>
+            [placeholder]="optionalText"></textarea>
     </ng-container>
 </app-flashcard-form>
 

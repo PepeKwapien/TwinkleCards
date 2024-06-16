@@ -62,6 +62,10 @@ export class CollectionFormBodyComponent implements OnDestroy {
         return this._languageService.languageResouce.group;
     }
 
+    public get optionalText() {
+        return this._languageService.languageResouce.optional;
+    }
+
     constructor(
         private _collectionFormService: CollectionFormService,
         private _userRepository: UserRepositoryService,

@@ -1,6 +1,10 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class English implements ILanguareResource {
+    get optional(): string {
+        return 'Optional';
+    }
+
     get hi(): string {
         return 'Hi';
     }
