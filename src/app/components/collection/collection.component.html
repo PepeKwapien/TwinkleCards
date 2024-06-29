@@ -1,6 +1,6 @@
 <div class="footer under-navbar-container" *ngIf="collection && username; else loader">
     <div class="collection-container dissolve-animation-enter">
-        <div>
+        <div class="collection-header">
             <!-- <span class="collection-public-mark">{{ collection.isPublic ? 'Public' : 'Private' }}</span> -->
             <h1 class="collection-title">{{ collection.name }}</h1>
             <p class="collection-description">{{ collection.description }}</p>
@@ -13,39 +13,35 @@
                 </p>
             </div>
         </div>
-        <div class="collection-body-controls-outer-controls">
-            <div class="collection-body-controls under-navbar-width">
-                <div class="collection-body-primary-controls">
-                    <button
-                        [disabled]="collection.flashcards.length === 0 || (areAllFlashcardsMarked && !showMarked)"
-                        class="round-button"
-                        (click)="playCollection(collectionDisplay)">
-                        <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
-                    </button>
-                    <button
-                        class="empty-button round-button"
-                        (click)="
-                            collection.type == 'definition'
-                                ? openModal(definitionFlashcardForm)
-                                : openModal(translationFlashcardForm)
-                        "
-                        *ngIf="isUserOwner">
-                        <img class="grayed-icon" src="./assets/add-circle.svg" />
-                    </button>
-                    <button class="empty-button round-button" (click)="flip()">
-                        <img class="grayed-icon" src="./assets/360.svg" />
-                    </button>
-                    <div class="collection-show-marked-container" *ngIf="isUserOwner">
-                        <label for="show-marked">
-                            {{ showText }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
-                        </label>
-                        <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
-                    </div>
+        <div class="collection-body-controls">
+            <div class="collection-body-primary-controls">
+                <button
+                    [disabled]="collection.flashcards.length === 0 || (areAllFlashcardsMarked && !showMarked)"
+                    class="round-button"
+                    (click)="playCollection(collectionDisplay)">
+                    <img src="./assets/play.svg" class="user-icon inverted-black-icon" />
+                </button>
+                <button
+                    class="empty-button round-button"
+                    (click)="
+                        collection.type == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
+                    "
+                    *ngIf="isUserOwner">
+                    <img class="grayed-icon" src="./assets/add-circle.svg" />
+                </button>
+                <button class="empty-button round-button" (click)="flip()">
+                    <img class="grayed-icon" src="./assets/360.svg" />
+                </button>
+                <div class="collection-show-marked-container" *ngIf="isUserOwner">
+                    <label for="show-marked">
+                        {{ showText }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
+                    </label>
+                    <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
                 </div>
-                <div class="collection-body-secondary-controls">
-                    <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
-                    <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
-                </div>
+            </div>
+            <div class="collection-body-secondary-controls">
+                <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
+                <app-dropdown-menu [properties]="sortDropdownProperties" (optionClicked)="sort($event)"></app-dropdown-menu>
             </div>
         </div>
         <div
