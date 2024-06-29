@@ -165,7 +165,6 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
                     this._flashcardsWithFlipState = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
 
-                    this._markFlashcardService.isOwner = this.isUserOwner;
                     this._markFlashcardService.markedFlashcards = this._collection.markedFlashcards;
 
                     this.sort(this._collectionSortOption);
@@ -205,7 +204,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
             return { ...flashcardWithFlipState, flipped: this._flipState };
         });
 
-        if (!this.showMarked) {
+        if (!this.showMarked && this.isUserOwner) {
             this._flashcardsWithFlipStateCopy = this._flashcardsWithFlipStateCopy.filter(
                 (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
             );

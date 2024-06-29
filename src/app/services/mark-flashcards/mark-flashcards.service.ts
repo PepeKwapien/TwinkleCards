@@ -15,14 +15,6 @@ export class MarkFlashcardsService {
         }
     }
 
-    public get isOwner(): boolean {
-        return this._isOwner;
-    }
-
-    public set isOwner(value: boolean) {
-        this._isOwner = value;
-    }
-
     public set collectionId(value: string) {
         this._collectionId = value;
     }
