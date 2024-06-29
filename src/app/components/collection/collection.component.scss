@@ -1,9 +1,11 @@
 @import '/src/styles/color.scss';
+@import '/src/styles/utils.scss';
 
 .collection-container {
+    contain: paint;
     display: flex;
     flex-direction: column;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
 }
 
 .collection-public-mark {
@@ -34,12 +36,24 @@
     }
 }
 
+.collection-body-controls-outer-controls {
+    max-width: unset;
+    width: 100vw;
+    position: sticky;
+    top: $navbar-height;
+    z-index: 2;
+    background-color: $tertiary-background;
+}
+
 .collection-body-controls {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+
+    background-color: $tertiary-background;
 
     & > * {
         column-gap: 1rem;
@@ -53,7 +67,7 @@
         content: '';
         position: absolute;
         left: 0;
-        bottom: -1em;
+        bottom: 0;
         width: 100%;
         border: 2px $gray-outline solid;
         border-radius: 50%;

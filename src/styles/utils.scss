@@ -19,6 +19,11 @@ $max-width: 1300px;
     }
 }
 
+.under-navbar-width {
+    max-width: $max-width;
+    width: 100%;
+}
+
 @media (max-width: 600px) {
     .under-navbar-container {
         padding: 1em 2em;
