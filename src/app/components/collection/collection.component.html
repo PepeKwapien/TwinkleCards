@@ -35,7 +35,7 @@
                     <button class="empty-button round-button" (click)="flip()">
                         <img class="grayed-icon" src="./assets/360.svg" />
                     </button>
-                    <div class="collection-show-marked-container">
+                    <div class="collection-show-marked-container" *ngIf="isUserOwner">
                         <label for="show-marked">
                             {{ showText }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
                         </label>

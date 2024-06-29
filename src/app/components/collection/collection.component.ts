@@ -63,7 +63,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public get flashcardsWithFlipState(): IFlashcardWithFlipState[] {
-        if (!this.showMarked) {
+        if (!this.showMarked && this.isUserOwner) {
             return this._filteredFlashcardsWithFlipState.filter(
                 (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
             );
