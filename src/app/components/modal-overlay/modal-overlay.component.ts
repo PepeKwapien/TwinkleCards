@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, HostListener, TemplateRef, ViewChild } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { IModalProperties } from 'src/app/types/modal-properties.type';
 import { ModalService } from 'src/app/services/modal/modal.service';
@@ -45,6 +45,11 @@ export class ModalOverlayComponent {
     }
 
     constructor(private _modalService: ModalService, private _languageService: LanguageService) {}
+
+    @HostListener('document:keydown.escape', ['$event'])
+    closeOptions(): void {
+        this.close();
+    }
 
     public close(): void {
         this._modalService.close();
