@@ -305,7 +305,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public trackBy(index: number, flashcard: IFlashcardWithFlipState) {
-        return `${index}${flashcard.flashcard.id}`;
+        return `${flashcard.flashcard.id}`;
     }
 
     public getFlashcardDelay(index: number): number {
