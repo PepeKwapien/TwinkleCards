@@ -40,7 +40,6 @@ export class CollectionRepositoryService implements OnDestroy {
     }
 
     public async createCollection(ownerId: string, collectionInputs: CollectionInputs): Promise<string> {
-        console.log(collectionInputs);
         const collectionDocument = CollectionDocument.FromCollectionInputs(ownerId, collectionInputs);
         const docRef = await addDoc(collection(this._firestore, this._collectionName), { ...collectionDocument });
 
