@@ -76,17 +76,17 @@ export class CollectionGroupComponent implements AfterViewInit {
 
         if (result) {
             for (let collectionRef of this.collectionGroup.collections) {
-                this._collectionRepository.deleteCollection(collectionRef.id);
+                await this._collectionRepository.deleteCollection(collectionRef.id);
             }
-            this._userIdInterceptorService.deleteCollectionGroup(this.collectionGroup);
+            await this._userIdInterceptorService.deleteCollectionGroup(this.collectionGroup);
         }
     }
 
-    public openEditCollectionModal($event: Event, collection: ICollectionReference, collectionGroupForm: TemplateRef<Element>) {
+    public openEditCollectionModal($event: Event, collection: ICollectionReference, formTemplate: TemplateRef<Element>) {
         $event.stopPropagation();
 
         this._lastEditedCollection = collection;
-        this._modalService.open(collectionGroupForm);
+        this._modalService.open(formTemplate);
     }
 
     public openCreateCollectionModal(collectionGroupForm: TemplateRef<Element>) {

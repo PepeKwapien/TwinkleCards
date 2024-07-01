@@ -145,16 +145,18 @@ export class UserRepositoryService implements OnDestroy {
         let indexOfCollectionReference: number;
 
         for (const collectionGroup of userCollectionGroups) {
-            indexOfCollectionReference = collectionGroup.collections.findIndex(
-                (collectionReference) => collectionReference.id === collectionId
-            );
+            if (!currentCollectionGroup) {
+                indexOfCollectionReference = collectionGroup.collections.findIndex(
+                    (collectionReference) => collectionReference.id === collectionId
+                );
 
-            if (indexOfCollectionReference !== -1) {
-                currentCollectionGroup = collectionGroup;
-                currentCollectionReference = collectionGroup.collections[indexOfCollectionReference];
+                if (indexOfCollectionReference !== -1) {
+                    currentCollectionGroup = collectionGroup;
+                    currentCollectionReference = collectionGroup.collections[indexOfCollectionReference];
+                }
             }
 
-            if (collectionGroup.name === newCollectionGroupName) {
+            if (!newCollectionGroup && collectionGroup.name === newCollectionGroupName) {
                 newCollectionGroup = collectionGroup;
             }
 
