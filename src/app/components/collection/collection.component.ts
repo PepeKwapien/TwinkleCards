@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { Subscription, combineLatest, filter, switchMap } from 'rxjs';
+import { Subscription, combineLatest, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 import { CollectionDocument } from 'src/app/models/documents/collection.document';
 import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 import { IDefinitionFlashcard } from 'src/app/models/documents/flashcards/definition-flashcard.interface';
@@ -39,6 +39,7 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('scheduleDownIcon') scheduleDownIcon!: TemplateRef<Element>;
 
     public showMarked: boolean = false;
+    public limit: number = 52;
 
     private _sub: Subscription;
 
@@ -129,6 +130,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._languageService.languageResouce.allMarkedMessage;
     }
 
+    public get loadMoreText() {
+        return this._languageService.languageResouce.loadMoreText;
+    }
+
     constructor(
         private _collectionRepository: CollectionRepositoryService,
         private _userRepository: UserRepositoryService,
@@ -149,29 +154,31 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
         const username$ = collection$.pipe(switchMap((col) => this._userRepository.readUsername(col!.ownerId)));
 
-        const subscription = combineLatest([collection$, username$]).subscribe({
-            next: (value) => {
-                this._collection = value[0];
-                this._username = value[1];
-                if (this._collection) {
-                    const mapFlippedStateFromExistingArray = (flashcard: IBaseFlashcard) => {
-                        const foundMatchingFlashcard = this._flashcardsWithFlipState.find(
-                            (lookingFor) => lookingFor.flashcard.id === flashcard.id
-                        );
-                        const flipped = foundMatchingFlashcard ? foundMatchingFlashcard.flipped : this._flipState;
+        const subscription = combineLatest([collection$, username$])
+            .pipe(distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current)))
+            .subscribe({
+                next: (value) => {
+                    this._collection = value[0];
+                    this._username = value[1];
+                    if (this._collection) {
+                        const mapFlippedStateFromExistingArray = (flashcard: IBaseFlashcard) => {
+                            const foundMatchingFlashcard = this._flashcardsWithFlipState.find(
+                                (lookingFor) => lookingFor.flashcard.id === flashcard.id
+                            );
+                            const flipped = foundMatchingFlashcard ? foundMatchingFlashcard.flipped : this._flipState;
 
-                        return { flashcard, flipped };
-                    };
+                            return { flashcard, flipped };
+                        };
 
-                    this._flashcardsWithFlipState = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
+                        this._flashcardsWithFlipState = this._collection.flashcards.map(mapFlippedStateFromExistingArray);
 
-                    this._markFlashcardService.markedFlashcards = this._collection.markedFlashcards;
+                        this._markFlashcardService.markedFlashcards = this._collection.markedFlashcards;
 
-                    this.sort(this._collectionSortOption);
-                    this.filter(this._collectionFilterValue);
+                        this.sort(this._collectionSortOption);
+                        this.filter(this._collectionFilterValue);
+                    }
                 }
-            }
-        });
+            });
 
         this._sub.add(subscription);
     }
@@ -308,9 +315,13 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public getFlashcardDelay(index: number): number {
-        const delayByIndex = 0.1 * index;
+        const delayByIndex = 0.1 * (index % 52);
 
         return Math.min(delayByIndex, 2);
+    }
+
+    public increaseLimit() {
+        this.limit += 52;
     }
 
     private _sortByTerm(a: IFlashcardWithFlipState, b: IFlashcardWithFlipState, descending: boolean) {

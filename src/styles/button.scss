@@ -19,17 +19,25 @@ button:not(.empty-button) {
 
     transition: 0.3s;
 
+    &.white-button {
+        background-color: $tertiary-background;
+        color: black;
+        border: 3px $secondary-background solid;
+
+        @include darken-on-hover-active;
+    }
+
     &:not(.round-button) {
         border-radius: 15px;
         padding: 0.6em 1em;
         min-width: 5em;
     }
 
-    &:hover:not(:disabled, .cancel-button, .confirm-button) {
+    &:hover:not(:disabled, .cancel-button, .confirm-button, .white-button) {
         background-color: $primary-hover;
     }
 
-    &:active:not(:disabled) {
+    &:active:not(:disabled, .cancel-button, .confirm-button, .white-button) {
         background-color: $primary-active;
     }
 

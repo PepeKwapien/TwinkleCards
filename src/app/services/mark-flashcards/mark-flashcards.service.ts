@@ -6,7 +6,6 @@ import { CollectionRepositoryService } from '../collection-repository/collection
 })
 export class MarkFlashcardsService {
     private _markedFlashcards: string[];
-    private _isOwner: boolean;
     private _collectionId: string;
 
     public set markedFlashcards(value: string[] | undefined) {
@@ -21,7 +20,6 @@ export class MarkFlashcardsService {
 
     constructor(private _collectionRepository: CollectionRepositoryService) {
         this._markedFlashcards = [];
-        this._isOwner = false;
         this._collectionId = '';
     }
 

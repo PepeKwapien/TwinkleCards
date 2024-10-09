@@ -35,6 +35,7 @@ export interface ILanguareResource {
     get editCollectionTitle(): string;
     get emptyCollectionMessage(): string;
     get allMarkedMessage(): string;
+    get loadMoreText(): string;
 
     // flashcard
     get deleteFlashcardTitle(): string;

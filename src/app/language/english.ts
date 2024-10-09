@@ -1,6 +1,9 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class English implements ILanguareResource {
+    get loadMoreText(): string {
+        return 'Load more';
+    }
     get optional(): string {
         return 'Optional';
     }

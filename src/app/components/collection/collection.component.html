@@ -48,16 +48,21 @@
             *ngIf="collection.flashcards.length > 0 && (!areAllFlashcardsMarked || showMarked); else noFlaschards"
             class="collection-body">
             <ng-container *ngFor="let flashcardWithFlipState of flashcardsWithFlipState; let index = index; trackBy: trackBy">
-                <app-flashcard-preview
-                    class="slide-from-left-and-scale-enter"
-                    [style.animation-delay]="getFlashcardDelay(index) + 's'"
-                    [flashcardWithFlipState]="flashcardWithFlipState"
-                    [collectionId]="collectionId"
-                    [isUserOwner]="isUserOwner"
-                    (flashcardFlipped)="correctFlipState()"
-                    (flashcardMarked)="toggleFlashcardMark($event)"></app-flashcard-preview>
+                <ng-container *ngIf="index < limit">
+                    <app-flashcard-preview
+                        class="slide-from-left-and-scale-enter"
+                        [style.animation-delay]="getFlashcardDelay(index) + 's'"
+                        [flashcardWithFlipState]="flashcardWithFlipState"
+                        [collectionId]="collectionId"
+                        [isUserOwner]="isUserOwner"
+                        (flashcardFlipped)="correctFlipState()"
+                        (flashcardMarked)="toggleFlashcardMark($event)"></app-flashcard-preview>
+                </ng-container>
             </ng-container>
         </div>
+        <ng-container *ngIf="limit < flashcardsWithFlipState.length">
+            <button class="increase-limit-button white-button" (click)="increaseLimit()">{{ loadMoreText }}</button>
+        </ng-container>
     </div>
 </div>
 
