@@ -12,7 +12,7 @@ It was so frustrating to search for that one specific word and not being able to
 
 ## How to use
 
-You can visit the project [here](https://twinklecards-3108d.web.app/) and sign in using your Google account (who wants to remember another password...)
+You can visit the project [here](https://twinklecards.kwapien.dev/) and sign in using your Google account (who wants to remember another password...)
 
 ## Features
 
