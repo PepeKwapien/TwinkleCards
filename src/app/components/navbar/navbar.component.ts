@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
     selector: 'app-navbar',
@@ -26,7 +27,11 @@ export class NavbarComponent implements OnDestroy {
         return this._router.url !== '/home' && this._router.url !== '/';
     }
 
-    constructor(private _router: Router, private _location: Location) {
+    public get logoNavigationUrl(): string {
+        return this._authService.isUserAuthenticated ? '/home' : '/';
+    }
+
+    constructor(private _router: Router, private _location: Location, private _authService: AuthService) {
         this._navigationSub = this._router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 this._routingHistory.push(event.urlAfterRedirects);
