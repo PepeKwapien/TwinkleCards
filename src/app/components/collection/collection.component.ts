@@ -97,6 +97,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public get areAllFlashcardsMarked(): boolean {
+        if (!this.isUserOwner) {
+            return false;
+        }
+
         let answer = false;
 
         const filteredOutMarked = this._flashcardsWithFlipState.filter(
