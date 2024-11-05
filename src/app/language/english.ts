@@ -1,6 +1,9 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class English implements ILanguareResource {
+    get unnassignedGroupName(): string {
+        return 'Unassigned 🙈';
+    }
     get loadMoreText(): string {
         return 'Load more';
     }

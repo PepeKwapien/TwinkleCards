@@ -1,6 +1,9 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class Polish implements ILanguareResource {
+    get unnassignedGroupName(): string {
+        return 'Nieprzypisane 🙈';
+    }
     get loadMoreText(): string {
         return 'Załaduj więcej';
     }

@@ -58,4 +58,5 @@ export interface ILanguareResource {
     get flashcards(): string;
     get show(): string;
     get optional(): string;
+    get unnassignedGroupName(): string;
 }

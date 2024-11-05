@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserRepositoryService } from '../user-repository/user-repository.service';
 import { UserDocument } from 'src/app/models/documents/user.document';
 import { Observable, filter } from 'rxjs';
+import { LanguageService } from '../language/language.service';
 
 @Injectable({
     providedIn: 'root'
@@ -27,7 +28,12 @@ export class AuthService {
         return this._userRepository.user$.pipe(filter((user) => user !== undefined)) as Observable<UserDocument>;
     }
 
-    constructor(private _auth: Auth, private _router: Router, private _userRepository: UserRepositoryService) {
+    constructor(
+        private _auth: Auth,
+        private _router: Router,
+        private _userRepository: UserRepositoryService,
+        private _languageService: LanguageService
+    ) {
         this._user = this._auth.currentUser;
         this._auth.onAuthStateChanged(async (user) => {
             this._user = user;
@@ -58,7 +64,10 @@ export class AuthService {
         const userId = user.uid;
         const userDocument = await this._userRepository.readUser(userId);
         if (!userDocument) {
-            await this._userRepository.upsertUser(userId, UserDocument.FromFirebaseUser(user));
+            await this._userRepository.upsertUser(
+                userId,
+                UserDocument.FromFirebaseUser(user, this._languageService.languageResouce.unnassignedGroupName)
+            );
         } else {
             await this._userRepository.updateLastLogin(userId);
         }
