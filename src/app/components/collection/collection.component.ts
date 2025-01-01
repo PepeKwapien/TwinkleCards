@@ -138,6 +138,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._languageService.languageResouce.loadMoreText;
     }
 
+    public get removeAllMarked() {
+        return this._languageService.languageResouce.removeAllMarked;
+    }
+
     constructor(
         private _collectionRepository: CollectionRepositoryService,
         private _userRepository: UserRepositoryService,
@@ -222,6 +226,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         }
 
         this._modalService.open(templateRef, { showClose: false, transparentBackground: false });
+    }
+
+    public clearAllMarked() {
+        this._markFlashcardService.clearAllMarked();
     }
 
     public openModal(templateRef: TemplateRef<Element>, modalProperties?: IModalProperties): void {

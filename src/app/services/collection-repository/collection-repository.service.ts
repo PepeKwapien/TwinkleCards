@@ -120,4 +120,8 @@ export class CollectionRepositoryService implements OnDestroy {
     public async unmarkFlashcard(collectionId: string, flashcardId: string): Promise<void> {
         await updateDoc(doc(this._firestore, this._collectionName, collectionId), { markedFlashcards: arrayRemove(flashcardId) });
     }
+
+    public async clearAllMarked(collectionId: string): Promise<void> {
+        await updateDoc(doc(this._firestore, this._collectionName, collectionId), { markedFlashcards: [] });
+    }
 }

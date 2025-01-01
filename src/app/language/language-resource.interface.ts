@@ -59,4 +59,5 @@ export interface ILanguareResource {
     get show(): string;
     get optional(): string;
     get unnassignedGroupName(): string;
+    get removeAllMarked(): string;
 }

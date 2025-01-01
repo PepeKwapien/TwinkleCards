@@ -1,6 +1,9 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class English implements ILanguareResource {
+    get removeAllMarked(): string {
+        return 'Clear all';
+    }
     get unnassignedGroupName(): string {
         return 'Unassigned 🙈';
     }

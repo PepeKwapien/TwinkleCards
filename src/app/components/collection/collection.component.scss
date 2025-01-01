@@ -1,4 +1,5 @@
 @import '/src/styles/color.scss';
+@import '/src/styles/shared.scss';
 
 .collection-container {
     display: flex;
@@ -40,7 +41,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-
+    column-gap: 1rem;
     & > * {
         column-gap: 1rem;
     }
@@ -62,19 +63,42 @@
 
 .collection-body-primary-controls {
     display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.collection-body-marked-controls {
+    display: flex;
+    justify-content: start;
     align-items: center;
 }
 
 .collection-show-marked-container {
     display: flex;
+    flex-direction: column;
+    label {
+        font-size: 0.9rem !important;
+        justify-content: center;
+    }
 
     img {
-        height: 24px;
+        height: 16px;
     }
+}
 
-    input + label {
-        margin-left: 0.4em;
+.collection-clear-all-marked-button {
+    img {
+        height: 16px;
     }
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: 2px $gray-outline-solid solid;
+    padding: 0.75em;
+    border-radius: 15px;
+
+    @include darken-on-hover-active;
 }
 
 .collection-body-secondary-controls {
@@ -144,8 +168,8 @@
         display: block;
     }
 
-    .collection-body-primary-controls {
-        justify-content: space-between;
+    .collection-body-marked-controls {
+        margin-top: 1rem;
     }
 
     :host ::ng-deep .collection-body {

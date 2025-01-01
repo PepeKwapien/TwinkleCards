@@ -1,6 +1,9 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class Polish implements ILanguareResource {
+    get removeAllMarked(): string {
+        return 'Wyczyść';
+    }
     get unnassignedGroupName(): string {
         return 'Nieprzypisane 🙈';
     }

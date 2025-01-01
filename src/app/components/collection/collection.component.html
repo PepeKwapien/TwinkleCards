@@ -32,12 +32,17 @@
                 <button class="empty-button round-button" (click)="flip()">
                     <img class="grayed-icon" src="./assets/360.svg" />
                 </button>
-                <div class="collection-show-marked-container" *ngIf="isUserOwner">
+            </div>
+            <div class="collection-body-marked-controls" *ngIf="isUserOwner">
+                <div class="collection-show-marked-container">
                     <label for="show-marked">
                         {{ showText }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
                     </label>
                     <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
                 </div>
+                <button class="empty-button collection-clear-all-marked-button" (click)="clearAllMarked()">
+                    {{ removeAllMarked }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
+                </button>
             </div>
             <div class="collection-body-secondary-controls">
                 <app-search-input class="search-input" (searchTerm)="filter($event)"></app-search-input>
@@ -77,9 +82,12 @@
         🌵 {{ emptyCollectionMessage }} 🌵
     </div>
     <div
-        style="flex: 1; display: flex; justify-content: center; align-items: center; width: 100%"
+        style="flex: 1; flex-direction: column; display: flex; justify-content: center; align-items: center; width: 100%"
         *ngIf="collection!.flashcards.length > 0 && areAllFlashcardsMarked && !showMarked">
-        👏 {{ allMarkedMessage }} 👏
+        <p>👏 {{ allMarkedMessage }} 👏</p>
+        <button (click)="clearAllMarked()">
+            {{ removeAllMarked }} <img style="height: 20px" src="./assets/check.svg" class="white-icon collection-marked-icon" />
+        </button>
     </div>
 </ng-template>
 

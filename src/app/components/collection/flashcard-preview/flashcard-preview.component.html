@@ -1,4 +1,4 @@
-<div class="flip-card" [ngClass]="{ 'flip-card-flipped': flipped }">
+<div class="flip-card enable-hover" [ngClass]="{ 'flip-card-flipped': flipped }">
     <div class="flip-card-inner">
         <div class="flashcard-container light-box-shadow flip-card-front">
             <ng-container [ngTemplateOutlet]="flashcardIcons"></ng-container>
@@ -53,6 +53,9 @@
     <button class="empty-button flashcard-bottom-right-icon overflow-visible" (click)="toggleMark()" *ngIf="isUserOwner">
         <img
             src="./assets/check.svg"
-            [ngClass]="{ 'grayed-icon-hover': !isFlashcardMarked, 'primary-color-icon': isFlashcardMarked }" />
+            [ngClass]="{
+                'grayed-icon-hover': !isFlashcardMarked,
+                'primary-color-icon flashcard-preview-primary-color-icon': isFlashcardMarked
+            }" />
     </button>
 </ng-template>

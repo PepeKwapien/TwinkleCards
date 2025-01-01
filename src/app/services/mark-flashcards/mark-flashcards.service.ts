@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CollectionRepositoryService } from '../collection-repository/collection-repository.service';
+import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -33,6 +34,10 @@ export class MarkFlashcardsService {
         } else {
             await this._collectionRepository.markFlashcard(this._collectionId, flashcardId);
         }
+    }
+
+    public async clearAllMarked() {
+        await this._collectionRepository.clearAllMarked(this._collectionId);
     }
 }
 
