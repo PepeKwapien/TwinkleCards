@@ -96,6 +96,10 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._authService.isUserAuthenticated && this._authService.userId === this.collection?.ownerId;
     }
 
+    public get noFlashcardsOnScreen(): boolean {
+        return this._collection!.flashcards.length === 0 || (this.areAllFlashcardsMarked && !this.showMarked);
+    }
+
     public get areAllFlashcardsMarked(): boolean {
         if (!this.isUserOwner) {
             return false;

@@ -94,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    border: 2px $gray-outline-solid solid;
+    border: 2px $primary-background solid;
     padding: 0.75em;
     border-radius: 15px;
 
@@ -103,6 +103,7 @@
     }
 
     &:disabled {
+        border-color: $gray-outline-solid;
         cursor: default;
     }
 }

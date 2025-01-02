@@ -27,16 +27,18 @@
                         collection.type == 'definition' ? openModal(definitionFlashcardForm) : openModal(translationFlashcardForm)
                     "
                     *ngIf="isUserOwner">
-                    <img class="grayed-icon" src="./assets/add-circle.svg" />
+                    <img class="primary-color-icon" src="./assets/add-circle.svg" />
                 </button>
-                <button class="empty-button round-button" (click)="flip()">
-                    <img class="grayed-icon" src="./assets/360.svg" />
+                <button class="empty-button round-button" (click)="flip()" [disabled]="noFlashcardsOnScreen">
+                    <img
+                        [ngClass]="{ 'grayed-icon': noFlashcardsOnScreen, 'primary-color-icon': !noFlashcardsOnScreen }"
+                        src="./assets/360.svg" />
                 </button>
             </div>
             <div class="collection-body-marked-controls" *ngIf="isUserOwner">
                 <div class="collection-show-marked-container">
                     <label for="show-marked">
-                        {{ showText }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
+                        {{ showText }} <img src="./assets/check.svg" class="primary-color-icon-bordered collection-marked-icon" />
                     </label>
                     <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
                 </div>
@@ -44,7 +46,8 @@
                     class="empty-button collection-clear-all-marked-button"
                     (click)="clearAllMarked()"
                     [disabled]="!areAnyFlashcardsMakred">
-                    {{ removeAllMarked }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
+                    {{ removeAllMarked }}
+                    <img src="./assets/check.svg" class="primary-color-icon-bordered collection-marked-icon" />
                 </button>
             </div>
             <div class="collection-body-secondary-controls">
