@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CollectionRepositoryService } from '../collection-repository/collection-repository.service';
-import { IBaseFlashcard } from 'src/app/models/documents/flashcards/base-flashcard.interface';
 
 @Injectable({
     providedIn: 'root'

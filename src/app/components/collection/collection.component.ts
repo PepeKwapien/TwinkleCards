@@ -101,17 +101,15 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
             return false;
         }
 
-        let answer = false;
-
-        const filteredOutMarked = this._flashcardsWithFlipState.filter(
-            (flashcardWithFlipState) => !this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
+        return this._flashcardsWithFlipState.every((flashcardWithFlipState) =>
+            this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
         );
+    }
 
-        if (filteredOutMarked.length === 0) {
-            answer = true;
-        }
-
-        return answer;
+    public get areAnyFlashcardsMakred(): boolean {
+        return this._flashcardsWithFlipState.some((flashcardWithFlipState) =>
+            this.isFlashcardMarked(flashcardWithFlipState.flashcard.id)
+        );
     }
 
     public get authorText() {
@@ -228,8 +226,15 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this._modalService.open(templateRef, { showClose: false, transparentBackground: false });
     }
 
-    public clearAllMarked() {
-        this._markFlashcardService.clearAllMarked();
+    public async clearAllMarked() {
+        var result = await this._modalService.getConfirmation({
+            title: this._languageService.languageResouce.removeAllMarkedFlashcardsTitle,
+            description: this._languageService.languageResouce.removeAllMarkedFlashcardsDescription
+        });
+
+        if (result) {
+            this._markFlashcardService.clearAllMarked();
+        }
     }
 
     public openModal(templateRef: TemplateRef<Element>, modalProperties?: IModalProperties): void {

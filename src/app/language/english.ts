@@ -1,6 +1,12 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class English implements ILanguareResource {
+    get removeAllMarkedFlashcardsTitle(): string {
+        return 'Remove all marks for flashcards?';
+    }
+    get removeAllMarkedFlashcardsDescription(): string {
+        return 'This action will reset your collection to not have any marks for flashcards';
+    }
     get removeAllMarked(): string {
         return 'Clear all';
     }

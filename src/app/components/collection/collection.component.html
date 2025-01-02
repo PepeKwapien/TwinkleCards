@@ -40,7 +40,10 @@
                     </label>
                     <input type="checkbox" name="show-marked" id="show-marked" [(ngModel)]="showMarked" />
                 </div>
-                <button class="empty-button collection-clear-all-marked-button" (click)="clearAllMarked()">
+                <button
+                    class="empty-button collection-clear-all-marked-button"
+                    (click)="clearAllMarked()"
+                    [disabled]="!areAnyFlashcardsMakred">
                     {{ removeAllMarked }} <img src="./assets/check.svg" class="primary-color-icon collection-marked-icon" />
                 </button>
             </div>

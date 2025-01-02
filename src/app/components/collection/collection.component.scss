@@ -98,7 +98,13 @@
     padding: 0.75em;
     border-radius: 15px;
 
-    @include darken-on-hover-active;
+    &:not(:disabled) {
+        @include darken-on-hover-active;
+    }
+
+    &:disabled {
+        cursor: default;
+    }
 }
 
 .collection-body-secondary-controls {

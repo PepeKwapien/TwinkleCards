@@ -1,6 +1,12 @@
 import { ILanguareResource } from './language-resource.interface';
 
 export class Polish implements ILanguareResource {
+    get removeAllMarkedFlashcardsTitle(): string {
+        return 'Usunąć wszystkie zaznaczenia?';
+    }
+    get removeAllMarkedFlashcardsDescription(): string {
+        return 'To spowoduje, że Twoja kolekcja zostanie zresetowana i nie będzie miała żadnych zaznaczeń';
+    }
     get removeAllMarked(): string {
         return 'Wyczyść';
     }

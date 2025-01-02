@@ -10,6 +10,8 @@ export interface ILanguareResource {
     get saveButton(): string;
     get createButton(): string;
     get irreversibleConfirmation(): string;
+    get removeAllMarkedFlashcardsTitle(): string;
+    get removeAllMarkedFlashcardsDescription(): string;
 
     // flashcard form
     get translationFlashcardWord(): string;
