@@ -168,7 +168,15 @@
 
 @media (max-width: 600px) {
     .collection-title {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
+    }
+
+    .collection-description {
+        font-size: 0.9rem;
+    }
+
+    .collection-information {
+        font-size: 0.9rem;
     }
 
     .collection-body-controls {

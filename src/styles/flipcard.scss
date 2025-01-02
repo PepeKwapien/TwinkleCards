@@ -124,7 +124,18 @@ $icon-offset: 0.3em;
     .flashcard-upper-text-container {
         padding: 1em 1.2em 0.5em 1.2em;
     }
+
+    .flashcard-upper-text {
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.2em;
+    }
+
     .flashcard-preview-lower-text-container {
-        padding: 0.5em 1.2em 1.1em 1.2em;
+        padding: 0.25em 1em 1.3em 1em;
+    }
+
+    .flashcard-lower-text {
+        font-size: 0.85rem;
     }
 }
