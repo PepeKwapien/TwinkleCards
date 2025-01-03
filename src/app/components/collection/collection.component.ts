@@ -311,16 +311,20 @@ export class CollectionComponent implements OnInit, AfterViewInit, OnDestroy {
             if (this._collection?.type == 'definition') {
                 const definitionFlashcard = flashcard.flashcard as IDefinitionFlashcard;
                 stringifiedContent += definitionFlashcard.term;
+                stringifiedContent += ' ';
                 stringifiedContent += definitionFlashcard.definition;
             } else {
                 const translationFlashcard = flashcard.flashcard as ITranslationFlashcard;
                 stringifiedContent += translationFlashcard.word;
+                stringifiedContent += ' ';
                 stringifiedContent += translationFlashcard.translation;
 
                 if (translationFlashcard.sentence) {
+                    stringifiedContent += ' ';
                     stringifiedContent += translationFlashcard.sentence;
                 }
                 if (translationFlashcard.translatedSentence) {
+                    stringifiedContent += ' ';
                     stringifiedContent += translationFlashcard.translatedSentence;
                 }
             }
